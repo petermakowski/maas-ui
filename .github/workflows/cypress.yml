@@ -45,12 +45,12 @@ jobs:
           wait-on: "${{env.MAAS_UI}}/MAAS/r/machines"
           working-directory: integration
       - uses: actions/upload-artifact@v2
-        if: failure()
+        if: ${{ github.ref == 'refs/heads/master' && failure() }}
         with:
           name: cypress-screenshots
           path: integration/cypress/screenshots
       - name: Create issue on failure
-        if: failure()
+        if: ${{ github.ref == 'refs/heads/master' && failure() }}
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
