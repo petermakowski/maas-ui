@@ -111,7 +111,7 @@ export const StatusColumn = ({
   systemId,
 }: Props): JSX.Element | null => {
   const machine = useSelector((state: RootState) =>
-    machineSelectors.getByIdCached(state, systemId)
+    machineSelectors.getById(state, systemId)
   );
   const formattedOS = useFormattedOS(machine, true);
   const toggleMenu = useToggleMenu(onToggleMenu || null, systemId);

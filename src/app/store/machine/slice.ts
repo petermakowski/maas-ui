@@ -1138,6 +1138,7 @@ const machineSlice = createSlice({
         action: PayloadAction<null, string, GenericMeta>
       ) => {
         if (action.meta.callId) {
+          performance.mark(`machine-fetch-start-${action.meta.callId}`);
           state.lists[action.meta.callId] = {
             ...DEFAULT_LIST_STATE,
             loading: true,
@@ -1156,6 +1157,14 @@ const machineSlice = createSlice({
         state: MachineState,
         action: PayloadAction<FetchResponse, string, GenericMeta>
       ) => {
+        performance.mark(`machine-fetch-end-${action.meta.callId}`);
+        console.info(
+          performance.measure(
+            "machine-fetch-time",
+            `machine-fetch-start-${action.meta.callId}`,
+            `machine-fetch-end-${action.meta.callId}`
+          )
+        );
         const { callId } = action.meta;
         // Only update state if this call exists in the store. This check is required
         // because the call may have been cleaned up in the time the API takes

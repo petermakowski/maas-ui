@@ -15,7 +15,7 @@ type Props = { systemId: Machine["system_id"] };
 
 export const FabricColumn = ({ systemId }: Props): JSX.Element | null => {
   const machine = useSelector((state: RootState) =>
-    machineSelectors.getByIdCached(state, systemId)
+    machineSelectors.getById(state, systemId)
   );
 
   if (machine) {

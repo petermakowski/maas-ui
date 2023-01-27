@@ -14,7 +14,7 @@ type Props = { systemId: Machine["system_id"] };
 
 export const CoresColumn = ({ systemId }: Props): JSX.Element | null => {
   const machine = useSelector((state: RootState) =>
-    machineSelectors.getByIdCached(state, systemId)
+    machineSelectors.getById(state, systemId)
   );
 
   const formatShortArch = (arch: Machine["architecture"]) =>

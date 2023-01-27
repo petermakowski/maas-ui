@@ -19,6 +19,9 @@ import {
 import classNames from "classnames";
 import pluralize from "pluralize";
 import { useDispatch, useSelector } from "react-redux";
+import { useStorageState } from "react-storage-hooks";
+
+import HiddenColumnsSelect from "../MachineListControls/HiddenColumnsSelect";
 
 import AllCheckbox from "./AllCheckbox";
 import CoresColumn from "./CoresColumn";
@@ -694,7 +697,7 @@ export const MachineListTable = ({
               groupValue={undefined}
               showActions={showActions}
               showMAC={showMAC}
-              systemId={row.original.systemId}
+              systemId={row.original}
             />
           );
         },
@@ -719,7 +722,7 @@ export const MachineListTable = ({
             <PowerColumn
               data-testid="power-column"
               onToggleMenu={getMenuHandler(MachineColumns.POWER)}
-              systemId={row.original.systemId}
+              systemId={row.original}
             />
           );
         },
@@ -744,7 +747,7 @@ export const MachineListTable = ({
             <StatusColumn
               data-testid="status-column"
               onToggleMenu={getMenuHandler(MachineColumns.STATUS)}
-              systemId={row.original.systemId}
+              systemId={row.original}
             />
           );
         },
@@ -792,7 +795,7 @@ export const MachineListTable = ({
               data-testid="owner-column"
               onToggleMenu={getMenuHandler(MachineColumns.OWNER)}
               showFullName={showFullName}
-              systemId={row.original.systemId}
+              systemId={row.original}
             />
           );
         },
@@ -819,7 +822,7 @@ export const MachineListTable = ({
           <PoolColumn
             data-testid="pool-column"
             onToggleMenu={getMenuHandler(MachineColumns.POOL)}
-            systemId={row.original.systemId}
+            systemId={row.original}
           />
         ),
       },
@@ -845,7 +848,7 @@ export const MachineListTable = ({
           <ZoneColumn
             data-testid="zone-column"
             onToggleMenu={getMenuHandler(MachineColumns.ZONE)}
-            systemId={row.original.systemId}
+            systemId={row.original}
           />
         ),
       },
@@ -868,10 +871,7 @@ export const MachineListTable = ({
           </>
         ),
         cell: ({ row }) => (
-          <FabricColumn
-            data-testid="fabric-column"
-            systemId={row.original.systemId}
-          />
+          <FabricColumn data-testid="fabric-column" systemId={row.original} />
         ),
       },
       {
@@ -893,10 +893,7 @@ export const MachineListTable = ({
           </>
         ),
         cell: ({ row }) => (
-          <CoresColumn
-            data-testid="cpu-column"
-            systemId={row.original.systemId}
-          />
+          <CoresColumn data-testid="cpu-column" systemId={row.original} />
         ),
       },
       {
@@ -915,10 +912,7 @@ export const MachineListTable = ({
           </TableHeader>
         ),
         cell: ({ row }) => (
-          <RamColumn
-            data-testid="memory-column"
-            systemId={row.original.systemId}
-          />
+          <RamColumn data-testid="memory-column" systemId={row.original} />
         ),
       },
       {
@@ -937,10 +931,7 @@ export const MachineListTable = ({
           </TableHeader>
         ),
         cell: ({ row }) => (
-          <DisksColumn
-            data-testid="disks-column"
-            systemId={row.original.systemId}
-          />
+          <DisksColumn data-testid="disks-column" systemId={row.original} />
         ),
       },
       {
@@ -959,10 +950,7 @@ export const MachineListTable = ({
           </TableHeader>
         ),
         cell: ({ row }) => (
-          <StorageColumn
-            data-testid="storage-column"
-            systemId={row.original.systemId}
-          />
+          <StorageColumn data-testid="storage-column" systemId={row.original} />
         ),
       },
     ],
@@ -983,19 +971,21 @@ export const MachineListTable = ({
   //     });
   //   }
   // }, [pageSize]);
-  const it = groups?.[0]?.items;
-  const data = useMemo(() => {
-    return it?.map((item) => ({ systemId: item }));
-  }, [it]);
 
+  const [rowSelection, setRowSelection] = useState({});
+  const [columnVisibility, setColumnVisibility] = useStorageState<{}>(
+    localStorage,
+    "machineListColumnVisibility",
+    {}
+  );
   const table = useReactTable({
-    data: data || [],
+    data: groups?.[0]?.items || [],
     columns,
-    // state: {
-    //   rowSelection,
-    //   columnVisibility,
-    // },
-    // onColumnVisibilityChange: setColumnVisibility,
+    state: {
+      rowSelection,
+      columnVisibility,
+    },
+    onColumnVisibilityChange: setColumnVisibility,
     enableRowSelection: false,
     // onRowSelectionChange: setRowSelection,
     enableColumnResizing: false,
@@ -1009,6 +999,19 @@ export const MachineListTable = ({
   });
   return (
     <>
+      <HiddenColumnsSelect
+        hiddenColumns={Object.entries(columnVisibility)
+          .filter(([_key, val]) => !val)
+          .reduce((acc, [key]) => [...acc, key], [])}
+        setHiddenColumns={(hiddenColumns) => {
+          return setColumnVisibility(
+            hiddenColumns.reduce(
+              (acc, column) => ({ ...acc, [column]: false }),
+              {}
+            )
+          );
+        }}
+      />
       {machineCount ? (
         <div className="u-flex--between u-flex--align-end u-flex--wrap">
           <hr />

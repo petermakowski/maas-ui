@@ -43,7 +43,7 @@ export const ZoneColumn = ({
   const dispatch = useDispatch();
   const [updating, setUpdating] = useState<Zone[ZoneMeta.PK] | null>(null);
   const machine = useSelector((state: RootState) =>
-    machineSelectors.getByIdCached(state, systemId)
+    machineSelectors.getById(state, systemId)
   );
   const zones = useSelector(zoneSelectors.all);
   const toggleMenu = useToggleMenu(onToggleMenu || null, systemId);

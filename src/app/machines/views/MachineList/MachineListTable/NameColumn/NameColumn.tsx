@@ -131,7 +131,7 @@ export const NameColumn = ({
   machines,
 }: Props): JSX.Element | null => {
   const machine = useSelector((state: RootState) =>
-    machineSelectors.getByIdCached(state, systemId)
+    machineSelectors.getById(state, systemId)
   );
   if (!machine) {
     return null;
