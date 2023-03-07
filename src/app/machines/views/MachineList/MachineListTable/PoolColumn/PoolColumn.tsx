@@ -32,7 +32,7 @@ export const PoolColumn = ({
     ResourcePool[ResourcePoolMeta.PK] | null
   >(null);
   const machine = useSelector((state: RootState) =>
-    machineSelectors.getById(state, systemId)
+    machineSelectors.getByIdCached(state, systemId)
   );
   const resourcePools = useSelector(resourcePoolSelectors.all);
   const toggleMenu = useToggleMenu(onToggleMenu || null, systemId);

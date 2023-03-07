@@ -107,6 +107,7 @@ export const generateBaseSelectors = <
     count,
     errors,
     getById,
+    getByIdCached,
     loaded,
     loading,
     saved,

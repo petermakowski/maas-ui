@@ -14,7 +14,7 @@ type Props = {
 
 export const StorageColumn = ({ systemId }: Props): JSX.Element | null => {
   const machine = useSelector((state: RootState) =>
-    machineSelectors.getById(state, systemId)
+    machineSelectors.getByIdCached(state, systemId)
   );
   if (!machine) {
     return null;

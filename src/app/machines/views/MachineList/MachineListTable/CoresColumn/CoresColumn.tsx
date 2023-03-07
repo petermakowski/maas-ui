@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 import { Tooltip } from "@canonical/react-components";
 import { useSelector } from "react-redux";
@@ -14,7 +14,7 @@ type Props = { systemId: Machine["system_id"] };
 
 export const CoresColumn = ({ systemId }: Props): JSX.Element | null => {
   const machine = useSelector((state: RootState) =>
-    machineSelectors.getById(state, systemId)
+    machineSelectors.getByIdCached(state, systemId)
   );
 
   const formatShortArch = (arch: Machine["architecture"]) =>

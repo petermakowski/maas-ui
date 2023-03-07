@@ -166,4 +166,5 @@ const MachineList = ({
   );
 };
 
+MachineList.whyDidYouRender = true;
 export default MachineList;
