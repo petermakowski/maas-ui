@@ -497,7 +497,7 @@ const listGroups = createSelector(
     machineState,
     (_state: RootState, callId: string | null | undefined) => callId,
   ],
-  (machineState, callId) => getList(machineState, callId)?.groups || []
+  (machineState, callId) => getList(machineState, callId)?.groups || null
 );
 
 /**
