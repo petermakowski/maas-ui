@@ -527,6 +527,16 @@ export function* watchLogout(): SagaGenerator<void> {
   yield* takeLatest("status/logout", logoutSaga);
 }
 
+export function* sessionExpiredSaga(): SagaGenerator<void> {
+  yield* put({
+    type: "status/logoutSuccess",
+  });
+}
+
+export function* watchSessionExpired(): SagaGenerator<void> {
+  yield* takeLatest("status/sessionExpired", sessionExpiredSaga);
+}
+
 export function* watchCheckAuthenticated(): SagaGenerator<void> {
   yield* takeLatest("status/checkAuthenticated", checkAuthenticatedSaga);
 }

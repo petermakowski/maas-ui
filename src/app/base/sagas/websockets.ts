@@ -352,6 +352,21 @@ export function* handleUnsubscribe(
   }
 }
 
+export function* handleWebsocketClose(
+  websocketCloseEvent: CloseEvent
+): SagaGenerator<void> {
+  const { code, reason } = websocketCloseEvent;
+  if (reason === "Session expired") {
+    yield* put({ type: "status/websocketClosed", payload: { code, reason } });
+    yield* put({ type: "status/sessionExpired" });
+  } else {
+    yield* put({
+      type: "status/websocketDisconnected",
+      payload: { code, reason },
+    });
+  }
+}
+
 /**
  * Handle messages received over the WebSocket.
  */
@@ -370,15 +385,7 @@ export function* handleMessage(
         });
       }
     } else if (websocketEvent.type === "close") {
-      yield* put({
-        type: "status/websocketDisconnected",
-        payload:
-          "code" in websocketEvent &&
-          websocketEvent.code === 1000 &&
-          websocketEvent.reason === "Session expired"
-            ? true
-            : false,
-      });
+      yield* call(handleWebsocketClose, websocketEvent as CloseEvent);
     } else if (websocketEvent.type === "open") {
       yield* put({ type: "status/websocketConnected" });
       resetLoaded();
