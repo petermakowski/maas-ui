@@ -312,6 +312,7 @@ export function* loginSaga(
 export function* logoutSaga(): SagaGenerator<void> {
   const csrftoken = yield* call(getCookie, "csrftoken");
   if (!csrftoken) {
+    debugger;
     return;
   }
   try {
@@ -320,6 +321,7 @@ export function* logoutSaga(): SagaGenerator<void> {
     yield* put({
       type: "status/logoutSuccess",
     });
+    // TODO: check if disconnected before dispatching?
     yield* put({
       type: "status/websocketDisconnect",
     });
@@ -528,6 +530,7 @@ export function* watchLogout(): SagaGenerator<void> {
 }
 
 export function* sessionExpiredSaga(): SagaGenerator<void> {
+  debugger;
   yield* put({
     type: "status/logoutSuccess",
   });

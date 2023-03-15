@@ -49,7 +49,7 @@ export const Login = (): JSX.Element => {
   const externalAuthURL = useSelector(statusSelectors.externalAuthURL);
   const externalLoginURL = useSelector(statusSelectors.externalLoginURL);
   const noUsers = useSelector(statusSelectors.noUsers);
-  const error = useSelector(statusSelectors.authenticationError);
+  const authenticationError = useSelector(statusSelectors.authenticationError);
 
   useWindowTitle("Login");
 
@@ -63,9 +63,9 @@ export const Login = (): JSX.Element => {
     <Strip>
       <Row>
         <Col emptyLarge={4} size={6}>
-          {externalAuthURL && error && (
+          {externalAuthURL && authenticationError && (
             <Notification severity="negative" title="Error:">
-              {error}
+              {authenticationError}
             </Notification>
           )}
           {noUsers && !externalAuthURL ? (
@@ -101,7 +101,7 @@ export const Login = (): JSX.Element => {
               ) : (
                 <FormikForm<LoginValues>
                   aria-label={Labels.APILoginForm}
-                  errors={error}
+                  errors={authenticationError}
                   initialValues={{
                     password: "",
                     username: "",

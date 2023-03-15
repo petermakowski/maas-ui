@@ -16,7 +16,7 @@ import type { WebSocketChannel } from "./websockets";
 import {
   createConnection,
   handleFileContextRequest,
-  handleMessage,
+  handleWebSocket,
   handleNextActions,
   handleNotifyMessage,
   handlePolling,
@@ -323,7 +323,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a WebSocket response message", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     expect(saga.next().value).toEqual(take(socketChannel));
     expect(
       saga.next({
@@ -345,7 +345,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a WebSocket response message with a request id", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     expect(saga.next().value).toEqual(take(socketChannel));
     expect(
       saga.next({
@@ -386,7 +386,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a WebSocket error response message", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     expect(saga.next().value).toEqual(take(socketChannel));
     expect(
       saga.next({
@@ -410,7 +410,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a WebSocket error message that is not JSON", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     expect(saga.next().value).toEqual(take(socketChannel));
     expect(
       saga.next({
@@ -434,7 +434,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a WebSocket notify message", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     const response: WebSocketResponseNotify = {
       type: WebSocketMessageType.NOTIFY,
       name: "config",
@@ -450,7 +450,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a WebSocket close message", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     expect(saga.next().value).toEqual(take(socketChannel));
     expect(saga.next({ type: "close" }).value).toEqual(
       put({ type: "status/websocketDisconnected" })
@@ -458,7 +458,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a WebSocket error message", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     expect(saga.next().value).toEqual(take(socketChannel));
     expect(saga.next({ type: "error", message: "Timeout" }).value).toEqual(
       put({ type: "status/websocketError", error: true, payload: "Timeout" })
@@ -466,7 +466,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a WebSocket open message", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     expect(saga.next().value).toEqual(take(socketChannel));
     expect(saga.next({ type: "open" }).value).toEqual(
       put({ type: "status/websocketConnected" })
@@ -494,7 +494,7 @@ describe("websocket sagas", () => {
   });
 
   it("can handle a file response", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     saga.next();
     const response: WebSocketResponseResult<string> = {
       request_id: 99,
@@ -507,7 +507,7 @@ describe("websocket sagas", () => {
   });
 
   it("file responses do not dispatch the payload", () => {
-    const saga = handleMessage(socketChannel, socketClient);
+    const saga = handleWebSocket(socketChannel, socketClient);
     saga.next();
     saga.next({
       data: JSON.stringify({

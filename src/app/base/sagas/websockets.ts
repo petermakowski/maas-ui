@@ -160,9 +160,10 @@ export function watchMessages(socketClient: WebSocketClient): WebSocketChannel {
         emit(event);
       };
     }
-    return () => {
+    const unsubscribe = () => {
       socketClient.socket?.close();
     };
+    return unsubscribe;
   });
 }
 
@@ -352,16 +353,26 @@ export function* handleUnsubscribe(
   }
 }
 
-export function* handleWebsocketClose(
+export function* handleWebSocketClose(
   websocketCloseEvent: CloseEvent
 ): SagaGenerator<void> {
+  debugger;
   const { code, reason } = websocketCloseEvent;
-  if (reason === "Session expired") {
-    yield* put({ type: "status/websocketClosed", payload: { code, reason } });
-    yield* put({ type: "status/sessionExpired" });
-  } else {
+  yield* put({
+    type: "status/websocketDisconnect",
+    payload: { code, reason },
+  });
+
+  // websocketClose normal closure
+  if (code === 1000 && reason === "Session expired") {
     yield* put({
-      type: "status/websocketDisconnected",
+      type: "status/sessionExpired",
+    });
+  } else if (code === 1002 && reason === "Failed to authenticate user.") {
+  } else {
+    // anthing other than 1000 is considered an abnormal closure
+    yield* put({
+      type: "status/websocketDisconnect",
       payload: { code, reason },
     });
   }
@@ -370,7 +381,7 @@ export function* handleWebsocketClose(
 /**
  * Handle messages received over the WebSocket.
  */
-export function* handleMessage(
+export function* handleWebSocket(
   socketChannel: WebSocketChannel,
   socketClient: WebSocketClient
 ): SagaGenerator<void> {
@@ -385,7 +396,7 @@ export function* handleMessage(
         });
       }
     } else if (websocketEvent.type === "close") {
-      yield* call(handleWebsocketClose, websocketEvent as CloseEvent);
+      yield* call(handleWebSocketClose, websocketEvent as CloseEvent);
     } else if (websocketEvent.type === "open") {
       yield* put({ type: "status/websocketConnected" });
       resetLoaded();
@@ -611,7 +622,7 @@ export function* sendMessage(
  * @param {Array} messageHandlers - Sagas that should handle specific messages
  * via the websocket channel.
  */
-export function* setupWebSocket({
+export function* createWebSocketChannel({
   websocketClient,
   messageHandlers = [],
 }: {
@@ -628,7 +639,7 @@ export function* setupWebSocket({
       const { cancel } = yield* race({
         task: all(
           [
-            call(handleMessage, socketChannel, socketClient),
+            call(handleWebSocket, socketChannel, socketClient),
             // Using takeEvery() instead of call() here to get around this issue:
             // https://github.com/canonical/maas-ui/issues/172
             takeEvery<
@@ -680,7 +691,7 @@ export function* watchWebSockets(
   websocketClient: WebSocketClient,
   messageHandlers?: MessageHandler[]
 ): SagaGenerator<void> {
-  yield* takeLatest("status/websocketConnect", setupWebSocket, {
+  yield* takeLatest("status/websocketConnect", createWebSocketChannel, {
     websocketClient,
     messageHandlers,
   });
