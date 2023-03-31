@@ -1,8 +1,36 @@
+$machine-list-controls-breakpoint: $breakpoint-large;
+
 @mixin MachineListControls {
   .machine-list-controls {
+    container-type: inline-size;
     display: flex;
     flex-direction: row;
     grid-gap: 0.5rem;
     flex-wrap: wrap;
+
+    h1 {
+      min-width: 100%;
+    }
+    @container (min-width: #{$breakpoint-large}) {
+      h1 {
+        min-width: auto;
+      }
+    }
+
+    .machine-list-controls-inputs {
+      align-items: baseline;
+      display: inline-flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      grid-gap: 0.5rem;
+
+      & > * {
+        width: 100%;
+        @container (min-width: #{$breakpoint-small}) {
+          width: auto;
+        }
+      }
+    }
   }
 }
