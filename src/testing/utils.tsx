@@ -5,11 +5,13 @@ import { render } from "@testing-library/react";
 import type { ReactWrapper } from "enzyme";
 import { shallow } from "enzyme";
 import type { FormikHelpers } from "formik";
+import produce from "immer";
+import type { WritableDraft } from "immer/dist/types/types-external";
 import { act } from "react-dom/test-utils";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { CompatRouter, Route, Routes } from "react-router-dom-v5-compat";
-import type { MockStoreEnhanced } from "redux-mock-store";
+import type { MockStore, MockStoreEnhanced } from "redux-mock-store";
 import configureStore from "redux-mock-store";
 
 import FormikForm from "app/base/components/FormikForm";
@@ -276,6 +278,23 @@ export const getTestState = (): RootState => {
       genericActions: zoneGenericActionsFactory({ fetch: "success" }),
     }),
   });
+};
+
+const baseState = getTestState();
+type DraftFunc = (draft: WritableDraft<RootState>) => void;
+
+export const produceTestState = (
+  stateDraftFunc: DraftFunc,
+  state?: RootState
+): RootState => produce(state || baseState, stateDraftFunc);
+
+export const produceMockStore = (
+  stateDraftFunc: DraftFunc,
+  state?: RootState
+): MockStore<RootState> => {
+  const mockStore = configureStore<RootState>();
+  const mockState = produce(state || baseState, stateDraftFunc);
+  return mockStore(mockState);
 };
 
 export * from "@testing-library/react";

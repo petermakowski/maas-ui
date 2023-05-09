@@ -2,39 +2,21 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { CompatRouter } from "react-router-dom-v5-compat";
-import configureStore from "redux-mock-store";
 
 import MemoryCard from "./MemoryCard";
 
-import type { RootState } from "app/store/root/types";
 import {
   controllerDetails as controllerDetailsFactory,
-  controllerState as controllerStateFactory,
   machineDetails as machineDetailsFactory,
-  machineState as machineStateFactory,
-  rootState as rootStateFactory,
   testStatus as testStatusFactory,
 } from "testing/factories";
-
-const mockStore = configureStore();
-
-let state: RootState;
-beforeEach(() => {
-  state = rootStateFactory({
-    controller: controllerStateFactory({
-      items: [],
-    }),
-    machine: machineStateFactory({
-      items: [],
-    }),
-  });
-});
+import { produceMockStore } from "testing/utils";
 
 it("does not render test info if node is a controller", () => {
   const controller = controllerDetailsFactory();
-  state.controller.items = [controller];
-
-  const store = mockStore(state);
+  const store = produceMockStore((stateDraft) => {
+    stateDraft.controller.items = [controller];
+  });
 
   render(
     <Provider store={store}>
@@ -51,9 +33,9 @@ it("does not render test info if node is a controller", () => {
 
 it("renders test info if node is a machine", () => {
   const machine = machineDetailsFactory();
-  state.machine.items = [machine];
-
-  const store = mockStore(state);
+  const store = produceMockStore((stateDraft) => {
+    stateDraft.machine.items = [machine];
+  });
 
   render(
     <Provider store={store}>
@@ -74,9 +56,9 @@ describe("node is a machine", () => {
     machine.memory_test_status = testStatusFactory({
       passed: 2,
     });
-    state.machine.items = [machine];
-
-    const store = mockStore(state);
+    const store = produceMockStore((stateDraft) => {
+      stateDraft.machine.items = [machine];
+    });
 
     render(
       <Provider store={store}>
@@ -99,9 +81,9 @@ describe("node is a machine", () => {
       running: 1,
       pending: 2,
     });
-    state.machine.items = [machine];
-
-    const store = mockStore(state);
+    const store = produceMockStore((state) => {
+      state.machine.items = [machine];
+    });
 
     render(
       <Provider store={store}>
@@ -123,9 +105,9 @@ describe("node is a machine", () => {
     machine.memory_test_status = testStatusFactory({
       failed: 5,
     });
-    state.machine.items = [machine];
-
-    const store = mockStore(state);
+    const store = produceMockStore((state) => {
+      state.machine.items = [machine];
+    });
 
     render(
       <Provider store={store}>
@@ -144,12 +126,12 @@ describe("node is a machine", () => {
 
   it("renders a results link", () => {
     const machine = machineDetailsFactory();
-    machine.memory_test_status = testStatusFactory({
-      failed: 5,
+    const store = produceMockStore((state) => {
+      machine.memory_test_status = testStatusFactory({
+        failed: 5,
+      });
+      state.machine.items = [machine];
     });
-    state.machine.items = [machine];
-
-    const store = mockStore(state);
 
     render(
       <Provider store={store}>
@@ -171,9 +153,9 @@ describe("node is a machine", () => {
   it("renders a test cpu link if no tests run", () => {
     const machine = machineDetailsFactory();
     machine.memory_test_status = testStatusFactory();
-    state.machine.items = [machine];
-
-    const store = mockStore(state);
+    const store = produceMockStore((state) => {
+      state.machine.items = [machine];
+    });
 
     render(
       <Provider store={store}>
