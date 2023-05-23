@@ -114,6 +114,7 @@ const SectionHeader = <P,>({
           subtitleLoading,
           loading
         )}
+        {/* TODO: remove  `&& !sidePanelContent` to keep buttons visible when side panel is open */}
         {buttons?.length && !sidePanelContent ? (
           <List
             className="section-header__buttons u-flex--between"

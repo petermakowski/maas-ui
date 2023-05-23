@@ -12,6 +12,7 @@ import { CompatRouter, Route, Routes } from "react-router-dom-v5-compat";
 import type { MockStoreEnhanced } from "redux-mock-store";
 import configureStore from "redux-mock-store";
 
+import AppContextProvider from "app/base/app-context";
 import FormikForm from "app/base/components/FormikForm";
 import type { AnyObject } from "app/base/types";
 import { ConfigNames } from "app/store/config/types";
@@ -148,17 +149,23 @@ const BrowserRouterWithProvider = ({
   const route = <Route element={children} path={routePattern} />;
   return (
     <Provider store={store ?? getMockStore(state || rootStateFactory())}>
-      <BrowserRouter>
-        <CompatRouter>
-          {routePattern ? (
-            <Routes>
-              {parentRoute ? <Route path={parentRoute}>{route}</Route> : route}
-            </Routes>
-          ) : (
-            children
-          )}
-        </CompatRouter>
-      </BrowserRouter>
+      <AppContextProvider>
+        <BrowserRouter>
+          <CompatRouter>
+            {routePattern ? (
+              <Routes>
+                {parentRoute ? (
+                  <Route path={parentRoute}>{route}</Route>
+                ) : (
+                  route
+                )}
+              </Routes>
+            ) : (
+              children
+            )}
+          </CompatRouter>
+        </BrowserRouter>
+      </AppContextProvider>
     </Provider>
   );
 };
@@ -174,7 +181,7 @@ const WithMockStoreProvider = ({
   };
   return (
     <Provider store={store ?? getMockStore(state || rootStateFactory())}>
-      {children}
+      <AppContextProvider>{children}</AppContextProvider>
     </Provider>
   );
 };

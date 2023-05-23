@@ -1,18 +1,13 @@
 import { Button } from "@canonical/react-components";
 
+import type { AppContextType, SidePanelContent } from "app/base/app-context";
 import MachinesHeader from "app/base/components/node/MachinesHeader";
 import { useFetchMachineCount } from "app/store/machine/utils/hooks";
 import TagHeaderForms from "app/tags/components/TagsHeader/TagHeaderForms";
 import { TagHeaderViews } from "app/tags/constants";
-import type {
-  TagSidePanelContent,
-  TagSetSidePanelContent,
-} from "app/tags/types";
 import { TagViewState } from "app/tags/types";
 
-export type Props = {
-  sidePanelContent: TagSidePanelContent | null;
-  setSidePanelContent: TagSetSidePanelContent;
+export type Props = AppContextType & {
   tagViewState?: TagViewState | null;
 };
 
@@ -21,9 +16,7 @@ export enum Label {
   Header = "Tags header",
 }
 
-export const getHeaderTitle = (
-  sidePanelContent: TagSidePanelContent | null
-): string => {
+export const getHeaderTitle = (sidePanelContent: SidePanelContent): string => {
   if (sidePanelContent) {
     const [, name] = sidePanelContent.view;
     switch (name) {

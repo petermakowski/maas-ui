@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -9,11 +9,11 @@ import DeviceDetailsHeader from "./DeviceDetailsHeader";
 import DeviceNetwork from "./DeviceNetwork";
 import DeviceSummary from "./DeviceSummary";
 
+import { useSidePanel } from "app/base/app-context";
 import MainContentSection from "app/base/components/MainContentSection";
 import ModelNotFound from "app/base/components/ModelNotFound";
 import { useGetURLId } from "app/base/hooks/urls";
 import urls from "app/base/urls";
-import type { DeviceSidePanelContent } from "app/devices/types";
 import { actions as deviceActions } from "app/store/device";
 import deviceSelectors from "app/store/device/selectors";
 import { DeviceMeta } from "app/store/device/types";
@@ -22,14 +22,13 @@ import { actions as tagActions } from "app/store/tag";
 import { isId, getRelativeRoute } from "app/utils";
 
 const DeviceDetails = (): JSX.Element => {
+  const { sidePanelContent, setSidePanelContent } = useSidePanel();
   const dispatch = useDispatch();
   const id = useGetURLId(DeviceMeta.PK);
   const device = useSelector((state: RootState) =>
     deviceSelectors.getById(state, id)
   );
   const devicesLoading = useSelector(deviceSelectors.loading);
-  const [sidePanelContent, setSidePanelContent] =
-    useState<DeviceSidePanelContent | null>(null);
 
   useEffect(() => {
     if (isId(id)) {

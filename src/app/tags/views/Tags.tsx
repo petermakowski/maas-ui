@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   matchPath,
   Route,
@@ -10,13 +8,14 @@ import {
 
 import TagsHeader from "../components/TagsHeader";
 import { TagHeaderViews } from "../constants";
-import type { TagSidePanelContent } from "../types";
 import { TagViewState } from "../types";
 
 import TagDetails from "./TagDetails";
 import TagList from "./TagList";
 import TagMachines from "./TagMachines";
 
+import type { SidePanelContent } from "app/base/app-context";
+import { useSidePanel } from "app/base/app-context";
 import MainContentSection from "app/base/components/MainContentSection";
 import urls from "app/base/urls";
 import NotFound from "app/base/views/NotFound";
@@ -24,7 +23,7 @@ import type { Tag, TagMeta } from "app/store/tag/types";
 import { getRelativeRoute } from "app/utils";
 
 const getViewState = (
-  sidePanelContent: TagSidePanelContent | null,
+  sidePanelContent: SidePanelContent | null,
   pathname: string
 ) => {
   if (sidePanelContent?.view === TagHeaderViews.DeleteTag) {
@@ -50,8 +49,7 @@ const Tags = (): JSX.Element => {
   const { pathname } = useLocation();
   const detailsMatch = useMatch(urls.tags.tag.index(null));
   const isDetails = !!detailsMatch;
-  const [sidePanelContent, setSidePanelContent] =
-    useState<TagSidePanelContent | null>(null);
+  const { sidePanelContent, setSidePanelContent } = useSidePanel();
   const tagViewState = getViewState(sidePanelContent, pathname);
   const onDelete = (id: Tag[TagMeta.PK], fromDetails?: boolean) =>
     setSidePanelContent({

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -8,12 +8,12 @@ import VirshDetailsHeader from "./VirshDetailsHeader";
 import VirshResources from "./VirshResources";
 import VirshSettings from "./VirshSettings";
 
+import { useSidePanel } from "app/base/app-context";
 import MainContentSection from "app/base/components/MainContentSection";
 import ModelNotFound from "app/base/components/ModelNotFound";
 import { useGetURLId } from "app/base/hooks/urls";
 import urls from "app/base/urls";
 import { useActivePod, useKVMDetailsRedirect } from "app/kvm/hooks";
-import type { KVMSidePanelContent } from "app/kvm/types";
 import podSelectors from "app/store/pod/selectors";
 import { PodMeta } from "app/store/pod/types";
 import type { RootState } from "app/store/root/types";
@@ -31,8 +31,7 @@ const VirshDetails = (): JSX.Element => {
     podSelectors.getById(state, id)
   );
   const loading = useSelector(podSelectors.loading);
-  const [sidePanelContent, setSidePanelContent] =
-    useState<KVMSidePanelContent | null>(null);
+  const { sidePanelContent, setSidePanelContent } = useSidePanel();
   useActivePod(id);
   const redirectURL = useKVMDetailsRedirect(id);
 

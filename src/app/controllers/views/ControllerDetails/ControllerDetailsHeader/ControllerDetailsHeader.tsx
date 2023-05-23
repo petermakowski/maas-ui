@@ -6,6 +6,7 @@ import { Link } from "react-router-dom-v5-compat";
 
 import ControllerName from "./ControllerName";
 
+import type { AppContextType } from "app/base/app-context";
 import NodeActionMenu from "app/base/components/NodeActionMenu";
 import SectionHeader from "app/base/components/SectionHeader";
 import { useSendAnalytics } from "app/base/hooks";
@@ -15,10 +16,6 @@ import {
   ControllerDetailsTabLabels,
   ControllerHeaderViews,
 } from "app/controllers/constants";
-import type {
-  ControllerSidePanelContent,
-  ControllerSetSidePanelContent,
-} from "app/controllers/types";
 import { getHeaderTitle } from "app/controllers/utils";
 import controllerSelectors from "app/store/controller/selectors";
 import type { Controller } from "app/store/controller/types";
@@ -26,10 +23,8 @@ import { isControllerDetails } from "app/store/controller/utils";
 import type { RootState } from "app/store/root/types";
 import { getNodeActionTitle } from "app/store/utils";
 
-type Props = {
+type Props = AppContextType & {
   systemId: Controller["system_id"];
-  sidePanelContent: ControllerSidePanelContent | null;
-  setSidePanelContent: ControllerSetSidePanelContent;
 };
 
 const ControllerDetailsHeader = ({
@@ -43,6 +38,7 @@ const ControllerDetailsHeader = ({
   const { pathname } = useLocation();
   const [isEditing, setIsEditing] = useState(false);
   const sendAnalytics = useSendAnalytics();
+  console.log("ControllerDetailsHeader", sidePanelContent);
 
   if (!controller) {
     return <SectionHeader loading />;
