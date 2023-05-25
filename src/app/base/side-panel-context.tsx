@@ -1,7 +1,14 @@
 import type { PropsWithChildren } from "react";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 import { usePrevious } from "@canonical/react-components";
+import fastDeepEqual from "fast-deep-equal";
 import { useLocation } from "react-router-dom-v5-compat";
 
 import type { ControllerSidePanelContent } from "app/controllers/types";
@@ -10,6 +17,7 @@ import type { DeviceSidePanelContent } from "app/devices/types";
 import type { DomainListSidePanelContent } from "app/domains/views/DomainsList/constants";
 import type { KVMSidePanelContent } from "app/kvm/types";
 import type { MachineSidePanelContent } from "app/machines/types";
+import type { Controller } from "app/store/controller/types";
 import type { SubnetSidePanelContent } from "app/subnets/types";
 import type { FabricDetailsSidePanelContent } from "app/subnets/views/FabricDetails/FabricDetailsHeader/constants";
 import type { SubnetDetailsSidePanelContent } from "app/subnets/views/SubnetDetails/constants";
@@ -30,9 +38,13 @@ export type SidePanelContent =
   | VLANDetailsSidePanelContent
   | FabricDetailsSidePanelContent
   | SubnetDetailsSidePanelContent
+  | { extras: { controllers: Controller[] } }
   | null;
 
 export type SetSidePanelContent = (sidePanelContent: SidePanelContent) => void;
+export type SetSidePanelExtras = (extras: {
+  controllers: Controller[];
+}) => void;
 
 export type SidePanelContextType = {
   sidePanelContent: SidePanelContent;
@@ -47,10 +59,19 @@ const SidePanelContext = createContext<SidePanelContextType>({
 const useSidePanelContext = (): SidePanelContextType =>
   useContext(SidePanelContext);
 
-export const useSidePanel = (): SidePanelContextType => {
+export const useSidePanel = (type, { extras } = {}): SidePanelContextType => {
   const appContext = useSidePanelContext();
   const { pathname } = useLocation();
   const previousPathname = usePrevious(pathname);
+  const previousExtras = usePrevious(extras);
+
+  // update every time extras change
+  useEffect(() => {
+    if (!fastDeepEqual(extras, previousExtras)) {
+      console.log(type, extras, previousExtras);
+      appContext.setSidePanelContent((prevState) => ({ ...prevState, extras }));
+    }
+  }, [appContext, extras, previousExtras]);
 
   // close side panel on route change
   useEffect(() => {
@@ -76,12 +97,17 @@ const SidePanelContextProvider = ({
 }: PropsWithChildren<{ value?: SidePanelContent }>): React.ReactElement => {
   const [sidePanelContent, setSidePanelContent] =
     useState<SidePanelContent>(value);
+  const setContent = useCallback(
+    (content) =>
+      setSidePanelContent((prevState) => ({ ...prevState, ...content })),
+    [setSidePanelContent]
+  );
 
   return (
     <SidePanelContext.Provider
       value={{
         sidePanelContent,
-        setSidePanelContent,
+        setSidePanelContent: setContent,
       }}
     >
       {children}

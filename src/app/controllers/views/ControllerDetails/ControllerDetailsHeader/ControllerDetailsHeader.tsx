@@ -62,22 +62,14 @@ const ControllerDetailsHeader = ({
               ([, actionName]) => actionName === action
             );
             if (view) {
-              setSidePanelContent({ view });
+              setSidePanelContent({
+                view,
+                extras: { controllers: [controller] },
+              });
             }
           }}
         />,
       ]}
-      sidePanelContent={
-        sidePanelContent ? (
-          <ControllerHeaderForms
-            controllers={[controller]}
-            setSidePanelContent={setSidePanelContent}
-            sidePanelContent={sidePanelContent}
-            viewingDetails
-          />
-        ) : null
-      }
-      sidePanelTitle={getHeaderTitle("Controller", sidePanelContent)}
       subtitleLoading={!isControllerDetails(controller)}
       tabLinks={[
         {

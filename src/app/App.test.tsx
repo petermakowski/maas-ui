@@ -38,6 +38,7 @@ describe("App", () => {
     expect(
       screen.getByRole("heading", { name: "Settings" })
     ).toBeInTheDocument();
+    screen.getByRole("heading", { name: "Settings" }).click()
   });
 
   it("displays connection errors", () => {

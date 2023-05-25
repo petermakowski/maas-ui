@@ -33,6 +33,7 @@ import configSelectors from "app/store/config/selectors";
 import { actions as generalActions } from "app/store/general";
 import { actions as statusActions } from "app/store/status";
 import status from "app/store/status/selectors";
+import AppSidePanel from "./base/components/AppSidePanel";
 
 export enum VaultErrors {
   REQUEST_FAILED = "Vault request failed",
@@ -194,6 +195,7 @@ export const App = (): JSX.Element => {
             <Footer />
           </div>
         </main>
+        <AppSidePanel />
         <aside className="l-status">
           <StatusBar />
         </aside>

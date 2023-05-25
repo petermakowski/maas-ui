@@ -11,7 +11,6 @@ import ControllerListTable from "./ControllerListTable";
 import MainContentSection from "app/base/components/MainContentSection";
 import VaultNotification from "app/base/components/VaultNotification";
 import { useWindowTitle } from "app/base/hooks";
-import { useSidePanel } from "app/base/side-panel-context";
 import { actions as controllerActions } from "app/store/controller";
 import controllerSelectors from "app/store/controller/selectors";
 import { FilterControllers } from "app/store/controller/utils";
@@ -27,7 +26,6 @@ const ControllerList = (): JSX.Element => {
   const currentFilters = FilterControllers.queryStringToFilters(
     location.search
   );
-  const { sidePanelContent, setSidePanelContent } = useSidePanel();
   const [searchFilter, setFilter] = useState(
     // Initialise the filter state from the URL.
     FilterControllers.filtersToString(currentFilters)
@@ -59,13 +57,7 @@ const ControllerList = (): JSX.Element => {
 
   return (
     <MainContentSection
-      header={
-        <ControllerListHeader
-          setSearchFilter={setSearchFilter}
-          setSidePanelContent={setSidePanelContent}
-          sidePanelContent={sidePanelContent}
-        />
-      }
+      header={<ControllerListHeader setSearchFilter={setSearchFilter} />}
     >
       <VaultNotification />
       <ControllerListControls

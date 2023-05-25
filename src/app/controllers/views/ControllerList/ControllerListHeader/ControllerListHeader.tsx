@@ -5,11 +5,12 @@ import ModelListSubtitle from "app/base/components/ModelListSubtitle";
 import NodeActionMenu from "app/base/components/NodeActionMenu";
 import SectionHeader from "app/base/components/SectionHeader";
 import { useSendAnalytics } from "app/base/hooks";
-import type { SidePanelContextType } from "app/base/side-panel-context";
+import {
+  useSidePanel,
+  type SidePanelContextType,
+} from "app/base/side-panel-context";
 import type { SetSearchFilter } from "app/base/types";
-import ControllerHeaderForms from "app/controllers/components/ControllerHeaderForms";
 import { ControllerHeaderViews } from "app/controllers/constants";
-import { getHeaderTitle } from "app/controllers/utils";
 import controllerSelectors from "app/store/controller/selectors";
 import { getNodeActionTitle } from "app/store/utils";
 
@@ -17,15 +18,18 @@ type Props = SidePanelContextType & {
   setSearchFilter: SetSearchFilter;
 };
 
-const ControllerListHeader = ({
-  sidePanelContent,
-  setSidePanelContent,
-  setSearchFilter,
-}: Props): JSX.Element => {
+const ControllerListHeader = ({ setSearchFilter }: Props): JSX.Element => {
   const controllers = useSelector(controllerSelectors.all);
   const controllersLoaded = useSelector(controllerSelectors.loaded);
   const selectedControllers = useSelector(controllerSelectors.selected);
   const sendAnalytics = useSendAnalytics();
+
+  // useSidePanelContent that can have a view and extras passed in
+  // type could be inferred by the passed in view
+  // this could potentially setup separate context for each side panel type
+  const { setSidePanelContent } = useSidePanel("controller", {
+    extras: { controllers: selectedControllers },
+  });
 
   return (
     <SectionHeader
@@ -54,22 +58,15 @@ const ControllerListHeader = ({
               ([, actionName]) => actionName === action
             );
             if (view) {
-              setSidePanelContent({ view });
+              setSidePanelContent({
+                view,
+                extras: { controllers: selectedControllers },
+              });
             }
           }}
           showCount
         />,
       ]}
-      sidePanelContent={
-        sidePanelContent && (
-          <ControllerHeaderForms
-            controllers={selectedControllers}
-            setSidePanelContent={setSidePanelContent}
-            sidePanelContent={sidePanelContent}
-          />
-        )
-      }
-      sidePanelTitle={getHeaderTitle("Controllers", sidePanelContent)}
       subtitle={
         <ModelListSubtitle
           available={controllers.length}

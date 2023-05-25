@@ -100,20 +100,6 @@ export const MachineListHeader = ({
           setSidePanelContent={setSidePanelContent}
         />
       )}
-      sidePanelContent={
-        sidePanelContent && (
-          <MachineHeaderForms
-            searchFilter={searchFilter}
-            selectedCount={selectedCount}
-            selectedCountLoading={selectedCountLoading}
-            selectedMachines={selectedMachines}
-            setSearchFilter={setSearchFilter}
-            setSidePanelContent={setSidePanelContent}
-            sidePanelContent={sidePanelContent}
-          />
-        )
-      }
-      sidePanelTitle={getHeaderTitle("Machines", sidePanelContent)}
       subtitleLoading={selectedCountLoading}
     />
   );

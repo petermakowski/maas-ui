@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom-v5-compat";
 import { useStorageState } from "react-storage-hooks";
 
@@ -11,8 +11,10 @@ import MainContentSection from "app/base/components/MainContentSection";
 import { useSidePanel } from "app/base/side-panel-context";
 import MachineList from "app/machines/views/MachineList";
 import { actions as machineActions } from "app/store/machine";
+import machineSelectors from "app/store/machine/selectors";
 import { FetchGroupKey } from "app/store/machine/types";
 import { FilterMachines } from "app/store/machine/utils";
+import { useMachineSelectedCount } from "app/store/machine/utils/hooks";
 
 const Machines = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -23,7 +25,26 @@ const Machines = (): JSX.Element => {
   const [searchFilter, setFilter] = useState(
     FilterMachines.filtersToString(currentFilters)
   );
-  const { sidePanelContent, setSidePanelContent } = useSidePanel();
+  const selectedMachines = useSelector(machineSelectors.selectedMachines);
+  // searchFilter;
+  // selectedCount;
+  // selectedCountLoading;
+  // selectedMachines;
+  // setSearchFilter;
+
+  const filter = FilterMachines.parseFetchFilters(searchFilter);
+  // Get the count of selected machines that match the current filter
+  const { selectedCount, selectedCountLoading } =
+    useMachineSelectedCount(filter);
+  const { sidePanelContent, setSidePanelContent } = useSidePanel("machines", {
+    extras: {
+      selectedMachines,
+      selectedCount,
+      searchFilter,
+      selectedCountLoading,
+      setSearchFilter: setFilter,
+    },
+  });
 
   const setSearchFilter = useCallback(
     (searchText) => {
@@ -82,7 +103,6 @@ const Machines = (): JSX.Element => {
           setHiddenGroups={setHiddenGroups}
           setSearchFilter={setSearchFilter}
           setSidePanelContent={setSidePanelContent}
-          sidePanelContent={sidePanelContent}
         />
       }
     >

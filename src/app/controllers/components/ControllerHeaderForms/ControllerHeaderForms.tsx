@@ -9,12 +9,12 @@ import type { SidePanelContextType } from "app/base/side-panel-context";
 import type { ControllerActionHeaderViews } from "app/controllers/constants";
 import { ControllerHeaderViews } from "app/controllers/constants";
 import type { Controller } from "app/store/controller/types";
-
 type Props = SidePanelContextType & {
   controllers: Controller[];
   viewingDetails?: boolean;
 };
 
+// TODO: Rename to ControllerForms
 const ControllerHeaderForms = ({
   controllers,
   sidePanelContent,

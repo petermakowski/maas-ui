@@ -10,6 +10,7 @@ import { DEFAULTS } from "./MachineListTable/constants";
 
 import VaultNotification from "app/base/components/VaultNotification";
 import { useWindowTitle } from "app/base/hooks";
+import { useSidePanel } from "app/base/side-panel-context";
 import type { SortDirection } from "app/base/types";
 import { actions as controllerActions } from "app/store/controller";
 import { actions as generalActions } from "app/store/general";

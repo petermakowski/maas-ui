@@ -40,10 +40,11 @@ export type AnalyticsEvent = {
   label: string;
 };
 
+// TODO: refactor so that TypeScript understands view - extras pairs are fixed
 export type SidePanelContent<V extends readonly [string, string], E = never> = {
   view: V;
-  extras?: E;
-};
+  extras: E;
+}
 
 export type SetSidePanelContent<H> = (sidePanelContent: H | null) => void;
 
