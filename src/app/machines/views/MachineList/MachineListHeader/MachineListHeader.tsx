@@ -8,12 +8,10 @@ import MachineListControls from "../MachineListControls";
 import MachinesHeader from "app/base/components/node/MachinesHeader";
 import type { SetSearchFilter } from "app/base/types";
 import urls from "app/base/urls";
-import MachineHeaderForms from "app/machines/components/MachineHeaderForms";
 import type {
   MachineSidePanelContent,
   MachineSetSidePanelContent,
 } from "app/machines/types";
-import { getHeaderTitle } from "app/machines/utils";
 import { actions as machineActions } from "app/store/machine";
 import machineSelectors from "app/store/machine/selectors";
 import type { FetchGroupKey } from "app/store/machine/types";
@@ -100,20 +98,6 @@ export const MachineListHeader = ({
           setSidePanelContent={setSidePanelContent}
         />
       )}
-      sidePanelContent={
-        sidePanelContent && (
-          <MachineHeaderForms
-            searchFilter={searchFilter}
-            selectedCount={selectedCount}
-            selectedCountLoading={selectedCountLoading}
-            selectedMachines={selectedMachines}
-            setSearchFilter={setSearchFilter}
-            setSidePanelContent={setSidePanelContent}
-            sidePanelContent={sidePanelContent}
-          />
-        )
-      }
-      sidePanelTitle={getHeaderTitle("Machines", sidePanelContent)}
       subtitleLoading={selectedCountLoading}
     />
   );

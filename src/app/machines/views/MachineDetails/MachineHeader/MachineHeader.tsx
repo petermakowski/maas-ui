@@ -14,13 +14,11 @@ import SectionHeader from "app/base/components/SectionHeader";
 import TableMenu from "app/base/components/TableMenu";
 import TooltipButton from "app/base/components/TooltipButton";
 import { useSendAnalytics } from "app/base/hooks";
-import MachineHeaderForms from "app/machines/components/MachineHeaderForms";
 import { MachineHeaderViews } from "app/machines/constants";
 import type {
   MachineSidePanelContent,
   MachineSetSidePanelContent,
 } from "app/machines/types";
-import { getHeaderTitle } from "app/machines/utils";
 import { actions as machineActions } from "app/store/machine";
 import machineSelectors from "app/store/machine/selectors";
 import type { Machine } from "app/store/machine/types";
@@ -38,7 +36,6 @@ type Props = {
 };
 
 const MachineHeader = ({
-  sidePanelContent,
   setSidePanelContent,
   systemId,
 }: Props): JSX.Element => {
@@ -65,19 +62,6 @@ const MachineHeader = ({
 
   return (
     <SectionHeader
-      sidePanelContent={
-        sidePanelContent ? (
-          <MachineHeaderForms
-            searchFilter=""
-            selectedCount={1}
-            selectedMachines={{ items: [machine.system_id] }}
-            setSidePanelContent={setSidePanelContent}
-            sidePanelContent={sidePanelContent}
-            viewingDetails
-          />
-        ) : null
-      }
-      sidePanelTitle={getHeaderTitle(machine.hostname, sidePanelContent)}
       subtitle={
         editingName ? null : (
           <div className="u-flex--wrap u-flex--align-center">

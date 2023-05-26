@@ -1,19 +1,28 @@
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 
-import { Notification } from "@canonical/react-components";
+import { Col, Notification, Row } from "@canonical/react-components";
 import { usePrevious } from "@canonical/react-components/dist/hooks";
 import * as Sentry from "@sentry/browser";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { matchPath, useLocation } from "react-router-dom-v5-compat";
+import {
+  matchPath,
+  useLocation,
+  Route,
+  Routes as ReactRouterRoutes,
+} from "react-router-dom-v5-compat";
 
 import packageInfo from "../../package.json";
 
 import NavigationBanner from "./base/components/AppSideNavigation/NavigationBanner";
 import SecondaryNavigation from "./base/components/SecondaryNavigation/SecondaryNavigation";
 import ThemePreviewContext from "./base/theme-preview-context";
+import urls from "./base/urls";
 import { MAAS_UI_ID } from "./constants";
+import MachineHeaderForms from "./machines/components/MachineHeaderForms";
+import MachineDetailsContainer from "./machines/views/MachineDetails/MachineDetailsContainer";
+import MachinesContainer from "./machines/views/MachinesContainer";
 import { preferencesNavItems } from "./preferences/constants";
 import { settingsNavItems } from "./settings/constants";
 import { formatErrors } from "./utils";
@@ -197,6 +206,113 @@ export const App = (): JSX.Element => {
         <aside className="l-status">
           <StatusBar />
         </aside>
+        <ReactRouterRoutes>
+          <Route
+            element={
+              <MachinesContainer>
+                {({
+                  searchFilter,
+                  selectedCount,
+                  selectedCountLoading,
+                  selectedMachines,
+                  setSearchFilter,
+                  setSidePanelContent,
+                  sidePanelContent,
+                  sidePanelTitle,
+                }) => (
+                  <aside
+                    aria-label={sidePanelTitle ?? undefined}
+                    className={classNames("l-aside", {
+                      "is-collapsed": !sidePanelContent,
+                      // "is-wide": size === "wide",
+                      // "is-narrow": size === "narrow",
+                    })}
+                    data-testid="section-header-content"
+                    id="aside-panel"
+                  >
+                    <Row>
+                      <Col size={12}>
+                        {sidePanelTitle ? (
+                          <div className="row section-header">
+                            <div className="col-12">
+                              <h3 className="section-header__title u-flex--no-shrink p-heading--4">
+                                {sidePanelTitle}
+                              </h3>
+                              <hr />
+                            </div>
+                          </div>
+                        ) : null}
+                        {content}
+                      </Col>
+                    </Row>
+                    {sidePanelContent?.view && (
+                      <MachineHeaderForms
+                        searchFilter={searchFilter}
+                        selectedCount={selectedCount}
+                        selectedCountLoading={selectedCountLoading}
+                        selectedMachines={selectedMachines}
+                        setSearchFilter={setSearchFilter}
+                        setSidePanelContent={setSidePanelContent}
+                        sidePanelContent={sidePanelContent}
+                      />
+                    )}
+                  </aside>
+                )}
+              </MachinesContainer>
+            }
+            path={`${urls.machines.index}/*`}
+          />
+          <Route
+            element={
+              <MachineDetailsContainer>
+                {({
+                  machine,
+                  setSidePanelContent,
+                  sidePanelContent,
+                  sidePanelTitle,
+                }) => (
+                  <aside
+                    aria-label={sidePanelTitle ?? undefined}
+                    className={classNames("l-aside", {
+                      "is-collapsed": !sidePanelContent,
+                      // "is-wide": size === "wide",
+                      // "is-narrow": size === "narrow",
+                    })}
+                    data-testid="section-header-content"
+                    id="aside-panel"
+                  >
+                    <Row>
+                      <Col size={12}>
+                        {sidePanelTitle ? (
+                          <div className="row section-header">
+                            <div className="col-12">
+                              <h3 className="section-header__title u-flex--no-shrink p-heading--4">
+                                {sidePanelTitle}
+                              </h3>
+                              <hr />
+                            </div>
+                          </div>
+                        ) : null}
+                        {content}
+                      </Col>
+                    </Row>
+                    {sidePanelContent?.view && (
+                      <MachineHeaderForms
+                        searchFilter=""
+                        selectedCount={1}
+                        selectedMachines={{ items: [machine.system_id] }}
+                        setSidePanelContent={setSidePanelContent}
+                        sidePanelContent={sidePanelContent}
+                        viewingDetails
+                      />
+                    )}
+                  </aside>
+                )}
+              </MachineDetailsContainer>
+            }
+            path={`${urls.machines.machine.index(null)}/*`}
+          />
+        </ReactRouterRoutes>
       </ThemePreviewContext.Provider>
     </div>
   );
