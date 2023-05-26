@@ -10,7 +10,9 @@ import { matchPath, useLocation } from "react-router-dom-v5-compat";
 
 import packageInfo from "../../package.json";
 
+import SidePanelRoutes from "./SidePanelRoutes";
 import NavigationBanner from "./base/components/AppSideNavigation/NavigationBanner";
+import AppSidePanel from "./base/components/AppSidePanel";
 import SecondaryNavigation from "./base/components/SecondaryNavigation/SecondaryNavigation";
 import ThemePreviewContext from "./base/theme-preview-context";
 import { MAAS_UI_ID } from "./constants";
@@ -33,7 +35,6 @@ import configSelectors from "app/store/config/selectors";
 import { actions as generalActions } from "app/store/general";
 import { actions as statusActions } from "app/store/status";
 import status from "app/store/status/selectors";
-import AppSidePanel from "./base/components/AppSidePanel";
 
 export enum VaultErrors {
   REQUEST_FAILED = "Vault request failed",
@@ -99,11 +100,11 @@ export const App = (): JSX.Element => {
     configErrors === VaultErrors.CONNECTION_FAILED;
   const isLoaded = connected && authLoaded && authenticated;
 
-  let content: ReactNode = null;
+  let mainContent: ReactNode = null;
   if (isLoading) {
-    content = <MainContentSection header={<SectionHeader loading />} />;
+    mainContent = <MainContentSection header={<SectionHeader loading />} />;
   } else if (hasAuthError) {
-    content = (
+    mainContent = (
       <MainContentSection>
         {authenticationError ? (
           authenticationError === "Session expired" ? (
@@ -121,7 +122,7 @@ export const App = (): JSX.Element => {
       </MainContentSection>
     );
   } else if (hasWebsocketError || hasVaultError) {
-    content = (
+    mainContent = (
       <MainContentSection header={<SectionHeader title="Failed to connect" />}>
         <Notification severity="negative" title="Error:">
           The server connection failed
@@ -134,7 +135,7 @@ export const App = (): JSX.Element => {
       </MainContentSection>
     );
   } else if (isLoaded) {
-    content = (
+    mainContent = (
       <FileContext.Provider value={fileContextStore}>
         <Routes />
       </FileContext.Provider>
@@ -190,12 +191,12 @@ export const App = (): JSX.Element => {
             </div>
           ) : null}
           <div className="l-main__content" id="main-content">
-            {content}
+            {mainContent}
             <hr />
             <Footer />
           </div>
         </main>
-        <AppSidePanel />
+        <SidePanelRoutes />
         <aside className="l-status">
           <StatusBar />
         </aside>

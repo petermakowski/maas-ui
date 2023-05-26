@@ -3,11 +3,15 @@ import type { ReactNode } from "react";
 
 import { Col, Row, useOnEscapePressed } from "@canonical/react-components";
 import classNames from "classnames";
+import { Route, Routes as ReactRouterRoutes } from "react-router-dom-v5-compat";
+
+import ErrorBoundary from "../ErrorBoundary";
 
 import {
   SidePanelContextType,
   useSidePanel,
 } from "app/base/side-panel-context";
+import urls from "app/base/urls";
 import ControllerHeaderForms from "app/controllers/components/ControllerHeaderForms";
 import { ControllerHeaderViews } from "app/controllers/constants";
 import type { ControllerSidePanelContent } from "app/controllers/types";
@@ -74,8 +78,9 @@ const getSidePanelTitle = (sidePanelContent: SidePanelContent | null) => {
   return null;
 };
 
-const AppSidePanel = ({ size }: Props): JSX.Element => {
+const AppSidePanel = ({ size, children }: Props): JSX.Element => {
   const { sidePanelContent, setSidePanelContent } = useSidePanel();
+  console.log(sidePanelContent?.view);
   const title = sidePanelContent ? getSidePanelTitle(sidePanelContent) : null;
   useOnEscapePressed(() => setSidePanelContent(null));
 
@@ -102,7 +107,7 @@ const AppSidePanel = ({ size }: Props): JSX.Element => {
               </div>
             </div>
           ) : null}
-          <SidePanelContent />
+          {children}
         </Col>
       </Row>
     </aside>

@@ -29,7 +29,6 @@ type Props = SidePanelContextType & {
 
 const ControllerDetailsHeader = ({
   systemId,
-  sidePanelContent,
   setSidePanelContent,
 }: Props): JSX.Element => {
   const controller = useSelector((state: RootState) =>
