@@ -54,6 +54,7 @@ export type WebSocketChannel = EventChannel<
 type PollRequestId = string;
 
 let loadedEndpoints: WebSocketEndpoint[] = [];
+let endpointCacheToCallId = new Map();
 
 // A map of request ids to action creators. This is used to dispatch actions
 // when a response is received.
@@ -531,23 +532,36 @@ export function* sendMessage(
   const params = payload ? payload.params : null;
   const { cache, identifier, method, model, nocache } = meta;
   const endpoint = `${model}.${method}`;
+  const cacheKey = meta?.callId
+    ? `${endpoint}-${JSON.stringify(payload)}`
+    : endpoint;
   console.log(endpoint, payload, params, meta, type);
   const hasMultipleDispatches = meta.dispatchMultiple && Array.isArray(params);
   // If method is 'list' and data has loaded/is loading, do not fetch again
   // unless 'nocache' is specified.
-  // if (
-  //   cache ||
-  //   (method?.endsWith("list") &&
-  //     (!params ||
-  //       hasMultipleDispatches ||
-  //       (!Array.isArray(params) && !params.start)) &&
-  //     !nocache)
-  // ) {
-  //   if (isLoaded(endpoint)) {
-  //     return;
-  //   }
-  //   setLoaded(endpoint);
-  // }
+  if (
+    cache ||
+    (method?.endsWith("list") &&
+      (!params ||
+        hasMultipleDispatches ||
+        (!Array.isArray(params) && !params.start)) &&
+      !nocache)
+  ) {
+    if (isLoaded(cacheKey)) {
+      console.log("loaded cacheKey", cacheKey);
+
+      if (action.meta?.callId) {
+        endpointCacheToCallId.set(cacheKey, action.meta?.callId);
+      }
+      return;
+    }
+    setLoaded(cacheKey);
+    if (action.meta?.callId) {
+      endpointCacheToCallId.set(cacheKey, action.meta?.callId);
+    }
+
+    console.log("setting to loaded cacheKey", cacheKey);
+  }
   yield* put({
     meta: {
       item: params || payload,
@@ -559,7 +573,6 @@ export function* sendMessage(
   const requestIDs = [];
   try {
     if (hasMultipleDispatches) {
-      debugger;
       for (const param of params) {
         const id1 = yield* call(
           [socketClient, socketClient.send],
@@ -578,20 +591,17 @@ export function* sendMessage(
           buildMessage(meta, param)
         );
         requestIDs.push(id1, id2);
-        debugger;
         const first = yield* take(
           (a) =>
             a.type === `${type}Success` &&
             a?.meta?.callId === `${action?.meta?.callId}1`
         );
-        debugger;
         const second = yield* take(
           (a) =>
             a.type === `${type}Success` &&
             a?.meta?.callId === `${action?.meta?.callId}2`
         );
         console.log(first, second);
-        debugger;
         // TODO: merge two groups using mergeGroupUpdates
         yield* put({
           meta: {
@@ -602,9 +612,7 @@ export function* sendMessage(
           type: `${type}Success`,
           payload: first.payload,
         });
-        debugger;
       }
-      debugger;
     } else if (params && Array.isArray(params) && hasMultipleDispatches) {
       // We deliberately do not * in parallel here with 'all'
       // to avoid races for dependant config.

@@ -1091,7 +1091,7 @@ const machineSlice = createSlice({
         meta: {
           model: MachineMeta.MODEL,
           method: "list",
-          nocache: true,
+          nocache: false,
           callId,
           dispatchMultiple: true,
         },

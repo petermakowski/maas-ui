@@ -583,7 +583,6 @@ export const useFetchMachines = (
       dispatch(machineActions.cleanupRequest(callId));
     }
   };
-  useCleanup(callId);
 
   // reset pagination when filters change
   const { filters, grouping, collapsedGroups, sortDirection, sortKey } =
@@ -800,7 +799,6 @@ export const useFetchMachine = (
   const machine = useSelector((state: RootState) =>
     machineSelectors.getById(state, id)
   );
-  useCleanup(callId);
 
   useEffect(() => {
     if (isId(id) && id !== previousId) {
