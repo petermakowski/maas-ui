@@ -13,7 +13,6 @@ import type { FetchParams } from "../types/actions";
 
 import {
   mapSortDirection,
-  mergeGroupUpdates,
   selectedToFilters,
   selectedToSeparateFilters,
 } from "./common";
@@ -525,6 +524,7 @@ export type UseFetchMachinesOptions = {
 
 export type UseFetchQueryOptions = {
   isEnabled?: boolean;
+  initialCallId?: string;
 };
 
 type UseFetchMachinesData = {
@@ -534,6 +534,117 @@ type UseFetchMachinesData = {
   machineCount: number | null;
   machines: Machine[];
   machinesErrors: APIError;
+};
+
+/**
+ * Fetch machines via the API.
+ */
+export const useFetchMachinesUpdates = (
+  initialCallId: string | null,
+  options?: UseFetchMachinesOptions[] | null,
+  queryOptions?: UseFetchQueryOptions
+): UseFetchMachinesData & {
+  groups: MachineStateListGroup[] | null;
+  cleanup: () => void;
+} => {
+  const { isEnabled } = queryOptions || { isEnabled: true };
+  const previousIsEnabled = usePrevious(isEnabled);
+  const [callId, setCallId] = useState<string | null>(null);
+  const previousCallId = usePrevious(callId);
+  const previousOptions = usePrevious(options, false);
+  const isStale = useSelector((state: RootState) =>
+    machineSelectors.listStale(state, callId)
+  );
+  useEffect(() => {
+    if (isStale) {
+      setCallId(nanoid());
+    }
+  }, [isStale]);
+  const dispatch = useDispatch();
+  const machines = useSelector((state: RootState) =>
+    machineSelectors.list(state, callId)
+  );
+  const groups = useSelector((state: RootState) =>
+    callId ? state.machine.lists?.[callId]?.groups : null
+  );
+  const machineCount = useSelector((state: RootState) =>
+    machineSelectors.listCount(state, callId)
+  );
+  const machinesErrors = useSelector((state: RootState) =>
+    machineSelectors.listErrors(state, callId)
+  );
+  const loaded = useSelector((state: RootState) =>
+    machineSelectors.listLoaded(state, callId)
+  );
+  const loading = useSelector((state: RootState) =>
+    machineSelectors.listLoading(state, callId)
+  );
+  const cleanup = useCleanup(callId);
+
+  // TODO: fix this
+  // const previousFilterOptions = usePrevious(options);
+
+  useEffect(() => {
+    // undefined, null and {} are all equivalent i.e. no filters so compare the
+    // current and previous filters using an empty object if the filters are falsy.
+    if (isEnabled) {
+      if (
+        !fastDeepEqual(options || {}, previousOptions || {}) ||
+        !callId ||
+        isEnabled !== previousIsEnabled
+      ) {
+        setCallId(nanoid());
+      }
+    }
+  }, [
+    callId,
+    dispatch,
+    options,
+    previousOptions,
+    isEnabled,
+    previousIsEnabled,
+  ]);
+
+  useEffect(() => {
+    if (isEnabled && callId && callId !== previousCallId) {
+      dispatch(
+        machineActions.fetch(
+          callId,
+          options
+            ? options.map((o) => ({
+                filter: o.filters ?? null,
+                group_collapsed: o.collapsedGroups,
+                group_key: o.grouping ?? null,
+                page_number: o?.pagination?.currentPage,
+                page_size: o?.pagination?.pageSize,
+                sort_direction: mapSortDirection(o.sortDirection),
+                sort_key: o.sortKey ?? null,
+              }))
+            : null,
+          initialCallId
+        )
+      );
+    }
+  }, [
+    initialCallId,
+    callId,
+    dispatch,
+    options,
+    previousCallId,
+    isEnabled,
+    previousIsEnabled,
+  ]);
+
+  return {
+    callId,
+    cleanup,
+    loaded,
+    loading,
+    groups,
+    machineCount,
+    machines,
+    machinesErrors,
+  };
 };
 
 /**
@@ -666,7 +777,6 @@ export const useFetchMachinesWithGroupingUpdates = (
   groups: MachineStateListGroup[] | null;
 } => {
   const dispatch = useDispatch();
-  const previousOptions = usePrevious(options, false);
 
   // main fetch call returning the initial machines and groups
   const {
@@ -693,70 +803,30 @@ export const useFetchMachinesWithGroupingUpdates = (
     [options]
   );
 
-  const [updatedGroups, setUpdatedGroups] = useState<
-    MachineStateListGroup[] | null
-  >(null);
-  const groups = updatedGroups || initialGroups;
   // fetch updates for machines in the initial list of ids
   const {
-    cleanup: cleanupExpandedGroups,
-    groups: updatedExpandedGroups,
+    callId: updatedCallId,
+    cleanup: cleanupUpdatedGroups,
+    groups: updatedGroups,
     loaded: updatedGroupsLoaded,
-  } = useFetchMachines(
-    { ...optionsWithoutPagination, filters: { id: initialListIds } },
+  } = useFetchMachinesUpdates(
+    initialCallId,
+    [
+      { ...optionsWithoutPagination, filters: { id: initialListIds } },
+      { ...optionsWithoutPagination },
+    ],
     { isEnabled: shouldFetchUpdates }
   );
 
-  // fetch machine updates for groups
-  const {
-    cleanup: cleanupCollapsedGroups,
-    groups: updatedCollapsedGroups,
-    loaded: updatedCollapsedGroupsLoaded,
-  } = useFetchMachines(
-    { ...optionsWithoutPagination },
-    {
-      isEnabled: shouldFetchUpdates,
-    }
-  );
-  useEffect(() => {
-    // if options changed, it means we're getting a fresh page of results
-    // and need to reset subsequent updates
-    if (!fastDeepEqual(options, previousOptions)) {
-      cleanupExpandedGroups();
-      cleanupCollapsedGroups();
-      setUpdatedGroups(null);
-    }
-  }, [options, previousOptions, cleanupExpandedGroups, cleanupCollapsedGroups]);
+  // useCleanup(updatedCallId);
+
+  const groups = updatedGroups || initialGroups;
 
   useEffect(() => {
-    // return updated merged groups only once both calls have returned
-    if (updatedGroupsLoaded && updatedCollapsedGroupsLoaded) {
-      setUpdatedGroups(
-        mergeGroupUpdates({
-          initialGroups,
-          updatedCollapsedGroups,
-          updatedExpandedGroups,
-        })
-      );
-    }
-  }, [
-    initialGroups,
-    updatedGroupsLoaded,
-    updatedCollapsedGroupsLoaded,
-    updatedCollapsedGroups,
-    updatedExpandedGroups,
-  ]);
-
-  useEffect(() => {
-    if (initialCallId && updatedGroupsLoaded && updatedCollapsedGroupsLoaded) {
+    if (initialCallId && updatedGroupsLoaded) {
       dispatch(machineActions.markAsUpdated(initialCallId));
     }
-  }, [
-    dispatch,
-    initialCallId,
-    updatedGroupsLoaded,
-    updatedCollapsedGroupsLoaded,
-  ]);
+  }, [dispatch, initialCallId, updatedGroupsLoaded]);
 
   return {
     callId: initialCallId,
@@ -814,16 +884,21 @@ export const useFetchMachine = (
 /**
  * Unsubscribe from machines if they're no longer being used.
  */
-const useCleanup = (callId: string | null): void => {
+const useCleanup = (callId: string | null): (() => void) => {
   const dispatch = useDispatch();
+  const cleanup = useCallback(() => {
+    if (callId) {
+      dispatch(machineActions.cleanupRequest(callId));
+    }
+  }, [callId, dispatch]);
 
   useEffect(() => {
     return () => {
-      if (callId) {
-        dispatch(machineActions.cleanupRequest(callId));
-      }
+      cleanup();
     };
-  }, [callId, dispatch]);
+  }, [cleanup]);
+
+  return cleanup;
 };
 
 /**

@@ -1084,12 +1084,18 @@ const machineSlice = createSlice({
     exitRescueModeStart: statusHandlers.exitRescueMode.start,
     exitRescueModeSuccess: statusHandlers.exitRescueMode.success,
     fetch: {
-      prepare: (callId: string, params?: FetchParams | null) => ({
+      prepare: (
+        callId: string,
+        params?: FetchParams | FetchParams[] | null,
+        initialCallId?: string | null
+      ) => ({
         meta: {
           model: MachineMeta.MODEL,
           method: "list",
           nocache: true,
           callId,
+          initialCallId,
+          dispatchMultiple: Array.isArray(params),
         },
         payload: params
           ? {
@@ -1123,9 +1129,11 @@ const machineSlice = createSlice({
       },
     },
     fetchStart: {
-      prepare: (callId: string) => ({
+      prepare: (callId: string, _params, initialCallId) => ({
         meta: {
           callId,
+          initialCallId,
+          dispatchMultiple: true,
         },
         payload: null,
       }),
@@ -1142,9 +1150,15 @@ const machineSlice = createSlice({
       },
     },
     fetchSuccess: {
-      prepare: (callId: string, payload: FetchResponse) => ({
+      prepare: (
+        callId: string,
+        payload: FetchResponse,
+        initialCallId?: string
+      ) => ({
         meta: {
           callId,
+          initialCallId,
+          dispatchMultiple: true,
         },
         payload,
       }),
@@ -1152,37 +1166,65 @@ const machineSlice = createSlice({
         state: MachineState,
         action: PayloadAction<FetchResponse, string, GenericMeta>
       ) => {
-        const { callId } = action.meta;
-        // Only update state if this call exists in the store. This check is required
-        // because the call may have been cleaned up in the time the API takes
-        // to respond.
-        if (callId && callId in state.lists) {
-          action.payload.groups.forEach((group: FetchResponseGroup) => {
-            group.items.forEach((newItem: Machine) => {
-              // Add items that don't already exist in the store. Existing items
-              // are probably MachineDetails so this would overwrite them with the
-              // simple machine. Existing items will be kept up to date via the
-              // notify (sync) messages.
-              const existing = state.items.find(
-                (draftItem: Machine) => draftItem.id === newItem.id
-              );
-              if (!existing) {
-                state.items.push(newItem);
-                // Set up the statuses for this machine.
-                state.statuses[newItem.system_id] = DEFAULT_STATUSES;
-              }
+        try {
+          const { callId } = action.meta;
+          // Only update state if this call exists in the store. This check is required
+          // because the call may have been cleaned up in the time the API takes
+          // to respond.
+          if (callId && callId in state.lists) {
+            action.payload.groups?.forEach((group: FetchResponseGroup) => {
+              group.items.forEach((newItem: Machine) => {
+                // Add items that don't already exist in the store. Existing items
+                // are probably MachineDetails so this would overwrite them with the
+                // simple machine. Existing items will be kept up to date via the
+                // notify (sync) messages.
+                const existing = state.items.find(
+                  (draftItem: Machine) => draftItem.id === newItem.id
+                );
+                if (!existing) {
+                  state.items.push(newItem);
+                  // Set up the statuses for this machine.
+                  state.statuses[newItem.system_id] = DEFAULT_STATUSES;
+                }
+              });
             });
-          });
-          const { payload } = action;
-          state.lists[callId].count = payload.count;
-          state.lists[callId].cur_page = payload.cur_page;
-          state.lists[callId].groups = payload.groups.map((group) => ({
-            ...group,
-            items: group.items.map(({ system_id }) => system_id),
-          }));
-          state.lists[callId].loaded = true;
-          state.lists[callId].loading = false;
-          state.lists[callId].num_pages = payload.num_pages;
+            const { payload } = action;
+            if (Array.isArray(payload)) {
+              payload.forEach((payloadItem, i) => {
+                debugger;
+                let item: Partial<MachineStateList> = {};
+                item.count = payloadItem.count;
+                item.cur_page = payloadItem.cur_page;
+                item.groups = payloadItem.groups.map((group) => ({
+                  ...group,
+                  items: group.items.map(({ system_id }) => system_id),
+                }));
+                item.loaded = true;
+                item.loading = false;
+                item.num_pages = payloadItem.num_pages;
+
+                state.lists[`${callId}-${i}`] = item;
+
+                state.lists[callId] = item;
+                console.warn(`${callId}-${i}`);
+                console.log(state.lists[`${callId}-${i}`]);
+                // TODO: either run merge group updates here by passing in initialCallId or find way to store arrays in lists
+              });
+            } else {
+              state.lists[callId].count = payload.count;
+              state.lists[callId].cur_page = payload.cur_page;
+              state.lists[callId].groups = payload.groups.map((group) => ({
+                ...group,
+                items: group.items.map(({ system_id }) => system_id),
+              }));
+              state.lists[callId].loaded = true;
+              state.lists[callId].loading = false;
+              state.lists[callId].num_pages = payload.num_pages;
+            }
+          }
+        } catch (e) {
+          console.error(e);
+          debugger;
         }
       },
     },
