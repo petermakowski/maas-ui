@@ -531,22 +531,23 @@ export function* sendMessage(
   const params = payload ? payload.params : null;
   const { cache, identifier, method, model, nocache } = meta;
   const endpoint = `${model}.${method}`;
+  console.log(endpoint, payload, params, meta, type);
   const hasMultipleDispatches = meta.dispatchMultiple && Array.isArray(params);
   // If method is 'list' and data has loaded/is loading, do not fetch again
   // unless 'nocache' is specified.
-  if (
-    cache ||
-    (method?.endsWith("list") &&
-      (!params ||
-        hasMultipleDispatches ||
-        (!Array.isArray(params) && !params.start)) &&
-      !nocache)
-  ) {
-    if (isLoaded(endpoint)) {
-      return;
-    }
-    setLoaded(endpoint);
-  }
+  // if (
+  //   cache ||
+  //   (method?.endsWith("list") &&
+  //     (!params ||
+  //       hasMultipleDispatches ||
+  //       (!Array.isArray(params) && !params.start)) &&
+  //     !nocache)
+  // ) {
+  //   if (isLoaded(endpoint)) {
+  //     return;
+  //   }
+  //   setLoaded(endpoint);
+  // }
   yield* put({
     meta: {
       item: params || payload,
@@ -557,7 +558,54 @@ export function* sendMessage(
   });
   const requestIDs = [];
   try {
-    if (params && hasMultipleDispatches) {
+    if (hasMultipleDispatches) {
+      debugger;
+      for (const param of params) {
+        const id1 = yield* call(
+          [socketClient, socketClient.send],
+          {
+            ...action,
+            meta: { ...action.meta, callId: `${action?.meta?.callId}1` },
+          },
+          buildMessage(meta, param)
+        );
+        const id2 = yield* call(
+          [socketClient, socketClient.send],
+          {
+            ...action,
+            meta: { ...action.meta, callId: `${action?.meta?.callId}2` },
+          },
+          buildMessage(meta, param)
+        );
+        requestIDs.push(id1, id2);
+        debugger;
+        const first = yield* take(
+          (a) =>
+            a.type === `${type}Success` &&
+            a?.meta?.callId === `${action?.meta?.callId}1`
+        );
+        debugger;
+        const second = yield* take(
+          (a) =>
+            a.type === `${type}Success` &&
+            a?.meta?.callId === `${action?.meta?.callId}2`
+        );
+        console.log(first, second);
+        debugger;
+        // TODO: merge two groups using mergeGroupUpdates
+        yield* put({
+          meta: {
+            item: params || payload,
+            identifier,
+            callId: action.meta?.callId,
+          },
+          type: `${type}Success`,
+          payload: first.payload,
+        });
+        debugger;
+      }
+      debugger;
+    } else if (params && Array.isArray(params) && hasMultipleDispatches) {
       // We deliberately do not * in parallel here with 'all'
       // to avoid races for dependant config.
       for (const param of params) {
@@ -573,7 +621,9 @@ export function* sendMessage(
         // There is an edge case where a different CLI or server event could
         // dispatch a NOTIFY of the same type which is received before our expected NOTIFY,
         // but this _probably_ does not matter in practice.
+        debugger;
         yield* take(`${type}Notify`);
+        debugger;
       }
     } else {
       const id = yield* call(

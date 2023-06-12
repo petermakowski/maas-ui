@@ -1084,12 +1084,16 @@ const machineSlice = createSlice({
     exitRescueModeStart: statusHandlers.exitRescueMode.start,
     exitRescueModeSuccess: statusHandlers.exitRescueMode.success,
     fetch: {
-      prepare: (callId: string, params?: FetchParams | null) => ({
+      prepare: (
+        callId: string,
+        params?: FetchParams | FetchParams[] | null
+      ) => ({
         meta: {
           model: MachineMeta.MODEL,
           method: "list",
           nocache: true,
           callId,
+          dispatchMultiple: true,
         },
         payload: params
           ? {
@@ -1126,6 +1130,7 @@ const machineSlice = createSlice({
       prepare: (callId: string) => ({
         meta: {
           callId,
+          dispatchMultiple: true,
         },
         payload: null,
       }),
@@ -1145,6 +1150,7 @@ const machineSlice = createSlice({
       prepare: (callId: string, payload: FetchResponse) => ({
         meta: {
           callId,
+          dispatchMultiple: true,
         },
         payload,
       }),

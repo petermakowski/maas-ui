@@ -632,15 +632,26 @@ export const useFetchMachines = (
         machineActions.fetch(
           callId,
           options
-            ? {
-                filter: options.filters ?? null,
-                group_collapsed: options.collapsedGroups,
-                group_key: options.grouping ?? null,
-                page_number: options?.pagination?.currentPage,
-                page_size: options?.pagination?.pageSize,
-                sort_direction: mapSortDirection(options.sortDirection),
-                sort_key: options.sortKey ?? null,
-              }
+            ? [
+                {
+                  filter: options.filters ?? null,
+                  group_collapsed: options.collapsedGroups,
+                  group_key: options.grouping ?? null,
+                  page_number: options?.pagination?.currentPage,
+                  page_size: options?.pagination?.pageSize,
+                  sort_direction: mapSortDirection(options.sortDirection),
+                  sort_key: options.sortKey ?? null,
+                },
+                {
+                  filter: options.filters ?? null,
+                  group_collapsed: options.collapsedGroups,
+                  group_key: options.grouping ?? null,
+                  page_number: options?.pagination?.currentPage,
+                  page_size: options?.pagination?.pageSize,
+                  sort_direction: mapSortDirection(options.sortDirection),
+                  sort_key: options.sortKey ?? null,
+                },
+              ]
             : null
         )
       );
