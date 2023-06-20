@@ -16,6 +16,7 @@ import {
   takeLatest,
   race,
 } from "typed-redux-saga/macro";
+import { z } from "zod";
 
 import type {
   WebSocketAction,
@@ -40,7 +41,10 @@ import { handleUnsubscribe, isUnsubscribeAction } from "./handlers/unsubscribe";
 
 import type { MessageHandler, NextActionCreator } from "app/base/sagas/actions";
 import type { GenericMeta } from "app/store/utils/slice";
-import { WebSocketMessageType } from "websocket-client";
+import {
+  WebSocketMessageType,
+  WebSocketResponseSchema,
+} from "websocket-client";
 
 export type WebSocketChannel = EventChannel<
   | ReconnectingWebSocketEvent
@@ -143,6 +147,28 @@ export function watchMessages(socketClient: WebSocketClient): WebSocketChannel {
   });
 }
 
+const literalSchema = z.union([z.string(), z.number(), z.boolean(), z.null()]);
+type Literal = z.infer<typeof literalSchema>;
+type Json = Literal | { [key: string]: Json } | Json[];
+const websocketResponse: z.ZodType<Json> = z.lazy(() =>
+  z.union([
+    literalSchema,
+    z.array(websocketResponse),
+    z.record(websocketResponse),
+  ])
+);
+
+const ResponsePayload = z.object({
+  id: z.number(),
+  name: z.string(),
+  status: z.string(),
+});
+
+const WebsocketResponse = z.object({
+  type: z.string(),
+  payload: ResponsePayload,
+});
+
 /**
  * Handle messages received over the WebSocket.
  */
@@ -183,7 +209,15 @@ export function* handleMessage(
       case "message":
       default: {
         if ("data" in websocketEvent) {
-          const response = JSON.parse(websocketEvent.data);
+          // const response = JSON.parse(websocketEvent.data);
+          const result = WebSocketResponseSchema.safeParse(websocketEvent.data);
+          const response = result.data;
+
+          if (!result.success) {
+            // Handle the validation error.
+            console.error(result.error);
+            return;
+          }
 
           switch (response.type) {
             case WebSocketMessageType.NOTIFY: {

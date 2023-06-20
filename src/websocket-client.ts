@@ -1,5 +1,6 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import ReconnectingWebSocket from "reconnecting-websocket";
+import { z } from "zod";
 
 import type { AnyObject } from "app/base/types";
 import { getCookie } from "app/utils";
@@ -53,6 +54,62 @@ export type WebSocketResponseNotify = {
   name: string;
   type: WebSocketMessageType.NOTIFY;
 };
+
+const WebSocketMessageTypeSchema = z.union([
+  z.literal(WebSocketMessageType.REQUEST),
+  z.literal(WebSocketMessageType.RESPONSE),
+  z.literal(WebSocketMessageType.NOTIFY),
+  z.literal(WebSocketMessageType.PING),
+  z.literal(WebSocketMessageType.PING_REPLY),
+]);
+
+const WebSocketResponseTypeSchema = z.enum(["SUCCESS", "ERROR"]);
+
+export const WebSocketMessageSchema = z.object({
+  request_id: z.number(),
+});
+
+export const WebSocketRequestMessageSchema = z.object({
+  method: z.string(),
+  type: WebSocketMessageTypeSchema,
+  params: z.array(z.record(z.unknown())).optional(),
+});
+
+export const WebSocketRequestSchema = z.intersection(
+  WebSocketMessageSchema,
+  WebSocketRequestMessageSchema
+);
+
+export const WebSocketResponseResultSchema = z.intersection(
+  WebSocketMessageSchema,
+  z.object({
+    result: z.unknown(),
+    rtype: WebSocketResponseTypeSchema,
+    type: WebSocketMessageTypeSchema,
+  })
+);
+
+export const WebSocketResponseErrorSchema = z.intersection(
+  WebSocketMessageSchema,
+  z.object({
+    error: z.string(),
+    rtype: WebSocketResponseTypeSchema,
+    type: WebSocketMessageTypeSchema,
+  })
+);
+
+export const WebSocketResponseNotifySchema = z.object({
+  action: z.string(),
+  data: z.unknown(),
+  name: z.string(),
+  type: WebSocketMessageTypeSchema,
+});
+
+export const WebSocketResponseSchema = z.union([
+  WebSocketResponseResultSchema,
+  WebSocketResponseErrorSchema,
+  WebSocketResponseNotifySchema,
+]);
 
 export type WebSocketActionParams = AnyObject | AnyObject[];
 
