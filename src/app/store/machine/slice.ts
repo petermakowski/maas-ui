@@ -1,3 +1,4 @@
+import { fastDeepEqual } from 'fast-deep-equal';
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -63,7 +64,7 @@ import type {
 import { MachineMeta, FilterGroupType } from "./types";
 import type { OverrideFailedTesting } from "./types/actions";
 import type { MachineActionStatus, MachineStateListGroup } from "./types/base";
-import { createMachineListGroup } from "./utils";
+import { createMachineListGroup, selectedToFilters } from "./utils";
 
 import { ACTION_STATUS } from "app/base/constants";
 import type { ScriptResult } from "app/store/scriptresult/types";
@@ -454,6 +455,108 @@ const machineSlice = createSlice({
             loaded: true,
           };
         }
+        // filter: {} in machine.lists is equivalent to filter: null in machine.counts
+        // TODO: refactor to use the same filter value for no filter
+        {
+//   'jRXDg0N5pXuZOCRrf-7db': {
+//     count: 990,
+//     cur_page: 1,
+//     errors: null,
+//     groups: [
+//       {
+//         name: 'New',
+//         value: 'new',
+//         count: 6,
+//         collapsed: true,
+//         items: []
+//       },
+//       {
+//         name: 'Commissioning',
+//         value: 'commissioning',
+//         count: 23,
+//         collapsed: true,
+//         items: []
+//       },
+//       {
+//         name: 'Failed commissioning',
+//         value: 'failed_commissioning',
+//         count: 1,
+//         collapsed: true,
+//         items: []
+//       },
+//       {
+//         name: 'Ready',
+//         value: 'ready',
+//         count: 24,
+//         collapsed: false,
+//         items: [
+//         ]
+//       },
+//       {
+//         name: 'Deployed',
+//         value: 'deployed',
+//         count: 694,
+//         collapsed: false,
+//         items: [
+//         ]
+//       }
+//     ],
+//     loaded: true,
+//     loading: false,
+//     stale: false,
+//     num_pages: 20,
+//     params: {
+//       filter: {},
+//       group_collapsed: [
+//         'new',
+//         'commissioning',
+//         'failed_commissioning'
+//       ],
+//       group_key: 'status',
+//       page_number: 1,
+//       page_size: 50,
+//       sort_direction: 'descending',
+//       sort_key: 'hostname'
+//     }
+//   }
+// }
+// TODO: FINISH THIS
+        // update matching machine.lists group counts
+        Object.keys(state.lists).forEach((callId) => {
+          if (
+            state.lists[callId].params?.filter === action.meta.item ||
+            (fastDeepEqual(state.lists[callId].params?.filter, {}) &&
+              action.meta.item === null)
+          ) {
+            console.log(state.lists[callId].params?.filter, action.meta.item);
+            state.lists[callId].stale = true;
+          }
+          
+          state.lists[callId].groups.forEach((group, i) => {
+
+          const groupCountFilter = { ...selectedToFilters({
+            groups: [group.value],
+            grouping,
+          }), ...action.meta.item.filter };
+
+            if (fastDeepEqual(groupCountFilter, {...state.lists[callId]?.params?.filter, ...groupCountFilter})) {
+              groupCountFilter[value] = groupCountFilter[value].filter(
+                (filter) => filter.key !== key
+              );
+            }
+          });
+          if (fastDeepEqual(groupCountFilter), action.meta.item) {
+            console.log('group filters match count filters')
+            state.lists[callId].stale = true;
+          } else {
+
+            console.log("group filters do not match count filters", groupFilters, action.meta.item);
+          }
+
+        // filter={{ owner: ["=admin"] }}
+        // group={FetchNodeStatus.NEW}
+        // grouping={FetchGroupKey.Status}
+        });
       },
     },
     createBcacheError: statusHandlers.createBcache.error,
