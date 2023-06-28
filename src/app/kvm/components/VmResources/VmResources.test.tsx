@@ -1,10 +1,10 @@
-import reduxToolkit from "@reduxjs/toolkit";
 import configureStore from "redux-mock-store";
 
 import VmResources, { Label } from "./VmResources";
 
 import { Label as MachineListLabel } from "app/machines/views/MachineList/MachineListTable/MachineListTable";
 import { actions as machineActions } from "app/store/machine";
+import * as query from "app/store/machine/utils/query";
 import { PodType } from "app/store/pod/constants";
 import type { RootState } from "app/store/root/types";
 import {
@@ -22,14 +22,12 @@ import {
   renderWithBrowserRouter,
   renderWithMockStore,
 } from "testing/utils";
-
 const mockStore = configureStore<RootState, {}>();
-
 describe("VmResources", () => {
   let state: RootState;
 
   beforeEach(() => {
-    jest.spyOn(reduxToolkit, "nanoid").mockReturnValue("123456");
+    jest.spyOn(query, "generateCallId").mockReturnValueOnce("123456");
     const machines = [machineFactory(), machineFactory()];
     state = rootStateFactory({
       machine: machineStateFactory({

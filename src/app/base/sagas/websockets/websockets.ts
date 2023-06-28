@@ -289,7 +289,7 @@ export function* sendMessage(
 ): SagaGenerator<void> {
   const { meta, payload, type } = action;
   const params = payload ? payload.params : null;
-  const { cache, identifier, method, model, nocache } = meta;
+  const { cache, identifier, method, model, nocache, callId } = meta;
   const endpoint = `${model}.${method}`;
   const hasMultipleDispatches = meta.dispatchMultiple && Array.isArray(params);
   // If method is 'list' and data has loaded/is loading, do not fetch again
@@ -302,10 +302,23 @@ export function* sendMessage(
         (!Array.isArray(params) && !params.start)) &&
       !nocache)
   ) {
+    // TODO: add check if in query cache, if so then dispatch success from cache (might not even be necessary if lists are keyed by params)
+
+    // if (callId) {
+    //   const queryKey = `${model}.${method}.${callId}`;
+    //   console.log("callId found - checking query cache", callId);
+    //   console.log("queryKey", queryKey);
+    //   if (isLoaded(queryKey)) {
+    //     console.log("found item in query cache - skipping fetch", callId);
+    //     return;
+    //   }
+    //   setLoaded(queryKey);
+    // } else {
     if (isLoaded(endpoint)) {
       return;
     }
     setLoaded(endpoint);
+    // }
   }
   yield* put<Action & { meta: GenericMeta }>({
     meta: {

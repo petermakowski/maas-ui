@@ -1,4 +1,3 @@
-import reduxToolkit from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { CompatRouter, Route, Routes } from "react-router-dom-v5-compat";
@@ -10,6 +9,7 @@ import urls from "app/base/urls";
 import { columnLabels, MachineColumns } from "app/machines/constants";
 import { actions as machineActions } from "app/store/machine";
 import { FetchGroupKey, FetchSortDirection } from "app/store/machine/types";
+import * as query from "app/store/machine/utils/query";
 import type { RootState } from "app/store/root/types";
 import { actions as tagActions } from "app/store/tag";
 import { NodeStatus, FetchNodeStatus } from "app/store/types/node";
@@ -27,9 +27,10 @@ import { render, screen } from "testing/utils";
 
 const mockStore = configureStore();
 let state: RootState;
+const mockCallId = "mocked-nanoid";
 
 beforeEach(() => {
-  jest.spyOn(reduxToolkit, "nanoid").mockReturnValue("mocked-nanoid");
+  jest.spyOn(query, "generateCallId").mockReturnValue(mockCallId);
   const machines = [
     machineFactory({
       domain: modelRefFactory({ id: 1, name: "test" }),
@@ -42,7 +43,7 @@ beforeEach(() => {
     machine: machineStateFactory({
       items: machines,
       lists: {
-        "mocked-nanoid": machineStateListFactory({
+        [mockCallId]: machineStateListFactory({
           loaded: true,
           groups: [
             machineStateListGroupFactory({

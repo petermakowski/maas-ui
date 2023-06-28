@@ -1,5 +1,4 @@
 import { NotificationSeverity } from "@canonical/react-components";
-import reduxToolkit from "@reduxjs/toolkit";
 import { createMemoryHistory } from "history";
 import { Provider } from "react-redux";
 import { MemoryRouter, Route, Router } from "react-router-dom";
@@ -10,6 +9,7 @@ import DeleteTagForm from "./DeleteTagForm";
 
 import * as baseHooks from "app/base/hooks/base";
 import urls from "app/base/urls";
+import * as query from "app/store/machine/utils/query";
 import type { RootState } from "app/store/root/types";
 import { actions as tagActions } from "app/store/tag";
 import { NodeStatus } from "app/store/types/node";
@@ -29,7 +29,7 @@ let state: RootState;
 let scrollToSpy: jest.Mock;
 
 beforeEach(() => {
-  jest.spyOn(reduxToolkit, "nanoid").mockReturnValue("mocked-nanoid");
+  jest.spyOn(query, "generateCallId").mockReturnValue("mocked-nanoid");
   state = rootStateFactory({
     machine: machineStateFactory({
       items: [

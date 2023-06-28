@@ -10,6 +10,7 @@ import configureStore from "redux-mock-store";
 import type { SidePanelContent } from "app/base/side-panel-context";
 import SidePanelContextProvider from "app/base/side-panel-context";
 import { ConfigNames } from "app/store/config/types";
+import { generateCallId as originalGenerateCallId } from "app/store/machine/utils/query";
 import type { RootState } from "app/store/root/types";
 import {
   config as configFactory,

@@ -1,10 +1,10 @@
-import reduxToolkit from "@reduxjs/toolkit";
 import configureStore from "redux-mock-store";
 
 import LXDClusterVMs from "./LXDClusterVMs";
 
 import urls from "app/base/urls";
 import { actions as machineActions } from "app/store/machine";
+import * as query from "app/store/machine/utils/query";
 import type { RootState } from "app/store/root/types";
 import {
   machine as machineFactory,
@@ -23,7 +23,7 @@ const mockStore = configureStore<RootState, {}>();
 
 describe("LXDClusterVMs", () => {
   beforeEach(() => {
-    jest.spyOn(reduxToolkit, "nanoid").mockReturnValue("123456");
+    jest.spyOn(query, "generateCallId").mockReturnValueOnce("123456");
   });
 
   it("renders a link to a cluster's host's VM page", () => {

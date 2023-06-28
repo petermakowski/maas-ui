@@ -81,6 +81,14 @@ import {
 } from "app/store/utils/slice";
 import { preparePayloadParams, kebabToCamelCase } from "app/utils";
 
+const DEFAULT_MACHINE_QUERY_STATE = {
+  params: null,
+  listeners: 0,
+  fetchedAt: null,
+  refetchedAt: null,
+  refetching: false,
+};
+
 const DEFAULT_LIST_STATE = {
   count: null,
   cur_page: null,
@@ -90,6 +98,7 @@ const DEFAULT_LIST_STATE = {
   loading: true,
   stale: false,
   num_pages: null,
+  ...DEFAULT_MACHINE_QUERY_STATE,
 };
 
 const DEFAULT_COUNT_STATE = {
@@ -98,7 +107,7 @@ const DEFAULT_COUNT_STATE = {
   stale: false,
   count: null,
   errors: null,
-  params: null,
+  ...DEFAULT_MACHINE_QUERY_STATE,
 };
 
 const isArrayOfOptionsType = <T extends FilterGroupOptionType>(
@@ -419,12 +428,18 @@ const machineSlice = createSlice({
       ) => {
         if (action.meta.callId) {
           if (action.meta.callId in state.counts) {
-            state.counts[action.meta.callId].loading = true;
+            // refetching
+            state.counts[action.meta.callId].refetching = true;
+            state.counts[action.meta.callId].refetchedAt = Date.now();
+            state.counts[action.meta.callId].listeners += 1;
           } else {
+            // initial fetch
             state.counts[action.meta.callId] = {
               ...DEFAULT_COUNT_STATE,
-              params: action?.meta.item || null,
               loading: true,
+              params: action?.meta.item || null,
+              listeners: 1,
+              fetchedAt: Date.now(),
             };
           }
         }
@@ -898,11 +913,22 @@ const machineSlice = createSlice({
         action: PayloadAction<null, string, GenericMeta>
       ) => {
         if (action.meta.callId) {
-          state.lists[action.meta.callId] = {
-            ...DEFAULT_LIST_STATE,
-            loading: true,
-            params: action?.meta.item || null,
-          };
+          if (!state.lists[action.meta.callId]) {
+            // initial fetch
+            state.lists[action.meta.callId] = {
+              ...DEFAULT_LIST_STATE,
+              loading: true,
+              params: action?.meta.item || null,
+              listeners: 1,
+              fetchedAt: Date.now(),
+            };
+          } else {
+            // refetching
+            state.lists[action.meta.callId].refetching = true;
+            state.lists[action.meta.callId].params = action?.meta.item || null;
+            state.lists[action.meta.callId].listeners += 1;
+            state.lists[action.meta.callId].refetchedAt = Date.now();
+          }
         }
       },
     },
@@ -1137,8 +1163,18 @@ const machineSlice = createSlice({
         },
         payload: null,
       }),
-      reducer: () => {
-        // No state changes need to be handled for this action.
+      reducer: (
+        state: MachineState,
+        action: PayloadAction<null, string, GenericMeta>
+      ) => {
+        const { callId } = action.meta;
+        if (callId) {
+          if (callId in state.lists) {
+            state.lists[callId].listeners -= 1;
+          } else if (callId in state.counts) {
+            state.counts[callId].listeners -= 1;
+          }
+        }
       },
     },
     get: {
@@ -1397,10 +1433,6 @@ const machineSlice = createSlice({
         if (callId) {
           if (callId in state.details) {
             delete state.details[callId];
-          } else if (callId in state.lists) {
-            delete state.lists[callId];
-          } else if (callId in state.counts) {
-            delete state.counts[callId];
           } else if (callId in state.actions) {
             delete state.actions[callId];
           }
@@ -1624,10 +1656,6 @@ const machineSlice = createSlice({
       action: PayloadAction<Machine[MachineMeta.PK][]>
     ) => {
       action.payload.forEach((id) => {
-        const index = state.items.findIndex(
-          (item: Machine) => item.system_id === id
-        );
-        state.items.splice(index, 1);
         // Clean up the statuses for model.
         delete state.statuses[id];
       });

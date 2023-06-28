@@ -11,11 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { FetchGroupKey } from "../types/actions";
 import type { FetchParams, FetchGroupByKey } from "../types/actions";
 
-import {
-  mapSortDirection,
-  selectedToFilters,
-  selectedToSeparateFilters,
-} from "./common";
+import { selectedToFilters, selectedToSeparateFilters } from "./common";
+import { generateCallId, parseFetchMachinesParams } from "./query";
 import { FilterMachines } from "./search";
 
 import { ACTION_STATUS } from "app/base/constants";
@@ -394,6 +391,7 @@ export const useFetchMachineCount = (
     machineSelectors.countStale(state, callId)
   );
   useEffect(() => {
+    // TODO: fix this
     if (isStale) {
       setCallId(nanoid());
     }
@@ -418,7 +416,7 @@ export const useFetchMachineCount = (
         !callId ||
         isEnabled !== previousIsEnabled
       ) {
-        setCallId(nanoid());
+        setCallId(generateCallId(filters));
       }
     }
   }, [
@@ -429,14 +427,6 @@ export const useFetchMachineCount = (
     isEnabled,
     previousIsEnabled,
   ]);
-
-  useEffect(() => {
-    return () => {
-      if (callId) {
-        dispatch(machineActions.removeRequest(callId));
-      }
-    };
-  }, [callId, dispatch]);
 
   useEffect(() => {
     if (isEnabled && callId && callId !== previousCallId) {
@@ -555,6 +545,7 @@ export const useFetchMachines = (
   );
   useEffect(() => {
     if (isStale) {
+      // TODO: fix this
       setCallId(nanoid());
     }
   }, [isStale]);
@@ -613,7 +604,7 @@ export const useFetchMachines = (
         !callId ||
         isEnabled !== previousIsEnabled
       ) {
-        setCallId(nanoid());
+        setCallId(generateCallId(options));
       }
     }
   }, [
@@ -627,22 +618,7 @@ export const useFetchMachines = (
 
   useEffect(() => {
     if (isEnabled && callId && callId !== previousCallId) {
-      dispatch(
-        machineActions.fetch(
-          callId,
-          options
-            ? {
-                filter: options.filters ?? null,
-                group_collapsed: options.collapsedGroups,
-                group_key: options.grouping ?? null,
-                page_number: options?.pagination?.currentPage,
-                page_size: options?.pagination?.pageSize,
-                sort_direction: mapSortDirection(options.sortDirection),
-                sort_key: options.sortKey ?? null,
-              }
-            : null
-        )
-      );
+      dispatch(machineActions.fetch(callId, parseFetchMachinesParams(options)));
     }
   }, [callId, dispatch, options, previousCallId, isEnabled, previousIsEnabled]);
 

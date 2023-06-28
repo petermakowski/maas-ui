@@ -259,6 +259,8 @@ export const machineStateListGroup = define<MachineStateListGroup>({
   value: null,
 });
 
+export const fetchedAt = define<number>(Date.now());
+
 export const machineStateList = define<MachineStateList>({
   count: null,
   cur_page: null,
@@ -269,6 +271,10 @@ export const machineStateList = define<MachineStateList>({
   stale: false,
   num_pages: null,
   params: null,
+  listeners: 0,
+  fetchedAt,
+  refetchedAt: null,
+  refetching: false,
 });
 
 export const machineActionState = define<ActionState>({
@@ -294,6 +300,10 @@ export const machineStateCount = define<MachineStateCount>({
   loading: false,
   stale: false,
   params: null,
+  listeners: 1,
+  fetchedAt,
+  refetchedAt: null,
+  refetching: false,
 });
 
 export const machineFilterGroup = define<FilterGroup>({
