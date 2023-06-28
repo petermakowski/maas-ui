@@ -269,6 +269,7 @@ export const machineStateList = define<MachineStateList>({
   stale: false,
   num_pages: null,
   params: null,
+  listeners: 0,
 });
 
 export const machineActionState = define<ActionState>({
@@ -294,6 +295,7 @@ export const machineStateCount = define<MachineStateCount>({
   loading: false,
   stale: false,
   params: null,
+  listeners: 0,
 });
 
 export const machineFilterGroup = define<FilterGroup>({

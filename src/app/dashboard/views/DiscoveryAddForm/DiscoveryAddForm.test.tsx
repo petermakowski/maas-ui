@@ -1,4 +1,3 @@
-import reduxToolkit from "@reduxjs/toolkit";
 import configureStore from "redux-mock-store";
 
 import DiscoveryAddForm, {
@@ -10,6 +9,7 @@ import { DeviceType } from "./types";
 import { actions as deviceActions } from "app/store/device";
 import { DeviceIpAssignment, DeviceMeta } from "app/store/device/types";
 import type { Discovery } from "app/store/discovery/types";
+import { generateCallId } from "app/store/machine/utils/hooks";
 import type { RootState } from "app/store/root/types";
 import {
   NodeStatus,
@@ -49,7 +49,6 @@ describe("DiscoveryAddForm", () => {
   let discovery: Discovery;
 
   beforeEach(() => {
-    jest.spyOn(reduxToolkit, "nanoid").mockReturnValue("123456");
     const machines = [
       machineFactory({
         actions: [],
@@ -117,7 +116,7 @@ describe("DiscoveryAddForm", () => {
         loaded: true,
         items: machines,
         lists: {
-          "123456": machineStateListFactory({
+          [generateCallId()]: machineStateListFactory({
             loaded: true,
             groups: [
               machineStateListGroupFactory({

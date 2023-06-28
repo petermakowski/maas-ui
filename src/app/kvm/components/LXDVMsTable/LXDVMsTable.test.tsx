@@ -1,4 +1,3 @@
-import reduxToolkit from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import configureStore from "redux-mock-store";
@@ -13,10 +12,6 @@ import { render, screen } from "testing/utils";
 const mockStore = configureStore();
 
 describe("LXDVMsTable", () => {
-  beforeEach(() => {
-    jest.spyOn(reduxToolkit, "nanoid").mockReturnValue("mocked-nanoid");
-  });
-
   afterEach(() => {
     jest.restoreAllMocks();
   });

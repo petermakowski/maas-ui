@@ -4,6 +4,7 @@ import reducers, { actions } from "./slice";
 import type { SelectedMachines } from "./types";
 import { FilterGroupKey, FilterGroupType } from "./types";
 import { FetchGroupByKey } from "./types/actions";
+import { generateCallId } from "./utils/query";
 
 import {
   NodeActions,
@@ -1510,6 +1511,35 @@ describe("machine reducer", () => {
         saving: true,
       })
     );
+  });
+
+  describe("cleanupRequest", () => {
+    it("updates the number of listeners for lists", () => {
+      const callId = generateCallId();
+      const initialState = machineStateFactory({
+        lists: { [callId]: machineStateListFactory({ listeners: 1 }) },
+      });
+      const expectedState = produce(initialState, (draft) => {
+        draft.lists[callId].listeners = 0;
+      });
+
+      expect(reducers(initialState, actions.cleanupRequest("{}"))).toEqual(
+        expectedState
+      );
+    });
+    it("updates the number of listeners for counts", () => {
+      const callId = generateCallId();
+      const initialState = machineStateFactory({
+        counts: { [callId]: machineStateCountFactory({ listeners: 1 }) },
+      });
+      const expectedState = produce(initialState, (draft) => {
+        draft.counts[callId].listeners = 0;
+      });
+
+      expect(reducers(initialState, actions.cleanupRequest("{}"))).toEqual(
+        expectedState
+      );
+    });
   });
 
   describe("clone", () => {

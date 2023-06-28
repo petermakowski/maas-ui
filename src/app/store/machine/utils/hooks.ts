@@ -16,6 +16,7 @@ import {
   selectedToFilters,
   selectedToSeparateFilters,
 } from "./common";
+import { generateCallId } from "./query";
 import { FilterMachines } from "./search";
 
 import { ACTION_STATUS } from "app/base/constants";
@@ -394,6 +395,7 @@ export const useFetchMachineCount = (
     machineSelectors.countStale(state, callId)
   );
   useEffect(() => {
+    // TODO: fix this
     if (isStale) {
       setCallId(nanoid());
     }
@@ -418,7 +420,7 @@ export const useFetchMachineCount = (
         !callId ||
         isEnabled !== previousIsEnabled
       ) {
-        setCallId(nanoid());
+        setCallId(generateCallId(filters));
       }
     }
   }, [
@@ -429,14 +431,6 @@ export const useFetchMachineCount = (
     isEnabled,
     previousIsEnabled,
   ]);
-
-  useEffect(() => {
-    return () => {
-      if (callId) {
-        dispatch(machineActions.removeRequest(callId));
-      }
-    };
-  }, [callId, dispatch]);
 
   useEffect(() => {
     if (isEnabled && callId && callId !== previousCallId) {
@@ -555,6 +549,7 @@ export const useFetchMachines = (
   );
   useEffect(() => {
     if (isStale) {
+      // TODO: fix this
       setCallId(nanoid());
     }
   }, [isStale]);
@@ -613,7 +608,7 @@ export const useFetchMachines = (
         !callId ||
         isEnabled !== previousIsEnabled
       ) {
-        setCallId(nanoid());
+        setCallId(generateCallId(options));
       }
     }
   }, [

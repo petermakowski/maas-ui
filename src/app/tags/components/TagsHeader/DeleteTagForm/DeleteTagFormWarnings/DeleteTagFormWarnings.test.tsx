@@ -7,8 +7,9 @@ import configureStore from "redux-mock-store";
 import DeleteTagFormWarnings from "./DeleteTagFormWarnings";
 
 import urls from "app/base/urls";
+import { generateCallId } from "app/store/machine/utils/hooks";
 import type { RootState } from "app/store/root/types";
-import { NodeStatus } from "app/store/types/node";
+import { FetchNodeStatus, NodeStatus } from "app/store/types/node";
 import {
   machine as machineFactory,
   machineState as machineStateFactory,
@@ -23,8 +24,14 @@ const mockStore = configureStore();
 
 let state: RootState;
 
+const createCallId = (state: RootState) =>
+  generateCallId({
+    status: [FetchNodeStatus.DEPLOYED],
+    tags: [state.tag.items[0].name],
+  });
+
 beforeEach(() => {
-  jest.spyOn(reduxToolkit, "nanoid").mockReturnValue("mocked-nanoid");
+  jest.spyOn(reduxToolkit, "nanoid").mockReturnValue("{}");
   state = rootStateFactory({
     machine: machineStateFactory({
       items: [
@@ -60,7 +67,7 @@ it("does not display a kernel options warning for non-deployed machines", async 
     }),
   ];
   state.machine.counts = {
-    "mocked-nanoid": machineStateCountFactory({
+    [createCallId(state)]: machineStateCountFactory({
       count: 0,
       loaded: true,
     }),
@@ -90,7 +97,7 @@ it("displays warning when deleting a tag with kernel options", async () => {
     }),
   ];
   state.machine.counts = {
-    "mocked-nanoid": machineStateCountFactory({
+    [createCallId(state)]: machineStateCountFactory({
       count: 1,
       loaded: true,
     }),
@@ -126,7 +133,7 @@ it("displays a kernel options warning with multiple machines", async () => {
     }),
   ];
   state.machine.counts = {
-    "mocked-nanoid": machineStateCountFactory({
+    [createCallId(state)]: machineStateCountFactory({
       count: 2,
       loaded: true,
     }),
@@ -156,7 +163,7 @@ it("displays a kernel options warning with one machine", async () => {
     }),
   ];
   state.machine.counts = {
-    "mocked-nanoid": machineStateCountFactory({
+    [createCallId(state)]: machineStateCountFactory({
       count: 1,
       loaded: true,
     }),
@@ -186,7 +193,7 @@ it("links to a page to display deployed machines", async () => {
     }),
   ];
   state.machine.counts = {
-    "mocked-nanoid": machineStateCountFactory({
+    [createCallId(state)]: machineStateCountFactory({
       count: 1,
       loaded: true,
     }),
