@@ -199,7 +199,7 @@ export type MachineStateDetailsItem = {
   loaded: boolean;
   loading: boolean;
   system_id: Machine[MachineMeta.PK];
-};
+} & MachineQuery;
 
 export type MachineStateDetails = Record<string, MachineStateDetailsItem>;
 

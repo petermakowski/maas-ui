@@ -110,6 +110,14 @@ const DEFAULT_COUNT_STATE = {
   ...DEFAULT_MACHINE_QUERY_STATE,
 };
 
+const DEFAULT_DETAILS_STATE = {
+  loading: false,
+  loaded: false,
+  stale: false,
+  errors: null,
+  ...DEFAULT_MACHINE_QUERY_STATE,
+};
+
 const isArrayOfOptionsType = <T extends FilterGroupOptionType>(
   options: FilterGroupOption[],
   typeString: string
@@ -1240,13 +1248,26 @@ const machineSlice = createSlice({
       ) => {
         if (action.meta.callId) {
           if (action.meta.callId in state.details) {
-            state.details[action.meta.callId].loading = true;
+            // TODO: improve this, is this the right place to do it? - probably not, should go to websockets where we have isLoaded and setIsLoaded
+            const fetchedAt = state.details[action.meta.callId].fetchedAt;
+            const diff = fetchedAt ? fetchedAt - Date.now() : null;
+            const shouldRefetch = typeof diff === "number" ? diff > 5000 : true;
+            console.log(fetchedAt, Date.now(), diff, shouldRefetch);
+            if (!shouldRefetch) {
+              return;
+            }
+            // refetching
+            state.details[action.meta.callId].refetching = true;
+            state.details[action.meta.callId].refetchedAt = Date.now();
+            state.details[action.meta.callId].listeners += 1;
           } else {
+            // initial fetch
             state.details[action.meta.callId] = {
-              errors: null,
-              loaded: false,
-              loading: true,
+              ...DEFAULT_DETAILS_STATE,
               system_id: action.meta.item.system_id,
+              loading: true,
+              listeners: 1,
+              fetchedAt: Date.now(),
             };
           }
         }

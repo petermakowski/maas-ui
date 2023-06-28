@@ -673,12 +673,12 @@ export const useFetchMachine = (
   const machine = useSelector((state: RootState) =>
     machineSelectors.getById(state, id)
   );
+
   useCleanup(callId);
 
   useEffect(() => {
     if (isId(id) && id !== previousId) {
-      const newId = nanoid();
-      setCallId(newId);
+      setCallId(generateCallId({ id }));
     }
   }, [dispatch, id, previousId]);
 
