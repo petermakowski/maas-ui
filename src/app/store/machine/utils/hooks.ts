@@ -589,6 +589,8 @@ export const useFetchMachines = (
   const loading = useSelector((state: RootState) =>
     machineSelectors.listLoading(state, callId)
   );
+  const [loadingInitial, setLoadingInitial] = useState(true);
+  const [loadedInitial, setLoadedInitial] = useState(false);
   const cleanup = () => {
     if (callId) {
       dispatch(machineActions.cleanupRequest(callId));
@@ -656,15 +658,33 @@ export const useFetchMachines = (
     previousStaleCount,
   ]);
 
+  useEffect(() => {
+    if (loading) {
+      setLoadingInitial(false);
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    if (loaded) {
+      setLoadedInitial(true);
+    }
+  }, [loaded]);
+
+  const count = useFetchedCount(machineCount, loading);
+  const pages = useFetchedCount(totalPages, loading);
+  const fetchedMachines = useFetchedData(machines, loading, loaded);
+  const fetchedGroups = useFetchedData(groups, loading, loaded);
+  const isLoadingAfterMount = loadingInitial && loading;
+
   return {
     callId,
     cleanup,
     loaded,
-    loading,
-    groups,
-    machineCount,
-    totalPages,
-    machines,
+    loading: isLoadingAfterMount || !loadedInitial,
+    groups: fetchedGroups,
+    machineCount: count,
+    totalPages: pages,
+    machines: fetchedMachines,
     machinesErrors,
   };
 };
@@ -877,10 +897,12 @@ export const useHasSelection = (): boolean => {
  */
 export const useFetchedCount = (
   newCount: number | null,
-  loading?: boolean | null
+  loading?: boolean | null,
+  loaded?: boolean | null
 ): number => {
+  const isLoading = loading || !loaded;
   const [previousCount, setPreviousCount] = useState(newCount);
-  const count = (loading ? previousCount : newCount) ?? 0;
+  const count = (isLoading ? previousCount : newCount) ?? 0;
 
   useEffect(() => {
     // The pagination needs to be displayed while the new list is being fetched
@@ -891,4 +913,28 @@ export const useFetchedCount = (
   }, [newCount, previousCount]);
 
   return count;
+};
+
+/**
+ * Return the previous count while a new fetch is in progress.
+ */
+export const useFetchedData = (
+  newData: Array<unknown>,
+  loading?: boolean | null,
+  loaded?: boolean | null
+): Array<unknown> => {
+  const [previousData, setPreviousData] = useState(newData);
+  const isLoading = loading || !loaded;
+  const noData = useMemo(() => [], []);
+  const data = (isLoading ? previousData : newData) ?? noData;
+
+  useEffect(() => {
+    // The pagination needs to be displayed while the new list is being fetched
+    // so this stores the previous machine count while the request is in progress.
+    if (newData && !isLoading && !fastDeepEqual(previousData, newData)) {
+      setPreviousData(newData);
+    }
+  }, [isLoading, newData, previousData]);
+
+  return data;
 };
