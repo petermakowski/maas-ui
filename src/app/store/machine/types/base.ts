@@ -24,6 +24,7 @@ import type {
   PowerParameters,
   SupportedFilesystem,
   TestStatus,
+  TestStatusStatus,
   WorkloadAnnotations,
 } from "app/store/types/node";
 import type { EventError, GenericState } from "app/store/types/state";
@@ -54,7 +55,7 @@ export type BaseMachine = Omit<
   pxe_mac?: string;
   spaces: string[];
   storage: number;
-  testing_status: Pick<TestStatus, "status">;
+  testing_status: TestStatusStatus;
   vlan: NodeVlan | null;
   zone: ModelRef;
 };

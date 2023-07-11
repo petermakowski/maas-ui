@@ -77,7 +77,7 @@ describe("MachineList", () => {
         }),
         testing_status: testStatusFactory({
           status: TestStatusStatus.PASSED,
-        }),
+        }).status,
         system_id: "abc123",
         zone: modelRefFactory(),
       }),
@@ -118,7 +118,7 @@ describe("MachineList", () => {
         }),
         testing_status: testStatusFactory({
           status: TestStatusStatus.FAILED,
-        }),
+        }).status,
         system_id: "def456",
         zone: modelRefFactory(),
       }),
@@ -159,7 +159,7 @@ describe("MachineList", () => {
         }),
         testing_status: testStatusFactory({
           status: TestStatusStatus.FAILED,
-        }),
+        }).status,
         system_id: "ghi789",
         zone: modelRefFactory(),
       }),

@@ -15,7 +15,7 @@ import urls from "app/base/urls";
 import MachineList from "app/machines/views/MachineList";
 import { actions as machineActions } from "app/store/machine";
 import machineSelectors from "app/store/machine/selectors";
-import { FetchGroupKey } from "app/store/machine/types";
+import { FetchGroupKey } from "app/store/machine/types/actions";
 import { selectedToFilters, FilterMachines } from "app/store/machine/utils";
 import { useMachineSelectedCount } from "app/store/machine/utils/hooks";
 import { getSidePanelTitle } from "app/store/utils/node/base";

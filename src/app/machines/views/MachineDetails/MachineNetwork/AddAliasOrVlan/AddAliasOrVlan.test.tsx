@@ -83,9 +83,7 @@ describe("AddAliasOrVlan", () => {
             storage_test_status: testStatusFactory({
               status: TestStatusStatus.PASSED,
             }),
-            testing_status: testStatusFactory({
-              status: TestStatusStatus.PASSED,
-            }),
+            testing_status: TestStatusStatus.PASSED,
             system_id: "abc123",
             zone: modelRefFactory(),
           }),

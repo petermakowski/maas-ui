@@ -44,9 +44,7 @@ describe("MachineTests", () => {
             locked: false,
             permissions: ["edit"],
             system_id: "abc123",
-            testing_status: testStatusFactory({
-              status: TestStatusStatus.RUNNING,
-            }),
+            testing_status: TestStatusStatus.RUNNING,
           }),
         ],
       }),
@@ -292,7 +290,7 @@ describe("MachineTests", () => {
         testing_status: testStatusFactory({
           // This value is different to the value stored by usePrevious.
           status: TestStatusStatus.PENDING,
-        }),
+        }).status,
       }),
     ];
     state.nodescriptresult.items = { abc123: [1] };

@@ -20,7 +20,7 @@ import urls from "app/base/urls";
 import { MachineSidePanelViews } from "app/machines/constants";
 import type { MachineSetSidePanelContent } from "app/machines/types";
 import { actions as machineActions } from "app/store/machine";
-import type { FetchGroupKey } from "app/store/machine/types";
+import type { FetchGroupKey } from "app/store/machine/types/actions";
 import { useHasSelection } from "app/store/machine/utils/hooks";
 import { NodeActions } from "app/store/types/node";
 import { getNodeActionTitle } from "app/store/utils";

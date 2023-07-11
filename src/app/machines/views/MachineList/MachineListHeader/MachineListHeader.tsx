@@ -8,7 +8,7 @@ import MachinesHeader from "app/base/components/node/MachinesHeader";
 import type { SetSearchFilter } from "app/base/types";
 import type { MachineSetSidePanelContent } from "app/machines/types";
 import { actions as machineActions } from "app/store/machine";
-import type { FetchGroupKey } from "app/store/machine/types";
+import type { FetchGroupKey } from "app/store/machine/types/actions";
 import { useFetchMachineCount } from "app/store/machine/utils/hooks";
 import { actions as resourcePoolActions } from "app/store/resourcepool";
 import resourcePoolSelectors from "app/store/resourcepool/selectors";

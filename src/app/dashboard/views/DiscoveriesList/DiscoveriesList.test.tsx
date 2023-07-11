@@ -82,7 +82,7 @@ describe("DiscoveriesList", () => {
         }),
         testing_status: testStatusFactory({
           status: TestStatusStatus.PASSED,
-        }),
+        }).status,
         system_id: "abc123",
         zone: modelRefFactory(),
       }),
