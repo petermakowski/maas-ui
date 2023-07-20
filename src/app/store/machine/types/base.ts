@@ -1,5 +1,6 @@
 import type { FetchFilters, FetchGroupKey, FetchParams } from "./actions";
 import type { MachineMeta } from "./enum";
+import type { MachineListIdsResponseGroup } from "./responses";
 
 import type { ActionState, APIError, Seconds } from "app/base/types";
 import type { CloneError } from "app/machines/components/MachineForms/MachineActionFormWrapper/CloneForm/CloneResults/CloneResults";
@@ -236,6 +237,14 @@ export type MachineStateList = {
   stale: boolean;
   num_pages: number | null;
 } & MachineQuery;
+
+export type MachineStateListIdsGroup = {
+  items: MachineListIdsResponseGroup["items"];
+};
+
+export type MachineStateListIds = MachineStateList & {
+  groups: MachineStateListIdsGroup[] | null;
+};
 
 export type MachineStateLists = Record<string, MachineStateList>;
 

@@ -670,6 +670,137 @@ export const useFetchMachines = (
 };
 
 /**
+ * Fetch machines IDs via the API.
+ */
+export const useFetchMachinesIds = (
+  options?: UseFetchMachinesOptions | null,
+  queryOptions?: UseFetchQueryOptions
+): UseFetchMachinesData & {
+  groups: MachineStateListGroup[] | null;
+  cleanup: () => void;
+} => {
+  const { isEnabled } = queryOptions || { isEnabled: true };
+  const previousIsEnabled = usePrevious(isEnabled);
+  const [callId, setCallId] = useState<string | null>(null);
+  const previousCallId = usePrevious(callId);
+  const previousOptions = usePrevious(options, false);
+  const [staleCount, setStaleCount] = useState<number>(0);
+  const previousStaleCount = usePrevious(staleCount);
+  const isStale = useSelector((state: RootState) =>
+    machineSelectors.listStale(state, callId)
+  );
+
+  useEffect(() => {
+    if (isStale) {
+      setStaleCount((count) => count + 1);
+    }
+  }, [isStale]);
+
+  const dispatch = useDispatch();
+  const machines = useSelector((state: RootState) =>
+    machineSelectors.list(state, callId)
+  );
+  const groups = useSelector((state: RootState) =>
+    machineSelectors.listGroups(state, callId)
+  );
+  const machineCount = useSelector((state: RootState) =>
+    machineSelectors.listCount(state, callId)
+  );
+  const totalPages = useSelector((state: RootState) =>
+    machineSelectors.listTotalPages(state, callId)
+  );
+  const machinesErrors = useSelector((state: RootState) =>
+    machineSelectors.listErrors(state, callId)
+  );
+  const loaded = useSelector((state: RootState) =>
+    machineSelectors.listLoaded(state, callId)
+  );
+  const loading = useSelector((state: RootState) =>
+    machineSelectors.listLoading(state, callId)
+  );
+  const cleanup = () => {
+    if (callId) {
+      dispatch(machineActions.cleanupRequest(callId));
+    }
+  };
+  useCleanup(callId);
+
+  // reset pagination when filters change
+  const { filters, grouping, collapsedGroups, sortDirection, sortKey } =
+    options || {};
+  const filterOptions = useMemo(
+    () => ({
+      filters,
+      grouping,
+      collapsedGroups,
+      sortDirection,
+      sortKey,
+    }),
+    [filters, grouping, collapsedGroups, sortDirection, sortKey]
+  );
+  const previousFilterOptions = usePrevious(filterOptions);
+  useEffect(() => {
+    if (!fastDeepEqual(filterOptions, previousFilterOptions)) {
+      options?.pagination?.setCurrentPage?.(1);
+    }
+  }, [options, filterOptions, previousFilterOptions]);
+
+  useEffect(() => {
+    // undefined, null and {} are all equivalent i.e. no filters so compare the
+    // current and previous filters using an empty object if the filters are falsy.
+    if (isEnabled) {
+      if (
+        !fastDeepEqual(options || {}, previousOptions || {}) ||
+        !callId ||
+        isEnabled !== previousIsEnabled
+      ) {
+        setCallId(generateCallId(transformToFetchParams(options)));
+      }
+    }
+  }, [
+    callId,
+    dispatch,
+    options,
+    previousOptions,
+    isEnabled,
+    previousIsEnabled,
+  ]);
+
+  useEffect(() => {
+    if (
+      (isEnabled && callId && isEnabled !== previousIsEnabled) ||
+      (isEnabled && callId && callId !== previousCallId) ||
+      (isEnabled && callId && staleCount !== previousStaleCount)
+    ) {
+      dispatch(
+        machineActions.fetchIds(callId, transformToFetchParams(options))
+      );
+    }
+  }, [
+    callId,
+    dispatch,
+    options,
+    previousCallId,
+    isEnabled,
+    previousIsEnabled,
+    staleCount,
+    previousStaleCount,
+  ]);
+
+  return {
+    callId,
+    cleanup,
+    loaded,
+    loading,
+    groups,
+    machineCount,
+    totalPages,
+    machines,
+    machinesErrors,
+  };
+};
+
+/**
  * Fetch a machine via the API.
  * @param id - A machine's system id.
  */

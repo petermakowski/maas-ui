@@ -62,7 +62,15 @@ import type {
 } from "./types";
 import { MachineMeta, FilterGroupType } from "./types";
 import type { OverrideFailedTesting } from "./types/actions";
-import type { MachineActionStatus, MachineStateListGroup } from "./types/base";
+import type {
+  MachineActionStatus,
+  MachineStateListGroup,
+  MachineStateListIds,
+} from "./types/base";
+import type {
+  MachineListIdsResponse,
+  MachineListIdsResponseGroup,
+} from "./types/responses";
 import { createMachineListGroup, isMachineDetails } from "./utils";
 
 import { ACTION_STATUS } from "app/base/constants";
@@ -975,6 +983,133 @@ const machineSlice = createSlice({
           state.lists[callId].loaded = true;
           state.lists[callId].loading = false;
           state.lists[callId].num_pages = payload.num_pages;
+        }
+      },
+    },
+    fetchIds: {
+      prepare: (callId: string, params?: FetchParams | null) => ({
+        meta: {
+          model: MachineMeta.MODEL,
+          method: "list_ids",
+          nocache: true,
+          callId,
+        },
+        payload: params
+          ? {
+              params,
+            }
+          : null,
+      }),
+      reducer: () => {
+        // No state changes need to be handled for this action.
+      },
+    },
+    fetchIdsError: {
+      prepare: (callId: string, errors: MachineStateListIds["errors"]) => ({
+        meta: {
+          callId,
+        },
+        payload: errors,
+      }),
+      reducer: (
+        state: MachineState,
+        action: PayloadAction<
+          MachineStateListIds["errors"],
+          string,
+          GenericMeta
+        >
+      ) => {
+        if (action.meta.callId) {
+          if (action.meta.callId in state.lists) {
+            state.lists[action.meta.callId].errors = action.payload;
+            state.lists[action.meta.callId].loading = false;
+          }
+        }
+        state = setErrors(state, action, "fetch");
+      },
+    },
+    fetchIdsStart: {
+      prepare: (callId: string) => ({
+        meta: {
+          callId,
+        },
+        payload: null,
+      }),
+      reducer: (
+        state: MachineState,
+        action: PayloadAction<null, string, GenericMeta>
+      ) => {
+        if (action.meta.callId) {
+          if (!state.lists[action.meta.callId]) {
+            // initial fetch
+            state.lists[action.meta.callId] = {
+              ...DEFAULT_LIST_STATE,
+              loading: true,
+              params: action?.meta.item || null,
+              fetchedAt: Date.now(),
+            };
+          } else {
+            // refetching
+            state.lists[action.meta.callId].refetching = true;
+            state.lists[action.meta.callId].params = action?.meta.item || null;
+            state.lists[action.meta.callId].refetchedAt = Date.now();
+          }
+        }
+      },
+    },
+    fetchIdsSuccess: {
+      prepare: (callId: string, payload: MachineListIdsResponse) => ({
+        meta: {
+          callId,
+        },
+        payload,
+      }),
+      reducer: (
+        state: MachineState,
+        action: PayloadAction<MachineListIdsResponse, string, GenericMeta>
+      ) => {
+        const { callId } = action.meta;
+        // Only update state if this call exists in the store. This check is required
+        // because the call may have been cleaned up in the time the API takes
+        // to respond.
+        if (callId && callId in state.lists) {
+          action.payload.groups.forEach(
+            (group: MachineListIdsResponseGroup) => {
+              group.items.forEach(
+                (newItem: MachineListIdsResponseGroup["items"][0]) => {
+                  // TODO: uncomment and update this
+                  // Add items that don't already exist in the store. Existing items
+                  // are probably MachineDetails so this would overwrite them with the
+                  // simple machine. Existing items will be kept up to date via the
+                  // notify (sync) messages.
+                  // const existingIndex = state.items.findIndex(
+                  //   (draftItem: Machine) => draftItem.id === newItem.id
+                  // );
+                  // if (!state.items[existingIndex]) {
+                  //   state.items.push(newItem);
+                  //   // Set up the statuses for this machine.
+                  //   state.statuses[newItem.system_id] = DEFAULT_STATUSES;
+                  //   // update existing item if not of machine details type
+                  // } else if (
+                  //   state.items[existingIndex] &&
+                  //   !isMachineDetails(state.items[existingIndex])
+                  // ) {
+                  //   state.items[existingIndex] = newItem;
+                  // }
+                }
+              );
+            }
+          );
+          // const { payload } = action;
+          // state.lists[callId].count = payload.count;
+          // state.lists[callId].cur_page = payload.cur_page;
+          // state.lists[callId].groups = payload.groups.map((group) => ({
+          //   ...group,
+          //   items: group.items.map(({ system_id }) => system_id),
+          // }));
+          // state.lists[callId].loaded = true;
+          // state.lists[callId].loading = false;
+          // state.lists[callId].num_pages = payload.num_pages;
         }
       },
     },
