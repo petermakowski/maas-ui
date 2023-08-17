@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
 import { useStorageState } from "react-storage-hooks";
@@ -44,21 +44,28 @@ const breakpoints: {
 ];
 
 export const useResponsiveColumns = () => {
-  const [hiddenColumns, setHiddenColumns] = useStorageState<string[]>(
+  const [responsiveHiddenColumns, setResponsiveHiddenColumns] = useState<
+    string[]
+  >([]);
+  const [hiddenColumns, setHiddenColumns] = useStorageState<string[] | null>(
     localStorage,
     "machineListHiddenColumns",
-    []
+    null
   );
 
   useEffect(() => {
-    const updateColumns = () => {
-      const width = window.innerWidth;
-      const breakpoint = breakpoints.find((b) => width <= b.max);
-      setHiddenColumns(breakpoint ? breakpoint.hiddenColumns : []);
-    };
+    const breakpoint = breakpoints.find((b) => window.innerWidth <= b.max);
+    // Set hidden columns on mount if haven't been previously set
+    if (hiddenColumns === null) {
+      setResponsiveHiddenColumns(breakpoint ? breakpoint.hiddenColumns : []);
+    }
+  }, []);
 
-    // Update columns on mount and on window resize
-    updateColumns();
+  useEffect(() => {
+    const breakpoint = breakpoints.find((b) => window.innerWidth <= b.max);
+    const updateColumns = () => {
+      setResponsiveHiddenColumns(breakpoint ? breakpoint.hiddenColumns : []);
+    };
     window.addEventListener("resize", updateColumns);
 
     // Clean up the event listener on unmount
@@ -67,7 +74,18 @@ export const useResponsiveColumns = () => {
     };
   }, []);
 
-  return [hiddenColumns, setHiddenColumns] as const;
+  const handleSetHiddenColumns = useCallback(
+    (columns: string[]) => {
+      setHiddenColumns(columns);
+      setResponsiveHiddenColumns(columns);
+    },
+    [setHiddenColumns, setResponsiveHiddenColumns]
+  );
+
+  return [
+    [...(hiddenColumns ?? []), ...responsiveHiddenColumns],
+    handleSetHiddenColumns,
+  ] as const;
 };
 
 export const useGrouping = (): [
