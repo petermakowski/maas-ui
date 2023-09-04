@@ -22,8 +22,8 @@ import {
   watchWebSockets,
 } from "./websockets";
 
-import { actions as machineActions } from "app/store/machine";
-import { getCookie } from "app/utils";
+import { actions as machineActions } from "@/app/store/machine";
+import { getCookie } from "@/app/utils";
 import {
   machineState as machineStateFactory,
   rootState as rootStateFactory,
@@ -33,12 +33,12 @@ import {
 import WebSocketClient, {
   WebSocketMessageType,
   WebSocketResponseType,
-} from "websocket-client";
+} from "@/websocket-client";
 import type {
   WebSocketResponseNotify,
   WebSocketResponsePing,
   WebSocketResponseResult,
-} from "websocket-client";
+} from "@/websocket-client";
 
 jest.mock("app/utils", () => ({
   ...jest.requireActual("app/utils"),

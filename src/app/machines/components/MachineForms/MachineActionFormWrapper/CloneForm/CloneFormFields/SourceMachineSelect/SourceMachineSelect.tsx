@@ -7,13 +7,13 @@ import { useDispatch } from "react-redux";
 
 import SourceMachineDetails from "./SourceMachineDetails";
 
-import DebounceSearchBox from "app/base/components/DebounceSearchBox";
-import { MachineSelectTable } from "app/base/components/MachineSelectTable/MachineSelectTable";
-import MachineListPagination from "app/machines/views/MachineList/MachineListTable/MachineListPagination";
-import type { Machine, MachineDetails } from "app/store/machine/types";
-import { FilterMachines } from "app/store/machine/utils";
-import { useFetchMachines } from "app/store/machine/utils/hooks";
-import { actions as tagActions } from "app/store/tag";
+import DebounceSearchBox from "@/app/base/components/DebounceSearchBox";
+import { MachineSelectTable } from "@/app/base/components/MachineSelectTable/MachineSelectTable";
+import MachineListPagination from "@/app/machines/views/MachineList/MachineListTable/MachineListPagination";
+import type { Machine, MachineDetails } from "@/app/store/machine/types";
+import { FilterMachines } from "@/app/store/machine/utils";
+import { useFetchMachines } from "@/app/store/machine/utils/hooks";
+import { actions as tagActions } from "@/app/store/tag";
 
 export enum Label {
   Loading = "Loading...",

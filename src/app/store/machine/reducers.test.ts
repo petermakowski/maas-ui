@@ -15,7 +15,7 @@ import {
   NodeStatus,
   NodeStatusCode,
   FetchNodeStatus,
-} from "app/store/types/node";
+} from "@/app/store/types/node";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
   filterGroup as filterGroupFactory,

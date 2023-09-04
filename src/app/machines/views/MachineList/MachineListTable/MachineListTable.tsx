@@ -16,23 +16,23 @@ import {
 } from "./tableModels";
 import type { MachineListTableProps } from "./types";
 
-import TableHeader from "app/base/components/TableHeader";
-import { useSendAnalytics } from "app/base/hooks";
-import { SortDirection } from "app/base/types";
+import TableHeader from "@/app/base/components/TableHeader";
+import { useSendAnalytics } from "@/app/base/hooks";
+import { SortDirection } from "@/app/base/types";
 import {
   columnLabels,
   columns,
   MachineColumns,
   groupOptions,
-} from "app/machines/constants";
-import { actions as generalActions } from "app/store/general";
-import { FetchGroupKey } from "app/store/machine/types";
-import { FilterMachines } from "app/store/machine/utils";
-import { useMachineSelectedCount } from "app/store/machine/utils/hooks";
-import { actions as resourcePoolActions } from "app/store/resourcepool";
-import { actions as tagActions } from "app/store/tag";
-import { actions as userActions } from "app/store/user";
-import { actions as zoneActions } from "app/store/zone";
+} from "@/app/machines/constants";
+import { actions as generalActions } from "@/app/store/general";
+import { FetchGroupKey } from "@/app/store/machine/types";
+import { FilterMachines } from "@/app/store/machine/utils";
+import { useMachineSelectedCount } from "@/app/store/machine/utils/hooks";
+import { actions as resourcePoolActions } from "@/app/store/resourcepool";
+import { actions as tagActions } from "@/app/store/tag";
+import { actions as userActions } from "@/app/store/user";
+import { actions as zoneActions } from "@/app/store/zone";
 
 export enum Label {
   Loading = "Loading machines",

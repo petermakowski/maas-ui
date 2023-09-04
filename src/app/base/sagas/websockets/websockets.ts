@@ -6,7 +6,7 @@ import type {
 import type { Action, AnyAction } from "redux";
 import type { EventChannel } from "redux-saga";
 import { eventChannel } from "redux-saga";
-import type { SagaGenerator } from "typed-redux-saga/macro";
+import type { SagaGenerator } from "typed-redux-saga";
 import {
   all,
   call,
@@ -15,7 +15,7 @@ import {
   takeEvery,
   takeLatest,
   race,
-} from "typed-redux-saga/macro";
+} from "typed-redux-saga";
 
 import type {
   WebSocketAction,
@@ -39,9 +39,12 @@ import {
 } from "./handlers/polling-requests";
 import { handleUnsubscribe, isUnsubscribeAction } from "./handlers/unsubscribe";
 
-import type { MessageHandler, NextActionCreator } from "app/base/sagas/actions";
-import type { GenericMeta } from "app/store/utils/slice";
-import { WebSocketMessageType } from "websocket-client";
+import type {
+  MessageHandler,
+  NextActionCreator,
+} from "@/app/base/sagas/actions";
+import type { GenericMeta } from "@/app/store/utils/slice";
+import { WebSocketMessageType } from "@/websocket-client";
 
 export type WebSocketChannel = EventChannel<
   | ReconnectingWebSocketEvent

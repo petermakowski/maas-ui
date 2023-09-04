@@ -4,12 +4,12 @@ import { Spinner } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom-v5-compat";
 
-import urls from "app/base/urls";
-import { actions as fabricActions } from "app/store/fabric";
-import fabricSelectors from "app/store/fabric/selectors";
-import type { Fabric, FabricMeta } from "app/store/fabric/types";
-import { getFabricDisplay } from "app/store/fabric/utils";
-import type { RootState } from "app/store/root/types";
+import urls from "@/app/base/urls";
+import { actions as fabricActions } from "@/app/store/fabric";
+import fabricSelectors from "@/app/store/fabric/selectors";
+import type { Fabric, FabricMeta } from "@/app/store/fabric/types";
+import { getFabricDisplay } from "@/app/store/fabric/utils";
+import type { RootState } from "@/app/store/root/types";
 
 type Props = {
   id?: Fabric[FabricMeta.PK] | null;

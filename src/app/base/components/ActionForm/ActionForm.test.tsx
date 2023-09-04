@@ -5,8 +5,8 @@ import configureStore from "redux-mock-store";
 
 import ActionForm, { Labels } from "./ActionForm";
 
-import { TestIds } from "app/base/components/FormikFormButtons";
-import type { RootState } from "app/store/root/types";
+import { TestIds } from "@/app/base/components/FormikFormButtons";
+import type { RootState } from "@/app/store/root/types";
 import { rootState as rootStateFactory } from "testing/factories";
 import { userEvent, render, screen } from "testing/utils";
 

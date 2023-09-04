@@ -1,6 +1,6 @@
-import Meter from "app/base/components/Meter";
-import { COLOURS } from "app/base/constants";
-import { formatBytes } from "app/utils";
+import Meter from "@/app/base/components/Meter";
+import { COLOURS } from "@/app/base/constants";
+import { formatBytes } from "@/app/utils";
 
 type Props = {
   allocated: number;

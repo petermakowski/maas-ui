@@ -7,13 +7,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import type { Dispatch } from "redux";
 
-import NotificationGroup from "app/base/components/NotificationGroup";
-import NotificationGroupNotification from "app/base/components/NotificationGroup/Notification";
-import { actions as messageActions } from "app/store/message";
-import messageSelectors from "app/store/message/selectors";
-import type { Message } from "app/store/message/types";
-import { actions as notificationActions } from "app/store/notification";
-import notificationSelectors from "app/store/notification/selectors";
+import NotificationGroup from "@/app/base/components/NotificationGroup";
+import NotificationGroupNotification from "@/app/base/components/NotificationGroup/Notification";
+import { actions as messageActions } from "@/app/store/message";
+import messageSelectors from "@/app/store/message/selectors";
+import type { Message } from "@/app/store/message/types";
+import { actions as notificationActions } from "@/app/store/notification";
+import notificationSelectors from "@/app/store/notification/selectors";
 
 const generateMessages = (messages: Message[], dispatch: Dispatch) =>
   messages.map(({ id, message, severity, temporary }) => (

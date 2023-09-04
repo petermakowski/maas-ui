@@ -1,8 +1,8 @@
 import StatusBar from "./StatusBar";
 
-import { ConfigNames } from "app/store/config/types";
-import type { RootState } from "app/store/root/types";
-import { NodeStatus, NodeType } from "app/store/types/node";
+import { ConfigNames } from "@/app/store/config/types";
+import type { RootState } from "@/app/store/root/types";
+import { NodeStatus, NodeType } from "@/app/store/types/node";
 import {
   config as configFactory,
   configState as configStateFactory,

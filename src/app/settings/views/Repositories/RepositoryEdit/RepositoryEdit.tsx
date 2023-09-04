@@ -6,11 +6,11 @@ import { useParams } from "react-router-dom-v5-compat";
 
 import RepositoryForm from "../RepositoryForm";
 
-import { useGetURLId } from "app/base/hooks/urls";
-import { actions as repositoryActions } from "app/store/packagerepository";
-import repositorySelectors from "app/store/packagerepository/selectors";
-import { ResourcePoolMeta } from "app/store/resourcepool/types";
-import type { RootState } from "app/store/root/types";
+import { useGetURLId } from "@/app/base/hooks/urls";
+import { actions as repositoryActions } from "@/app/store/packagerepository";
+import repositorySelectors from "@/app/store/packagerepository/selectors";
+import { ResourcePoolMeta } from "@/app/store/resourcepool/types";
+import type { RootState } from "@/app/store/root/types";
 
 export const RepositoryEdit = (): JSX.Element => {
   const dispatch = useDispatch();

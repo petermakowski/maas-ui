@@ -10,11 +10,11 @@ import Footer from "../Footer";
 import MainContentSection from "../MainContentSection";
 import SecondaryNavigation from "../SecondaryNavigation";
 
-import type { AppSidePanelProps } from "app/base/components/AppSidePanel";
-import { useThemeContext } from "app/base/theme-context";
-import { preferencesNavItems } from "app/preferences/constants";
-import { settingsNavItems } from "app/settings/constants";
-import status from "app/store/status/selectors";
+import type { AppSidePanelProps } from "@/app/base/components/AppSidePanel";
+import { useThemeContext } from "@/app/base/theme-context";
+import { preferencesNavItems } from "@/app/preferences/constants";
+import { settingsNavItems } from "@/app/settings/constants";
+import status from "@/app/store/status/selectors";
 
 export type Props = {
   children?: ReactNode;

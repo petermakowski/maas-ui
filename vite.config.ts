@@ -10,12 +10,11 @@ const commitHash = require("child_process")
 // https://vitejs.dev/config/
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, "./");
+  // TODO: fix loading env variables
+  const env = loadEnv(mode, process.cwd(), "");
   return {
-    envDir: "./",
     define: {
       "process.env.NODE_DEBUG": process.env.NODE_DEBUG,
-      "process.env.BASENAME": process.env.BASENAME,
       "import.meta.env.VITE_REACT_APP_GIT_SHA": JSON.stringify(commitHash),
     },
     plugins: [react()],

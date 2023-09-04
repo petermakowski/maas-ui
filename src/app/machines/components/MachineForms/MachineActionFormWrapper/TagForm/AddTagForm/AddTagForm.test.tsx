@@ -3,12 +3,12 @@ import configureStore from "redux-mock-store";
 import AddTagForm from "./AddTagForm";
 import type { Props } from "./AddTagForm";
 
-import { actions as machineActions } from "app/store/machine";
-import type { FetchFilters } from "app/store/machine/types";
-import { FetchGroupKey } from "app/store/machine/types";
-import * as query from "app/store/machine/utils/query";
-import type { RootState } from "app/store/root/types";
-import { FetchNodeStatus } from "app/store/types/node";
+import { actions as machineActions } from "@/app/store/machine";
+import type { FetchFilters } from "@/app/store/machine/types";
+import { FetchGroupKey } from "@/app/store/machine/types";
+import * as query from "@/app/store/machine/utils/query";
+import type { RootState } from "@/app/store/root/types";
+import { FetchNodeStatus } from "@/app/store/types/node";
 import {
   rootState as rootStateFactory,
   machineState as machineStateFactory,

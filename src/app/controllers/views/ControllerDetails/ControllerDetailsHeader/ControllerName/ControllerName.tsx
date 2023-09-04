@@ -2,13 +2,13 @@ import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import NodeName from "app/base/components/NodeName";
-import { actions as controllerActions } from "app/store/controller";
-import controllerSelectors from "app/store/controller/selectors";
-import type { Controller } from "app/store/controller/types";
-import { actions as domainActions } from "app/store/domain";
-import domainSelectors from "app/store/domain/selectors";
-import type { RootState } from "app/store/root/types";
+import NodeName from "@/app/base/components/NodeName";
+import { actions as controllerActions } from "@/app/store/controller";
+import controllerSelectors from "@/app/store/controller/selectors";
+import type { Controller } from "@/app/store/controller/types";
+import { actions as domainActions } from "@/app/store/domain";
+import domainSelectors from "@/app/store/domain/selectors";
+import type { RootState } from "@/app/store/root/types";
 
 type Props = {
   id: Controller["system_id"];

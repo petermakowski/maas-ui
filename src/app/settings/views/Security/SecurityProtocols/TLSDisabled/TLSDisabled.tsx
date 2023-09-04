@@ -4,7 +4,7 @@ import {
   Icon,
 } from "@canonical/react-components";
 
-import docsUrls from "app/base/docsUrls";
+import docsUrls from "@/app/base/docsUrls";
 
 const TLSDisabled = (): JSX.Element => {
   return (

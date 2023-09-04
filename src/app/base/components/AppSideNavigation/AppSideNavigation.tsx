@@ -15,18 +15,18 @@ import {
   useCompletedIntro,
   useCompletedUserIntro,
   useGoogleAnalytics,
-} from "app/base/hooks";
-import { useGlobalKeyShortcut } from "app/base/hooks/base";
-import { useThemeContext } from "app/base/theme-context";
-import urls from "app/base/urls";
-import authSelectors from "app/store/auth/selectors";
-import configSelectors from "app/store/config/selectors";
-import { actions as controllerActions } from "app/store/controller";
-import controllerSelectors from "app/store/controller/selectors";
-import { actions as podActions } from "app/store/pod";
-import podSelectors from "app/store/pod/selectors";
-import type { RootState } from "app/store/root/types";
-import { actions as statusActions } from "app/store/status";
+} from "@/app/base/hooks";
+import { useGlobalKeyShortcut } from "@/app/base/hooks/base";
+import { useThemeContext } from "@/app/base/theme-context";
+import urls from "@/app/base/urls";
+import authSelectors from "@/app/store/auth/selectors";
+import configSelectors from "@/app/store/config/selectors";
+import { actions as controllerActions } from "@/app/store/controller";
+import controllerSelectors from "@/app/store/controller/selectors";
+import { actions as podActions } from "@/app/store/pod";
+import podSelectors from "@/app/store/pod/selectors";
+import type { RootState } from "@/app/store/root/types";
+import { actions as statusActions } from "@/app/store/status";
 
 const AppSideNavigation = (): JSX.Element => {
   const dispatch = useDispatch();

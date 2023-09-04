@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { Row, Col } from "@canonical/react-components";
 import { useSelector, useDispatch } from "react-redux";
 
-import Definition from "app/base/components/Definition";
-import type { RootState } from "app/store/root/types";
-import { actions } from "app/store/zone";
-import zoneSelectors from "app/store/zone/selectors";
+import Definition from "@/app/base/components/Definition";
+import type { RootState } from "@/app/store/root/types";
+import { actions } from "@/app/store/zone";
+import zoneSelectors from "@/app/store/zone/selectors";
 
 type Props = {
   id: number;

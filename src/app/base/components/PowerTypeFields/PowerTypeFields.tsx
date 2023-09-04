@@ -10,16 +10,16 @@ import IPMIPowerFields from "./IPMIPowerFields";
 import type { LXDPowerFieldsProps } from "./LXDPowerFields";
 import LXDPowerFields from "./LXDPowerFields";
 
-import FormikField from "app/base/components/FormikField";
-import type { AnyObject } from "app/base/types";
-import { actions as generalActions } from "app/store/general";
-import { PowerTypeNames } from "app/store/general/constants";
-import { powerTypes as powerTypesSelectors } from "app/store/general/selectors";
-import { PowerFieldScope } from "app/store/general/types";
+import FormikField from "@/app/base/components/FormikField";
+import type { AnyObject } from "@/app/base/types";
+import { actions as generalActions } from "@/app/store/general";
+import { PowerTypeNames } from "@/app/store/general/constants";
+import { powerTypes as powerTypesSelectors } from "@/app/store/general/selectors";
+import { PowerFieldScope } from "@/app/store/general/types";
 import {
   getFieldsInScope,
   getPowerTypeFromName,
-} from "app/store/general/utils";
+} from "@/app/store/general/utils";
 
 type Props = {
   customFieldProps?: {

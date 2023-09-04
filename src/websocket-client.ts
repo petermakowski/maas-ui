@@ -1,8 +1,8 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import ReconnectingWebSocket from "reconnecting-websocket";
 
-import type { AnyObject } from "app/base/types";
-import { getCookie } from "app/utils";
+import type { AnyObject } from "@/app/base/types";
+import { getCookie } from "@/app/utils";
 
 // A model and method (e.g. 'users.list')
 export type WebSocketEndpoint = string;
@@ -129,7 +129,8 @@ export class WebSocketClient {
     }
     const { hostname, port } = window.location;
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    return `${protocol}//${hostname}:${port}${process.env.REACT_APP_BASENAME}/ws?csrftoken=${csrftoken}`;
+    // TODO: fix env variables loading
+    return `${protocol}//${hostname}:${port}/MAAS/ws?csrftoken=${csrftoken}`;
   }
 
   /**

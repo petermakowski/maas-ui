@@ -8,13 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Placeholder from "../Placeholder";
 import VisuallyHidden from "../VisuallyHidden";
 
-import DoubleRow from "app/base/components/DoubleRow";
-import machineSelectors from "app/store/machine/selectors";
-import type { Machine } from "app/store/machine/types";
-import { actions as tagActions } from "app/store/tag";
-import tagSelectors from "app/store/tag/selectors";
-import type { Tag } from "app/store/tag/types";
-import { getTagNamesForIds } from "app/store/tag/utils";
+import DoubleRow from "@/app/base/components/DoubleRow";
+import machineSelectors from "@/app/store/machine/selectors";
+import type { Machine } from "@/app/store/machine/types";
+import { actions as tagActions } from "@/app/store/tag";
+import tagSelectors from "@/app/store/tag/selectors";
+import type { Tag } from "@/app/store/tag/types";
+import { getTagNamesForIds } from "@/app/store/tag/utils";
 
 export enum Label {
   Loading = "Loading...",

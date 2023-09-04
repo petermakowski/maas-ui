@@ -1,7 +1,7 @@
 import GroupColumn from "./GroupColumn";
 
-import { FetchGroupKey } from "app/store/machine/types";
-import { useFetchMachineCount } from "app/store/machine/utils/hooks";
+import { FetchGroupKey } from "@/app/store/machine/types";
+import { useFetchMachineCount } from "@/app/store/machine/utils/hooks";
 import { machineStateListGroup as machineStateListGroupFactory } from "testing/factories";
 import { renderWithMockStore, screen, waitFor } from "testing/utils";
 

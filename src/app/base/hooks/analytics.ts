@@ -3,10 +3,10 @@ import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom-v5-compat";
 
-import type { UsabillaLive } from "app/base/types";
-import authSelectors from "app/store/auth/selectors";
-import configSelectors from "app/store/config/selectors";
-import { version as versionSelectors } from "app/store/general/selectors";
+import type { UsabillaLive } from "@/app/base/types";
+import authSelectors from "@/app/store/auth/selectors";
+import configSelectors from "@/app/store/config/selectors";
+import { version as versionSelectors } from "@/app/store/general/selectors";
 
 declare global {
   interface Window {

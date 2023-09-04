@@ -4,12 +4,12 @@ import { Spinner } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom-v5-compat";
 
-import urls from "app/base/urls";
-import type { RootState } from "app/store/root/types";
-import { actions as subnetActions } from "app/store/subnet";
-import subnetSelectors from "app/store/subnet/selectors";
-import type { Subnet, SubnetMeta } from "app/store/subnet/types";
-import { getSubnetDisplay } from "app/store/subnet/utils";
+import urls from "@/app/base/urls";
+import type { RootState } from "@/app/store/root/types";
+import { actions as subnetActions } from "@/app/store/subnet";
+import subnetSelectors from "@/app/store/subnet/selectors";
+import type { Subnet, SubnetMeta } from "@/app/store/subnet/types";
+import { getSubnetDisplay } from "@/app/store/subnet/utils";
 
 type Props = {
   id?: Subnet[SubnetMeta.PK] | null;

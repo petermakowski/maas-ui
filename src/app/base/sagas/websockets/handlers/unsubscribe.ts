@@ -1,10 +1,10 @@
 import type { AnyAction } from "redux";
 import { select, type SagaGenerator, put } from "typed-redux-saga";
 
-import { actions as machineActions } from "app/store/machine";
-import machineSelectors from "app/store/machine/selectors";
-import { MachineMeta } from "app/store/machine/types";
-import type { WebSocketAction } from "websocket-client";
+import { actions as machineActions } from "@/app/store/machine";
+import machineSelectors from "@/app/store/machine/selectors";
+import { MachineMeta } from "@/app/store/machine/types";
+import type { WebSocketAction } from "@/websocket-client";
 
 /**
  * Handle unsubscribing from unused entities and cleaning up the request.

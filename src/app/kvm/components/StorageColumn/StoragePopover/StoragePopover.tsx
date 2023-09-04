@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 import { Fragment } from "react";
 
-import Meter from "app/base/components/Meter";
-import Popover from "app/base/components/Popover";
-import { COLOURS } from "app/base/constants";
-import type { KVMStoragePoolResources } from "app/kvm/types";
-import { getSortedPoolsArray } from "app/kvm/utils";
-import type { Pod } from "app/store/pod/types";
-import { formatBytes } from "app/utils";
+import Meter from "@/app/base/components/Meter";
+import Popover from "@/app/base/components/Popover";
+import { COLOURS } from "@/app/base/constants";
+import type { KVMStoragePoolResources } from "@/app/kvm/types";
+import { getSortedPoolsArray } from "@/app/kvm/utils";
+import type { Pod } from "@/app/store/pod/types";
+import { formatBytes } from "@/app/utils";
 
 type Props = {
   children: ReactNode;

@@ -3,24 +3,24 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom-v5-compat";
 
-import { useCanEdit, useIsRackControllerConnected } from "app/base/hooks";
-import urls from "app/base/urls";
-import MachineNotifications from "app/machines/views/MachineDetails/MachineNotifications";
-import { actions as generalActions } from "app/store/general";
-import { architectures as architecturesSelectors } from "app/store/general/selectors";
-import machineSelectors from "app/store/machine/selectors";
-import type { Machine } from "app/store/machine/types";
+import { useCanEdit, useIsRackControllerConnected } from "@/app/base/hooks";
+import urls from "@/app/base/urls";
+import MachineNotifications from "@/app/machines/views/MachineDetails/MachineNotifications";
+import { actions as generalActions } from "@/app/store/general";
+import { architectures as architecturesSelectors } from "@/app/store/general/selectors";
+import machineSelectors from "@/app/store/machine/selectors";
+import type { Machine } from "@/app/store/machine/types";
 import {
   isMachineDetails,
   useHasInvalidArchitecture,
-} from "app/store/machine/utils";
+} from "@/app/store/machine/utils";
 import {
   getHasSyncFailed,
   isDeployedWithHardwareSync,
-} from "app/store/machine/utils/common";
-import type { RootState } from "app/store/root/types";
-import { PowerState } from "app/store/types/enum";
-import type { NodeEvent } from "app/store/types/node";
+} from "@/app/store/machine/utils/common";
+import type { RootState } from "@/app/store/root/types";
+import { PowerState } from "@/app/store/types/enum";
+import type { NodeEvent } from "@/app/store/types/node";
 
 type Props = {
   id: Machine["system_id"];

@@ -4,9 +4,9 @@ import type { HTMLProps } from "react";
 import { Select } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 
-import FormikField from "app/base/components/FormikField";
-import { actions as generalActions } from "app/store/general";
-import { architectures as architecturesSelectors } from "app/store/general/selectors";
+import FormikField from "@/app/base/components/FormikField";
+import { actions as generalActions } from "@/app/store/general";
+import { architectures as architecturesSelectors } from "@/app/store/general/selectors";
 
 type Props = {
   disabled?: boolean;

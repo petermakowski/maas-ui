@@ -15,18 +15,18 @@ import ThemePreviewContextProvider from "./base/theme-context";
 import { MAAS_UI_ID } from "./constants";
 import { formatErrors } from "./utils";
 
-import Routes from "app/Routes";
-import AppSideNavigation from "app/base/components/AppSideNavigation";
-import Login from "app/base/components/Login";
-import StatusBar from "app/base/components/StatusBar";
-import FileContext, { fileContextStore } from "app/base/file-context";
-import { actions as authActions } from "app/store/auth";
-import authSelectors from "app/store/auth/selectors";
-import { actions as configActions } from "app/store/config";
-import configSelectors from "app/store/config/selectors";
-import { actions as generalActions } from "app/store/general";
-import { actions as statusActions } from "app/store/status";
-import status from "app/store/status/selectors";
+import Routes from "@/app/Routes";
+import AppSideNavigation from "@/app/base/components/AppSideNavigation";
+import Login from "@/app/base/components/Login";
+import StatusBar from "@/app/base/components/StatusBar";
+import FileContext, { fileContextStore } from "@/app/base/file-context";
+import { actions as authActions } from "@/app/store/auth";
+import authSelectors from "@/app/store/auth/selectors";
+import { actions as configActions } from "@/app/store/config";
+import configSelectors from "@/app/store/config/selectors";
+import { actions as generalActions } from "@/app/store/general";
+import { actions as statusActions } from "@/app/store/status";
+import status from "@/app/store/status/selectors";
 
 export enum VaultErrors {
   REQUEST_FAILED = "Vault request failed",

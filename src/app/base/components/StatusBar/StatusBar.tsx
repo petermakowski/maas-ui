@@ -2,22 +2,22 @@ import type { ReactNode } from "react";
 
 import { useSelector } from "react-redux";
 
-import configSelectors from "app/store/config/selectors";
-import controllerSelectors from "app/store/controller/selectors";
+import configSelectors from "@/app/store/config/selectors";
+import controllerSelectors from "@/app/store/controller/selectors";
 import {
   isControllerDetails,
   isRack,
   isRegionAndRack,
-} from "app/store/controller/utils";
-import { version as versionSelectors } from "app/store/general/selectors";
-import machineSelectors from "app/store/machine/selectors";
-import type { MachineDetails } from "app/store/machine/types";
+} from "@/app/store/controller/utils";
+import { version as versionSelectors } from "@/app/store/general/selectors";
+import machineSelectors from "@/app/store/machine/selectors";
+import type { MachineDetails } from "@/app/store/machine/types";
 import {
   isDeployedWithHardwareSync,
   isMachineDetails,
-} from "app/store/machine/utils";
-import { NodeStatus } from "app/store/types/node";
-import { getTimeDistanceString } from "app/utils/time";
+} from "@/app/store/machine/utils";
+import { NodeStatus } from "@/app/store/types/node";
+import { getTimeDistanceString } from "@/app/utils/time";
 
 const getLastCommissionedString = (machine: MachineDetails) => {
   if (machine.status === NodeStatus.COMMISSIONING) {

@@ -1,6 +1,6 @@
 import { Button } from "@canonical/react-components";
 
-import { useUsabilla } from "app/base/hooks";
+import { useUsabilla } from "@/app/base/hooks";
 
 export const Footer = (): JSX.Element => {
   const allowUsabilla = useUsabilla();

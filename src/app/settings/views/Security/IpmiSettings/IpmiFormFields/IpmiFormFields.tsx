@@ -1,8 +1,8 @@
 import { Link } from "@canonical/react-components";
 
-import FormikField from "app/base/components/FormikField";
-import TooltipButton from "app/base/components/TooltipButton";
-import docsUrls from "app/base/docsUrls";
+import FormikField from "@/app/base/components/FormikField";
+import TooltipButton from "@/app/base/components/TooltipButton";
+import docsUrls from "@/app/base/docsUrls";
 
 export enum Labels {
   IPMIUsername = "MAAS generated IPMI username",

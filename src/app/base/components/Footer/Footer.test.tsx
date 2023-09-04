@@ -2,7 +2,7 @@ import MockDate from "mockdate";
 
 import Footer from "./Footer";
 
-import { ConfigNames } from "app/store/config/types";
+import { ConfigNames } from "@/app/store/config/types";
 import {
   config as configFactory,
   configState as configStateFactory,

@@ -1,15 +1,8 @@
 import type { AnyAction } from "redux";
-import type { SagaGenerator } from "typed-redux-saga/macro";
-import {
-  cancel,
-  cancelled,
-  delay,
-  fork,
-  put,
-  take,
-} from "typed-redux-saga/macro";
+import type { SagaGenerator } from "typed-redux-saga";
+import { cancel, cancelled, delay, fork, put, take } from "typed-redux-saga";
 
-import type { WebSocketAction } from "websocket-client";
+import type { WebSocketAction } from "@/websocket-client";
 
 const DEFAULT_POLL_INTERVAL = 10000;
 

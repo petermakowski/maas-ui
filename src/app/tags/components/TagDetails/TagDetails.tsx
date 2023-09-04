@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import AppliedTo from "../AppliedTo";
 
-import Definition from "app/base/components/Definition";
-import ModelNotFound from "app/base/components/ModelNotFound";
-import urls from "app/base/urls";
-import type { RootState } from "app/store/root/types";
-import { actions as tagActions } from "app/store/tag";
-import tagSelectors from "app/store/tag/selectors";
-import type { Tag, TagMeta } from "app/store/tag/types";
-import { isId } from "app/utils";
+import Definition from "@/app/base/components/Definition";
+import ModelNotFound from "@/app/base/components/ModelNotFound";
+import urls from "@/app/base/urls";
+import type { RootState } from "@/app/store/root/types";
+import { actions as tagActions } from "@/app/store/tag";
+import tagSelectors from "@/app/store/tag/selectors";
+import type { Tag, TagMeta } from "@/app/store/tag/types";
+import { isId } from "@/app/utils";
 
 type Props = {
   id: Tag[TagMeta.PK] | null;

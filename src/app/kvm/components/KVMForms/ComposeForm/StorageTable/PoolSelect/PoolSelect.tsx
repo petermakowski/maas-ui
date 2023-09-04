@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 
 import type { ComposeFormValues, DiskField } from "../../ComposeForm";
 
-import Meter from "app/base/components/Meter";
-import { COLOURS } from "app/base/constants";
-import { getSortedPoolsArray } from "app/kvm/utils";
-import podSelectors from "app/store/pod/selectors";
-import type { Pod, PodDetails } from "app/store/pod/types";
-import type { RootState } from "app/store/root/types";
-import { formatBytes } from "app/utils";
+import Meter from "@/app/base/components/Meter";
+import { COLOURS } from "@/app/base/constants";
+import { getSortedPoolsArray } from "@/app/kvm/utils";
+import podSelectors from "@/app/store/pod/selectors";
+import type { Pod, PodDetails } from "@/app/store/pod/types";
+import type { RootState } from "@/app/store/root/types";
+import { formatBytes } from "@/app/utils";
 
 type RequestMap = { [location: string]: number };
 

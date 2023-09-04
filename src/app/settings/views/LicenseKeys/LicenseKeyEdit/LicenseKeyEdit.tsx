@@ -6,10 +6,10 @@ import { useParams } from "react-router-dom-v5-compat";
 
 import LicenseKeyForm from "../LicenseKeyForm";
 
-import { actions as licenseKeysActions } from "app/store/licensekeys";
-import licenseKeysSelectors from "app/store/licensekeys/selectors";
-import type { LicenseKeys } from "app/store/licensekeys/types";
-import type { RootState } from "app/store/root/types";
+import { actions as licenseKeysActions } from "@/app/store/licensekeys";
+import licenseKeysSelectors from "@/app/store/licensekeys/selectors";
+import type { LicenseKeys } from "@/app/store/licensekeys/types";
+import type { RootState } from "@/app/store/root/types";
 
 export enum Labels {
   Loading = "Loading...",
