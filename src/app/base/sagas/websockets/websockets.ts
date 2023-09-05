@@ -127,6 +127,7 @@ export function createConnection(
       } catch (error) {
         reject(error);
       }
+
       websocketClient.connect();
     }
     if (websocketClient.rws) {
@@ -159,7 +160,8 @@ export function watchWebsocketEvents(
       };
     }
     return () => {
-      socketClient.rws?.close();
+      console.warn("watchWebsocketEvents channel.close called");
+      // socketClient.rws?.close();
     };
   });
 }
@@ -204,7 +206,7 @@ export function* handleWebsocketEvent(
       }
 
       case "open": {
-        yield* put({ type: "status/websocketConnected" });
+        yield* put({ type: "status/websocketConnect" });
         resetLoaded();
         break;
       }
@@ -409,9 +411,13 @@ export function* setupWebSocket({
   let socketClient: WebSocketClient;
   try {
     socketClient = yield* call(createConnection, websocketClient);
-    yield* put({ type: "status/websocketConnected" });
+    // TODO: START - actions should be handled in websocket open
+    yield* put({
+      type: "status/websocketConnected",
+    });
     // Set up the list of models that have been loaded.
     resetLoaded();
+    // TODO: END
     const socketChannel = yield* call(watchWebsocketEvents, socketClient);
     while (true) {
       const { cancel } = yield* race({
@@ -465,13 +471,23 @@ export function* setupWebSocket({
  * Send a ping message to the server every 50 seconds to keep the connection alive.
  *
  **/
-export const WEBSOCKET_PING_INTERVAL = 50 * 1000; // 50 seconds
+export const WEBSOCKET_PING_INTERVAL = 2 * 1000; // 50 seconds
 function* handleWebsocketPing() {
   yield* put({
     type: "status/websocketPing",
     meta: {
       poll: true,
       pollInterval: WEBSOCKET_PING_INTERVAL,
+      model: "status",
+      method: "ping",
+    },
+  });
+}
+function* handleWebsocketPingStop() {
+  yield* put({
+    type: "status/websocketPingStop",
+    meta: {
+      pollStop: true,
       model: "status",
       method: "ping",
     },
@@ -492,4 +508,12 @@ export function* watchWebSockets(
     messageHandlers,
   });
   yield* takeLatest("status/websocketConnected", handleWebsocketPing);
+  // TODO: mark methods that trigger subscription as needing refetch on disconnect
+  // TODO: somathing similar to
+  // Attach the additional actions that should be taken by the
+  // websocket channel.
+  // messageHandlers.map(({ action, method }) =>
+  //   takeEvery(action, method, socketClient, sendMessage)
+  // );
+  yield* takeLatest("status/websocketDisconnected", handleWebsocketPingStop);
 }

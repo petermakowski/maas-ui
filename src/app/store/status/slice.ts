@@ -13,10 +13,13 @@ const statusSlice = createSlice({
     authenticationError: null,
     externalAuthURL: null,
     externalLoginURL: null,
-    connected: false,
-    connecting: false,
-    noUsers: false,
+    websocket: {
+      connected: false,
+      connecting: false,
+      reconnectionCount: 0,
+    },
     error: null,
+    noUsers: false,
   } as StatusState,
   reducers: {
     checkAuthenticated: {
@@ -108,19 +111,20 @@ const statusSlice = createSlice({
       state.error = action.payload;
     },
     websocketConnect: (state: StatusState) => {
-      state.connecting = true;
+      state.websocket.connecting = true;
     },
     websocketConnected: (state: StatusState) => {
-      state.connected = true;
-      state.connecting = false;
+      state.websocket.connected = true;
+      state.websocket.connecting = false;
       state.authenticationError = null;
       state.error = null;
+      state.websocket.reconnectionCount = state.websocket.reconnectionCount + 1;
     },
     websocketDisconnect: (
       state: StatusState,
       action: PayloadAction<{ code: number; reason: string }>
     ) => {
-      state.connected = false;
+      state.websocket.connected = false;
       if (
         action.payload?.code === 1000 &&
         action.payload?.reason === "Session expired"
@@ -130,7 +134,7 @@ const statusSlice = createSlice({
       }
     },
     websocketDisconnected: (state: StatusState) => {
-      state.connected = false;
+      state.websocket.connected = false;
     },
     websocketError: (
       state: StatusState,

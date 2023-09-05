@@ -512,8 +512,11 @@ export const statusState = define<StatusState>({
   authenticated: false,
   authenticating: false,
   authenticationError: null,
-  connected: false,
-  connecting: false,
+  websocket: () => ({
+    connected: false,
+    connecting: false,
+    reconnectionCount: 0,
+  }),
   error: null,
   externalAuthURL: "http://example.com/auth",
   externalLoginURL: "http://example.com/login",

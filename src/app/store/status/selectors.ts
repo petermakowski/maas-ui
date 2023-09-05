@@ -21,14 +21,24 @@ const authenticating = (state: RootState): boolean =>
  * @param {RootState} state - The redux state.
  * @returns {StatusState["connected"]}StatusState websocket connected status.
  */
-const connected = (state: RootState): boolean => state.status.connected;
+const connected = (state: RootState): boolean =>
+  state.status.websocket.connected;
 
 /**
  * Whether the websocket is connecting.
  * @param {RootState} state - The redux state.
  * @returns {StatusState["connecting"]} TheStatusState connecting status.
  */
-const connecting = (state: RootState): boolean => state.status.connecting;
+const connecting = (state: RootState): boolean =>
+  state.status.websocket.connecting;
+
+/**
+ * Number of times the websocket has been reconnected.
+ * @param {RootState} state - The redux state.
+ * @returns {StatusState["connecting"]} TheStatusState connecting status.
+ */
+const reconnectionCount = (state: RootState) =>
+  state.status.websocket.reconnectionCount;
 
 /**
  * Status errors.
@@ -74,6 +84,7 @@ const status = {
   authenticationError,
   connected,
   connecting,
+  reconnectionCount,
   error,
   externalAuthURL,
   externalLoginURL,

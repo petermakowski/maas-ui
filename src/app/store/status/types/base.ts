@@ -4,8 +4,11 @@ export type StatusState = {
   authenticated: boolean;
   authenticating: boolean;
   authenticationError: APIError;
-  connected: boolean;
-  connecting: boolean;
+  websocket: {
+    connected: boolean;
+    connecting: boolean;
+    reconnectionCount: number;
+  };
   error: APIError;
   externalAuthURL: string | null;
   externalLoginURL: string | null;
