@@ -10,8 +10,8 @@ import {
   podVmCount as podVmCountFactory,
   rootState as rootStateFactory,
   vmCluster as vmClusterFactory,
-  vmHost as vmHostFactory,
   vmClusterState as vmClusterStateFactory,
+  vmHost as vmHostFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 

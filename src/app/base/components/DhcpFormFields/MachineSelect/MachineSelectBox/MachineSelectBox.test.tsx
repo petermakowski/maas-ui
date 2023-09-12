@@ -7,7 +7,7 @@ import { actions as machineActions } from "@/app/store/machine";
 import * as query from "@/app/store/machine/utils/query";
 import type { RootState } from "@/app/store/root/types";
 import { rootState as rootStateFactory } from "testing/factories";
-import { userEvent, screen, waitFor, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

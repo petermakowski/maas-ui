@@ -10,12 +10,12 @@ import urls from "@/app/subnets/urls";
 import {
   fabric as fabricFactory,
   fabricState as fabricStateFactory,
-  vlanState as vlanStateFactory,
-  subnetState as subnetStateFactory,
-  spaceState as spaceStateFactory,
   rootState as rootStateFactory,
+  spaceState as spaceStateFactory,
+  subnetState as subnetStateFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, within, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const getMockState = ({ numberOfFabrics } = { numberOfFabrics: 50 }) => {
   const fabrics = [

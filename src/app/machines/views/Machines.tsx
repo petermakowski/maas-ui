@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate, useMatch } from "react-router-dom-v5-compat";
+import { useLocation, useMatch, useNavigate } from "react-router-dom-v5-compat";
 import { useStorageState } from "react-storage-hooks";
 
 import MachineForms from "../components/MachineForms";
@@ -14,7 +14,7 @@ import { useSidePanel } from "@/app/base/side-panel-context";
 import urls from "@/app/base/urls";
 import MachineList from "@/app/machines/views/MachineList";
 import machineSelectors from "@/app/store/machine/selectors";
-import { selectedToFilters, FilterMachines } from "@/app/store/machine/utils";
+import { FilterMachines, selectedToFilters } from "@/app/store/machine/utils";
 import { useMachineSelectedCount } from "@/app/store/machine/utils/hooks";
 import { getSidePanelTitle } from "@/app/store/utils/node/base";
 

@@ -11,14 +11,14 @@ import urls from "@/app/base/urls";
 import { actions as subnetActions } from "@/app/store/subnet";
 import { actions as vlanActions } from "@/app/store/vlan";
 import {
+  rootState as rootStateFactory,
   subnetDetails as subnetFactory,
   subnetIP as subnetIPFactory,
   subnetState as subnetStateFactory,
-  vlanState as vlanStateFactory,
   vlan as vlanFactory,
-  rootState as rootStateFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
-import { render, screen, within, waitFor, userEvent } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const subnetId = 1;
 const getRootState = () => {

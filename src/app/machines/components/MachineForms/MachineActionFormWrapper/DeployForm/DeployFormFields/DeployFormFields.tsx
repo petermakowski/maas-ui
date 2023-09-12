@@ -23,8 +23,8 @@ import urls from "@/app/base/urls";
 import authSelectors from "@/app/store/auth/selectors";
 import configSelectors from "@/app/store/config/selectors";
 import {
-  osInfo as osInfoSelectors,
   defaultMinHweKernel as defaultMinHweKernelSelectors,
+  osInfo as osInfoSelectors,
 } from "@/app/store/general/selectors";
 import { PodType } from "@/app/store/pod/constants";
 import type { RootState } from "@/app/store/root/types";

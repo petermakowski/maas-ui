@@ -8,8 +8,8 @@ import {
 import { VlanVid } from "@/app/store/vlan/types";
 import {
   fabric as fabricFactory,
-  vlan as vlanFactory,
   vlanDetails as vlanDetailsFactory,
+  vlan as vlanFactory,
 } from "testing/factories";
 
 describe("vlan utils", () => {

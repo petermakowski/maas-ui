@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import type { ButtonProps } from "@canonical/react-components";
 import {
   Button,
-  Switch,
   ContextualMenu,
   Icon,
+  Switch,
   Tooltip,
 } from "@canonical/react-components";
 

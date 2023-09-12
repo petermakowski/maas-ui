@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { Row, NotificationSeverity } from "@canonical/react-components";
+import { NotificationSeverity, Row } from "@canonical/react-components";
 import classNames from "classnames";
 import type { FileRejection, FileWithPath } from "react-dropzone";
 import { useDropzone } from "react-dropzone";

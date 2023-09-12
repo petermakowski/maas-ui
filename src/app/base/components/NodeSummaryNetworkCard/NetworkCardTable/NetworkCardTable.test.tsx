@@ -9,8 +9,8 @@ import {
   vlan as vlanFactory,
 } from "testing/factories";
 import {
-  screen,
   renderWithBrowserRouter,
+  screen,
   userEvent,
   within,
 } from "testing/utils";

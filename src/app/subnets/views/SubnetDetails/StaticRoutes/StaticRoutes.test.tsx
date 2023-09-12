@@ -8,16 +8,16 @@ import { EditStaticRouteFormLabels } from "./EditStaticRouteForm/EditStaticRoute
 import StaticRoutes, { Labels } from "./StaticRoutes";
 
 import {
+  authState as authStateFactory,
   rootState as rootStateFactory,
   staticRoute as staticRouteFactory,
   staticRouteState as staticRouteStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  authState as authStateFactory,
   user as userFactory,
   userState as userStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor, within } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const mockStore = configureStore();
 

@@ -10,19 +10,19 @@ import type { RootState } from "@/app/store/root/types";
 import { actions as userActions } from "@/app/store/user";
 import {
   authState as authStateFactory,
+  rootState as rootStateFactory,
   sshKey as sshKeyFactory,
   sshKeyState as sshKeyStateFactory,
-  rootState as rootStateFactory,
-  user as userFactory,
   userEventError as userEventErrorFactory,
+  user as userFactory,
   userState as userStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  within,
   renderWithBrowserRouter,
   renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();

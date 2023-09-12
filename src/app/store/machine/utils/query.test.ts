@@ -2,9 +2,9 @@ import { FetchGroupKey } from "../types/actions";
 
 import { mapSortDirection } from "./common";
 import {
+  generateCallId,
   timeUntilStale,
   transformToFetchParams,
-  generateCallId,
 } from "./query";
 
 import type { Sort } from "@/app/base/types";

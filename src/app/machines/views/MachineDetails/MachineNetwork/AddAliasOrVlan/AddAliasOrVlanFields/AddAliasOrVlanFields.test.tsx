@@ -6,7 +6,7 @@ import urls from "@/app/base/urls";
 import type { RootState } from "@/app/store/root/types";
 import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import { rootState as rootStateFactory } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 const route = urls.machines.index;
 

@@ -11,11 +11,11 @@ import settingsURLs from "@/app/settings/urls";
 import type { RootState } from "@/app/store/root/types";
 import type { User } from "@/app/store/user/types";
 import {
-  user as userFactory,
   rootState as rootStateFactory,
   statusState as statusStateFactory,
+  user as userFactory,
 } from "testing/factories";
-import { userEvent, screen, render, renderWithMockStore } from "testing/utils";
+import { render, renderWithMockStore, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

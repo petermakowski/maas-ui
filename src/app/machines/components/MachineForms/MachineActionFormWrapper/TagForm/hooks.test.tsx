@@ -10,9 +10,9 @@ import { useFetchTags, useSelectedTags, useUnchangedTags } from "./hooks";
 
 import { actions as tagActions } from "@/app/store/tag";
 import {
+  rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import { waitFor } from "testing/utils";
 

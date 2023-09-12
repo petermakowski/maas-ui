@@ -8,23 +8,23 @@ import type { ControllerDetails } from "@/app/store/controller/types";
 import type { MachineDetails } from "@/app/store/machine/types";
 import type { RootState } from "@/app/store/root/types";
 import {
+  ScriptResultNames,
   ScriptResultStatus,
   ScriptResultType,
-  ScriptResultNames,
 } from "@/app/store/scriptresult/types";
 import { NodeStatus } from "@/app/store/types/node";
 import {
-  controllerState as controllerStateFactory,
   controllerDetails as controllerDetailsFactory,
-  machineState as machineStateFactory,
+  controllerState as controllerStateFactory,
   machineDetails as machineDetailsFactory,
-  rootState as rootStateFactory,
-  scriptResult as scriptResultFactory,
-  scriptResultData as scriptResultDataFactory,
-  scriptResultState as scriptResultStateFactory,
+  machineState as machineStateFactory,
   nodeScriptResultState as nodeScriptResultStateFactory,
+  rootState as rootStateFactory,
+  scriptResultData as scriptResultDataFactory,
+  scriptResult as scriptResultFactory,
+  scriptResultState as scriptResultStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent } from "testing/utils";
 
 jest.mock("js-file-download", () => jest.fn());
 

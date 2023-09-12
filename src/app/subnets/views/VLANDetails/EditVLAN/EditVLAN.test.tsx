@@ -17,7 +17,7 @@ import {
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor, within } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const mockStore = configureStore();
 

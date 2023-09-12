@@ -8,19 +8,19 @@ import { PodType } from "@/app/store/pod/constants";
 import type { RootState } from "@/app/store/root/types";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
-  rootState as rootStateFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
   machineStateList as machineStateListFactory,
   machineStateListGroup as machineStateListGroupFactory,
-  machine as machineFactory,
   pod as podFactory,
   podState as podStateFactory,
+  rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   renderWithBrowserRouter,
   renderWithMockStore,
+  screen,
+  userEvent,
 } from "testing/utils";
 
 enableCallIdMocks();

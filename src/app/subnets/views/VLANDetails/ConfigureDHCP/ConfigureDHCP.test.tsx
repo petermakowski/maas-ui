@@ -18,10 +18,10 @@ import {
   vlanState as vlanStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  waitFor,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  waitFor,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState>();

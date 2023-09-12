@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { Pagination, ModularTable } from "@canonical/react-components";
+import { ModularTable, Pagination } from "@canonical/react-components";
 
 import {
   CellContents,

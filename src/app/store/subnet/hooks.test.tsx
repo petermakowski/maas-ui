@@ -5,15 +5,15 @@ import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import type { MockStoreEnhanced } from "redux-mock-store";
 
-import { useIsDHCPEnabled, useCanBeDeleted } from "./hooks";
+import { useCanBeDeleted, useIsDHCPEnabled } from "./hooks";
 
 import {
+  rootState as rootStateFactory,
   subnetDetails as subnetFactory,
   subnetIP as subnetIPFactory,
   subnetState as subnetStateFactory,
-  vlanState as vlanStateFactory,
   vlan as vlanFactory,
-  rootState as rootStateFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
 
 const mockStore = configureStore();

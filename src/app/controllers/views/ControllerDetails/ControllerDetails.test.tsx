@@ -14,7 +14,7 @@ import {
   controllerState as controllerStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

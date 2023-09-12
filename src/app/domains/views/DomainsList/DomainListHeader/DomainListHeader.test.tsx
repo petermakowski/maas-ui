@@ -10,7 +10,7 @@ import {
   domainState as domainStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 describe("DomainListHeader", () => {
   let initialState: RootState;

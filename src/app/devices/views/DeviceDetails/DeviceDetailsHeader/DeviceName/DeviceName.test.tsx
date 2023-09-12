@@ -4,16 +4,16 @@ import DeviceName from "./DeviceName";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  deviceDetails as deviceDetailsFactory,
+  deviceState as deviceStateFactory,
   domain as domainFactory,
   domainState as domainStateFactory,
   generalState as generalStateFactory,
-  deviceDetails as deviceDetailsFactory,
-  deviceState as deviceStateFactory,
   powerType as powerTypeFactory,
   powerTypesState as powerTypesStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

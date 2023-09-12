@@ -17,29 +17,29 @@ import {
 } from "@/app/store/types/node";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
-  discovery as discoveryFactory,
-  domain as domainFactory,
   device as deviceFactory,
-  machine as machineFactory,
-  testStatus as testStatusFactory,
-  modelRef as modelRefFactory,
-  discoveryState as discoveryStateFactory,
   deviceState as deviceStateFactory,
+  discovery as discoveryFactory,
+  discoveryState as discoveryStateFactory,
+  domain as domainFactory,
   domainState as domainStateFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
-  subnetState as subnetStateFactory,
-  vlanState as vlanStateFactory,
-  rootState as rootStateFactory,
   machineStateList as machineStateListFactory,
   machineStateListGroup as machineStateListGroupFactory,
+  modelRef as modelRefFactory,
+  rootState as rootStateFactory,
+  subnetState as subnetStateFactory,
+  testStatus as testStatusFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
 import { mockFormikFormSaved } from "testing/mockFormikFormSaved";
 import {
-  userEvent,
+  renderWithBrowserRouter,
   screen,
+  userEvent,
   waitFor,
   within,
-  renderWithBrowserRouter,
 } from "testing/utils";
 const mockStore = configureStore<RootState, {}>();
 

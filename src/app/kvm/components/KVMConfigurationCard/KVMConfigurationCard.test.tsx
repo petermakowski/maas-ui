@@ -18,7 +18,7 @@ import {
   zoneGenericActions as zoneGenericActionsFactory,
   zoneState as zoneStateFactory,
 } from "testing/factories";
-import { userEvent, fireEvent, render, screen, waitFor } from "testing/utils";
+import { fireEvent, render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 let state: RootState;

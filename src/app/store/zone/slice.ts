@@ -8,9 +8,9 @@ import type {
   UpdateParams,
   Zone,
   ZoneActionNames,
-  ZonePayloadActionWithIdentifier,
   ZoneGenericActions,
   ZoneModelActions,
+  ZonePayloadActionWithIdentifier,
   ZonePK,
   ZoneState,
 } from "./types";

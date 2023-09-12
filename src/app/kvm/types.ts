@@ -1,6 +1,6 @@
 import type { KVMSidePanelViews } from "./constants";
 
-import type { SidePanelContent, SetSidePanelContent } from "@/app/base/types";
+import type { SetSidePanelContent, SidePanelContent } from "@/app/base/types";
 import type { MachineSidePanelContent } from "@/app/machines/types";
 import type {
   Pod,

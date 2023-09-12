@@ -7,11 +7,11 @@ import {
   machine as machineFactory,
   machineState as machineStateFactory,
   pod as podFactory,
-  podPowerParameters as powerParametersFactory,
   podProject as podProjectFactory,
   podResources as podResourcesFactory,
   podState as podStateFactory,
   podVM as podVMFactory,
+  podPowerParameters as powerParametersFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

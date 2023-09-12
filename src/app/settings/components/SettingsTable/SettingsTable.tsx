@@ -1,9 +1,9 @@
 import {
   Button,
-  Link as VanillaLink,
   MainTable,
   Spinner,
   Tooltip,
+  Link as VanillaLink,
 } from "@canonical/react-components";
 import type { MainTableProps } from "@canonical/react-components";
 import classNames from "classnames";

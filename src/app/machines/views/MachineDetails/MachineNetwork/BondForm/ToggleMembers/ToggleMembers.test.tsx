@@ -8,7 +8,7 @@ import {
   machineInterface as machineInterfaceFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

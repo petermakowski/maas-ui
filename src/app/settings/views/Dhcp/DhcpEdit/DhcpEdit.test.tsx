@@ -10,7 +10,7 @@ import {
   dhcpSnippetState as dhcpSnippetStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("DhcpEdit", () => {
   let state: RootState;

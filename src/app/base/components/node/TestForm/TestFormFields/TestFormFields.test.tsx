@@ -8,8 +8,8 @@ import {
   machineState as machineStateFactory,
   machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
-  scriptState as scriptStateFactory,
   script as scriptFactory,
+  scriptState as scriptStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 

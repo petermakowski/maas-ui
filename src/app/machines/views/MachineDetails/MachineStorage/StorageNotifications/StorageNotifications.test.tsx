@@ -4,9 +4,9 @@ import type { MachineDetails } from "@/app/store/machine/types";
 import type { RootState } from "@/app/store/root/types";
 import { NodeStatusCode } from "@/app/store/types/node";
 import {
+  nodeDisk as diskFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  nodeDisk as diskFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen } from "testing/utils";

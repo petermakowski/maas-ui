@@ -7,12 +7,12 @@ import type { RootState } from "@/app/store/root/types";
 import {
   bootResource as bootResourceFactory,
   bootResourceState as bootResourceStateFactory,
-  bootResourceOtherImage as otherImageFactory,
   config as configFactory,
   configState as configStateFactory,
+  bootResourceOtherImage as otherImageFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("NonUbuntuImageSelect", () => {
   let state: RootState;

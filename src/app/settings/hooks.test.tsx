@@ -15,11 +15,11 @@ import {
   device as deviceFactory,
   deviceState as deviceStateFactory,
   machine as machineFactory,
+  machineStateDetailsItem as machineStateDetailsItemFactory,
   machineState as machineStateFactory,
   rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  machineStateDetailsItem as machineStateDetailsItemFactory,
 } from "testing/factories";
 
 const mockStore = configureStore();

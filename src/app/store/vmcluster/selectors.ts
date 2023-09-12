@@ -3,7 +3,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { generateBaseSelectors } from "../utils";
 
 import { VMClusterMeta } from "./types";
-import type { VMClusterState, VMCluster, VMClusterStatuses } from "./types";
+import type { VMCluster, VMClusterState, VMClusterStatuses } from "./types";
 
 import type { RootState } from "@/app/store/root/types";
 

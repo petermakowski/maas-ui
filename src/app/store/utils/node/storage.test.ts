@@ -41,9 +41,9 @@ import { DiskTypes, StorageLayout } from "@/app/store/types/enum";
 import { NodeStatusCode } from "@/app/store/types/node";
 import {
   controller as controllerFactory,
-  machineDetails as machineDetailsFactory,
   nodeDisk as diskFactory,
   nodeFilesystem as fsFactory,
+  machineDetails as machineDetailsFactory,
   nodePartition as partitionFactory,
 } from "testing/factories";
 

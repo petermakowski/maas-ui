@@ -4,9 +4,9 @@ import SSHKeyList from "./SSHKeyList";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   sshKey as sshKeyFactory,
   sshKeyState as sshKeyStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import {
   renderWithBrowserRouter,

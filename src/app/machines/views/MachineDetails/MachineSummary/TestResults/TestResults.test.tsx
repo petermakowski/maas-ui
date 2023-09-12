@@ -8,7 +8,7 @@ import {
   rootState as rootStateFactory,
   testStatus as testStatusFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 describe("TestResults", () => {
   let state: RootState;

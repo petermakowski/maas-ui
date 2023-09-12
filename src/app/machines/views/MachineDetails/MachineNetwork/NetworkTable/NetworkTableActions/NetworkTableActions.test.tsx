@@ -9,8 +9,8 @@ import { NodeStatus } from "@/app/store/types/node";
 import {
   fabric as fabricFactory,
   machineDetails as machineDetailsFactory,
-  machineState as machineStateFactory,
   machineInterface as machineInterfaceFactory,
+  machineState as machineStateFactory,
   networkLink as networkLinkFactory,
   rootState as rootStateFactory,
   vlan as vlanFactory,

@@ -11,16 +11,16 @@ import { BootResourceSourceType } from "@/app/store/bootresource/types";
 import { ConfigNames } from "@/app/store/config/types";
 import type { RootState } from "@/app/store/root/types";
 import {
+  bootResourceState as bootResourceStateFactory,
+  config as configFactory,
+  configState as configStateFactory,
   bootResourceFetchedArch as fetchedArchFactory,
   bootResourceFetchedImages as fetchedImagesFactory,
   bootResourceFetchedRelease as fetchedReleaseFactory,
-  bootResourceState as bootResourceStateFactory,
-  bootResourceUbuntuSource as sourceFactory,
-  config as configFactory,
-  configState as configStateFactory,
   rootState as rootStateFactory,
+  bootResourceUbuntuSource as sourceFactory,
 } from "testing/factories";
-import { userEvent, screen, render, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 jest.mock("@canonical/react-components/dist/hooks", () => ({
   ...jest.requireActual("@canonical/react-components/dist/hooks"),

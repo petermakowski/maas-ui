@@ -1,4 +1,4 @@
-import type { ReactNode, AriaAttributes } from "react";
+import type { AriaAttributes, ReactNode } from "react";
 import { useMemo, useState } from "react";
 
 import {

@@ -10,7 +10,7 @@ import {
   user as userFactory,
   userState as userStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("UserEdit", () => {
   let state: RootState;

@@ -18,8 +18,8 @@ import { isMachineDetails } from "@/app/store/machine/utils";
 import type { RootState } from "@/app/store/root/types";
 import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import {
-  getInterfaceType,
   getInterfaceById,
+  getInterfaceType,
   getLinkFromNic,
 } from "@/app/store/utils";
 

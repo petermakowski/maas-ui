@@ -5,10 +5,10 @@ import type { PodDetails, PodPowerParameters } from "@/app/store/pod/types";
 import type { RootState } from "@/app/store/root/types";
 import {
   certificateMetadata as certificateFactory,
-  pod as podFactory,
   podDetails as podDetailsFactory,
-  podPowerParameters as powerParametersFactory,
+  pod as podFactory,
   podState as podStateFactory,
+  podPowerParameters as powerParametersFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";

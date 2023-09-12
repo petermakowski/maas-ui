@@ -6,9 +6,9 @@ import { actions as machineActions } from "@/app/store/machine";
 import { PodType } from "@/app/store/pod/constants";
 import type { RootState } from "@/app/store/root/types";
 import {
+  pod as podFactory,
   podState as podStateFactory,
   rootState as rootStateFactory,
-  pod as podFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen } from "testing/utils";
 

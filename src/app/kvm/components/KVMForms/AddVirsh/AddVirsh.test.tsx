@@ -11,10 +11,10 @@ import { actions as zoneActions } from "@/app/store/zone";
 import {
   configState as configStateFactory,
   generalState as generalStateFactory,
-  powerField as powerFieldFactory,
-  powerTypesState as powerTypesStateFactory,
-  powerType as powerTypeFactory,
   podState as podStateFactory,
+  powerField as powerFieldFactory,
+  powerType as powerTypeFactory,
+  powerTypesState as powerTypesStateFactory,
   resourcePool as resourcePoolFactory,
   resourcePoolState as resourcePoolStateFactory,
   rootState as rootStateFactory,

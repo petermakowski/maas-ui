@@ -1,13 +1,13 @@
 import reducers, { actions } from "./slice";
 
 import {
-  subnet as subnetFactory,
   subnetBMCNode as subnetBMCNodeFactory,
   subnetEventError as subnetEventErrorFactory,
+  subnet as subnetFactory,
   subnetScanResult as subnetScanResultFactory,
   subnetState as subnetStateFactory,
-  subnetStatus as subnetStatusFactory,
   subnetStatuses as subnetStatusesFactory,
+  subnetStatus as subnetStatusFactory,
 } from "testing/factories";
 
 describe("subnet reducer", () => {

@@ -1,14 +1,14 @@
 import {
   isControllerDetails,
   isRack,
-  isRegionAndRack,
   isRegion,
+  isRegionAndRack,
 } from "./common";
 
 import { NodeType } from "@/app/store/types/node";
 import {
-  controller as controllerFactory,
   controllerDetails as controllerDetailsFactory,
+  controller as controllerFactory,
 } from "testing/factories";
 
 describe("isControllerDetails", () => {

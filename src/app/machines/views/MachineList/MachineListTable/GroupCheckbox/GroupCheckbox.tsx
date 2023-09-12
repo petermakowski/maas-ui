@@ -5,8 +5,8 @@ import TableCheckbox from "@/app/machines/components/TableCheckbox";
 import { Checked } from "@/app/machines/components/TableCheckbox/TableCheckbox";
 import machineSelectors from "@/app/store/machine/selectors";
 import type {
-  MachineStateListGroup,
   FetchGroupKey,
+  MachineStateListGroup,
 } from "@/app/store/machine/types";
 
 type Props = {
@@ -52,7 +52,7 @@ const GroupCheckbox = ({
       }
       isDisabled={group?.count === 0 || allSelected}
       onGenerateSelected={(checked) => {
-        let newSelected =
+        const newSelected =
           !selected || "filter" in selected
             ? { groups: [] }
             : cloneDeep(selected);

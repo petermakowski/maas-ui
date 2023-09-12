@@ -1,6 +1,6 @@
 import GroupSelect from "./GroupSelect";
 
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 it("executes setGrouping and setHiddenGroups functions on change", async () => {
   const setGrouping = jest.fn();

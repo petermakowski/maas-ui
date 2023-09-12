@@ -75,7 +75,7 @@ export const SelectProjectForm = ({
 
   // Revert to the credentials step if any errors occur when creating pod.
   useEffect(() => {
-    if (!!errors) {
+    if (errors) {
       dispatch(podActions.clearProjects());
       setSubmissionErrors(formatErrors(errors));
       setStep(AddLxdSteps.CREDENTIALS);

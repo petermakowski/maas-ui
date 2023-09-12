@@ -7,7 +7,7 @@ import AddFabric from "./AddFabric";
 
 import { actions as fabricActions } from "@/app/store/fabric";
 import { rootState as rootStateFactory } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const renderTestCase = () => {
   const store = configureStore()(rootStateFactory());

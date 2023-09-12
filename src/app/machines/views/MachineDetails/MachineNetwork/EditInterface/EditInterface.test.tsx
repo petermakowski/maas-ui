@@ -6,8 +6,8 @@ import {
   machineDetails as machineDetailsFactory,
   machineInterface as machineInterfaceFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   networkLink as networkLinkFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

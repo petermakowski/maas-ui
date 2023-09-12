@@ -4,14 +4,14 @@ import DeviceOverviewCard from "./DeviceOverviewCard";
 
 import type { RootState } from "@/app/store/root/types";
 import {
-  device as deviceFactory,
   deviceDetails as deviceDetailsFactory,
+  device as deviceFactory,
   deviceState as deviceStateFactory,
   rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

@@ -1,7 +1,7 @@
 import {
-  Spinner,
   Notification,
   Select,
+  Spinner,
   Textarea,
 } from "@canonical/react-components";
 import { useFormikContext } from "formik";
@@ -42,7 +42,7 @@ const generateOptions = (
   type: Exclude<DHCPFormValues["type"], "">,
   models: ModelType[] | null
 ): Option[] | null =>
-  !!models
+  models
     ? [
         {
           value: "",

@@ -8,7 +8,7 @@ import {
   configState as configStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 const originalEnv = process.env;
 

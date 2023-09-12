@@ -1,5 +1,5 @@
 import type { AnyAction } from "redux";
-import { select, type SagaGenerator, put } from "typed-redux-saga";
+import { put, type SagaGenerator, select } from "typed-redux-saga";
 
 import { actions as machineActions } from "@/app/store/machine";
 import machineSelectors from "@/app/store/machine/selectors";

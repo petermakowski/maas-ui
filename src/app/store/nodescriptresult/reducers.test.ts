@@ -3,8 +3,8 @@ import { actions as scriptResultActions } from "../scriptresult/slice";
 import reducers from "./slice";
 
 import {
-  scriptResult as scriptResultFactory,
   nodeScriptResultState as nodeScriptResultStateFactory,
+  scriptResult as scriptResultFactory,
 } from "testing/factories";
 
 describe("nodescriptresult reducer", () => {

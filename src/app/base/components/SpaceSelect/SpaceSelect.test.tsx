@@ -6,11 +6,11 @@ import SpaceSelect from "./SpaceSelect";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   space as spaceFactory,
   spaceState as spaceStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 

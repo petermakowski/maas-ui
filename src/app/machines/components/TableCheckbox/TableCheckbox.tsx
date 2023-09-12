@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import type { InputProps, PropsWithSpread } from "@canonical/react-components";
 import { Input } from "@canonical/react-components";
 import classNames from "classnames";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { actions as machineActions } from "@/app/store/machine";
 import machineSelectors from "@/app/store/machine/selectors";

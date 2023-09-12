@@ -7,15 +7,15 @@ import { actions as machineActions } from "@/app/store/machine";
 import * as query from "@/app/store/machine/utils/query";
 import type { RootState } from "@/app/store/root/types";
 import {
-  machine as machineFactory,
+  nodeDisk as diskFactory,
   machineDetails as machineDetailsFactory,
-  machineInterface as nicFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
   machineStateList,
   machineStateListGroup,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
-  nodeDisk as diskFactory,
+  machineStatus as machineStatusFactory,
+  machineInterface as nicFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import { mockFormikFormSaved } from "testing/mockFormikFormSaved";

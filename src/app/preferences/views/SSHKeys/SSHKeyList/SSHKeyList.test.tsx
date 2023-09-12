@@ -5,11 +5,11 @@ import SSHKeyList, { Label as SSHKeyListLabels } from "./SSHKeyList";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   sshKey as sshKeyFactory,
   sshKeyState as sshKeyStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("SSHKeyList", () => {
   let state: RootState;

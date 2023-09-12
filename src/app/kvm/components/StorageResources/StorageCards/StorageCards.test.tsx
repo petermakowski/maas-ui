@@ -1,7 +1,7 @@
 import StorageCards, {
-  updateCardSize,
-  MEDIUM_MIN_WIDTH,
   LARGE_MIN_WIDTH,
+  MEDIUM_MIN_WIDTH,
+  updateCardSize,
 } from "./StorageCards";
 
 import { COLOURS } from "@/app/base/constants";

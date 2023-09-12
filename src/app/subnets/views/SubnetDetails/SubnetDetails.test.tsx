@@ -9,8 +9,8 @@ import urls from "@/app/base/urls";
 import { actions as staticRouteActions } from "@/app/store/staticroute";
 import { actions as subnetActions } from "@/app/store/subnet";
 import {
-  subnetState as subnetStateFactory,
   rootState as rootStateFactory,
+  subnetState as subnetStateFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";
 

@@ -15,21 +15,21 @@ import {
   TestStatusStatus,
 } from "@/app/store/types/node";
 import {
+  controller as controllerFactory,
+  controllerState as controllerStateFactory,
   generalState as generalStateFactory,
   machine as machineFactory,
   machineFilterGroup as machineFilterGroupFactory,
   machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  machineStateListGroup as machineStateListGroupFactory,
   modelRef as modelRefFactory,
   osInfo as osInfoFactory,
   rootState as rootStateFactory,
   testStatus as testStatusFactory,
-  machineStateList as machineStateListFactory,
-  machineStateListGroup as machineStateListGroupFactory,
   vaultEnabledState as vaultEnabledStateFactory,
-  controllerState as controllerStateFactory,
-  controller as controllerFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter, fireEvent } from "testing/utils";
+import { fireEvent, renderWithBrowserRouter, screen } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();
 

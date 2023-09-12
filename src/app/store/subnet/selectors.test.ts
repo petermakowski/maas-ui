@@ -5,11 +5,11 @@ import {
   fabricState as fabricStateFactory,
   podDetails as podDetailsFactory,
   rootState as rootStateFactory,
-  subnet as subnetFactory,
   subnetEventError as subnetEventErrorFactory,
+  subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  subnetStatus as subnetStatusFactory,
   subnetStatuses as subnetStatusesFactory,
+  subnetStatus as subnetStatusFactory,
 } from "testing/factories";
 
 describe("subnet selectors", () => {

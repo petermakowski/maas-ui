@@ -8,11 +8,11 @@ import FileContext, { fileContextStore } from "@/app/base/file-context";
 import type { RootState } from "@/app/store/root/types";
 import { ScriptType } from "@/app/store/script/types";
 import {
+  rootState as rootStateFactory,
   script as scriptFactory,
   scriptState as scriptStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, render, renderWithBrowserRouter } from "testing/utils";
+import { render, renderWithBrowserRouter, screen } from "testing/utils";
 
 const mockStore = configureStore();
 

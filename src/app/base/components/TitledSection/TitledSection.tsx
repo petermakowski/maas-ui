@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 
 import { Col, Row, Strip } from "@canonical/react-components";
 import type {
+  Headings,
   PropsWithSpread,
   StripProps,
-  Headings,
 } from "@canonical/react-components";
 
 import VisuallyHidden from "../VisuallyHidden";

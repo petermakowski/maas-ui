@@ -5,7 +5,7 @@ import { rootState as rootStateFactory } from "testing/factories";
 import { renderWithBrowserRouter, screen } from "testing/utils";
 
 describe("DeviceListControls", () => {
-  let state: RootState = rootStateFactory();
+  const state: RootState = rootStateFactory();
 
   it("changes the search text when the filters change", () => {
     const { rerender } = renderWithBrowserRouter(

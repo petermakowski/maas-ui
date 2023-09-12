@@ -17,8 +17,8 @@ import type {
   BootResourceUbuntuSource,
 } from "@/app/store/bootresource/types";
 import {
-  BootResourceSourceType,
   BootResourceAction,
+  BootResourceSourceType,
 } from "@/app/store/bootresource/types";
 import type { Model } from "@/app/store/types/model";
 

@@ -12,7 +12,7 @@ import urls from "@/app/base/urls";
 import ErrorsNotification from "@/app/machines/views/MachineList/ErrorsNotification";
 import MachineListTable from "@/app/machines/views/MachineList/MachineListTable";
 import { DEFAULTS } from "@/app/machines/views/MachineList/MachineListTable/constants";
-import type { FetchGroupKey, FetchFilters } from "@/app/store/machine/types";
+import type { FetchFilters, FetchGroupKey } from "@/app/store/machine/types";
 import { useFetchMachines } from "@/app/store/machine/utils/hooks";
 import type { RootState } from "@/app/store/root/types";
 import { actions as tagActions } from "@/app/store/tag";
@@ -41,7 +41,7 @@ const TagMachines = (): JSX.Element => {
   const [sortDirection, setSortDirection] = useState<
     ValueOf<typeof SortDirection>
   >(DEFAULTS.sortDirection);
-  let filters: FetchFilters = { status: FetchNodeStatus.DEPLOYED };
+  const filters: FetchFilters = { status: FetchNodeStatus.DEPLOYED };
   if (tag) {
     filters.tags = [tag.name];
   }

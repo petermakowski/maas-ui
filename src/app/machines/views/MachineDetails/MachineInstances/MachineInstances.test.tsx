@@ -5,8 +5,8 @@ import {
   machineDetails as machineDetailsFactory,
   machineDevice as machineDeviceFactory,
   machineInterface as machineInterfaceFactory,
-  networkLink as networkLinkFactory,
   machineState as machineStateFactory,
+  networkLink as networkLinkFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen } from "testing/utils";

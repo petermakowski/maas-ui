@@ -2,11 +2,11 @@ import MachineHostname from "./MachineHostname";
 
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
-  machineStateDetailsItem as machineStateDetailsItemFactory,
   machine as machineFactory,
+  machineStateDetailsItem as machineStateDetailsItemFactory,
   rootState,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 enableCallIdMocks();
 

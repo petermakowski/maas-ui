@@ -12,12 +12,12 @@ import type { RootState } from "@/app/store/root/types";
 import { ScriptResultType } from "@/app/store/scriptresult/types";
 import { TestStatusStatus } from "@/app/store/types/node";
 import {
-  machineState as machineStateFactory,
   machineDetails as machineDetailsFactory,
+  machineState as machineStateFactory,
+  rootState as rootStateFactory,
   scriptResult as scriptResultFactory,
   scriptResultState as scriptResultStateFactory,
   testStatus as testStatusFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 
 jest.mock("@canonical/react-components/dist/hooks", () => {

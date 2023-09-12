@@ -5,11 +5,11 @@ import APIKeyList, { Label as APIKeyListLabels } from "./APIKeyList";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   token as tokenFactory,
   tokenState as tokenStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("APIKeyList", () => {
   let state: RootState;

@@ -14,7 +14,7 @@ import {
   user as userFactory,
   userState as userStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent } from "testing/utils";
 
 describe("NameCard", () => {
   let state: RootState;

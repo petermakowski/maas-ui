@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import { Row, Col } from "@canonical/react-components";
-import { useSelector, useDispatch } from "react-redux";
+import { Col, Row } from "@canonical/react-components";
+import { useDispatch, useSelector } from "react-redux";
 
 import Definition from "@/app/base/components/Definition";
 import type { RootState } from "@/app/store/root/types";

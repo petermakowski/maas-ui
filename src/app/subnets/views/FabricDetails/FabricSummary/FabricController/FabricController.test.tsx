@@ -7,8 +7,8 @@ import FabricControllers from "./FabricControllers";
 import {
   controller as controllerFactory,
   controllerState as controllerStateFactory,
-  rootState as rootStateFactory,
   fabric as fabricFactory,
+  rootState as rootStateFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";
 

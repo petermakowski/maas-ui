@@ -4,8 +4,8 @@ import NodeTestDetails from "./NodeTestDetails";
 
 import type { RootState } from "@/app/store/root/types";
 import {
-  machineState as machineStateFactory,
   machineDetails as machineDetailsFactory,
+  machineState as machineStateFactory,
   rootState as rootStateFactory,
   scriptResult as scriptResultFactory,
   scriptResultResult as scriptResultResultFactory,

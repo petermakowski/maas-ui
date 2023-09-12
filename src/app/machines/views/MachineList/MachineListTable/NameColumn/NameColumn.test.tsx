@@ -3,9 +3,9 @@ import { NameColumn } from "./NameColumn";
 import type { RootState } from "@/app/store/root/types";
 import { NodeStatus } from "@/app/store/types/node";
 import {
-  modelRef as modelRefFactory,
   machine as machineFactory,
   machineState as machineStateFactory,
+  modelRef as modelRefFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";

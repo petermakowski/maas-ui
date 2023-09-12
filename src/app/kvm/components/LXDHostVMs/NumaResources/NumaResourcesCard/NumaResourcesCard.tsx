@@ -24,10 +24,10 @@ const NumaResourcesCard = ({ numaId, podId }: Props): JSX.Element => {
     podSelectors.getById(state, podId)
   );
 
-  if (!!pod) {
+  if (pod) {
     const { resources } = pod;
     const numa = resources.numa.find((numa) => numa.node_id === numaId);
-    if (!!numa) {
+    if (numa) {
       const { hpAllocated, hpFree, pageSize } = numa.memory.hugepages.reduce(
         ({ hpAllocated, hpFree, pageSize }, hp) => {
           if (!pageSize) {

@@ -21,7 +21,7 @@ import { DeviceMeta } from "@/app/store/device/types";
 import type { RootState } from "@/app/store/root/types";
 import { actions as tagActions } from "@/app/store/tag";
 import { getSidePanelTitle } from "@/app/store/utils/node/base";
-import { isId, getRelativeRoute } from "@/app/utils";
+import { getRelativeRoute, isId } from "@/app/utils";
 
 const DeviceDetails = (): JSX.Element => {
   const { sidePanelContent, setSidePanelContent } = useSidePanel();

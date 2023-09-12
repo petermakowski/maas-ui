@@ -9,17 +9,17 @@ import type { RootState } from "@/app/store/root/types";
 import type { User } from "@/app/store/user/types";
 import {
   authState as authStateFactory,
-  user as userFactory,
-  userState as userStateFactory,
   rootState as rootStateFactory,
   statusState as statusStateFactory,
+  user as userFactory,
+  userState as userStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
-  within,
   renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore();
@@ -156,7 +156,7 @@ describe("UsersList", () => {
       </MemoryRouter>,
       { state }
     );
-    let row = screen.getAllByTestId("user-row")[0];
+    const row = screen.getAllByTestId("user-row")[0];
     expect(within(row).getByTestId("table-actions-delete")).toBeDisabled();
   });
 
@@ -171,7 +171,7 @@ describe("UsersList", () => {
       </MemoryRouter>,
       { state }
     );
-    let row = screen.getAllByTestId("user-row")[0];
+    const row = screen.getAllByTestId("user-row")[0];
     expect(within(row).getByRole("link", { name: "Edit" })).toHaveAttribute(
       "href",
       "/account/prefs/details"

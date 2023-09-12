@@ -10,11 +10,11 @@ import type { RootState } from "@/app/store/root/types";
 import {
   authState as authStateFactory,
   rootState as rootStateFactory,
+  statusState as statusStateFactory,
   user as userFactory,
   userState as userStateFactory,
-  statusState as statusStateFactory,
 } from "testing/factories";
-import { userEvent, screen, render, renderWithMockStore } from "testing/utils";
+import { render, renderWithMockStore, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

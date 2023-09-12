@@ -10,8 +10,8 @@ import { useMachineDetailsForm } from "./hooks";
 
 import type { RootState } from "@/app/store/root/types";
 import {
-  machine as machineFactory,
   machineEventError as machineEventErrorFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
   machineStatus as machineStatusFactory,
   rootState as rootStateFactory,

@@ -7,7 +7,7 @@ import {
   controllerState as controllerStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 describe("ControllerListHeader", () => {
   let state: RootState;

@@ -2,9 +2,9 @@ import LXDClusterSummaryCard from "./LXDClusterSummaryCard";
 
 import { PodType } from "@/app/store/pod/constants";
 import {
+  podNetworkInterface as interfaceFactory,
   pod as podFactory,
   podResource as podResourceFactory,
-  podNetworkInterface as interfaceFactory,
   podResources as podResourcesFactory,
   podState as podStateFactory,
   rootState as rootStateFactory,

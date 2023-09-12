@@ -5,18 +5,18 @@ import type { Controller } from "@/app/store/controller/types";
 import type { RootState } from "@/app/store/root/types";
 import { NodeType } from "@/app/store/types/node";
 import {
-  generalState as generalStateFactory,
   controller as controllerFactory,
   controllerState as controllerStateFactory,
   controllerVersions as controllerVersionsFactory,
+  generalState as generalStateFactory,
   rootState as rootStateFactory,
   vaultEnabledState as vaultEnabledStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  within,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 describe("ControllerListTable", () => {
@@ -111,7 +111,7 @@ describe("ControllerListTable", () => {
       // Change sort to descending version
       await userEvent.click(screen.getByRole("button", { name: "Version" }));
 
-      var rows = screen.getAllByRole("row");
+      let rows = screen.getAllByRole("row");
       expect(rows[1]).toStrictEqual(screen.getByTestId("controller-a"));
       expect(rows[2]).toStrictEqual(screen.getByTestId("controller-b"));
       expect(rows[3]).toStrictEqual(screen.getByTestId("controller-c"));

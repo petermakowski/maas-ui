@@ -13,13 +13,13 @@ import type { RootState } from "@/app/store/root/types";
 import {
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

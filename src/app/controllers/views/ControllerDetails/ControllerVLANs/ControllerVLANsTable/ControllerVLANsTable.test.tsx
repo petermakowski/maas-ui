@@ -4,18 +4,18 @@ import { ControllerVLANsColumns } from "./constants";
 import urls from "@/app/base/urls";
 import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import {
-  fabric as fabricFactory,
-  fabricState as fabricStateFactory,
-  vlanState as vlanStateFactory,
-  vlan as vlanFactory,
-  subnet as subnetFactory,
-  subnetState as subnetStateFactory,
-  networkInterface as networkInterfaceFactory,
-  rootState as rootStateFactory,
   controllerDetails as controllerDetailsFactory,
   controllerState as controllerStateFactory,
+  fabric as fabricFactory,
+  fabricState as fabricStateFactory,
+  networkInterface as networkInterfaceFactory,
+  rootState as rootStateFactory,
+  subnet as subnetFactory,
+  subnetState as subnetStateFactory,
+  vlan as vlanFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, within } from "testing/utils";
 
 const createNetwork = () => {
   const systemId = "abc123";

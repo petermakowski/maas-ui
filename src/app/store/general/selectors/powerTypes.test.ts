@@ -2,8 +2,8 @@ import powerTypes from "./powerTypes";
 
 import {
   generalState as generalStateFactory,
-  powerTypesState as powerTypesStateFactory,
   powerType as powerTypeFactory,
+  powerTypesState as powerTypesStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

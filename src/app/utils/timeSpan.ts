@@ -2,8 +2,8 @@ import type { Duration } from "date-fns";
 import {
   add,
   differenceInSeconds,
-  secondsToMinutes,
   intervalToDuration,
+  secondsToMinutes,
 } from "date-fns";
 import humanInterval from "human-interval";
 

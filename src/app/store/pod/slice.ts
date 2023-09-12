@@ -4,8 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PodType } from "./constants";
 import { PodMeta } from "./types";
 import type {
-  CreateParams,
   ComposeParams,
+  CreateParams,
   DeleteParams,
   GetProjectsParams,
   Pod,

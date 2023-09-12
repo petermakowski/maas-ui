@@ -9,15 +9,15 @@ import { actions as bootResourceActions } from "@/app/store/bootresource";
 import type { RootState } from "@/app/store/root/types";
 import {
   bootResource as bootResourceFactory,
-  bootResourceOtherImage as otherImageFactory,
   bootResourceState as bootResourceStateFactory,
+  bootResourceOtherImage as otherImageFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();

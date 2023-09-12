@@ -6,16 +6,16 @@ import configureStore from "redux-mock-store";
 import FabricSummary from "./FabricSummary";
 
 import {
-  rootState as rootStateFactory,
-  fabric as fabricFactory,
-  fabricState as fabricStateFactory,
-  vlanState as vlanStateFactory,
-  vlan as vlanFactory,
   controller as controllerFactory,
   controllerState as controllerStateFactory,
+  fabric as fabricFactory,
+  fabricState as fabricStateFactory,
   modelRef as modelRefFactory,
+  rootState as rootStateFactory,
+  vlan as vlanFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, within, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const mockStore = configureStore();
 

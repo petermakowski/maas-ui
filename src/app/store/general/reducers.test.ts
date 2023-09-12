@@ -3,8 +3,8 @@ import reducers, { actions } from "./slice";
 import {
   bondOptions as bondOptionsFactory,
   bondOptionsState as bondOptionsStateFactory,
-  generalState as generalStateFactory,
   generatedCertificate as certificateFactory,
+  generalState as generalStateFactory,
   generatedCertificateState as generatedCertificateStateFactory,
   tlsCertificate as tlsCertificateFactory,
   tlsCertificateState as tlsCertificateStateFactory,

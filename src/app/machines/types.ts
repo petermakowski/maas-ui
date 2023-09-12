@@ -5,8 +5,8 @@ import type { MachineSidePanelViews } from "./constants";
 import type { HardwareType } from "@/app/base/enum";
 import type {
   CommonActionFormProps,
-  SidePanelContent,
   SetSidePanelContent,
+  SidePanelContent,
 } from "@/app/base/types";
 import type {
   Machine,

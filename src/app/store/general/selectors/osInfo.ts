@@ -7,10 +7,10 @@ import createCachedSelector from "re-reselect";
 import { generateGeneralSelector } from "./utils";
 
 import type {
-  OSInfoState,
   OSInfoOsKernelEntry,
   OSInfoOSystem,
   OSInfoRelease,
+  OSInfoState,
 } from "@/app/store/general/types";
 import type { RootState } from "@/app/store/root/types";
 

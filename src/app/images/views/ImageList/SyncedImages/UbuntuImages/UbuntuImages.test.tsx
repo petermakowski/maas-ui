@@ -11,18 +11,18 @@ import type { RootState } from "@/app/store/root/types";
 import {
   bootResource as bootResourceFactory,
   bootResourceState as bootResourceStateFactory,
-  bootResourceUbuntu as bootResourceUbuntuFactory,
   bootResourceUbuntuArch as bootResourceUbuntuArchFactory,
+  bootResourceUbuntu as bootResourceUbuntuFactory,
   bootResourceUbuntuRelease as bootResourceUbuntuReleaseFactory,
-  bootResourceUbuntuSource as sourceFactory,
   rootState as rootStateFactory,
+  bootResourceUbuntuSource as sourceFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
-  within,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();

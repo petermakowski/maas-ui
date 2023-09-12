@@ -7,7 +7,7 @@ import {
   bootResourceState as bootResourceStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, within } from "testing/utils";
 
 describe("CustomImages", () => {
   it("does not render if there are no uploaded resources", () => {

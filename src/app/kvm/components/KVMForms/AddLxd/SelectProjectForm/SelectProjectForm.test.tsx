@@ -18,10 +18,10 @@ import {
   zoneState as zoneStateFactory,
 } from "testing/factories";
 import {
+  fireEvent,
   renderWithBrowserRouter,
   screen,
   userEvent,
-  fireEvent,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState>();

@@ -58,7 +58,7 @@ export const CredentialsForm = ({
   }, [dispatch]);
 
   useEffect(() => {
-    if (!!errors) {
+    if (errors) {
       setAuthenticating(false);
     }
   }, [errors]);

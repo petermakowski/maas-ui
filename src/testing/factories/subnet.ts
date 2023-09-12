@@ -12,10 +12,10 @@ import type {
   SubnetDNSRecord,
   SubnetIP,
   SubnetIPNodeSummary,
-  SubnetStatistics,
-  SubnetStatisticsRange,
   SubnetScanFailure,
   SubnetScanResult,
+  SubnetStatistics,
+  SubnetStatisticsRange,
 } from "@/app/store/subnet/types";
 import type { Model, TimestampedModel } from "@/app/store/types/model";
 import { NodeType } from "@/app/store/types/node";

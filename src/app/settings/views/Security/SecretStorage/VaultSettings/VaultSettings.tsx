@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 import {
-  Icon,
-  Spinner,
   CodeSnippet,
   CodeSnippetBlockAppearance,
+  Icon,
+  Spinner,
 } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 

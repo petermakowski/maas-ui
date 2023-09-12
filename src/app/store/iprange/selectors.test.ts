@@ -1,9 +1,9 @@
 import ipRange from "./selectors";
 
 import {
-  rootState as rootStateFactory,
   ipRange as ipRangeFactory,
   ipRangeState as ipRangeStateFactory,
+  rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
   vlan as vlanFactory,

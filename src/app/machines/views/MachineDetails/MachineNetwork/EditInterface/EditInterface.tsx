@@ -21,8 +21,8 @@ import type { RootState } from "@/app/store/root/types";
 import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import type { NetworkInterface, NetworkLink } from "@/app/store/types/node";
 import {
-  getInterfaceTypeText,
   getInterfaceType,
+  getInterfaceTypeText,
   getLinkFromNic,
 } from "@/app/store/utils";
 

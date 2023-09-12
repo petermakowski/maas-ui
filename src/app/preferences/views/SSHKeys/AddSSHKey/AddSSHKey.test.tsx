@@ -7,10 +7,10 @@ import { AddSSHKey, Label as AddSSHKeyLabels } from "./AddSSHKey";
 import urls from "@/app/base/urls";
 import type { RootState } from "@/app/store/root/types";
 import {
-  sshKeyState as sshKeyStateFactory,
   rootState as rootStateFactory,
+  sshKeyState as sshKeyStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("AddSSHKey", () => {
   let state: RootState;

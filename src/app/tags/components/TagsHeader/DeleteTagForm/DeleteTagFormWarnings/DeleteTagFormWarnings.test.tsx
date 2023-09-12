@@ -12,10 +12,10 @@ import { NodeStatus } from "@/app/store/types/node";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
   machine as machineFactory,
-  machineState as machineStateFactory,
-  tag as tagFactory,
-  rootState as rootStateFactory,
   machineStateCount as machineStateCountFactory,
+  machineState as machineStateFactory,
+  rootState as rootStateFactory,
+  tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";

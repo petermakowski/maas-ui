@@ -10,17 +10,17 @@ import { useGetInstallationOutput } from "./hooks";
 import type { RootState } from "@/app/store/root/types";
 import {
   ScriptResultNames,
-  ScriptResultType,
   ScriptResultStatus,
+  ScriptResultType,
 } from "@/app/store/scriptresult/types";
 import {
-  machineState as machineStateFactory,
   machineDetails as machineDetailsFactory,
-  rootState as rootStateFactory,
-  scriptResult as scriptResultFactory,
-  scriptResultData as scriptResultDataFactory,
-  scriptResultState as scriptResultStateFactory,
+  machineState as machineStateFactory,
   nodeScriptResultState as nodeScriptResultStateFactory,
+  rootState as rootStateFactory,
+  scriptResultData as scriptResultDataFactory,
+  scriptResult as scriptResultFactory,
+  scriptResultState as scriptResultStateFactory,
 } from "testing/factories";
 
 const mockStore = configureStore();

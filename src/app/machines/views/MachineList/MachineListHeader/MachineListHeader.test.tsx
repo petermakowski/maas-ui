@@ -11,14 +11,14 @@ import {
   machineStateCount as machineStateCountFactory,
   machineStateCounts as machineStateCountsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStateList as machineStateListFactory,
   machineStateListGroup as machineStateListGroupFactory,
+  machineStatus as machineStatusFactory,
   resourcePool as resourcePoolFactory,
   resourcePoolState as resourcePoolStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter, userEvent } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 enableCallIdMocks();
 
@@ -134,7 +134,7 @@ describe("MachineListHeader", () => {
     // Open the take action menu.
     await userEvent.click(screen.getByRole("button", { name: "Categorise" }));
 
-    let tagAction = screen.getByTestId("action-link-tag");
+    const tagAction = screen.getByTestId("action-link-tag");
 
     // The new label should appear before being clicked.
     expect(tagAction).toHaveTextContent(/NEW/);

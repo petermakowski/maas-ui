@@ -67,7 +67,7 @@ export const formatBytes = (
  *  Convert a size string (e.g. 1 MB) to a number of bytets
  *  @param sizeString - the size string with a unit, e.g. "1 KB"
  */
-export const sizeStringToNumber = (sizeString: string = ""): number | null => {
+export const sizeStringToNumber = (sizeString = ""): number | null => {
   try {
     const regex = /(?<value>\d+(\.\d+)?)(?:\s+?)(?<unit>[a-zA-Z]+)/;
     const groups = sizeString.match(regex)?.groups;

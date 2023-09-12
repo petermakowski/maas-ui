@@ -4,7 +4,7 @@ import {
   domainState as domainStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 describe("DomainDetails", () => {
   it("renders 'Not Found' header if domains loaded and domain not found", () => {

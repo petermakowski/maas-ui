@@ -7,10 +7,10 @@ import type { SortDirection } from "@/app/base/types";
 import type { MachineColumns } from "@/app/machines/constants";
 import type { GetMachineMenuToggleHandler } from "@/app/machines/types";
 import type {
+  FetchFilters,
+  FetchGroupKey,
   Machine,
   MachineStateListGroup,
-  FetchGroupKey,
-  FetchFilters,
 } from "@/app/store/machine/types";
 import type { useFetchMachines } from "@/app/store/machine/utils/hooks";
 

@@ -12,9 +12,9 @@ import {
   machine as machineFactory,
   machineState as machineStateFactory,
   modelRef as modelRefFactory,
+  rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";
 

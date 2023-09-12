@@ -5,7 +5,7 @@ import {
   machineState as machineStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, within } from "testing/utils";
 
 it("renders with system data", () => {
   const machine = machineDetailsFactory({ system_id: "abc123" });

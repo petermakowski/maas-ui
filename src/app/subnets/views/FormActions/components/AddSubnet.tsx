@@ -1,4 +1,4 @@
-import { Row, Col, Input } from "@canonical/react-components";
+import { Col, Input, Row } from "@canonical/react-components";
 import { useFormikContext } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";

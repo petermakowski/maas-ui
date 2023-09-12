@@ -12,11 +12,11 @@ import {
   machine as machineFactory,
   machineState as machineStateFactory,
   modelRef as modelRefFactory,
+  rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("DhcpTarget", () => {
   let state: RootState;

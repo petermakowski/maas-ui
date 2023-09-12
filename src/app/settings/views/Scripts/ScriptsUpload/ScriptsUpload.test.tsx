@@ -13,16 +13,16 @@ import type { ReadScriptResponse } from "./readScript";
 import type { RootState } from "@/app/store/root/types";
 import { ScriptType } from "@/app/store/script/types";
 import {
-  scriptState as scriptStateFactory,
   rootState as rootStateFactory,
+  scriptState as scriptStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  render,
-  waitFor,
   fireEvent,
+  render,
   renderWithMockStore,
+  screen,
+  userEvent,
+  waitFor,
 } from "testing/utils";
 
 const mockStore = configureStore();

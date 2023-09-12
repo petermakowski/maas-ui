@@ -9,14 +9,14 @@ import type { RootState } from "@/app/store/root/types";
 import {
   authState as authStateFactory,
   rootState as rootStateFactory,
-  user as userFactory,
   userEventError as userEventErrorFactory,
+  user as userFactory,
   userState as userStateFactory,
 } from "testing/factories";
 import {
-  screen,
   renderWithBrowserRouter,
   renderWithMockStore,
+  screen,
 } from "testing/utils";
 
 describe("IntroSection", () => {

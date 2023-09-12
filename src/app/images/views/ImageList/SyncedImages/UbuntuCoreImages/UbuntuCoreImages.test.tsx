@@ -11,15 +11,15 @@ import { actions as bootResourceActions } from "@/app/store/bootresource";
 import type { RootState } from "@/app/store/root/types";
 import {
   bootResource as bootResourceFactory,
-  bootResourceUbuntuCoreImage as ubuntuCoreImageFactory,
   bootResourceState as bootResourceStateFactory,
   rootState as rootStateFactory,
+  bootResourceUbuntuCoreImage as ubuntuCoreImageFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();

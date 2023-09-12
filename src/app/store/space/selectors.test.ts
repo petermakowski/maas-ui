@@ -1,9 +1,9 @@
 import space from "./selectors";
 
 import {
+  rootState as rootStateFactory,
   space as spaceFactory,
   spaceState as spaceStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 
 describe("space selectors", () => {

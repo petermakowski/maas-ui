@@ -7,9 +7,9 @@ import urls from "@/app/base/urls";
 import type { RootState } from "@/app/store/root/types";
 import { actions as spaceActions } from "@/app/store/space";
 import {
-  spaceState as spaceStateFactory,
-  space as spaceFactory,
   rootState as rootStateFactory,
+  space as spaceFactory,
+  spaceState as spaceStateFactory,
 } from "testing/factories";
 import {
   renderWithBrowserRouter,

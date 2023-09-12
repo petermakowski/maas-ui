@@ -1,4 +1,4 @@
-import type { Slice, PayloadAction } from "@reduxjs/toolkit";
+import type { PayloadAction, Slice } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
 import { PodMeta } from "@/app/store/pod/types";
@@ -11,11 +11,11 @@ import {
   genericInitialState,
 } from "@/app/store/utils/slice";
 import {
-  token as tokenFactory,
-  tokenState as tokenStateFactory,
   pod as podFactory,
   podState as podStateFactory,
   podStatus as podStatusFactory,
+  token as tokenFactory,
+  tokenState as tokenStateFactory,
 } from "testing/factories";
 
 describe("slice", () => {

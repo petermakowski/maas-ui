@@ -14,11 +14,11 @@ import {
   rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
-  within,
   renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore();

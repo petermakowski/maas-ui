@@ -30,9 +30,9 @@ import type {
   UpdateInterfaceParams,
 } from "@/app/store/types/node";
 import {
-  getInterfaceTypeText,
   getInterfaceIPAddress,
   getInterfaceSubnet,
+  getInterfaceTypeText,
   getLinkMode,
 } from "@/app/store/utils";
 import { actions as vlanActions } from "@/app/store/vlan";

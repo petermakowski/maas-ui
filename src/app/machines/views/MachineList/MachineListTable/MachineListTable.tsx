@@ -1,4 +1,4 @@
-import { useMemo, memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 
 import { MainTable } from "@canonical/react-components";
 import classNames from "classnames";
@@ -11,8 +11,8 @@ import MachineListSelectedCount from "./MachineListSelectedCount/MachineListSele
 import PageSizeSelect from "./PageSizeSelect";
 import {
   filterColumns,
-  generateSkeletonRows,
   generateGroupRows,
+  generateSkeletonRows,
 } from "./tableModels";
 import type { MachineListTableProps } from "./types";
 
@@ -22,8 +22,8 @@ import { SortDirection } from "@/app/base/types";
 import {
   columnLabels,
   columns,
-  MachineColumns,
   groupOptions,
+  MachineColumns,
 } from "@/app/machines/constants";
 import { actions as generalActions } from "@/app/store/general";
 import { FetchGroupKey } from "@/app/store/machine/types";

@@ -5,7 +5,7 @@ import {
   controller as controllerFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 describe("ControllerForms", () => {
   it("can render a warning if an action cannot be taken", () => {

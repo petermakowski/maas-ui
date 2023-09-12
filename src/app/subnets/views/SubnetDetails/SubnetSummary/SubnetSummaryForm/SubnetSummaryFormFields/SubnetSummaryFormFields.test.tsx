@@ -11,7 +11,7 @@ import {
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 it("updates to use the fabric's default VLAN on fabric change", async () => {
   const fabrics = [

@@ -12,8 +12,8 @@ import { actions as machineActions } from "@/app/store/machine";
 import type { RootState } from "@/app/store/root/types";
 import { Label as AddTagFormLabel } from "@/app/tags/components/AddTagForm/AddTagForm";
 import {
-  machine as machineFactory,
   machineActionState,
+  machine as machineFactory,
   rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
@@ -21,11 +21,11 @@ import {
 import { tagStateListFactory } from "testing/factories/state";
 import { mockFormikFormSaved } from "testing/mockFormikFormSaved";
 import {
-  userEvent,
   render,
-  screen,
-  waitFor,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  waitFor,
   within,
 } from "testing/utils";
 

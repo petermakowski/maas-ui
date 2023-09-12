@@ -3,8 +3,8 @@ import machineActions from "./machineActions";
 import { NodeActions } from "@/app/store/types/node";
 import {
   generalState as generalStateFactory,
-  machineActionsState as machineActionsStateFactory,
   machineAction as machineActionFactory,
+  machineActionsState as machineActionsStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

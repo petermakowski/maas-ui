@@ -7,12 +7,12 @@ import { DeviceIpAssignment } from "@/app/store/device/types";
 import type { RootState } from "@/app/store/root/types";
 import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import {
-  device as deviceFactory,
   deviceDetails as deviceDetailsFactory,
+  device as deviceFactory,
   deviceInterface as deviceInterfaceFactory,
   deviceState as deviceStateFactory,
-  deviceStatus as deviceStatusFactory,
   deviceStatuses as deviceStatusesFactory,
+  deviceStatus as deviceStatusFactory,
   fabric as fabricFactory,
   networkLink as networkLinkFactory,
   rootState as rootStateFactory,
@@ -20,7 +20,7 @@ import {
   subnetState as subnetStateFactory,
   vlan as vlanFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

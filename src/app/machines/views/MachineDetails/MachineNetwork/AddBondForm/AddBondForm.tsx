@@ -15,8 +15,8 @@ import {
 } from "../BondForm/utils";
 import InterfaceFormTable from "../InterfaceFormTable";
 import {
-  networkFieldsSchema,
   networkFieldsInitialValues,
+  networkFieldsSchema,
 } from "../NetworkFields/NetworkFields";
 
 import FormCard from "@/app/base/components/FormCard";

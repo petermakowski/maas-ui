@@ -5,11 +5,11 @@ import type { RootState } from "@/app/store/root/types";
 import {
   controller as controllerFactory,
   controllerState as controllerStateFactory,
-  controllerVersions as controllerVersionsFactory,
   controllerVersionInfo as controllerVersionInfoFactory,
+  controllerVersions as controllerVersionsFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter, userEvent } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 describe("VersionColumn", () => {
   let state: RootState;

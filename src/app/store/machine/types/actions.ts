@@ -1,9 +1,9 @@
 import type {
-  Machine,
-  MachineStatus,
   FilterGroupKey,
-  MachineStateListGroup,
+  Machine,
   MachineDetails,
+  MachineStateListGroup,
+  MachineStatus,
 } from "./base";
 import type { MachineMeta } from "./enum";
 
@@ -26,19 +26,19 @@ import type {
 } from "@/app/store/types/enum";
 import type { ModelRef } from "@/app/store/types/model";
 import type {
-  Node,
   BaseNodeActionParams,
   FetchNodeStatus,
   LinkParams,
   NetworkInterface,
   NetworkInterfaceParams,
   NetworkLink,
+  Node,
   NodeIpAddress,
+  SetZoneParams as NodeSetZoneParams,
+  TestParams as NodeTestParams,
   NodeVlan,
   PowerParameters,
   ScriptInputParam,
-  SetZoneParams as NodeSetZoneParams,
-  TestParams as NodeTestParams,
 } from "@/app/store/types/node";
 import type { Zone } from "@/app/store/zone/types";
 

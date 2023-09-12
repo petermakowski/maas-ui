@@ -20,7 +20,7 @@ import {
   FilterGroupKey,
   FilterGroupType,
 } from "@/app/store/machine/types/base";
-import type { FilterGroup, BaseMachine } from "@/app/store/machine/types/base";
+import type { BaseMachine, FilterGroup } from "@/app/store/machine/types/base";
 import { PodType } from "@/app/store/pod/constants";
 import type {
   Pod,
@@ -41,28 +41,28 @@ import type {
   PodVmCount,
 } from "@/app/store/pod/types";
 import {
-  NetworkLinkMode,
-  NetworkInterfaceTypes,
   DiskTypes,
+  NetworkInterfaceTypes,
+  NetworkLinkMode,
   PowerState,
   StorageLayout,
 } from "@/app/store/types/enum";
 import type { Model, TimestampedModel } from "@/app/store/types/model";
 import type {
-  DiscoveredIP,
-  NetworkInterface,
-  NetworkLink,
   BaseNode,
-  SimpleNode,
-  TestStatus,
-  NodeEvent,
+  DiscoveredIP,
   Disk,
   EventType,
   Filesystem,
+  NetworkInterface,
+  NetworkLink,
+  NodeDeviceRef,
+  NodeEvent,
+  NodeIpAddress,
   NodeNumaNode,
   Partition,
-  NodeDeviceRef,
-  NodeIpAddress,
+  SimpleNode,
+  TestStatus,
 } from "@/app/store/types/node";
 import {
   NodeLinkType,

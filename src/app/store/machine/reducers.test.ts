@@ -2,31 +2,31 @@ import { produce } from "immer";
 
 import { DEFAULT_STATUSES } from "./constants";
 import reducers, {
+  actions,
   DEFAULT_COUNT_STATE,
   DEFAULT_LIST_STATE,
-  actions,
 } from "./slice";
 import type { SelectedMachines } from "./types";
 import { FilterGroupKey, FilterGroupType } from "./types";
 import { FetchGroupKey } from "./types/actions";
 
 import {
+  FetchNodeStatus,
   NodeActions,
   NodeStatus,
   NodeStatusCode,
-  FetchNodeStatus,
 } from "@/app/store/types/node";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
   filterGroup as filterGroupFactory,
-  machine as machineFactory,
   machineDetails as machineDetailsFactory,
   machineEventError as machineEventErrorFactory,
-  machineStateList as machineStateListFactory,
-  machineStateListGroup as machineStateListGroupFactory,
-  machineState as machineStateFactory,
+  machine as machineFactory,
   machineStateCount as machineStateCountFactory,
   machineStateDetailsItem as machineStateDetailsItemFactory,
+  machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  machineStateListGroup as machineStateListGroupFactory,
   machineStatus as machineStatusFactory,
 } from "testing/factories";
 

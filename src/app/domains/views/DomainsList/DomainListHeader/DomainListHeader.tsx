@@ -28,7 +28,7 @@ const DomainListHeader = ({
     dispatch(domainActions.fetch());
   }, [dispatch]);
 
-  let buttons: JSX.Element[] | null = [
+  const buttons: JSX.Element[] | null = [
     <Button
       data-testid="add-domain"
       key="add-domain"

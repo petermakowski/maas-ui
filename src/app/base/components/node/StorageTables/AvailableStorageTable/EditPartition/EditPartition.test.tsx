@@ -4,11 +4,11 @@ import EditPartition from "./EditPartition";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  nodeDisk as diskFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
-  nodeDisk as diskFactory,
+  machineStatus as machineStatusFactory,
   nodePartition as partitionFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

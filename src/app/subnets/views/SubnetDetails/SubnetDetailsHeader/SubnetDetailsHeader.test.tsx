@@ -3,10 +3,10 @@ import { subnetActionLabels } from "../constants";
 import SubnetDetailsHeader from "./SubnetDetailsHeader";
 
 import {
-  subnet as subnetFactory,
   subnetDetails as subnetDetailsFactory,
+  subnet as subnetFactory,
 } from "testing/factories";
-import { userEvent, renderWithBrowserRouter, screen } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 it("shows the subnet name as the section title", () => {
   const subnet = subnetFactory({ id: 1, name: "subnet-1" });

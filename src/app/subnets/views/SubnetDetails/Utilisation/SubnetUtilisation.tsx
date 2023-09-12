@@ -1,4 +1,4 @@
-import { Row, Col } from "@canonical/react-components";
+import { Col, Row } from "@canonical/react-components";
 
 import Definition from "@/app/base/components/Definition";
 import TitledSection from "@/app/base/components/TitledSection";

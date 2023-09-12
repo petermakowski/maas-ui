@@ -4,9 +4,9 @@ import ZonesList, { TestIds } from "./ZonesListTable/ZonesListTable";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   zone as zoneFactory,
   zoneState as zoneStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen } from "testing/utils";
 

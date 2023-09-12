@@ -13,8 +13,8 @@ import {
   ImageSyncStatus,
 } from "@/app/store/controller/types";
 import type {
-  ControllerVersions,
   ControllerDetails,
+  ControllerVersions,
 } from "@/app/store/controller/types";
 import { isRack, isRegionAndRack } from "@/app/store/controller/utils";
 import { useFormattedOS } from "@/app/store/machine/utils";

@@ -2,8 +2,8 @@ import createRootReducer from "./root-reducer";
 
 import {
   authState as authStateFactory,
-  machineState as machineStateFactory,
   machine as machineFactory,
+  machineState as machineStateFactory,
   rootState as rootStateFactory,
   routerState as routerStateFactory,
   statusState as statusStateFactory,

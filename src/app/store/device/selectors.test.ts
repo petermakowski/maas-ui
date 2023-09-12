@@ -3,15 +3,15 @@ import { NetworkInterfaceTypes } from "../types/enum";
 import device from "./selectors";
 
 import {
-  rootState as rootStateFactory,
-  device as deviceFactory,
   deviceDetails as deviceDetailsFactory,
   deviceEventError as deviceEventErrorFactory,
+  device as deviceFactory,
   deviceInterface as deviceInterfaceFactory,
   deviceState as deviceStateFactory,
-  deviceStatus as deviceStatusFactory,
   deviceStatuses as deviceStatusesFactory,
+  deviceStatus as deviceStatusFactory,
   networkLink as networkLinkFactory,
+  rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";

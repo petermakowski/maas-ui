@@ -15,18 +15,18 @@ import {
 import { NodeActions } from "@/app/store/types/node";
 import {
   machine as machineFactory,
+  machineStateDetails as machineStateDetailsFactory,
+  machineStateDetailsItem as machineStateDetailsItemFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   nodeScriptResultState as nodeScriptResultStateFactory,
   rootState as rootStateFactory,
   scriptResult as scriptResultFactory,
   scriptResultResult as scriptResultResultFactory,
-  machineStateDetails as machineStateDetailsFactory,
-  machineStateDetailsItem as machineStateDetailsItemFactory,
   scriptResultState as scriptResultStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();
 

@@ -7,16 +7,16 @@ import SSLKeyList, { Label as SSLKeyListLabels } from "./SSLKeyList";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   sslKey as sslKeyFactory,
   sslKeyState as sslKeyStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
-  within,
   renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore();
@@ -138,7 +138,7 @@ describe("SSLKeyList", () => {
         </MemoryRouter>
       </Provider>
     );
-    let row = screen.getByRole("row", { name: "ssh-rsa aabb" });
+    const row = screen.getByRole("row", { name: "ssh-rsa aabb" });
 
     // Click on the delete button:
     await userEvent.click(within(row).getByRole("button", { name: "Delete" }));
@@ -183,7 +183,7 @@ describe("SSLKeyList", () => {
         </MemoryRouter>
       </Provider>
     );
-    let row = screen.getByRole("row", { name: "ssh-rsa aabb" });
+    const row = screen.getByRole("row", { name: "ssh-rsa aabb" });
 
     // Click on the delete button:
     await userEvent.click(within(row).getByRole("button", { name: "Delete" }));

@@ -2,11 +2,11 @@ import reducers, { actions } from "./slice";
 import { DeviceMeta } from "./types";
 
 import {
-  device as deviceFactory,
   deviceDetails as deviceDetailsFactory,
   deviceEventError as deviceEventErrorFactory,
-  deviceStatus as deviceStatusFactory,
+  device as deviceFactory,
   deviceState as deviceStateFactory,
+  deviceStatus as deviceStatusFactory,
 } from "testing/factories";
 
 describe("device reducers", () => {

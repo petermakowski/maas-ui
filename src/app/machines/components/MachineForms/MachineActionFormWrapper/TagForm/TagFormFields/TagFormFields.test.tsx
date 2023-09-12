@@ -20,12 +20,12 @@ import {
 } from "testing/factories";
 import { tagStateListFactory } from "testing/factories/state";
 import {
-  userEvent,
   render,
+  renderWithBrowserRouter,
   screen,
+  userEvent,
   waitFor,
   within,
-  renderWithBrowserRouter,
 } from "testing/utils";
 
 const mockStore = configureStore();

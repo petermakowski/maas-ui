@@ -14,7 +14,7 @@ import {
   rootState as rootStateFactory,
   versionState as versionStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 let state: RootState;
 beforeEach(() => {

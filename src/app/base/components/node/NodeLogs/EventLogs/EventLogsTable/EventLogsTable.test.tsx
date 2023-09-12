@@ -4,11 +4,11 @@ import type { RootState } from "@/app/store/root/types";
 import {
   eventRecord as eventRecordFactory,
   eventState as eventStateFactory,
-  machineState as machineStateFactory,
   machineDetails as machineDetailsFactory,
+  machineState as machineStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("EventLogsTable", () => {
   let state: RootState;

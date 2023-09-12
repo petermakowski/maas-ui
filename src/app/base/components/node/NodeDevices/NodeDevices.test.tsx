@@ -10,9 +10,9 @@ import type { RootState } from "@/app/store/root/types";
 import {
   controllerDetails as controllerDetailsFactory,
   machineDetails as machineDetailsFactory,
-  machineNumaNode as numaNodeFactory,
   nodeDevice as nodeDeviceFactory,
   nodeDeviceState as nodeDeviceStateFactory,
+  machineNumaNode as numaNodeFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import {

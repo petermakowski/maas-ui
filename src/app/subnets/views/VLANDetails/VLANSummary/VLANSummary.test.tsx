@@ -13,8 +13,6 @@ import type { Space } from "@/app/store/space/types";
 import type { VLAN } from "@/app/store/vlan/types";
 import {
   authState as authStateFactory,
-  user as userFactory,
-  userState as userStateFactory,
   controller as controllerFactory,
   controllerState as controllerStateFactory,
   fabric as fabricFactory,
@@ -23,10 +21,12 @@ import {
   rootState as rootStateFactory,
   space as spaceFactory,
   spaceState as spaceStateFactory,
+  user as userFactory,
+  userState as userStateFactory,
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, within } from "testing/utils";
+import { render, screen, userEvent, within } from "testing/utils";
 
 const mockStore = configureStore();
 

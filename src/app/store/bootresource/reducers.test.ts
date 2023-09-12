@@ -2,16 +2,16 @@ import reducers, { actions } from "./slice";
 import { BootResourceAction } from "./types";
 
 import {
-  bootResource as bootResourceFactory,
   bootResourceEventError as bootResourceEventErrorFactory,
+  bootResource as bootResourceFactory,
   bootResourceFetchedArch as bootResourceFetchedArchFactory,
   bootResourceFetchedImages as bootResourceFetchedImagesFactory,
   bootResourceFetchedRelease as bootResourceFetchedReleaseFactory,
   bootResourceOtherImage as bootResourceOtherImageFactory,
   bootResourceState as bootResourceStateFactory,
   bootResourceStatuses as bootResourceStatusesFactory,
-  bootResourceUbuntu as bootResourceUbuntuFactory,
   bootResourceUbuntuCoreImage as bootResourceUbuntuCoreImageFactory,
+  bootResourceUbuntu as bootResourceUbuntuFactory,
 } from "testing/factories";
 
 describe("bootresource reducers", () => {

@@ -8,10 +8,10 @@ import {
   podState as podStateFactory,
   rootState as rootStateFactory,
   vmCluster as vmClusterFactory,
-  vmHost as vmHostFactory,
   vmClusterState as vmClusterStateFactory,
+  vmHost as vmHostFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 describe("LXDClusterHosts", () => {
   let state: RootState;

@@ -3,75 +3,75 @@ import type { RouterState } from "redux-first-history";
 import type { VMClusterMeta, VMClusterState } from "../vmcluster/types";
 
 import type {
-  BootResourceState,
   BootResourceMeta,
+  BootResourceState,
 } from "@/app/store/bootresource/types";
-import type { ConfigState, ConfigMeta } from "@/app/store/config/types";
+import type { ConfigMeta, ConfigState } from "@/app/store/config/types";
 import type {
-  ControllerState,
   ControllerMeta,
+  ControllerState,
 } from "@/app/store/controller/types";
-import type { DeviceState, DeviceMeta } from "@/app/store/device/types";
+import type { DeviceMeta, DeviceState } from "@/app/store/device/types";
 import type {
-  DHCPSnippetState,
   DHCPSnippetMeta,
+  DHCPSnippetState,
 } from "@/app/store/dhcpsnippet/types";
 import type {
-  DiscoveryState,
   DiscoveryMeta,
+  DiscoveryState,
 } from "@/app/store/discovery/types";
-import type { DomainState, DomainMeta } from "@/app/store/domain/types";
-import type { EventState, EventMeta } from "@/app/store/event/types";
-import type { FabricState, FabricMeta } from "@/app/store/fabric/types";
-import type { GeneralState, GeneralMeta } from "@/app/store/general/types";
-import type { IPRangeState, IPRangeMeta } from "@/app/store/iprange/types";
+import type { DomainMeta, DomainState } from "@/app/store/domain/types";
+import type { EventMeta, EventState } from "@/app/store/event/types";
+import type { FabricMeta, FabricState } from "@/app/store/fabric/types";
+import type { GeneralMeta, GeneralState } from "@/app/store/general/types";
+import type { IPRangeMeta, IPRangeState } from "@/app/store/iprange/types";
 import type {
-  LicenseKeysState,
   LicenseKeysMeta,
+  LicenseKeysState,
 } from "@/app/store/licensekeys/types";
-import type { MachineState, MachineMeta } from "@/app/store/machine/types";
-import type { MessageState, MessageMeta } from "@/app/store/message/types";
+import type { MachineMeta, MachineState } from "@/app/store/machine/types";
+import type { MessageMeta, MessageState } from "@/app/store/message/types";
 import type {
-  NodeDeviceState,
   NodeDeviceMeta,
+  NodeDeviceState,
 } from "@/app/store/nodedevice/types";
 import type {
-  NodeScriptResultState,
   NodeScriptResultMeta,
+  NodeScriptResultState,
 } from "@/app/store/nodescriptresult/types";
 import type {
-  NotificationState,
   NotificationMeta,
+  NotificationState,
 } from "@/app/store/notification/types";
 import type {
-  PackageRepositoryState,
   PackageRepositoryMeta,
+  PackageRepositoryState,
 } from "@/app/store/packagerepository/types";
-import type { PodState, PodMeta } from "@/app/store/pod/types";
+import type { PodMeta, PodState } from "@/app/store/pod/types";
 import type {
-  ResourcePoolState,
   ResourcePoolMeta,
+  ResourcePoolState,
 } from "@/app/store/resourcepool/types";
-import type { ScriptState, ScriptMeta } from "@/app/store/script/types";
+import type { ScriptMeta, ScriptState } from "@/app/store/script/types";
 import type {
-  ScriptResultState,
   ScriptResultMeta,
+  ScriptResultState,
 } from "@/app/store/scriptresult/types";
-import type { ServiceState, ServiceMeta } from "@/app/store/service/types";
-import type { SpaceState, SpaceMeta } from "@/app/store/space/types";
-import type { SSHKeyState, SSHKeyMeta } from "@/app/store/sshkey/types";
-import type { SSLKeyState, SSLKeyMeta } from "@/app/store/sslkey/types";
+import type { ServiceMeta, ServiceState } from "@/app/store/service/types";
+import type { SpaceMeta, SpaceState } from "@/app/store/space/types";
+import type { SSHKeyMeta, SSHKeyState } from "@/app/store/sshkey/types";
+import type { SSLKeyMeta, SSLKeyState } from "@/app/store/sslkey/types";
 import type {
-  StaticRouteState,
   StaticRouteMeta,
+  StaticRouteState,
 } from "@/app/store/staticroute/types";
-import type { StatusState, StatusMeta } from "@/app/store/status/types";
-import type { SubnetState, SubnetMeta } from "@/app/store/subnet/types";
-import type { TagState, TagMeta } from "@/app/store/tag/types";
-import type { TokenState, TokenMeta } from "@/app/store/token/types";
-import type { UserState, UserMeta } from "@/app/store/user/types";
-import type { VLANState, VLANMeta } from "@/app/store/vlan/types";
-import type { ZoneState, ZoneMeta } from "@/app/store/zone/types";
+import type { StatusMeta, StatusState } from "@/app/store/status/types";
+import type { SubnetMeta, SubnetState } from "@/app/store/subnet/types";
+import type { TagMeta, TagState } from "@/app/store/tag/types";
+import type { TokenMeta, TokenState } from "@/app/store/token/types";
+import type { UserMeta, UserState } from "@/app/store/user/types";
+import type { VLANMeta, VLANState } from "@/app/store/vlan/types";
+import type { ZoneMeta, ZoneState } from "@/app/store/zone/types";
 
 export type RootState = {
   [BootResourceMeta.MODEL]: BootResourceState;

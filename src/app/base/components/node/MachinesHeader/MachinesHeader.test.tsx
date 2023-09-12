@@ -10,9 +10,9 @@ import type { RootState } from "@/app/store/root/types";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
   machine as machineFactory,
-  machineState as machineStateFactory,
   machineStateCount as machineStateCountFactory,
   machineStateCounts as machineStateCountsFactory,
+  machineState as machineStateFactory,
   machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

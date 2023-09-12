@@ -11,7 +11,7 @@ import ActionConfirm from "@/app/base/components/node/ActionConfirm";
 import type { ControllerDetails } from "@/app/store/controller/types";
 import { actions as machineActions } from "@/app/store/machine";
 import type { MachineDetails } from "@/app/store/machine/types";
-import type { Filesystem, Disk, Partition } from "@/app/store/types/node";
+import type { Disk, Filesystem, Partition } from "@/app/store/types/node";
 import {
   formatSize,
   isMounted,

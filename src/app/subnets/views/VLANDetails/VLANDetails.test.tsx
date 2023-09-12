@@ -8,9 +8,9 @@ import VLANDetails from "./VLANDetails";
 import urls from "@/app/base/urls";
 import { actions as vlanActions } from "@/app/store/vlan";
 import {
+  rootState as rootStateFactory,
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";
 

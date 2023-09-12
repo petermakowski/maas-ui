@@ -3,22 +3,22 @@ import type { RootState } from "./store/root/types";
 
 import urls from "@/app/base/urls";
 import {
-  rootState as rootStateFactory,
+  authState as authStateFactory,
   controller as controllerFactory,
   controllerState as controllerStateFactory,
   deviceDetails as deviceDetailsFactory,
   deviceState as deviceStateFactory,
-  authState as authStateFactory,
-  user as userFactory,
-  userState as userStateFactory,
   domain as domainFactory,
   domainState as domainStateFactory,
-  zone as zoneFactory,
-  zoneState as zoneStateFactory,
   machine as machineFactory,
   machineState as machineStateFactory,
+  rootState as rootStateFactory,
+  user as userFactory,
+  userState as userStateFactory,
+  zone as zoneFactory,
+  zoneState as zoneStateFactory,
 } from "testing/factories";
-import { waitFor, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, waitFor } from "testing/utils";
 
 const nodeSummaryRoutes: { path: string; name: string }[] = [
   {

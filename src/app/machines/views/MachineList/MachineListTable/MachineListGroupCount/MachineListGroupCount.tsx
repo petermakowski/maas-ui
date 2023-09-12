@@ -3,8 +3,8 @@ import pluralize from "pluralize";
 import Placeholder from "@/app/base/components/Placeholder/Placeholder";
 import type {
   FetchFilters,
-  MachineStateListGroup,
   FetchGroupKey,
+  MachineStateListGroup,
 } from "@/app/store/machine/types";
 import { selectedToFilters } from "@/app/store/machine/utils";
 import { useFetchMachineCount } from "@/app/store/machine/utils/hooks";

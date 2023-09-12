@@ -47,7 +47,6 @@ const MachinesFilterOptions = ({
   useEffect(() => {
     if (!optionsLoading && !optionsLoaded) {
       dispatch(machineActions.filterOptions(group));
-    } else {
     }
   }, [dispatch, group, optionsLoading, optionsLoaded]);
 

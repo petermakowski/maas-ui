@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import ZoneDetailsContent from "./ZoneDetailsContent";
 import ZoneDetailsForm from "./ZoneDetailsForm";

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Spinner, Notification } from "@canonical/react-components";
+import { Notification, Spinner } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import UserForm from "../UserForm";

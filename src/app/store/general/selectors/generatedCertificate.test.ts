@@ -1,8 +1,8 @@
 import generatedCertificate from "./generatedCertificate";
 
 import {
-  generalState as generalStateFactory,
   generatedCertificate as certificateFactory,
+  generalState as generalStateFactory,
   generatedCertificateState as generatedCertificateStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

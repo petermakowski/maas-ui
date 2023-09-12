@@ -7,16 +7,16 @@ import SpaceSubnets from "./SpaceSubnets";
 
 import urls from "@/app/base/urls";
 import {
+  fabric as fabricFactory,
   fabricState as fabricStateFactory,
   rootState as rootStateFactory,
-  fabric as fabricFactory,
-  vlan as vlanFactory,
-  vlanState as vlanStateFactory,
   space as spaceFactory,
   spaceState as spaceStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
   subnetStatistics,
+  vlan as vlanFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
 import { render, screen, waitFor } from "testing/utils";
 

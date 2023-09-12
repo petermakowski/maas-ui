@@ -2,16 +2,16 @@ import cloneDeep from "clone-deep";
 
 import { SubnetsColumns } from "./constants";
 import type {
-  SubnetsTableRow,
-  SubnetsTableData,
   GroupByKey,
   SortData,
+  SubnetsTableData,
+  SubnetsTableRow,
 } from "./types";
 
 import type { Fabric } from "@/app/store/fabric/types";
 import { getFabricById, getFabricDisplay } from "@/app/store/fabric/utils";
 import type { Space } from "@/app/store/space/types";
-import { getSpaceDisplay, getSpaceById } from "@/app/store/space/utils";
+import { getSpaceById, getSpaceDisplay } from "@/app/store/space/utils";
 import type { Subnet } from "@/app/store/subnet/types";
 import {
   getAvailableIPs,

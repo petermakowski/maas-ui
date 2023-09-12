@@ -18,9 +18,9 @@ import {
 } from "testing/factories";
 import {
   render,
+  renderWithBrowserRouter,
   screen,
   waitFor,
-  renderWithBrowserRouter,
 } from "testing/utils";
 
 let state: RootState;

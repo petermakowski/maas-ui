@@ -8,14 +8,14 @@ import ZoneDetailsHeader from "./ZoneDetailsHeader";
 import type { RootState } from "@/app/store/root/types";
 import {
   authState as authStateFactory,
-  zone as zoneFactory,
-  zoneGenericActions as zoneGenericActionsFactory,
-  zoneState as zoneStateFactory,
   rootState as rootStateFactory,
   user as userFactory,
   userState as userStateFactory,
+  zone as zoneFactory,
+  zoneGenericActions as zoneGenericActionsFactory,
+  zoneState as zoneStateFactory,
 } from "testing/factories";
-import { screen, render, within } from "testing/utils";
+import { render, screen, within } from "testing/utils";
 
 const mockStore = configureStore();
 

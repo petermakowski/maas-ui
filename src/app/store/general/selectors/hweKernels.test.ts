@@ -2,8 +2,8 @@ import hweKernels from "./hweKernels";
 
 import {
   generalState as generalStateFactory,
-  hweKernelsState as hweKernelsStateFactory,
   hweKernel as hweKernelFactory,
+  hweKernelsState as hweKernelsStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

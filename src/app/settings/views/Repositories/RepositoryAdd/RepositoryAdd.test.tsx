@@ -6,14 +6,14 @@ import RepositoryAdd from "./RepositoryAdd";
 import type { RootState } from "@/app/store/root/types";
 import {
   componentsToDisableState as componentsToDisableStateFactory,
+  generalState as generalStateFactory,
   knownArchitecturesState as knownArchitecturesStateFactory,
   packageRepository as packageRepositoryFactory,
   packageRepositoryState as packageRepositoryStateFactory,
   pocketsToDisableState as pocketsToDisableStateFactory,
-  generalState as generalStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("RepositoryAdd", () => {
   let state: RootState;

@@ -8,10 +8,10 @@ import type {
   Machine,
   MachineState,
   MachineStateCount,
+  MachineStateList,
+  MachineStateListGroup,
   MachineStatus,
   MachineStatuses,
-  MachineStateListGroup,
-  MachineStateList,
 } from "@/app/store/machine/types";
 import { MachineMeta } from "@/app/store/machine/types";
 import { isMachineDetails } from "@/app/store/machine/utils";
@@ -188,7 +188,7 @@ const eventErrorsForIds = createSelector(
     const idArray = Array.isArray(ids) ? ids : [ids];
     return errors.reduce<MachineState["eventErrors"][0][]>((matches, error) => {
       let match = false;
-      const matchesId = !!error.id
+      const matchesId = error.id
         ? !!error.id && idArray.includes(error.id)
         : !!error.callId && idArray.includes(error.callId);
       // If an event has been provided as `null` then filter for errors with

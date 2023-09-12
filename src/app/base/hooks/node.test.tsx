@@ -19,10 +19,10 @@ import { NodeActions } from "@/app/store/types/node";
 import {
   architecturesState as architecturesStateFactory,
   generalState as generalStateFactory,
-  machine as machineFactory,
   machineAction as machineActionFactory,
   machineActionsState as machineActionsStateFactory,
   machineEvent as machineEventFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
   osInfo as osInfoFactory,
   osInfoState as osInfoStateFactory,
@@ -30,7 +30,7 @@ import {
   powerTypesState as powerTypesStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

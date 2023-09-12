@@ -8,7 +8,7 @@ import {
   machineState as machineStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, within } from "testing/utils";
 
 describe("NumaCard", () => {
   let state: RootState;

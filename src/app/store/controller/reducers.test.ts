@@ -3,12 +3,12 @@ import { ControllerMeta } from "./types";
 import { ImageSyncStatus } from "./types/enum";
 
 import {
-  controller as controllerFactory,
   controllerDetails as controllerDetailsFactory,
   controllerEventError as controllerEventErrorFactory,
+  controller as controllerFactory,
   controllerImageSyncStatuses as controllerImageSyncStatusesFactory,
-  controllerStatus as controllerStatusFactory,
   controllerState as controllerStateFactory,
+  controllerStatus as controllerStatusFactory,
 } from "testing/factories";
 
 describe("controller reducers", () => {

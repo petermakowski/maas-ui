@@ -2,8 +2,8 @@ import { getCoreIndices, resourceWithOverCommit } from "./utils";
 
 import {
   pod as podFactory,
-  podNuma as podNumaFactory,
   podNumaCores as podNumaCoresFactory,
+  podNuma as podNumaFactory,
   podResource as podResourceFactory,
   podResources as podResourcesFactory,
 } from "testing/factories";

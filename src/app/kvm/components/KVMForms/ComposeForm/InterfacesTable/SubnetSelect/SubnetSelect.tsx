@@ -44,7 +44,7 @@ export type MenuLink =
  * @returns {Subnet[]} Subnets filtered by space.
  */
 const filterSubnetsBySpace = (subnets: Subnet[], space: Space): Subnet[] => {
-  if (!!space) {
+  if (space) {
     return subnets.filter((subnet) => subnet.space === space.id);
   }
   return subnets;

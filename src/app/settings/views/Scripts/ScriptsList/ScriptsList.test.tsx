@@ -11,16 +11,16 @@ import { fileContextStore } from "@/app/base/file-context";
 import type { RootState } from "@/app/store/root/types";
 import { ScriptType } from "@/app/store/script/types";
 import {
+  rootState as rootStateFactory,
   script as scriptFactory,
   scriptState as scriptStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
-  within,
   renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore();
@@ -239,7 +239,7 @@ describe("ScriptsList", () => {
         </MemoryRouter>
       </Provider>
     );
-    let row = screen.getByRole("row", { name: "commissioning-script" });
+    const row = screen.getByRole("row", { name: "commissioning-script" });
     expect(row).not.toHaveClass("is-active");
     // Click on the delete button:
     await userEvent.click(

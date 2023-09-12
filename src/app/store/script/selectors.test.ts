@@ -2,9 +2,9 @@ import script from "./selectors";
 
 import { ScriptType } from "@/app/store/script/types";
 import {
+  rootState as rootStateFactory,
   script as scriptFactory,
   scriptState as scriptStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 
 describe("script selectors", () => {

@@ -14,14 +14,14 @@ import {
   generalState as generalStateFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   powerField as powerFieldFactory,
   powerType as powerTypeFactory,
   powerTypesState as powerTypesStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 

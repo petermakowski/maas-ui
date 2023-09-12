@@ -10,12 +10,12 @@ import EditStaticRouteForm from "./EditStaticRouteForm";
 import { actions as staticRouteActions } from "@/app/store/staticroute";
 import {
   rootState as rootStateFactory,
+  staticRoute as staticRouteFactory,
   staticRouteState as staticRouteStateFactory,
   subnet as subnetFactory,
-  staticRoute as staticRouteFactory,
   subnetState as subnetStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor, within } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 it("displays loading text on load", async () => {
   const mockStore = configureStore();

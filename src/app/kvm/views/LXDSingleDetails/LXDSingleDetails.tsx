@@ -27,7 +27,7 @@ import { FilterMachines } from "@/app/store/machine/utils";
 import podSelectors from "@/app/store/pod/selectors";
 import { PodMeta } from "@/app/store/pod/types";
 import type { RootState } from "@/app/store/root/types";
-import { isId, getRelativeRoute } from "@/app/utils";
+import { getRelativeRoute, isId } from "@/app/utils";
 
 export enum Label {
   Title = "LXD details",

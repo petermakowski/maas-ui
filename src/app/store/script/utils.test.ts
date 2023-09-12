@@ -1,4 +1,4 @@
-import { getObjectValue, getObjectString } from "./utils";
+import { getObjectString, getObjectValue } from "./utils";
 
 describe("utils", () => {
   describe("getObjectValue", () => {

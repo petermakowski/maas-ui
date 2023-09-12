@@ -4,8 +4,8 @@ import { MemoryRouter } from "react-router-dom";
 import configureStore from "redux-mock-store";
 
 import NetworkFields, {
-  Label as NetworkFieldsLabel,
   networkFieldsInitialValues,
+  Label as NetworkFieldsLabel,
 } from "./NetworkFields";
 
 import { Label as FabricSelectLabel } from "@/app/base/components/FabricSelect/FabricSelect";
@@ -19,16 +19,16 @@ import {
   fabricState as fabricStateFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
-  subnetStatistics as subnetStatisticsFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
+  subnetStatistics as subnetStatisticsFactory,
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor, within } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const mockStore = configureStore();
 

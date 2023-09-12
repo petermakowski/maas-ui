@@ -16,10 +16,10 @@ import {
   userState as userStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
 } from "testing/utils";
 
 const mockStore = configureStore();

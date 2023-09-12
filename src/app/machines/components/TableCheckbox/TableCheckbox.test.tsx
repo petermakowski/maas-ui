@@ -5,11 +5,11 @@ import TableCheckbox, { Checked } from "./TableCheckbox";
 import { actions as machineActions } from "@/app/store/machine";
 import type { RootState } from "@/app/store/root/types";
 import {
-  rootState as rootStateFactory,
-  machineStateList as machineStateListFactory,
   machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, waitFor, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent, waitFor } from "testing/utils";
 
 let state: RootState;
 const callId = "123456";

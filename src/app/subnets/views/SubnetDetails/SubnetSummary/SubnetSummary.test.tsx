@@ -9,15 +9,15 @@ import urls from "@/app/base/urls";
 import type { RootState } from "@/app/store/root/types";
 import type { Subnet } from "@/app/store/subnet/types";
 import {
-  rootState as rootStateFactory,
-  subnet as subnetFactory,
-  subnetState as subnetStateFactory,
-  space as spaceFactory,
-  spaceState as spaceStateFactory,
-  vlan as vlanFactory,
-  vlanState as vlanStateFactory,
   fabric as fabricFactory,
   fabricState as fabricStateFactory,
+  rootState as rootStateFactory,
+  space as spaceFactory,
+  spaceState as spaceStateFactory,
+  subnet as subnetFactory,
+  subnetState as subnetStateFactory,
+  vlan as vlanFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";
 

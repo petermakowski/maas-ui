@@ -8,11 +8,11 @@ import ZoneDetailsForm from "./ZoneDetailsForm";
 import type { RootState } from "@/app/store/root/types";
 import { actions as zoneActions } from "@/app/store/zone";
 import {
+  rootState as rootStateFactory,
   zone as zoneFactory,
   zoneState as zoneStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 

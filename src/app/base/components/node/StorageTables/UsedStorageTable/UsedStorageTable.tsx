@@ -14,10 +14,10 @@ import { FilterMachines } from "@/app/store/machine/utils";
 import type { Disk, Partition } from "@/app/store/types/node";
 import {
   diskAvailable,
-  formatType,
   formatSize,
-  partitionAvailable,
+  formatType,
   nodeIsMachine,
+  partitionAvailable,
 } from "@/app/store/utils";
 
 type Props = {

@@ -5,11 +5,11 @@ import DeleteConfirm from "./DeleteConfirm";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   zone as zoneFactory,
   zoneState as zoneStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, render } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

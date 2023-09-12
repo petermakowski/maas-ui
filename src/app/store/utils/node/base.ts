@@ -1,6 +1,6 @@
 import {
-  SidePanelViews,
   type SidePanelContent,
+  SidePanelViews,
 } from "@/app/base/side-panel-context";
 import type { Controller } from "@/app/store/controller/types";
 import { isControllerDetails } from "@/app/store/controller/utils";

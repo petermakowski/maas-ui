@@ -9,8 +9,8 @@ import {
   nodeScriptResultState as nodeScriptResultStateFactory,
   partialScriptResult as partialScriptResultFactory,
   rootState as rootStateFactory,
-  scriptResult as scriptResultFactory,
   scriptResultData as scriptResultDataFactory,
+  scriptResult as scriptResultFactory,
   scriptResultState as scriptResultStateFactory,
 } from "testing/factories";
 

@@ -4,7 +4,7 @@ import CertificateDownload, { Labels, TestIds } from "./CertificateDownload";
 
 import type { GeneratedCertificate } from "@/app/store/general/types";
 import { generatedCertificate as certFactory } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 jest.mock("js-file-download", () => jest.fn());
 

@@ -5,8 +5,8 @@ import {
   ContextualMenu,
   MainTable,
   Row,
-  Strip,
   Spinner,
+  Strip,
 } from "@canonical/react-components";
 import classNames from "classnames";
 import { useSelector } from "react-redux";

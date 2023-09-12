@@ -14,11 +14,11 @@ import StatusColumn from "./StatusColumn";
 import StorageColumn from "./StorageColumn";
 import ZoneColumn from "./ZoneColumn";
 import type {
-  MachineListTableProps,
-  TableColumn,
   GenerateRowParams,
-  RowContent,
   GroupRowsProps,
+  MachineListTableProps,
+  RowContent,
+  TableColumn,
 } from "./types";
 
 import DoubleRow from "@/app/base/components/DoubleRow";

@@ -4,12 +4,12 @@ import { PodType } from "@/app/store/pod/constants";
 import type { RootState } from "@/app/store/root/types";
 import {
   pod as podFactory,
-  podPowerParameters as powerParametersFactory,
   podResources as podResourcesFactory,
   podState as podStateFactory,
-  podStatus as podStatusFactory,
   podStatuses as podStatusesFactory,
+  podStatus as podStatusFactory,
   podVmCount as podVmCountFactory,
+  podPowerParameters as powerParametersFactory,
   rootState as rootStateFactory,
   zone as zoneFactory,
 } from "testing/factories";

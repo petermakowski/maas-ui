@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { UserMeta } from "./types";
-import type { CreateParams, UpdateParams, UserState, User } from "./types";
+import type { CreateParams, UpdateParams, User, UserState } from "./types";
 
 import {
   generateCommonReducers,

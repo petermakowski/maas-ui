@@ -4,7 +4,7 @@ import SourceMachineDetails, {
 
 import { NodeStatus } from "@/app/store/types/node";
 import { machineDetails as machineDetailsFactory } from "testing/factories";
-import { screen, render } from "testing/utils";
+import { render, screen } from "testing/utils";
 
 describe("SourceMachineDetails", () => {
   it("renders a list of the source machine's details", () => {

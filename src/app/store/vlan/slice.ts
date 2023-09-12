@@ -5,9 +5,9 @@ import { VLANMeta } from "./types";
 import type {
   ConfigureDHCPParams,
   CreateParams,
+  UpdateParams,
   VLAN,
   VLANState,
-  UpdateParams,
 } from "./types";
 
 import {

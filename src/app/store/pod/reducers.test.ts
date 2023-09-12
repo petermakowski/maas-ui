@@ -2,8 +2,8 @@ import { PodType } from "./constants";
 import reducers, { actions } from "./slice";
 
 import {
-  pod as podFactory,
   podDetails as podDetailsFactory,
+  pod as podFactory,
   podProject as podProjectFactory,
   podState as podStateFactory,
   podStatus as podStatusFactory,

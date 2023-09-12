@@ -7,13 +7,13 @@ import AddVlan from "./AddVlan";
 
 import { actions as vlanActions } from "@/app/store/vlan";
 import {
-  space as spaceFactory,
   fabric as fabricFactory,
-  spaceState as spaceStateFactory,
   fabricState as fabricStateFactory,
   rootState as rootStateFactory,
+  space as spaceFactory,
+  spaceState as spaceStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 it("displays validation messages for VID", async () => {
   const store = configureStore()(rootStateFactory());

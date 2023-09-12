@@ -8,8 +8,8 @@ import { PowerFieldScope } from "@/app/store/general/types";
 import type { RootState } from "@/app/store/root/types";
 import {
   certificateMetadata as certificateMetadataFactory,
-  generalState as generalStateFactory,
   controllerDetails as controllerDetailsFactory,
+  generalState as generalStateFactory,
   machineDetails as machineDetailsFactory,
   modelRef as modelRefFactory,
   powerField as powerFieldFactory,

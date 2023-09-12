@@ -4,11 +4,11 @@ import { SortDirection } from "@/app/base/types";
 import { PowerFieldScope } from "@/app/store/general/types";
 import type {
   FetchFilters,
+  FilterGroupOptionType,
   Machine,
   MachineDetails,
-  SelectedMachines,
-  FilterGroupOptionType,
   MachineStateListGroup,
+  SelectedMachines,
 } from "@/app/store/machine/types";
 import { FetchSortDirection, FilterGroupKey } from "@/app/store/machine/types";
 import type { Tag, TagMeta } from "@/app/store/tag/types";
@@ -113,7 +113,7 @@ export const selectedToFilters = (
   if ("filter" in selected) {
     return selected.filter;
   }
-  let filter: Record<
+  const filter: Record<
     string,
     FilterGroupOptionType | null | (FilterGroupOptionType | null)[]
   > = {};
@@ -225,7 +225,7 @@ export const isUnconfiguredPowerType = (machine: Machine): boolean => {
 export function getNodeStatusKey(
   value: string
 ): keyof typeof NodeStatus | undefined {
-  for (let key in NodeStatus) {
+  for (const key in NodeStatus) {
     if (NodeStatus[key as keyof typeof NodeStatus] === value) {
       return key as keyof typeof NodeStatus;
     }

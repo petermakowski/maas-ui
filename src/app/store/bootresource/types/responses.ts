@@ -1,8 +1,8 @@
 import type {
   BootResource,
   BootResourceFetchedImages,
-  BootResourceUbuntu,
   BootResourceOtherImage,
+  BootResourceUbuntu,
   BootResourceUbuntuCoreImage,
 } from "./base";
 

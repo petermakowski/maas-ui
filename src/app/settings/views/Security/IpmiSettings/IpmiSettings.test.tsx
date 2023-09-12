@@ -6,10 +6,10 @@ import IpmiSettings, { Labels as IpmiSettingsLabels } from "./IpmiSettings";
 import { Labels as FormikButtonLabels } from "@/app/base/components/FormikFormButtons/FormikFormButtons";
 import type { RootState } from "@/app/store/root/types";
 import {
-  rootState as rootStateFactory,
   configState as configStateFactory,
+  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

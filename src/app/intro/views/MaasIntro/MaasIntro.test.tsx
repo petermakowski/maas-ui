@@ -21,10 +21,10 @@ import {
   userState as userStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   renderWithBrowserRouter,
   renderWithMockStore,
+  screen,
+  userEvent,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();

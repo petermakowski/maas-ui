@@ -8,9 +8,9 @@ import type { Props as DHCPTableProps } from "@/app/base/components/DHCPTable/DH
 import urls from "@/app/base/urls";
 import { actions as subnetActions } from "@/app/store/subnet";
 import {
+  rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import { render } from "testing/utils";
 

@@ -4,18 +4,18 @@ import * as matchers from "redux-saga-test-plan/matchers";
 import { throwError } from "redux-saga-test-plan/providers";
 
 import {
+  addMachineChassisSaga,
   api,
   checkAuthenticatedSaga,
+  deleteLicenseKeySaga,
+  externalLoginSaga,
+  fetchLicenseKeysSaga,
   loginSaga,
   logoutSaga,
-  externalLoginSaga,
-  uploadScriptSaga,
-  fetchLicenseKeysSaga,
-  updateLicenseKeySaga,
-  deleteLicenseKeySaga,
-  addMachineChassisSaga,
   ROOT_API,
   SERVICE_API,
+  updateLicenseKeySaga,
+  uploadScriptSaga,
 } from "./http";
 
 import { ScriptType } from "@/app/store/script/types";

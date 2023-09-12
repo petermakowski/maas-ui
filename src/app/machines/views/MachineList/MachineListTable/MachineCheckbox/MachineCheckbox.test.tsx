@@ -5,13 +5,13 @@ import MachineCheckbox, { getSelectedMachinesRange } from "./MachineCheckbox";
 import { actions as machineActions } from "@/app/store/machine";
 import type { RootState } from "@/app/store/root/types";
 import {
-  rootState as rootStateFactory,
-  machineStateList as machineStateListFactory,
-  machineState as machineStateFactory,
-  machineStateListGroup as machineStateListGroupFactory,
   machine as machineFactory,
+  machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  machineStateListGroup as machineStateListGroupFactory,
+  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();
 

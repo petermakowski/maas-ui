@@ -5,16 +5,16 @@ import type { Machine } from "@/app/store/machine/types";
 import * as query from "@/app/store/machine/utils/query";
 import type { RootState } from "@/app/store/root/types";
 import {
-  machine as machineFactory,
   machineDetails as machineDetailsFactory,
-  rootState as rootStateFactory,
-  tag as tagFactory,
-  tagState as tagStateFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
   machineStateList,
   machineStateListGroup,
+  rootState as rootStateFactory,
+  tag as tagFactory,
+  tagState as tagStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent } from "testing/utils";
 
 describe("SourceMachineSelect", () => {
   let machines: Machine[];

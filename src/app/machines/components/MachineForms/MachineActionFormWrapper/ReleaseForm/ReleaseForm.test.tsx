@@ -9,10 +9,10 @@ import { NodeActions } from "@/app/store/types/node";
 import {
   config as configFactory,
   configState as configStateFactory,
-  rootState as rootStateFactory,
   machine as machineFactory,
   machineState as machineStateFactory,
   machineStatus as machineStatusFactory,
+  rootState as rootStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 

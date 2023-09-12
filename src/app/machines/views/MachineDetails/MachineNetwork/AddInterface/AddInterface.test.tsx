@@ -10,15 +10,15 @@ import {
   fabricState as fabricStateFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();
 const route = urls.machines.index;

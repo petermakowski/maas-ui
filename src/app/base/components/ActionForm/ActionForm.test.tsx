@@ -8,7 +8,7 @@ import ActionForm, { Labels } from "./ActionForm";
 import { TestIds } from "@/app/base/components/FormikFormButtons";
 import type { RootState } from "@/app/store/root/types";
 import { rootState as rootStateFactory } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 let state: RootState;
 const mockStore = configureStore();

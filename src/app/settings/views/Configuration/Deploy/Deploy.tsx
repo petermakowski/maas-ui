@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import { Col, Spinner, Row } from "@canonical/react-components";
-import { useSelector, useDispatch } from "react-redux";
+import { Col, Row, Spinner } from "@canonical/react-components";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useWindowTitle } from "@/app/base/hooks";
 import DeployForm from "@/app/settings/views/Configuration/DeployForm";

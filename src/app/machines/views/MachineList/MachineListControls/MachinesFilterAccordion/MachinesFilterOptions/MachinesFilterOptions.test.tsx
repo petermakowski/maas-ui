@@ -7,11 +7,11 @@ import type { FilterGroup } from "@/app/store/machine/types";
 import { FilterGroupKey } from "@/app/store/machine/types";
 import type { RootState } from "@/app/store/root/types";
 import {
+  machineFilterGroup as machineFilterGroupFactory,
   machineState as machineStateFactory,
   rootState as rootStateFactory,
-  machineFilterGroup as machineFilterGroupFactory,
 } from "testing/factories";
-import { userEvent, screen, waitFor, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();
 

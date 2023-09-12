@@ -10,26 +10,26 @@ import type { CertificateMetadata, PowerType } from "@/app/store/general/types";
 import type { PowerState, StorageLayout } from "@/app/store/types/enum";
 import type { ModelRef, TimestampFields } from "@/app/store/types/model";
 import type {
-  NodeActions,
   BaseNode,
-  NodeType,
-  NodeTypeDisplay,
-  NodeLinkType,
   Disk,
-  TestStatus,
-  NodeEvent,
+  Filesystem,
   GroupedStorage,
   NetworkInterface,
+  NodeActions,
+  NodeDeviceRef,
+  NodeEvent,
   NodeIpAddress,
+  NodeLinkType,
   NodeMetadata,
   NodeNumaNode,
-  PowerParameters,
   NodeStatus,
-  Filesystem,
-  SupportedFilesystem,
+  NodeType,
+  NodeTypeDisplay,
   NodeVlan,
+  PowerParameters,
+  SupportedFilesystem,
+  TestStatus,
   WorkloadAnnotations,
-  NodeDeviceRef,
 } from "@/app/store/types/node";
 import type { EventError, GenericState } from "@/app/store/types/state";
 import type { VLAN, VLANMeta } from "@/app/store/vlan/types";

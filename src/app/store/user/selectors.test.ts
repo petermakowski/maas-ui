@@ -1,11 +1,11 @@
 import user from "./selectors";
 
 import {
+  rootState as rootStateFactory,
+  userEventError as userEventErrorFactory,
   user as userFactory,
   userState as userStateFactory,
-  userEventError as userEventErrorFactory,
   userStatuses as userStatusesFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 
 describe("users selectors", () => {

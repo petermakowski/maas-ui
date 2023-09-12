@@ -15,13 +15,13 @@ import { NodeStatus } from "@/app/store/types/node";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
   machine as machineFactory,
-  machineState as machineStateFactory,
   machineStateCount as machineStateCountFactory,
+  machineState as machineStateFactory,
   rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 enableCallIdMocks();
 const mockStore = configureStore();

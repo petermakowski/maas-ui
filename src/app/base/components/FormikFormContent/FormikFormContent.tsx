@@ -1,4 +1,4 @@
-import type { ReactNode, AriaAttributes } from "react";
+import type { AriaAttributes, ReactNode } from "react";
 import React, { useEffect, useRef } from "react";
 
 import { Form, Notification } from "@canonical/react-components";

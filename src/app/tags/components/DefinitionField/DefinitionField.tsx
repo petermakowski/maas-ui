@@ -74,7 +74,7 @@ export const DefinitionField = ({ id }: Props): JSX.Element => {
   return (
     <>
       <FormikField
-        aria-errormessage={!!definitionError ? definitionErrorId : undefined}
+        aria-errormessage={definitionError ? definitionErrorId : undefined}
         aria-invalid={!!definitionError}
         caution={
           hasChangedDefinition

@@ -1,6 +1,6 @@
 import type { ValueOf } from "@canonical/react-components";
 
-import type { SidePanelContent, SetSidePanelContent } from "@/app/base/types";
+import type { SetSidePanelContent, SidePanelContent } from "@/app/base/types";
 import type {
   ControllerActionHeaderViews,
   ControllerNonActionHeaderViews,

@@ -4,13 +4,13 @@ import { PodType } from "@/app/store/pod/constants";
 import type { RootState } from "@/app/store/root/types";
 import {
   podDetails as podFactory,
-  podPowerParameters as powerParametersFactory,
   podState as podStateFactory,
-  rootState as rootStateFactory,
-  zoneState as zoneStateFactory,
-  zone as zoneFactory,
+  podPowerParameters as powerParametersFactory,
   resourcePool as resourcePoolFactory,
   resourcePoolState as resourcePoolStateFactory,
+  rootState as rootStateFactory,
+  zone as zoneFactory,
+  zoneState as zoneStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, within } from "testing/utils";
 

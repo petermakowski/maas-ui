@@ -5,12 +5,12 @@ import LACPRateSelect from "./LACPRateSelect";
 import { BondLacpRate } from "@/app/store/general/types";
 import type { RootState } from "@/app/store/root/types";
 import {
-  generalState as generalStateFactory,
   bondOptions as bondOptionsFactory,
   bondOptionsState as bondOptionsStateFactory,
+  generalState as generalStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, within } from "testing/utils";
 
 describe("LACPRateSelect", () => {
   let state: RootState;
@@ -63,7 +63,7 @@ describe("LACPRateSelect", () => {
       },
     ];
 
-    for (let i in expectedOptions) {
+    for (const i in expectedOptions) {
       expect(lacpRateOptions[i]).toHaveValue(expectedOptions[i].value);
       expect(lacpRateOptions[i]).toHaveTextContent(expectedOptions[i].label);
     }

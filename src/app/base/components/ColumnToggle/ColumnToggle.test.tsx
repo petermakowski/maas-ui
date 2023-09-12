@@ -1,6 +1,6 @@
 import ColumnToggle from "./ColumnToggle";
 
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const DOM_RECT = {
   height: 0,

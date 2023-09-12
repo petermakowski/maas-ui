@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { MainTable, Spinner, Link } from "@canonical/react-components";
+import { Link, MainTable, Spinner } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import StatusColumn from "./StatusColumn";

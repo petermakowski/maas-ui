@@ -23,7 +23,7 @@ const NumaResources = ({ id }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
   const sendAnalytics = useSendAnalytics();
 
-  if (!!pod) {
+  if (pod) {
     const { resources } = pod;
     const numaNodes = resources.numa;
     const canBeTruncated = numaNodes.length > TRUNCATION_POINT;

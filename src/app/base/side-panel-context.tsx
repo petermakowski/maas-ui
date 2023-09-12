@@ -4,42 +4,42 @@ import { createContext, useCallback, useContext, useState } from "react";
 import { ControllerSidePanelViews } from "@/app/controllers/constants";
 import type { ControllerSidePanelContent } from "@/app/controllers/types";
 import {
-  DashboardSidePanelViews,
   type DashboardSidePanelContent,
+  DashboardSidePanelViews,
 } from "@/app/dashboard/views/constants";
 import { DeviceSidePanelViews } from "@/app/devices/constants";
 import type { DeviceSidePanelContent } from "@/app/devices/types";
 import {
-  DomainDetailsSidePanelViews,
   type DomainDetailsSidePanelContent,
+  DomainDetailsSidePanelViews,
 } from "@/app/domains/views/DomainDetails/constants";
 import {
-  DomainListSidePanelViews,
   type DomainListSidePanelContent,
+  DomainListSidePanelViews,
 } from "@/app/domains/views/DomainsList/constants";
 import { KVMSidePanelViews } from "@/app/kvm/constants";
 import type { KVMSidePanelContent } from "@/app/kvm/types";
 import { MachineSidePanelViews } from "@/app/machines/constants";
 import type { MachineSidePanelContent } from "@/app/machines/types";
 import {
-  SubnetSidePanelViews,
   type SubnetSidePanelContent,
+  SubnetSidePanelViews,
 } from "@/app/subnets/types";
 import {
-  FabricDetailsSidePanelViews,
   type FabricDetailsSidePanelContent,
+  FabricDetailsSidePanelViews,
 } from "@/app/subnets/views/FabricDetails/FabricDetailsHeader/constants";
 import {
-  SpaceDetailsSidePanelViews,
   type SpaceDetailsSidePanelContent,
+  SpaceDetailsSidePanelViews,
 } from "@/app/subnets/views/SpaceDetails/constants";
 import {
-  SubnetDetailsSidePanelViews,
   type SubnetDetailsSidePanelContent,
+  SubnetDetailsSidePanelViews,
 } from "@/app/subnets/views/SubnetDetails/constants";
 import {
-  VLANDetailsSidePanelViews,
   type VLANDetailsSidePanelContent,
+  VLANDetailsSidePanelViews,
 } from "@/app/subnets/views/VLANDetails/constants";
 import { TagSidePanelViews } from "@/app/tags/constants";
 import type { TagSidePanelContent } from "@/app/tags/types";
@@ -109,8 +109,12 @@ const SidePanelContext = createContext<SidePanelContextType>({
 });
 
 const SetSidePanelContext = createContext<SetSidePanelContextType>({
-  setSidePanelContent: () => {},
-  setSidePanelSize: () => {},
+  setSidePanelContent: () => {
+    throw new Error("setSidePanelContent function must be overridden");
+  },
+  setSidePanelSize: () => {
+    throw new Error("setSidePanelSize function must be overridden");
+  },
 });
 
 const useSidePanelContext = (): SidePanelContextType =>

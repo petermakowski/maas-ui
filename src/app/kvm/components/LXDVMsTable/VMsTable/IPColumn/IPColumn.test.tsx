@@ -7,8 +7,8 @@ import IPColumn from "./IPColumn";
 
 import type { NodeIpAddress } from "@/app/store/types/node";
 import {
-  machine as machineFactory,
   machineIpAddress as ipAddressFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

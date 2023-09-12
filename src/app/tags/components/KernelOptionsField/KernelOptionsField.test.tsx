@@ -12,14 +12,14 @@ import type { RootState } from "@/app/store/root/types";
 import { FetchNodeStatus, NodeStatus } from "@/app/store/types/node";
 import {
   machine as machineFactory,
-  machineState as machineStateFactory,
   machineStateCount as machineStateCountFactory,
   machineStateCounts as machineStateCountsFactory,
-  tag as tagFactory,
+  machineState as machineStateFactory,
   rootState as rootStateFactory,
+  tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 const mockStore = configureStore();
 let state: RootState;
 

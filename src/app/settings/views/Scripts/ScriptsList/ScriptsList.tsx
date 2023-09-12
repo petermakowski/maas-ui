@@ -9,7 +9,7 @@ import ScriptDetails from "../ScriptDetails";
 import ColumnToggle from "@/app/base/components/ColumnToggle";
 import TableActions from "@/app/base/components/TableActions";
 import TableDeleteConfirm from "@/app/base/components/TableDeleteConfirm";
-import { useWindowTitle, useAddMessage } from "@/app/base/hooks";
+import { useAddMessage, useWindowTitle } from "@/app/base/hooks";
 import SettingsTable from "@/app/settings/components/SettingsTable";
 import type { RootState } from "@/app/store/root/types";
 import { actions as scriptActions } from "@/app/store/script";

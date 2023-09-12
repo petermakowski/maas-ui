@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { Row, Col, Textarea } from "@canonical/react-components";
+import { Col, Row, Textarea } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormikField from "@/app/base/components/FormikField";

@@ -7,18 +7,18 @@ import deviceSelectors from "@/app/store/device/selectors";
 import { DeviceIpAssignment } from "@/app/store/device/types";
 import type { RootState } from "@/app/store/root/types";
 import {
-  device as deviceFactory,
   deviceDetails as deviceDetailsFactory,
   deviceEventError as deviceEventErrorFactory,
+  device as deviceFactory,
   deviceState as deviceStateFactory,
-  deviceStatus as deviceStatusFactory,
   deviceStatuses as deviceStatusesFactory,
+  deviceStatus as deviceStatusFactory,
   rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
 } from "testing/factories";
 import { mockFormikFormSaved } from "testing/mockFormikFormSaved";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 const createNewInterface = async () => {

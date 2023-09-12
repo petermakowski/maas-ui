@@ -1,5 +1,5 @@
 import { Redirect } from "react-router-dom";
-import { Route, Routes as ReactRouterRoutes } from "react-router-dom-v5-compat";
+import { Routes as ReactRouterRoutes, Route } from "react-router-dom-v5-compat";
 
 import urls from "@/app/base/urls";
 import NotFound from "@/app/base/views/NotFound";

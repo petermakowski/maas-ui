@@ -4,15 +4,15 @@ import { BootResourceSourceType } from "@/app/store/bootresource/types";
 import {
   bootResource as bootResourceFactory,
   bootResourceState as bootResourceStateFactory,
+  rootState as rootStateFactory,
   bootResourceUbuntuSource as sourceFactory,
   bootResourceUbuntu as ubuntuFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  within,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 describe("SyncedImages", () => {

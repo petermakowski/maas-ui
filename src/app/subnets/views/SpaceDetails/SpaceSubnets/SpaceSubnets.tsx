@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import type { MainTableProps } from "@canonical/react-components";
-import { Spinner, MainTable } from "@canonical/react-components";
+import { MainTable, Spinner } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import FabricLink from "@/app/base/components/FabricLink";

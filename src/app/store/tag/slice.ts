@@ -2,7 +2,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
 import { TagMeta } from "./types";
-import type { TagState, CreateParams, UpdateParams } from "./types";
+import type { CreateParams, TagState, UpdateParams } from "./types";
 import type { Tag, TagStateList } from "./types/base";
 
 import type { FetchFilters } from "@/app/store/machine/types/actions";

@@ -10,12 +10,12 @@ import type { RootState } from "@/app/store/root/types";
 import { actions as tagActions } from "@/app/store/tag";
 import { Label as KernelOptionsLabel } from "@/app/tags/components/KernelOptionsField";
 import {
-  tag as tagFactory,
   rootState as rootStateFactory,
+  tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
 import { mockFormikFormSaved } from "testing/mockFormikFormSaved";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 

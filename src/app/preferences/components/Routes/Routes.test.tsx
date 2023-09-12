@@ -11,11 +11,11 @@ import { Label as AddSSLKeyLabel } from "@/app/preferences/views/SSLKeys/AddSSLK
 import { Label as SSLKeyListLabel } from "@/app/preferences/views/SSLKeys/SSLKeyList/SSLKeyList";
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   token as tokenFactory,
   tokenState as tokenStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 let state: RootState;
 

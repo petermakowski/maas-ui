@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Spinner, Row, Col, MainTable } from "@canonical/react-components";
+import { Col, MainTable, Row, Spinner } from "@canonical/react-components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom-v5-compat";
 

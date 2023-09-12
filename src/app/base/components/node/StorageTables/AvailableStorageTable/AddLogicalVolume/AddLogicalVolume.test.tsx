@@ -6,14 +6,14 @@ import { MIN_PARTITION_SIZE } from "@/app/store/machine/constants";
 import type { RootState } from "@/app/store/root/types";
 import { DiskTypes } from "@/app/store/types/enum";
 import {
+  nodeDisk as diskFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
-  nodeDisk as diskFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { renderWithBrowserRouter, userEvent, screen } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

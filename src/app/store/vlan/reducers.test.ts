@@ -1,11 +1,11 @@
 import reducers, { actions } from "./slice";
 
 import {
-  vlan as vlanFactory,
   vlanEventError as vlanEventErrorFactory,
+  vlan as vlanFactory,
   vlanState as vlanStateFactory,
-  vlanStatus as vlanStatusFactory,
   vlanStatuses as vlanStatusesFactory,
+  vlanStatus as vlanStatusFactory,
 } from "testing/factories";
 
 describe("vlan reducer", () => {

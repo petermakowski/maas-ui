@@ -1,5 +1,5 @@
 import { Component } from "react";
-import type { ReactNode, ErrorInfo } from "react";
+import type { ErrorInfo, ReactNode } from "react";
 
 import { Notification } from "@canonical/react-components";
 import * as Sentry from "@sentry/browser";

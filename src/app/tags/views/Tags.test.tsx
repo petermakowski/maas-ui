@@ -13,7 +13,7 @@ import {
   tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, within } from "testing/utils";
 
 describe("Tags", () => {
   let scrollToSpy: jest.Mock;

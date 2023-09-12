@@ -12,8 +12,8 @@ import {
   machineDetails as machineDetailsFactory,
   machineInterface as machineInterfaceFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
@@ -21,10 +21,10 @@ import {
   vlanState as vlanStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  within,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();

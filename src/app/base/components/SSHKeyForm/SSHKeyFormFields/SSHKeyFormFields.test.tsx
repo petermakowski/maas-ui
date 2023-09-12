@@ -4,8 +4,8 @@ import SSHKeyFormFields from "./SSHKeyFormFields";
 
 import type { RootState } from "@/app/store/root/types";
 import {
-  sshKeyState as sshKeyStateFactory,
   rootState as rootStateFactory,
+  sshKeyState as sshKeyStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 

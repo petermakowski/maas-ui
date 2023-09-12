@@ -2,9 +2,9 @@ import tlsCertificate from "./tlsCertificate";
 
 import {
   generalState as generalStateFactory,
+  rootState as rootStateFactory,
   tlsCertificate as tlsCertificateFactory,
   tlsCertificateState as tlsCertificateStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 
 describe("get", () => {

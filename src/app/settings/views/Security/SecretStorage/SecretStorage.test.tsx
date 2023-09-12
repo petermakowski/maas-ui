@@ -1,13 +1,13 @@
 import SecretStorage from "./SecretStorage";
 
 import {
-  generalState as generalStateFactory,
-  rootState as rootStateFactory,
   controller as controllerFactory,
   controllerState as controllerStateFactory,
+  generalState as generalStateFactory,
+  rootState as rootStateFactory,
   vaultEnabledState as vaultEnabledStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 it("displays loading text if Vault Status has not loaded", () => {
   const state = rootStateFactory({

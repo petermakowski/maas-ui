@@ -9,7 +9,7 @@ import {
   Spinner,
 } from "@canonical/react-components";
 import classNames from "classnames";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { Dispatch } from "redux";
 
 import DiscoveryAddForm from "../DiscoveryAddForm";

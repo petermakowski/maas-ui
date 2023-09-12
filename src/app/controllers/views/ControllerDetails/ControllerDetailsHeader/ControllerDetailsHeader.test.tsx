@@ -9,12 +9,12 @@ import type { ControllerActions } from "@/app/store/controller/types";
 import { NodeActions } from "@/app/store/types/node";
 import { getNodeActionTitle } from "@/app/store/utils";
 import {
-  controller as controllerFactory,
   controllerDetails as controllerDetailsFactory,
+  controller as controllerFactory,
   controllerState as controllerStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

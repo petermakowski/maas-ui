@@ -13,15 +13,15 @@ import {
 import type { RootState } from "@/app/store/root/types";
 import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import {
+  bondOptions as bondOptionsFactory,
+  bondOptionsState as bondOptionsStateFactory,
+  generalState as generalStateFactory,
   machineDetails as machineDetailsFactory,
   machineInterface as machineInterfaceFactory,
   machineState as machineStateFactory,
-  generalState as generalStateFactory,
-  bondOptions as bondOptionsFactory,
-  bondOptionsState as bondOptionsStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 const route = urls.machines.index;
 

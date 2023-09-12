@@ -16,7 +16,7 @@ import TableHeader from "@/app/base/components/TableHeader";
 import { SortDirection } from "@/app/base/types";
 import AllCheckbox from "@/app/machines/views/MachineList/MachineListTable/AllCheckbox";
 import type { Machine } from "@/app/store/machine/types";
-import { FilterGroupKey, FetchGroupKey } from "@/app/store/machine/types";
+import { FetchGroupKey, FilterGroupKey } from "@/app/store/machine/types";
 import { FilterMachines } from "@/app/store/machine/utils";
 import type { Pod } from "@/app/store/pod/types";
 import tagSelectors from "@/app/store/tag/selectors";

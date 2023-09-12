@@ -22,10 +22,10 @@ import {
   vlanState as vlanStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  within,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 describe("NetworkTable", () => {

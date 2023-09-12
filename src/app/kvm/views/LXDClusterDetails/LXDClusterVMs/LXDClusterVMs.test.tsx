@@ -7,14 +7,14 @@ import { actions as machineActions } from "@/app/store/machine";
 import type { RootState } from "@/app/store/root/types";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
+  virtualMachine as clusterVMFactory,
   machine as machineFactory,
   machineState as machineStateFactory,
-  rootState as rootStateFactory,
-  virtualMachine as clusterVMFactory,
-  vmCluster as vmClusterFactory,
-  vmClusterState as vmClusterStateFactory,
   machineStateList as machineStateListFactory,
   machineStateListGroup as machineStateListGroupFactory,
+  rootState as rootStateFactory,
+  vmCluster as vmClusterFactory,
+  vmClusterState as vmClusterStateFactory,
   vmHost as vmHostFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen } from "testing/utils";

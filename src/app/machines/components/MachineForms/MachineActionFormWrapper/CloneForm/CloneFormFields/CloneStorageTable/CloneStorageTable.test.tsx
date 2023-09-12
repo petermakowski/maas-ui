@@ -1,9 +1,9 @@
 import CloneStorageTable from "./CloneStorageTable";
 
 import {
-  machineDetails as machineDetailsFactory,
   nodeDisk as diskFactory,
   nodeFilesystem as fsFactory,
+  machineDetails as machineDetailsFactory,
   nodePartition as partitionFactory,
 } from "testing/factories";
 import { render, screen, within } from "testing/utils";

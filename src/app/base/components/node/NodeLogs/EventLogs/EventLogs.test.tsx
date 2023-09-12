@@ -9,18 +9,18 @@ import type { MachineDetails } from "@/app/store/machine/types";
 import type { RootState } from "@/app/store/root/types";
 import {
   eventRecord as eventRecordFactory,
-  eventType as eventTypeFactory,
   eventState as eventStateFactory,
+  eventType as eventTypeFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
   render,
-  screen,
-  within,
   renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore();

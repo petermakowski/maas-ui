@@ -10,8 +10,8 @@ import { NodeStatusCode } from "@/app/store/types/node";
 import {
   machine as machineFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
   script as scriptFactory,
   scriptState as scriptStateFactory,

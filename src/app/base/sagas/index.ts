@@ -1,15 +1,15 @@
 import actionHandlers from "./actions";
 import {
+  watchAddMachineChassis,
   watchCheckAuthenticated,
+  watchCreateLicenseKey,
+  watchDeleteLicenseKey,
+  watchExternalLogin,
+  watchFetchLicenseKeys,
   watchLogin,
   watchLogout,
-  watchExternalLogin,
-  watchCreateLicenseKey,
   watchUpdateLicenseKey,
-  watchDeleteLicenseKey,
-  watchFetchLicenseKeys,
   watchUploadScript,
-  watchAddMachineChassis,
   watchZonesFetch,
 } from "./http";
 import { watchWebSockets } from "./websockets";

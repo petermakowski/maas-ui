@@ -1,8 +1,8 @@
 import componentsToDisable from "./componentsToDisable";
 
 import {
-  componentToDisable as componentToDisableFactory,
   componentsToDisableState as componentsToDisableStateFactory,
+  componentToDisable as componentToDisableFactory,
   generalState as generalStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

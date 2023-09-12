@@ -9,16 +9,16 @@ import { actions as machineActions } from "@/app/store/machine";
 import {
   controllerDetails as controllerDetailsFactory,
   controllerState as controllerStateFactory,
-  machineDetails as machineDetailsFactory,
-  machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
-  machineStatuses as machineStatusesFactory,
   nodeDisk as diskFactory,
   nodeFilesystem as fsFactory,
+  machineDetails as machineDetailsFactory,
+  machineState as machineStateFactory,
+  machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   nodePartition as partitionFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

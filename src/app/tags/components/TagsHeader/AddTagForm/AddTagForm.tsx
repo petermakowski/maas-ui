@@ -84,7 +84,7 @@ export const AddTagForm = ({ onClose }: Props): JSX.Element => {
       }}
       onSuccess={({ definition, name }) => {
         setSavedName(name);
-        if (!!definition) {
+        if (definition) {
           dispatch(
             messageActions.add(
               `Created ${name}. ${NewDefinitionMessage}`,

@@ -14,7 +14,7 @@ import {
   vmCluster as vmClusterFactory,
   vmClusterState as vmClusterStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 let state: RootState;
 

@@ -1,18 +1,17 @@
 import { eventChannel } from "redux-saga";
+import { call, put, take } from "redux-saga/effects";
 import { expectSaga } from "redux-saga-test-plan";
 import * as matchers from "redux-saga-test-plan/matchers";
-import { call, put, take } from "redux-saga/effects";
 
 import {
   handleFileContextRequest,
   storeFileContextActions,
 } from "./handlers/file-context-requests";
 import { handleNextActions, nextActions } from "./handlers/next-actions";
-import { pollAction, handlePolling } from "./handlers/polling-requests";
+import { handlePolling, pollAction } from "./handlers/polling-requests";
 import { handleUnsubscribe } from "./handlers/unsubscribe";
 import type { WebSocketChannel } from "./websockets";
 import {
-  WEBSOCKET_PING_INTERVAL,
   createConnection,
   handleMessage,
   handleNotifyMessage,
@@ -20,16 +19,11 @@ import {
   sendMessage,
   watchMessages,
   watchWebSockets,
+  WEBSOCKET_PING_INTERVAL,
 } from "./websockets";
 
 import { actions as machineActions } from "@/app/store/machine";
 import { getCookie } from "@/app/utils";
-import {
-  machineState as machineStateFactory,
-  rootState as rootStateFactory,
-  machineStateList as machineStateListFactory,
-  machineStateListGroup as machineStateListGroupFactory,
-} from "testing/factories";
 import WebSocketClient, {
   WebSocketMessageType,
   WebSocketResponseType,
@@ -39,6 +33,12 @@ import type {
   WebSocketResponsePing,
   WebSocketResponseResult,
 } from "@/websocket-client";
+import {
+  machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  machineStateListGroup as machineStateListGroupFactory,
+  rootState as rootStateFactory,
+} from "testing/factories";
 
 jest.mock("app/utils", () => ({
   ...jest.requireActual("app/utils"),

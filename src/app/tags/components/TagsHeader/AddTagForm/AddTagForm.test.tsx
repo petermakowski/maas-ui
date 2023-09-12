@@ -13,17 +13,17 @@ import { Label as DefinitionLabel } from "@/app/tags/components/DefinitionField"
 import { Label as KernelOptionsLabel } from "@/app/tags/components/KernelOptionsField";
 import { NewDefinitionMessage } from "@/app/tags/constants";
 import {
-  tag as tagFactory,
   rootState as rootStateFactory,
+  tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
 import { mockFormikFormSaved } from "testing/mockFormikFormSaved";
 import {
-  userEvent,
   render,
-  screen,
-  waitFor,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  waitFor,
 } from "testing/utils";
 
 const mockStore = configureStore();

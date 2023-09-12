@@ -5,12 +5,12 @@ import DeviceDetailsHeader from "./DeviceDetailsHeader";
 import { DeviceSidePanelViews } from "@/app/devices/constants";
 import type { RootState } from "@/app/store/root/types";
 import {
-  device as deviceFactory,
   deviceDetails as deviceDetailsFactory,
+  device as deviceFactory,
   deviceState as deviceStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

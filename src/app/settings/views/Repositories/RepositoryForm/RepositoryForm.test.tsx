@@ -12,14 +12,14 @@ import settingsURLs from "@/app/settings/urls";
 import type { RootState } from "@/app/store/root/types";
 import {
   componentsToDisableState as componentsToDisableStateFactory,
+  generalState as generalStateFactory,
   knownArchitecturesState as knownArchitecturesStateFactory,
   packageRepository as packageRepositoryFactory,
   packageRepositoryState as packageRepositoryStateFactory,
   pocketsToDisableState as pocketsToDisableStateFactory,
-  generalState as generalStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, render, renderWithMockStore } from "testing/utils";
+import { render, renderWithMockStore, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

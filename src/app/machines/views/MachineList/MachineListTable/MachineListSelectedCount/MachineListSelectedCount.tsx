@@ -1,4 +1,4 @@
-import { Notification, Button } from "@canonical/react-components";
+import { Button, Notification } from "@canonical/react-components";
 import pluralize from "pluralize";
 import { useDispatch } from "react-redux";
 

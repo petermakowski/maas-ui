@@ -7,16 +7,16 @@ import ControllerName from "./ControllerName";
 
 import urls from "@/app/base/urls";
 import {
-  domain as domainFactory,
-  domainState as domainStateFactory,
   controllerDetails as controllerDetailsFactory,
   controllerState as controllerStateFactory,
+  domain as domainFactory,
+  domainState as domainStateFactory,
   generalState as generalStateFactory,
   powerType as powerTypeFactory,
   powerTypesState as powerTypesStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 

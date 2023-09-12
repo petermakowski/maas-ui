@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Col, Spinner, Row, Select } from "@canonical/react-components";
+import { Col, Row, Select, Spinner } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 

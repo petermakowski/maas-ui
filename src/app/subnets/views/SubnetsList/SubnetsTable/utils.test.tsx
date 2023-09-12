@@ -7,9 +7,9 @@ import {
 
 import {
   fabric as fabricFactory,
-  vlan as vlanFactory,
-  subnet as subnetFactory,
   space as spaceFactory,
+  subnet as subnetFactory,
+  vlan as vlanFactory,
 } from "testing/factories";
 
 test("getTableData generates correct sortData for fabric", () => {

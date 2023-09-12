@@ -3,7 +3,7 @@ import { useEffect, useMemo } from "react";
 import { Button } from "@canonical/react-components";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useLocation, useMatch } from "react-router-dom-v5-compat";
+import { useLocation, useMatch, useNavigate } from "react-router-dom-v5-compat";
 import { useStorageState } from "react-storage-hooks";
 
 import AppSideNavCollapseToggle from "./AppSideNavCollapseToggle";

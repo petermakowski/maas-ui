@@ -7,11 +7,11 @@ import { APIKeyEdit, Label as APIKeyEditLabels } from "./APIKeyEdit";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   token as tokenFactory,
   tokenState as tokenStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, within } from "testing/utils";
 
 describe("APIKeyEdit", () => {
   let state: RootState;

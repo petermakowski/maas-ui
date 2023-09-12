@@ -3,17 +3,17 @@ import Routes from "./Routes";
 import urls from "@/app/base/urls";
 import type { RootState } from "@/app/store/root/types";
 import {
-  rootState as rootStateFactory,
-  userState as userStateFactory,
-  statusState as statusStateFactory,
   authState as authStateFactory,
-  user as userFactory,
-  licenseKeys as licenseKeysFactory,
-  licenseKeysState as licenseKeysStateFactory,
-  packageRepositoryState as packageRepositoryStateFactory,
-  packageRepository as packageRepositoryFactory,
   dhcpSnippet as dhcpSnippetFactory,
   dhcpSnippetState as dhcpSnippetStateFactory,
+  licenseKeys as licenseKeysFactory,
+  licenseKeysState as licenseKeysStateFactory,
+  packageRepository as packageRepositoryFactory,
+  packageRepositoryState as packageRepositoryStateFactory,
+  rootState as rootStateFactory,
+  statusState as statusStateFactory,
+  user as userFactory,
+  userState as userStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter } from "testing/utils";
 

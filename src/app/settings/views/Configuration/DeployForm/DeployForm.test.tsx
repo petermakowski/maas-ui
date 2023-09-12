@@ -14,7 +14,7 @@ import {
   osInfoState as osInfoStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, within, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const mockStore = configureStore();
 

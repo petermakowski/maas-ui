@@ -1,7 +1,7 @@
-import { MachineListTable, Label } from "./MachineListTable";
+import { Label, MachineListTable } from "./MachineListTable";
 
 import { SortDirection } from "@/app/base/types";
-import { MachineColumns, columnLabels } from "@/app/machines/constants";
+import { columnLabels, MachineColumns } from "@/app/machines/constants";
 import type { Machine, MachineStateListGroup } from "@/app/store/machine/types";
 import { FetchGroupKey } from "@/app/store/machine/types";
 import type { RootState } from "@/app/store/root/types";
@@ -13,9 +13,11 @@ import {
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
   generalState as generalStateFactory,
-  machine as machineFactory,
   machineActionsState as machineActionsStateFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  machineStateListGroup as machineStateListGroupFactory,
   modelRef as modelRefFactory,
   osInfo as osInfoFactory,
   osInfoState as osInfoStateFactory,
@@ -23,19 +25,17 @@ import {
   resourcePoolState as resourcePoolStateFactory,
   rootState as rootStateFactory,
   testStatus as testStatusFactory,
-  zone as zoneFactory,
-  zoneState as zoneStateFactory,
   user as userFactory,
   userState as userStateFactory,
-  machineStateList as machineStateListFactory,
-  machineStateListGroup as machineStateListGroupFactory,
+  zone as zoneFactory,
+  zoneState as zoneStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  within,
   renderWithBrowserRouter,
   renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 enableCallIdMocks();

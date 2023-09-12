@@ -12,9 +12,9 @@ import {
   rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  screen,
-  renderWithMockStore,
   expectTooltipOnHover,
+  renderWithMockStore,
+  screen,
 } from "testing/utils";
 
 describe("ArchSelect", () => {

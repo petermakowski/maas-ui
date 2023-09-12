@@ -8,11 +8,11 @@ import DefinitionField, { INVALID_XPATH_ERROR, Label } from "./DefinitionField";
 import * as hooks from "@/app/base/hooks/analytics";
 import type { RootState } from "@/app/store/root/types";
 import {
-  tag as tagFactory,
   rootState as rootStateFactory,
+  tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 let state: RootState;

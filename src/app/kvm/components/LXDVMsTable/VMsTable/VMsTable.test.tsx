@@ -7,22 +7,22 @@ import { FetchGroupKey } from "@/app/store/machine/types";
 import type { RootState } from "@/app/store/root/types";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
-  pod as podFactory,
-  podState as podStateFactory,
   machine as machineFactory,
   machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  machineStateListGroup as machineStateListGroupFactory,
+  pod as podFactory,
+  podState as podStateFactory,
   rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
-  machineStateList as machineStateListFactory,
-  machineStateListGroup as machineStateListGroupFactory,
 } from "testing/factories";
 import {
-  screen,
-  within,
-  renderWithMockStore,
-  userEvent,
   renderWithBrowserRouter,
+  renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 enableCallIdMocks();

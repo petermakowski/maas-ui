@@ -10,10 +10,10 @@ import {
   serviceState as serviceStateFactory,
 } from "testing/factories";
 import {
-  screen,
-  renderWithBrowserRouter,
-  userEvent,
   expectTooltipOnHover,
+  renderWithBrowserRouter,
+  screen,
+  userEvent,
 } from "testing/utils";
 
 const getIcon = () => screen.getByTestId("controller-status-icon");

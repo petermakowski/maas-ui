@@ -4,12 +4,12 @@ import controller from "./selectors";
 import { ImageSyncStatus } from "./types/enum";
 
 import {
-  rootState as rootStateFactory,
   controller as controllerFactory,
   controllerImageSyncStatuses as controllerImageSyncStatusesFactory,
   controllerState as controllerStateFactory,
-  controllerStatus as controllerStatusFactory,
   controllerStatuses as controllerStatusesFactory,
+  controllerStatus as controllerStatusFactory,
+  rootState as rootStateFactory,
   service as serviceFactory,
   serviceState as serviceStateFactory,
   tag as tagFactory,

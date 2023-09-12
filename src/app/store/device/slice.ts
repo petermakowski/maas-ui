@@ -5,9 +5,9 @@ import { DeviceMeta } from "./types";
 import type {
   CreateInterfaceParams,
   CreateParams,
+  Device,
   DeviceState,
   UpdateParams,
-  Device,
 } from "./types";
 import type {
   CreatePhysicalParams,

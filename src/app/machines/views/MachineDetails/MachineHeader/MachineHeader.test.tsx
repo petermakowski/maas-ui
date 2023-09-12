@@ -9,12 +9,12 @@ import { PowerState } from "@/app/store/types/enum";
 import { NodeActions, NodeStatusCode } from "@/app/store/types/node";
 import {
   generalState as generalStateFactory,
-  machine as machineFactory,
   machineDetails as machineDetailsFactory,
   machineDevice as machineDeviceFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   powerType as powerTypeFactory,
   powerTypesState as powerTypesStateFactory,
   rootState as rootStateFactory,

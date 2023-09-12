@@ -1,9 +1,9 @@
-import { isDeviceDetails, getIpAssignmentDisplay } from "./common";
+import { getIpAssignmentDisplay, isDeviceDetails } from "./common";
 
 import { DeviceIpAssignment } from "@/app/store/device/types";
 import {
-  device as deviceFactory,
   deviceDetails as deviceDetailsFactory,
+  device as deviceFactory,
 } from "testing/factories";
 
 describe("device utils", () => {

@@ -1,6 +1,6 @@
 import type { ChangeEventHandler } from "react";
 
-import { Textarea, Row, Col } from "@canonical/react-components";
+import { Col, Row, Textarea } from "@canonical/react-components";
 import { useFormikContext } from "formik";
 import { useSelector } from "react-redux";
 

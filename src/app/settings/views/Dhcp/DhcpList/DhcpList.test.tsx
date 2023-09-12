@@ -14,16 +14,16 @@ import {
   machine as machineFactory,
   machineState as machineStateFactory,
   modelRef as modelRefFactory,
+  rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
-  within,
   renderWithMockStore,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore();

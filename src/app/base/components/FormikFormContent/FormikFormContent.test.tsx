@@ -17,10 +17,10 @@ import {
   rootState as rootStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
   render,
-  screen,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState>();

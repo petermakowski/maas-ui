@@ -10,8 +10,8 @@ import {
   rootState as rootStateFactory,
   user as userFactory,
   userState as userStateFactory,
-  vlan as vlanFactory,
   vlanDetails as vlanDetailsFactory,
+  vlan as vlanFactory,
   vlanState as vlanStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen } from "testing/utils";

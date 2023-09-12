@@ -7,15 +7,15 @@ import SubnetSummaryForm from "./SubnetSummaryForm";
 
 import { actions as subnetActions } from "@/app/store/subnet";
 import {
+  fabric as fabricFactory,
+  fabricState as fabricStateFactory,
   rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
-  fabric as fabricFactory,
-  fabricState as fabricStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 it("can dispatch an action to update the subnet", async () => {
   const fabrics = [

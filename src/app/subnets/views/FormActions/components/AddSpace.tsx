@@ -1,4 +1,4 @@
-import { Row, Col, Input } from "@canonical/react-components";
+import { Col, Input, Row } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import type { FormActionProps } from "../FormActions";

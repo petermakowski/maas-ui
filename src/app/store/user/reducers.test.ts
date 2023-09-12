@@ -1,9 +1,9 @@
 import reducers, { actions } from "./slice";
 
 import {
-  user as userFactory,
-  userEventError as userEventErrorFactory,
   authState as authStateFactory,
+  userEventError as userEventErrorFactory,
+  user as userFactory,
   userState as userStateFactory,
   userStatuses as userStatusesFactory,
 } from "testing/factories";

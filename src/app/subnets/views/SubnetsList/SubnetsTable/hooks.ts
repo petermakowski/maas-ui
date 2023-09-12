@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { SUBNETS_TABLE_ITEMS_PER_PAGE } from "./constants";
-import type { SubnetsTableRow, GroupByKey } from "./types";
+import type { GroupByKey, SubnetsTableRow } from "./types";
 import { filterSubnetsBySearchText, getTableData } from "./utils";
 
 import { actions as fabricActions } from "@/app/store/fabric";

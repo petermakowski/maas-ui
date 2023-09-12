@@ -4,14 +4,14 @@ import type { RootState } from "@/app/store/root/types";
 import { NodeActions } from "@/app/store/types/node";
 import {
   generalState as generalStateFactory,
-  machine as machineFactory,
   machineAction as machineActionFactory,
   machineActionsState as machineActionsStateFactory,
+  machine as machineFactory,
   machineState as machineStateFactory,
   rootState as rootStateFactory,
+  tag as tagFactory,
   user as userFactory,
   userState as userStateFactory,
-  tag as tagFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 

@@ -10,15 +10,15 @@ import {
 } from "@/app/store/scriptresult/types";
 import { PowerState } from "@/app/store/types/enum";
 import {
-  machineState as machineStateFactory,
   machineDetails as machineDetailsFactory,
-  rootState as rootStateFactory,
-  scriptResult as scriptResultFactory,
-  scriptResultData as scriptResultDataFactory,
-  scriptResultState as scriptResultStateFactory,
+  machineState as machineStateFactory,
   nodeScriptResultState as nodeScriptResultStateFactory,
+  rootState as rootStateFactory,
+  scriptResultData as scriptResultDataFactory,
+  scriptResult as scriptResultFactory,
+  scriptResultState as scriptResultStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("InstallationOutput", () => {
   let state: RootState;

@@ -12,12 +12,12 @@ import type { Tag } from "@/app/store/tag/types";
 import {
   machine as machineFactory,
   machineState as machineStateFactory,
+  rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import { tagStateListFactory } from "testing/factories/state";
-import { userEvent, render, screen, waitFor, within } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const mockStore = configureStore();
 

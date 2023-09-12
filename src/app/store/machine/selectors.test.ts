@@ -5,19 +5,19 @@ import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import { NodeActions, NodeStatusCode } from "@/app/store/types/node";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
-  machine as machineFactory,
   machineDetails as machineDetailsFactory,
   machineEventError as machineEventErrorFactory,
+  machine as machineFactory,
   machineFilterGroup as machineFilterGroupFactory,
   machineInterface as machineInterfaceFactory,
-  machineState as machineStateFactory,
-  machineStateDetailsItem as machineStateDetailsItemFactory,
   machineStateCount as machineStateCountFactory,
   machineStateCounts as machineStateCountsFactory,
+  machineStateDetailsItem as machineStateDetailsItemFactory,
+  machineState as machineStateFactory,
   machineStateList as machineStateListFactory,
   machineStateListGroup as machineStateListGroupFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   networkLink as networkLinkFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

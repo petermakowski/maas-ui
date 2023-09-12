@@ -8,7 +8,7 @@ import {
   rootState as rootStateFactory,
   statusState as statusStateFactory,
 } from "testing/factories";
-import { screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen } from "testing/utils";
 
 describe("UserAdd", () => {
   let state: RootState;

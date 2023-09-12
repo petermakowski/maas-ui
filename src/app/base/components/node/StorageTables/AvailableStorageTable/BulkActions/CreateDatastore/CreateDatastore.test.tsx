@@ -6,12 +6,12 @@ import { MIN_PARTITION_SIZE } from "@/app/store/machine/constants";
 import type { RootState } from "@/app/store/root/types";
 import { DiskTypes } from "@/app/store/types/enum";
 import {
-  machineDetails as machineDetailsFactory,
-  machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
-  machineStatuses as machineStatusesFactory,
   nodeDisk as diskFactory,
   nodeFilesystem as fsFactory,
+  machineDetails as machineDetailsFactory,
+  machineState as machineStateFactory,
+  machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   nodePartition as partitionFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

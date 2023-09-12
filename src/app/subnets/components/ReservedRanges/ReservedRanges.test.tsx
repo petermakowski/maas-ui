@@ -14,15 +14,15 @@ import type { RootState } from "@/app/store/root/types";
 import type { Subnet } from "@/app/store/subnet/types";
 import type { VLAN } from "@/app/store/vlan/types";
 import {
-  rootState as rootStateFactory,
   ipRange as ipRangeFactory,
   ipRangeState as ipRangeStateFactory,
+  rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 let ipRange: IPRange;

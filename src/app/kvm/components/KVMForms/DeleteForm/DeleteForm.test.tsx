@@ -9,15 +9,15 @@ import vmClusterSelectors from "@/app/store/vmcluster/selectors";
 import {
   pod as podFactory,
   podState as podStateFactory,
-  podStatus as podStatusFactory,
   podStatuses as podStatusesFactory,
+  podStatus as podStatusFactory,
   rootState as rootStateFactory,
-  vmCluster as vmClusterFactory,
   vmClusterEventError as vmClusterEventErrorFactory,
+  vmCluster as vmClusterFactory,
   vmClusterState as vmClusterStateFactory,
   vmClusterStatuses as vmClusterStatusesFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

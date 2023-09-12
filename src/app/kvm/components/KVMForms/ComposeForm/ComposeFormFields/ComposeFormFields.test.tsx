@@ -14,8 +14,8 @@ import {
   generalState as generalStateFactory,
   podDetails as podDetailsFactory,
   podMemoryResource as podMemoryResourceFactory,
-  podNuma as podNumaFactory,
   podNumaCores as podNumaCoresFactory,
+  podNuma as podNumaFactory,
   podResource as podResourceFactory,
   podResources as podResourcesFactory,
   podState as podStateFactory,
@@ -31,11 +31,11 @@ import {
   zoneState as zoneStateFactory,
 } from "testing/factories";
 import {
-  screen,
+  fireEvent,
   renderWithBrowserRouter,
   renderWithMockStore,
+  screen,
   userEvent,
-  fireEvent,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState>();

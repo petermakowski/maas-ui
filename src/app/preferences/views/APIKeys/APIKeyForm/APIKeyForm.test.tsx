@@ -7,11 +7,11 @@ import { APIKeyForm, Label as APIKeyFormLabels } from "./APIKeyForm";
 
 import type { RootState } from "@/app/store/root/types";
 import {
+  rootState as rootStateFactory,
   token as tokenFactory,
   tokenState as tokenStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, render, renderWithMockStore } from "testing/utils";
+import { render, renderWithMockStore, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

@@ -6,9 +6,9 @@ import type { NetworkInterface } from "../types/node";
 import { DeviceMeta } from "@/app/store/device/types";
 import type {
   Device,
+  DeviceNetworkInterface,
   DeviceState,
   DeviceStatus,
-  DeviceNetworkInterface,
 } from "@/app/store/device/types";
 import { FilterDevices, isDeviceDetails } from "@/app/store/device/utils";
 import tagSelectors from "@/app/store/tag/selectors";

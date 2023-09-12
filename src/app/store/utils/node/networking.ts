@@ -8,9 +8,9 @@ import {
   NetworkLinkMode,
 } from "@/app/store/types/enum";
 import type {
+  DiscoveredIP,
   NetworkInterface,
   NetworkLink,
-  DiscoveredIP,
   Node,
   NodeDetails,
 } from "@/app/store/types/node";

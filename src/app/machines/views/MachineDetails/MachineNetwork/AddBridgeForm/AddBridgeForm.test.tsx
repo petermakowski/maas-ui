@@ -7,22 +7,22 @@ import type { RootState } from "@/app/store/root/types";
 import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import type { NetworkInterface } from "@/app/store/types/node";
 import {
+  fabric as fabricFactory,
+  fabricState as fabricStateFactory,
   machineDetails as machineDetailsFactory,
   machineInterface as machineInterfaceFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
   vlan as vlanFactory,
   vlanState as vlanStateFactory,
-  fabric as fabricFactory,
-  fabricState as fabricStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  within,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  within,
 } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();

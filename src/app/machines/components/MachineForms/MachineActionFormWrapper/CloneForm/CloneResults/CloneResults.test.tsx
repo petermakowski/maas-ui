@@ -11,8 +11,8 @@ import type { MachineDetails } from "@/app/store/machine/types";
 import type { RootState } from "@/app/store/root/types";
 import { NodeActions } from "@/app/store/types/node";
 import {
-  machineDetails as machineDetailsFactory,
   machineEventError as eventErrorFactory,
+  machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

@@ -8,7 +8,7 @@ import type {
 import { Icon, MainTable, Strip } from "@canonical/react-components";
 import { useDispatch } from "react-redux";
 import type { NavigateFunction } from "react-router-dom-v5-compat";
-import { useNavigate, Link } from "react-router-dom-v5-compat";
+import { Link, useNavigate } from "react-router-dom-v5-compat";
 
 import { TAGS_PER_PAGE } from "../constants";
 
@@ -79,7 +79,7 @@ const generateRows = (
         },
         {
           "aria-label": Label.Auto,
-          content: !!tag.definition ? (
+          content: tag.definition ? (
             <Icon aria-label="Automatic tag" name="success-grey" />
           ) : null,
         },
@@ -89,7 +89,7 @@ const generateRows = (
         },
         {
           "aria-label": Label.Options,
-          content: !!tag.kernel_opts ? <Icon name="success-grey" /> : null,
+          content: tag.kernel_opts ? <Icon name="success-grey" /> : null,
         },
         {
           "aria-label": Label.Actions,

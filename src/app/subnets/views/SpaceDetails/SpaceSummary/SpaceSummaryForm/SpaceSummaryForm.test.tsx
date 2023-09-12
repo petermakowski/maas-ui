@@ -7,11 +7,11 @@ import SpaceSummaryForm from "./SpaceSummaryForm";
 
 import { actions as spaceActions } from "@/app/store/space";
 import {
+  rootState as rootStateFactory,
   space as spaceFactory,
   spaceState as spaceStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, within, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const getRootState = () =>
   rootStateFactory({

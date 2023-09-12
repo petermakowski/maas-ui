@@ -12,8 +12,8 @@ import type {
 
 import {
   generateCommonReducers,
-  genericInitialState,
   generateStatusHandlers,
+  genericInitialState,
   updateErrors,
 } from "@/app/store/utils/slice";
 import type { GenericItemMeta } from "@/app/store/utils/slice";

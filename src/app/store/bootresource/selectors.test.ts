@@ -3,15 +3,15 @@ import { BootResourceAction, BootResourceType } from "./types";
 
 import {
   bootResource as bootResourceFactory,
-  bootResourceEventError as eventErrorFactory,
   bootResourceFetchedImages as bootResourceFetchedImagesFactory,
   bootResourceOtherImage as bootResourceOtherImageFactory,
   bootResourceState as bootResourceStateFactory,
   bootResourceStatuses as bootResourceStatusesFactory,
-  bootResourceUbuntu as bootResourceUbuntuFactory,
   bootResourceUbuntuArch as bootResourceUbuntuArchFactory,
   bootResourceUbuntuCoreImage as bootResourceUbuntuCoreImageFactory,
+  bootResourceUbuntu as bootResourceUbuntuFactory,
   bootResourceUbuntuRelease as bootResourceUbuntuReleaseFactory,
+  bootResourceEventError as eventErrorFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

@@ -8,14 +8,14 @@ import { DiskTypes } from "@/app/store/types/enum";
 import {
   controllerDetails as controllerDetailsFactory,
   controllerState as controllerStateFactory,
+  nodeDisk as diskFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
-  nodeDisk as diskFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

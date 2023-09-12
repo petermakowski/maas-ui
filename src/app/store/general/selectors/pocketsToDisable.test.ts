@@ -2,8 +2,8 @@ import pocketsToDisable from "./pocketsToDisable";
 
 import {
   generalState as generalStateFactory,
-  pocketToDisable as pocketToDisableFactory,
   pocketsToDisableState as pocketsToDisableStateFactory,
+  pocketToDisable as pocketToDisableFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

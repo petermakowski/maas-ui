@@ -11,7 +11,7 @@ import {
   configState as configStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, render, reduceInitialState } from "testing/utils";
+import { reduceInitialState, render, screen } from "testing/utils";
 
 const mockStore = configureStore();
 

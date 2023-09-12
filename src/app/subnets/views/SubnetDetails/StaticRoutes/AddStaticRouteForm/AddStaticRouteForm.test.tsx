@@ -9,15 +9,15 @@ import AddStaticRouteForm from "./AddStaticRouteForm";
 
 import { actions as staticRouteActions } from "@/app/store/staticroute";
 import {
+  authState as authStateFactory,
   rootState as rootStateFactory,
   staticRouteState as staticRouteStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  authState as authStateFactory,
   user as userFactory,
   userState as userStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor, within } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const mockStore = configureStore();
 

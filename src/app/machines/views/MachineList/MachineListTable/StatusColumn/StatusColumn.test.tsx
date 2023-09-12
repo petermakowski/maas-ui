@@ -12,17 +12,17 @@ import {
   TestStatusStatus,
 } from "@/app/store/types/node";
 import {
+  generalState as generalStateFactory,
   machine as machineFactory,
   machineState as machineStateFactory,
-  generalState as generalStateFactory,
   osInfo as osInfoFactory,
   osInfoState as osInfoStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import {
   renderWithBrowserRouter,
-  userEvent,
   screen,
+  userEvent,
   within,
 } from "testing/utils";
 

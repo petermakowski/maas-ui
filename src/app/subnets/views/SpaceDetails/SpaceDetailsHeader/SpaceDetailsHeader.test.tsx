@@ -1,6 +1,6 @@
 import { createMemoryHistory } from "history";
 import { Provider } from "react-redux";
-import { Router, Route } from "react-router";
+import { Route, Router } from "react-router";
 import { CompatRouter } from "react-router-dom-v5-compat";
 import configureStore from "redux-mock-store";
 
@@ -10,9 +10,9 @@ import SpaceDetailsHeader from "./SpaceDetailsHeader";
 
 import urls from "@/app/base/urls";
 import {
+  rootState as rootStateFactory,
   space as spaceFactory,
   spaceState as spaceStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
 import { render, screen, userEvent } from "testing/utils";
 

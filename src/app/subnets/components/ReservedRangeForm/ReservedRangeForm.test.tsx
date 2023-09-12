@@ -10,11 +10,11 @@ import type { IPRange } from "@/app/store/iprange/types";
 import { IPRangeType } from "@/app/store/iprange/types";
 import type { RootState } from "@/app/store/root/types";
 import {
-  rootState as rootStateFactory,
   ipRange as ipRangeFactory,
   ipRangeState as ipRangeStateFactory,
+  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 

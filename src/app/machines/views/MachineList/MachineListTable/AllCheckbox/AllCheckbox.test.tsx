@@ -5,11 +5,11 @@ import AllCheckbox, { Label } from "./AllCheckbox";
 import { actions as machineActions } from "@/app/store/machine";
 import type { RootState } from "@/app/store/root/types";
 import {
-  rootState as rootStateFactory,
-  machineStateList as machineStateListFactory,
   machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState, {}>();
 

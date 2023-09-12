@@ -26,9 +26,11 @@ import type {
   DeletePartitionParams,
   DeleteVolumeGroupParams,
   DeployParams,
+  FetchFilters,
   FetchParams,
   FetchResponse,
   FetchResponseGroup,
+  FilterGroupKey,
   FilterGroupOption,
   FilterGroupOptionType,
   FilterGroupResponse,
@@ -44,6 +46,7 @@ import type {
   MarkBrokenParams,
   MountSpecialParams,
   ReleaseParams,
+  SelectedMachines,
   SetBootDiskParams,
   SetPoolParams,
   SetZoneParams,
@@ -56,11 +59,8 @@ import type {
   UpdateFilesystemParams,
   UpdateParams,
   UpdateVmfsDatastoreParams,
-  FetchFilters,
-  SelectedMachines,
-  FilterGroupKey,
 } from "./types";
-import { MachineMeta, FilterGroupType } from "./types";
+import { FilterGroupType, MachineMeta } from "./types";
 import type { OverrideFailedTesting } from "./types/actions";
 import type { MachineActionStatus, MachineStateListGroup } from "./types/base";
 import { createMachineListGroup, isMachineDetails } from "./utils";
@@ -71,15 +71,15 @@ import type { UpdateInterfaceParams } from "@/app/store/types/node";
 import { NodeActions } from "@/app/store/types/node";
 import { generateStatusHandlers, updateErrors } from "@/app/store/utils";
 import type {
-  StatusHandlers,
   GenericItemMeta,
   GenericMeta,
+  StatusHandlers,
 } from "@/app/store/utils/slice";
 import {
   generateCommonReducers,
   genericInitialState,
 } from "@/app/store/utils/slice";
-import { preparePayloadParams, kebabToCamelCase } from "@/app/utils";
+import { kebabToCamelCase, preparePayloadParams } from "@/app/utils";
 
 export const DEFAULT_MACHINE_QUERY_STATE = {
   params: null,
@@ -701,7 +701,7 @@ const machineSlice = createSlice({
       // Remove deleted machine from all lists
       Object.values(state.lists).forEach((list) => {
         list.groups?.forEach((group) => {
-          let index = group.items.indexOf(action.payload);
+          const index = group.items.indexOf(action.payload);
           if (index !== -1) {
             group.items.splice(index, 1);
             // update the count

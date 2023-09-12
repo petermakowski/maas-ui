@@ -3,17 +3,17 @@ import type { SagaGenerator } from "typed-redux-saga";
 
 import {
   actionHandlers,
+  watchAddMachineChassis,
   watchCheckAuthenticated,
+  watchCreateLicenseKey,
+  watchDeleteLicenseKey,
+  watchExternalLogin,
+  watchFetchLicenseKeys,
   watchLogin,
   watchLogout,
-  watchExternalLogin,
-  watchWebSockets,
-  watchCreateLicenseKey,
   watchUpdateLicenseKey,
-  watchDeleteLicenseKey,
-  watchFetchLicenseKeys,
   watchUploadScript,
-  watchAddMachineChassis,
+  watchWebSockets,
   watchZonesFetch,
 } from "./app/base/sagas";
 

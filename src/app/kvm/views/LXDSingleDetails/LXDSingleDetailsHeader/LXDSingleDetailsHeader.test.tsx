@@ -10,16 +10,16 @@ import { PodType } from "@/app/store/pod/constants";
 import type { RootState } from "@/app/store/root/types";
 import {
   pod as podFactory,
-  podPowerParameters as powerParametersFactory,
   podResources as podResourcesFactory,
   podState as podStateFactory,
-  podStatus as podStatusFactory,
   podStatuses as podStatusesFactory,
+  podStatus as podStatusFactory,
   podVmCount as podVmCountFactory,
-  zone as zoneFactory,
+  podPowerParameters as powerParametersFactory,
   rootState as rootStateFactory,
+  zone as zoneFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

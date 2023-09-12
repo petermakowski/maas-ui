@@ -4,7 +4,7 @@ import { Button, Card, Spinner } from "@canonical/react-components";
 import { useFormikContext } from "formik";
 import { useSelector } from "react-redux";
 
-import type { Disk, ComposeFormValues } from "../ComposeForm";
+import type { ComposeFormValues, Disk } from "../ComposeForm";
 
 import PoolSelect from "./PoolSelect";
 
@@ -55,7 +55,7 @@ export const StorageTable = ({ defaultDisk, hostId }: Props): JSX.Element => {
     }
   };
 
-  if (!!pod) {
+  if (pod) {
     const disabled = !!composingPods.length;
 
     return (

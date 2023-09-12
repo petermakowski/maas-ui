@@ -15,35 +15,35 @@ import { FetchGroupKey } from "@/app/store/machine/types";
 import * as query from "@/app/store/machine/utils/query";
 import type { RootState } from "@/app/store/root/types";
 import {
+  FetchNodeStatus,
   NodeStatus,
   NodeStatusCode,
   TestStatusStatus,
-  FetchNodeStatus,
 } from "@/app/store/types/node";
 import {
   controller as controllerFactory,
   controllerState as controllerStateFactory,
   generalState as generalStateFactory,
   machine as machineFactory,
+  machineFilterGroup as machineFilterGroupFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStateList as machineStateListFactory,
   machineStateListGroup as machineStateListGroupFactory,
-  machineFilterGroup as machineFilterGroupFactory,
-  testStatus as testStatusFactory,
+  machineStatus as machineStatusFactory,
+  modelRef as modelRefFactory,
   osInfo as osInfoFactory,
   rootState as rootStateFactory,
   routerState as routerStateFactory,
-  modelRef as modelRefFactory,
+  testStatus as testStatusFactory,
   vaultEnabledState as vaultEnabledStateFactory,
 } from "testing/factories";
 import {
-  renderWithBrowserRouter,
-  userEvent as userEventCore,
-  within,
-  screen,
   render,
+  renderWithBrowserRouter,
+  screen,
+  userEvent as userEventCore,
   waitFor,
+  within,
 } from "testing/utils";
 const mockStore = configureStore<RootState>();
 const userEvent = userEventCore.setup({

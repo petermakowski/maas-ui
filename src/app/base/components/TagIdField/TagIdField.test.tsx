@@ -4,7 +4,7 @@ import TagIdField from "./TagIdField";
 
 import type { Tag } from "@/app/store/tag/types";
 import { tag as tagFactory } from "testing/factories";
-import { screen, render, userEvent } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 describe("TagIdField", () => {
   let tags: Tag[];

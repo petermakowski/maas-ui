@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-import { intervalToDuration, fromUnixTime } from "date-fns";
+import { fromUnixTime, intervalToDuration } from "date-fns";
 import pluralize from "pluralize";
 
 import {
-  ScriptResultStatus,
   ScriptResultEstimated,
+  ScriptResultStatus,
 } from "@/app/store/scriptresult/types";
 import type { ScriptResult } from "@/app/store/scriptresult/types";
 

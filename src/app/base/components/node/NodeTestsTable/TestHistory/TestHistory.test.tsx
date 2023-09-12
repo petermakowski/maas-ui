@@ -4,8 +4,8 @@ import TestHistory from "./TestHistory";
 
 import type { RootState } from "@/app/store/root/types";
 import {
-  machineState as machineStateFactory,
   machineDetails as machineDetailsFactory,
+  machineState as machineStateFactory,
   partialScriptResult as partialScriptResultFactory,
   rootState as rootStateFactory,
   scriptResult as scriptResultFactory,

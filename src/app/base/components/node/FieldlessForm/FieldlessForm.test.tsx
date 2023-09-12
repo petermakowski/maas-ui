@@ -11,7 +11,7 @@ import {
   machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter, userEvent } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 jest.mock("@canonical/react-components/dist/hooks", () => ({
   usePrevious: jest.fn(),

@@ -6,8 +6,8 @@ import type { RootState } from "@/app/store/root/types";
 import {
   pod as podFactory,
   podState as podStateFactory,
-  podStatus as podStatusFactory,
   podStatuses as podStatusesFactory,
+  podStatus as podStatusFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";

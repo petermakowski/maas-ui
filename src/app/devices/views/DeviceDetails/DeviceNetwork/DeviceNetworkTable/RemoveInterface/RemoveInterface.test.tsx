@@ -10,11 +10,11 @@ import {
   deviceDetails as deviceDetailsFactory,
   deviceEventError as deviceEventErrorFactory,
   deviceState as deviceStateFactory,
-  deviceStatus as deviceStatusFactory,
   deviceStatuses as deviceStatusesFactory,
+  deviceStatus as deviceStatusFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore<RootState>();
 

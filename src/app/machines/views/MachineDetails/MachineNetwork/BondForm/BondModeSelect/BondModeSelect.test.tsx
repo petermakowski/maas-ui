@@ -5,12 +5,12 @@ import BondModeSelect from "./BondModeSelect";
 import { BondMode } from "@/app/store/general/types";
 import type { RootState } from "@/app/store/root/types";
 import {
-  generalState as generalStateFactory,
   bondOptions as bondOptionsFactory,
   bondOptionsState as bondOptionsStateFactory,
+  generalState as generalStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, within } from "testing/utils";
 
 describe("BondModeSelect", () => {
   let state: RootState;
@@ -88,7 +88,7 @@ describe("BondModeSelect", () => {
       },
     ];
 
-    for (var i = 0; i < expectedOptions.length; i++) {
+    for (let i = 0; i < expectedOptions.length; i++) {
       expect(bondModeOptions[i]).toHaveValue(expectedOptions[i].value);
       expect(bondModeOptions[i]).toHaveTextContent(expectedOptions[i].label);
     }

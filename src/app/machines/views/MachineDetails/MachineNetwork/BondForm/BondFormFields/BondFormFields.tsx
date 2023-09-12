@@ -7,7 +7,7 @@ import BondModeSelect from "../BondModeSelect";
 import HashPolicySelect from "../HashPolicySelect";
 import LACPRateSelect from "../LACPRateSelect";
 import type { BondFormValues } from "../types";
-import { MacSource, LinkMonitoring } from "../types";
+import { LinkMonitoring, MacSource } from "../types";
 
 import FormikField from "@/app/base/components/FormikField";
 import MacAddressField from "@/app/base/components/MacAddressField";

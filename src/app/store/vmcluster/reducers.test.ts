@@ -1,8 +1,8 @@
 import reducers, { actions } from "./slice";
 
 import {
-  vmCluster as vmClusterFactory,
   vmClusterEventError as vmClusterEventErrorFactory,
+  vmCluster as vmClusterFactory,
   vmClusterState as vmClusterStateFactory,
   vmClusterStatuses as vmClusterStatusesFactory,
 } from "testing/factories";

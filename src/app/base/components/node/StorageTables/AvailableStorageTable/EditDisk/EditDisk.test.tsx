@@ -6,11 +6,11 @@ import type { RootState } from "@/app/store/root/types";
 import { DiskTypes } from "@/app/store/types/enum";
 import type { Disk } from "@/app/store/types/node";
 import {
+  nodeDisk as diskFactory,
   machineDetails as machineDetailsFactory,
   machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
   machineStatuses as machineStatusesFactory,
-  nodeDisk as diskFactory,
+  machineStatus as machineStatusFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";

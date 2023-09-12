@@ -9,12 +9,12 @@ import {
 
 import { NodeType } from "@/app/store/types/node";
 import {
-  subnet as subnetFactory,
-  subnetDetails as subnetDetailsFactory,
-  subnetIP as subnetIPFactory,
-  subnetBMC as subnetBMCFactory,
-  subnetDNSRecord as subnetDNSRecordFactory,
   subnetIPNodeSummary as nodeSummaryFactory,
+  subnetBMC as subnetBMCFactory,
+  subnetDetails as subnetDetailsFactory,
+  subnetDNSRecord as subnetDNSRecordFactory,
+  subnet as subnetFactory,
+  subnetIP as subnetIPFactory,
 } from "testing/factories";
 
 describe("subnet utils", () => {

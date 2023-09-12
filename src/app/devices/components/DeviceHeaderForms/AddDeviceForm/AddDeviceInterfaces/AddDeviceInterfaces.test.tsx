@@ -12,9 +12,9 @@ import {
   subnetState as subnetStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
   within,
 } from "testing/utils";
 

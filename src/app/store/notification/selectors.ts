@@ -3,8 +3,8 @@ import { createSelector } from "@reduxjs/toolkit";
 import configSelectors from "@/app/store/config/selectors";
 import {
   NotificationCategory,
-  NotificationMeta,
   NotificationIdent,
+  NotificationMeta,
   ReleaseNotificationPaths,
 } from "@/app/store/notification/types";
 import type {

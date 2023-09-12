@@ -1,23 +1,23 @@
 import {
   getHasSyncFailed,
   getMachineFieldScopes,
+  getNodeStatusKey,
   getTagCountsForMachines,
-  isMachineDetails,
   isDeployedWithHardwareSync,
+  isMachineDetails,
+  isUnconfiguredPowerType,
   mapSortDirection,
   selectedToFilters,
-  isUnconfiguredPowerType,
-  getNodeStatusKey,
 } from "./common";
 
 import { SortDirection } from "@/app/base/types";
 import { PowerFieldScope } from "@/app/store/general/types";
-import { FetchSortDirection, FetchGroupKey } from "@/app/store/machine/types";
+import { FetchGroupKey, FetchSortDirection } from "@/app/store/machine/types";
 import { PowerState } from "@/app/store/types/enum";
 import { NodeStatus, NodeStatusCode } from "@/app/store/types/node";
 import {
-  machine as machineFactory,
   machineDetails as machineDetailsFactory,
+  machine as machineFactory,
   modelRef as modelRefFactory,
 } from "testing/factories";
 

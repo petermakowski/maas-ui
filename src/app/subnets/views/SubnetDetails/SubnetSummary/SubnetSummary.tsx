@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { Col, Row } from "@canonical/react-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import SubnetSummaryForm from "./SubnetSummaryForm";
 import ActiveDiscoveryLabel from "./components/ActiveDiscoveryLabel";

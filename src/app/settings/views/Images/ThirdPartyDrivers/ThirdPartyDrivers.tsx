@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Col, Spinner, Row } from "@canonical/react-components";
+import { Col, Row, Spinner } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import ThirdPartyDriversForm from "../ThirdPartyDriversForm";

@@ -3,18 +3,18 @@ import SubnetsList from "./SubnetsList";
 import urls from "@/app/subnets/urls";
 import {
   fabricState as fabricStateFactory,
-  vlanState as vlanStateFactory,
-  subnetState as subnetStateFactory,
-  spaceState as spaceStateFactory,
   rootState as rootStateFactory,
+  spaceState as spaceStateFactory,
+  subnetState as subnetStateFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
-  within,
-  waitFor,
   getUrlParam,
   renderWithBrowserRouter,
+  screen,
+  userEvent,
+  waitFor,
+  within,
 } from "testing/utils";
 
 const getMockState = () => {

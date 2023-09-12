@@ -15,7 +15,7 @@ import {
   tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, within } from "testing/utils";
+import { render, screen, userEvent, within } from "testing/utils";
 
 jest.mock("../constants", () => ({
   __esModule: true,

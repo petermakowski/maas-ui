@@ -4,12 +4,12 @@ import type { Machine } from "@/app/store/machine/types";
 import type { RootState } from "@/app/store/root/types";
 import {
   machine as machineFactory,
+  machineState as machineStateFactory,
   rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
-  machineState as machineStateFactory,
 } from "testing/factories";
-import { userEvent, screen, within, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent, within } from "testing/utils";
 
 describe("MachineSelectTable", () => {
   let machines: Machine[];
@@ -70,7 +70,7 @@ describe("MachineSelectTable", () => {
       { state }
     );
 
-    let hostnameCol = screen.getByRole("gridcell", {
+    const hostnameCol = screen.getByRole("gridcell", {
       name: Label.Hostname,
     });
     // eslint-disable-next-line testing-library/no-node-access

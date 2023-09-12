@@ -4,12 +4,12 @@ import BulkActions from "./BulkActions";
 
 import { DiskTypes, StorageLayout } from "@/app/store/types/enum";
 import {
-  machineDetails as machineDetailsFactory,
-  machineState as machineStateFactory,
-  machineStatus as machineStatusFactory,
-  machineStatuses as machineStatusesFactory,
   nodeDisk as diskFactory,
   nodeFilesystem as fsFactory,
+  machineDetails as machineDetailsFactory,
+  machineState as machineStateFactory,
+  machineStatuses as machineStatusesFactory,
+  machineStatus as machineStatusFactory,
   nodePartition as partitionFactory,
   rootState as rootStateFactory,
 } from "testing/factories";

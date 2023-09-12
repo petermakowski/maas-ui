@@ -23,12 +23,12 @@ import {
   userState as userStateFactory,
 } from "testing/factories";
 import {
-  userEvent,
-  screen,
   render,
+  renderWithBrowserRouter,
+  screen,
+  userEvent,
   waitFor,
   within,
-  renderWithBrowserRouter,
 } from "testing/utils";
 
 const mockUseNavigate = jest.fn();

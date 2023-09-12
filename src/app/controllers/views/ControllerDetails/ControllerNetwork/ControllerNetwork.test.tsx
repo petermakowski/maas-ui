@@ -5,7 +5,7 @@ import {
   controllerState as controllerStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 it("displays a spinner if controller is loading", () => {
   const state = rootStateFactory({

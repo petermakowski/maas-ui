@@ -10,12 +10,12 @@ import {
 import { SidePanelViews } from "@/app/base/side-panel-context";
 import { NodeActions, NodeStatus } from "@/app/store/types/node";
 import {
-  controller as controllerFactory,
   controllerDetails as controllerDetailsFactory,
-  device as deviceFactory,
+  controller as controllerFactory,
   deviceDetails as deviceDetailsFactory,
-  machine as machineFactory,
+  device as deviceFactory,
   machineDetails as machineDetailsFactory,
+  machine as machineFactory,
 } from "testing/factories";
 
 describe("node utils", () => {

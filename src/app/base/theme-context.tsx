@@ -12,7 +12,9 @@ export type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: "default",
-  setTheme: () => {},
+  setTheme: () => {
+    throw new Error("setTheme function must be overridden");
+  },
 });
 
 export const useThemeContext = (): ThemeContextType => {

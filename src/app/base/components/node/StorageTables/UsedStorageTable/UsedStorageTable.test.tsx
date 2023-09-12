@@ -10,8 +10,8 @@ import { FilterMachines } from "@/app/store/machine/utils";
 import { DiskTypes } from "@/app/store/types/enum";
 import {
   controllerDetails as controllerDetailsFactory,
-  machineDetails as machineDetailsFactory,
   nodeDisk as diskFactory,
+  machineDetails as machineDetailsFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";
 

@@ -11,7 +11,7 @@ import {
   service as serviceFactory,
   serviceState as serviceStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter, userEvent } from "testing/utils";
+import { renderWithBrowserRouter, screen, userEvent } from "testing/utils";
 
 describe("StatusColumn", () => {
   let state: RootState;

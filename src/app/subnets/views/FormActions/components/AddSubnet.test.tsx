@@ -8,12 +8,12 @@ import AddSubnet from "./AddSubnet";
 import { actions as subnetActions } from "@/app/store/subnet";
 import {
   fabric as fabricFactory,
-  vlan as vlanFactory,
-  vlanState as vlanStateFactory,
   fabricState as fabricSpaceFactory,
   rootState as rootStateFactory,
+  vlan as vlanFactory,
+  vlanState as vlanStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor } from "testing/utils";
+import { render, screen, userEvent, waitFor } from "testing/utils";
 
 it("correctly dispatches subnet cleanup and create actions on form submit", async () => {
   const vlan1 = vlanFactory({ id: 111, fabric: 5 });

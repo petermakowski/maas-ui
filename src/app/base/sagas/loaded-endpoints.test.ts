@@ -1,8 +1,8 @@
 import {
-  loadedEndpoints,
-  isLoaded,
-  setIsLoaded,
   clearAllLoaded,
+  isLoaded,
+  loadedEndpoints,
+  setIsLoaded,
 } from "./loaded-endpoints";
 
 beforeEach(() => {

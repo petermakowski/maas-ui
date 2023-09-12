@@ -3,8 +3,8 @@ import osInfo from "./osInfo";
 import type { RootState } from "@/app/store/root/types";
 import {
   generalState as generalStateFactory,
-  osInfoState as osInfoStateFactory,
   osInfo as osInfoFactory,
+  osInfoState as osInfoStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

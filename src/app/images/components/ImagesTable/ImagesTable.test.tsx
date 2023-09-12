@@ -6,13 +6,13 @@ import ImagesTable, { Labels as ImagesTableLabels } from "./ImagesTable";
 import { ConfigNames } from "@/app/store/config/types";
 import type { RootState } from "@/app/store/root/types";
 import {
-  bootResource as resourceFactory,
   bootResourceState as bootResourceStateFactory,
   config as configFactory,
   configState as configStateFactory,
+  bootResource as resourceFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, screen, within, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, userEvent, within } from "testing/utils";
 
 beforeEach(() => {
   MockDate.set("Fri, 18 Nov. 2022 10:55:00");

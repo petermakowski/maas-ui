@@ -8,7 +8,7 @@ import {
   machineState as machineStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, within } from "testing/utils";
+import { render, screen, userEvent, within } from "testing/utils";
 
 const mockStore = configureStore();
 

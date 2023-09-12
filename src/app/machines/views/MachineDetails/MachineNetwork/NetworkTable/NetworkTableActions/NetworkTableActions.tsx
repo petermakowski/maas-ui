@@ -18,9 +18,9 @@ import { NetworkInterfaceTypes } from "@/app/store/types/enum";
 import type { NetworkInterface, NetworkLink } from "@/app/store/types/node";
 import {
   canAddAlias,
-  hasInterfaceType,
   getInterfaceTypeText,
   getLinkInterface,
+  hasInterfaceType,
 } from "@/app/store/utils";
 
 type Props = {

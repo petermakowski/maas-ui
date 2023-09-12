@@ -9,9 +9,9 @@ import MachineLink, { Labels } from "./MachineLink";
 import urls from "@/app/base/urls";
 import {
   machine as machineFactory,
+  machineStateDetailsItem as machineStateDetailsItemFactory,
   machineState as machineStateFactory,
   rootState as rootStateFactory,
-  machineStateDetailsItem as machineStateDetailsItemFactory,
 } from "testing/factories";
 import { render, screen, waitFor } from "testing/utils";
 

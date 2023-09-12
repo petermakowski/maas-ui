@@ -1,7 +1,7 @@
 import type {
-  Event as ReconnectingWebSocketEvent,
-  ErrorEvent,
   CloseEvent,
+  ErrorEvent,
+  Event as ReconnectingWebSocketEvent,
 } from "reconnecting-websocket";
 import type { Action, AnyAction } from "redux";
 import type { EventChannel } from "redux-saga";
@@ -11,17 +11,17 @@ import {
   all,
   call,
   put,
+  race,
   take,
   takeEvery,
   takeLatest,
-  race,
 } from "typed-redux-saga";
 
 import type {
   WebSocketAction,
+  WebSocketActionParams,
   WebSocketClient,
   WebSocketRequestMessage,
-  WebSocketActionParams,
   WebSocketResponseNotify,
   WebSocketResponsePing,
 } from "../../../../websocket-client";

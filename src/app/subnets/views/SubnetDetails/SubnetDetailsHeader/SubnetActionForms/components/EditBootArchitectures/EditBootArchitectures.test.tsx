@@ -8,14 +8,14 @@ import EditBootArchitectures from "./EditBootArchitectures";
 
 import { actions as subnetActions } from "@/app/store/subnet";
 import {
+  generalState as generalStateFactory,
   knownBootArchitecture as knownBootArchitectureFactory,
   knownBootArchitecturesState as knownBootArchitecturesStateFactory,
-  generalState as generalStateFactory,
+  rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor, within } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 const mockStore = configureStore();
 

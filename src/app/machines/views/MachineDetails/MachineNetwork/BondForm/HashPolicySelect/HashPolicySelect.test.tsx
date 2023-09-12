@@ -5,12 +5,12 @@ import HashPolicySelect from "./HashPolicySelect";
 import { BondXmitHashPolicy } from "@/app/store/general/types";
 import type { RootState } from "@/app/store/root/types";
 import {
-  generalState as generalStateFactory,
   bondOptions as bondOptionsFactory,
   bondOptionsState as bondOptionsStateFactory,
+  generalState as generalStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
-import { screen, within, renderWithMockStore } from "testing/utils";
+import { renderWithMockStore, screen, within } from "testing/utils";
 
 describe("HashPolicySelect", () => {
   let state: RootState;
@@ -79,7 +79,7 @@ describe("HashPolicySelect", () => {
       },
     ];
 
-    for (var i = 0; i < expectedOptions.length; i++) {
+    for (let i = 0; i < expectedOptions.length; i++) {
       expect(hashPolicyOptions[i]).toHaveValue(expectedOptions[i].value);
       expect(hashPolicyOptions[i]).toHaveTextContent(expectedOptions[i].label);
     }

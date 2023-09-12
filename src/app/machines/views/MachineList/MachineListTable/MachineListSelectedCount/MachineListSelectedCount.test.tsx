@@ -5,9 +5,9 @@ import MachineListSelectedCount from "./MachineListSelectedCount";
 import { actions as machineActions } from "@/app/store/machine";
 import type { RootState } from "@/app/store/root/types";
 import {
-  screen,
-  renderWithMockStore,
   getTestState,
+  renderWithMockStore,
+  screen,
   userEvent,
 } from "testing/utils";
 

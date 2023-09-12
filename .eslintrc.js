@@ -1,120 +1,86 @@
 module.exports = {
   root: true,
-  plugins: ["unused-imports", "prettier"],
-  extends: [
-    "react-app", // Use the recommended rules from CRA.
-    "plugin:prettier/recommended", // Ensure this is last in the list.
-  ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
-    sourceType: "module",
-  },
-  rules: {
-    "prettier/prettier": "error",
   },
   settings: {
     react: {
       version: "detect",
     },
-  },
-  globals: {
-    usabilla_live: false,
-  },
-  overrides: [
-    {
-      files: ["src/**/*.ts?(x)"],
-      extends: [
-        "prettier",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:import/typescript",
-        "plugin:prettier/recommended", // Ensure this is last in the list.
-      ],
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-        ecmaVersion: 2018,
-        sourceType: "module",
-      },
-      rules: {
-        "prettier/prettier": "error",
-        "@typescript-eslint/no-unused-vars": "off",
-        "unused-imports/no-unused-imports": "error",
-        "unused-imports/no-unused-vars": [
-          "warn",
-          {
-            vars: "all",
-            varsIgnorePattern: "^_",
-            args: "after-used",
-            ignoreRestSiblings: true,
-            argsIgnorePattern: "^_",
-          },
-        ],
-        "@typescript-eslint/consistent-type-imports": 2,
-        "import/namespace": "off",
-        "import/no-named-as-default": 0,
-        "import/order": [
-          "error",
-          {
-            pathGroups: [
-              {
-                pattern: "react",
-                group: "external",
-                position: "before",
-              },
-              {
-                pattern: "~/app",
-                group: "internal",
-              },
-            ],
-            pathGroupsExcludedImportTypes: ["react"],
-            "newlines-between": "always",
-            alphabetize: {
-              order: "asc",
-            },
-          },
-        ],
-        "no-console": "warn",
-        "react/forbid-component-props": [
-          "error",
-          {
-            forbid: [
-              {
-                propName: "data-test",
-                message: "Use `data-testid` instead of `data-test` attribute",
-              },
-            ],
-          },
-        ],
-        "react/forbid-dom-props": [
-          "error",
-          {
-            forbid: [
-              {
-                propName: "data-test",
-                message: "Use `data-testid` instead of `data-test` attribute",
-              },
-            ],
-          },
-        ],
-        "react/jsx-sort-props": "error",
-      },
-      settings: {
-        "import/resolver": {
-          node: {
-            paths: ["src"],
-            extensions: [".js", ".jsx", ".ts", ".tsx"],
-          },
-        },
-        react: {
-          version: "detect",
-        },
+    "import/resolver": {
+      node: {
+        paths: ["src"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
       },
     },
+  },
+  env: {
+    browser: true,
+    amd: true,
+    node: true,
+  },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended", // Make sure this is always the last element in the array.
+  ],
+  plugins: ["eslint-plugin-import-order", "import", "prettier"],
+  rules: {
+    "prettier/prettier": ["error", {}, { usePrettierrc: true }],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-key": "off",
+    "no-prototype-builtins": "off",
+    "no-unsafe-optional-chaining": "off",
+    "no-case-declarations": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        types: {
+          "{}": false,
+        },
+        extendDefaults: true,
+      },
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "sort-imports": [
+      "error",
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+      },
+    ],
+    "import/order": [
+      "error",
+      {
+        pathGroups: [
+          {
+            pattern: "react",
+            group: "external",
+            position: "before",
+          },
+          {
+            pattern: "~/app",
+            group: "internal",
+          },
+        ],
+        pathGroupsExcludedImportTypes: ["react"],
+        "newlines-between": "always",
+        alphabetize: {
+          order: "asc",
+        },
+      },
+    ],
+  },
+  overrides: [
     {
       files: ["src/**/*.js?(x)"],
       rules: {
@@ -132,6 +98,7 @@ module.exports = {
       extends: ["plugin:testing-library/react"],
       plugins: ["no-only-tests"],
       rules: {
+        "react/display-name": "off",
         "no-only-tests/no-only-tests": "error",
         "testing-library/prefer-find-by": "off",
         "testing-library/prefer-explicit-assert": "error",

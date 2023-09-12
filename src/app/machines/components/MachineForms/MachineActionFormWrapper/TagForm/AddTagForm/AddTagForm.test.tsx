@@ -10,10 +10,10 @@ import * as query from "@/app/store/machine/utils/query";
 import type { RootState } from "@/app/store/root/types";
 import { FetchNodeStatus } from "@/app/store/types/node";
 import {
-  rootState as rootStateFactory,
-  machineState as machineStateFactory,
   machineStateCount as machineStateCountFactory,
   machineStateCounts as machineStateCountsFactory,
+  machineState as machineStateFactory,
+  rootState as rootStateFactory,
   tag as tagFactory,
   tagState as tagStateFactory,
 } from "testing/factories";

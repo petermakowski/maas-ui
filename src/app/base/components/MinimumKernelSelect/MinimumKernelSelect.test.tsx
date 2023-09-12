@@ -5,8 +5,8 @@ import configureStore from "redux-mock-store";
 import MinimumKernelSelect, { Labels } from "./MinimumKernelSelect";
 
 import {
-  hweKernelsState as hweKernelsStateFactory,
   generalState as generalStateFactory,
+  hweKernelsState as hweKernelsStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";

@@ -10,14 +10,14 @@ import { KVMSidePanelViews } from "@/app/kvm/constants";
 import type { RootState } from "@/app/store/root/types";
 import {
   rootState as rootStateFactory,
-  vmCluster as vmClusterFactory,
-  vmHost as vmHostFactory,
-  vmClusterState as vmClusterStateFactory,
   virtualMachine as virtualMachineFactory,
+  vmCluster as vmClusterFactory,
+  vmClusterState as vmClusterStateFactory,
+  vmHost as vmHostFactory,
   zone as zoneFactory,
   zoneState as zoneStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen } from "testing/utils";
+import { render, screen, userEvent } from "testing/utils";
 
 const mockStore = configureStore();
 

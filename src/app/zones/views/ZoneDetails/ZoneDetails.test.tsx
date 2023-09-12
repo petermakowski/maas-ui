@@ -9,11 +9,11 @@ import { Labels } from "@/app/base/components/EditableSection";
 import type { RootState } from "@/app/store/root/types";
 import {
   authState as authStateFactory,
-  zone as zoneFactory,
-  zoneState as zoneStateFactory,
   rootState as rootStateFactory,
   user as userFactory,
   userState as userStateFactory,
+  zone as zoneFactory,
+  zoneState as zoneStateFactory,
 } from "testing/factories";
 import { render, screen } from "testing/utils";
 

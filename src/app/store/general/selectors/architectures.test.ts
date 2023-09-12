@@ -1,8 +1,8 @@
 import architectures from "./architectures";
 
 import {
-  generalState as generalStateFactory,
   architecturesState as architecturesStateFactory,
+  generalState as generalStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

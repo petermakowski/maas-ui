@@ -4,9 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IPRangeMeta } from "./types";
 import type {
   CreateParams,
+  IPRange,
   IPRangeState,
   UpdateParams,
-  IPRange,
 } from "./types";
 
 import {

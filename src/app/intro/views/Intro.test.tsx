@@ -10,7 +10,7 @@ import {
   user as userFactory,
   userState as userStateFactory,
 } from "testing/factories";
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 describe("Intro", () => {
   let state: RootState;

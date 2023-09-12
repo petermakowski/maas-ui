@@ -11,9 +11,9 @@ import type {
   BondXmitHashPolicyOptions,
 } from "@/app/store/general/types";
 import {
-  generalState as generalStateFactory,
   bondOptions as bondOptionsFactory,
   bondOptionsState as bondOptionsStateFactory,
+  generalState as generalStateFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 

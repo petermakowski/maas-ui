@@ -1,6 +1,6 @@
 import NavigationBanner from "./NavigationBanner";
 
-import { screen, renderWithBrowserRouter } from "testing/utils";
+import { renderWithBrowserRouter, screen } from "testing/utils";
 
 afterEach(() => {
   jest.resetModules();

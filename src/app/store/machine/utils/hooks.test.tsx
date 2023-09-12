@@ -9,20 +9,20 @@ import { selectedToFilters } from "./common";
 import type { UseFetchMachinesOptions, UseFetchQueryOptions } from "./hooks";
 import {
   getCombinedActionStatus,
-  useSelectedMachinesActionsDispatch,
-  useMachineActionDispatch,
-  useDispatchWithCallId,
-  useFetchSelectedMachines,
-  useHasSelection,
   useCanAddVLAN,
   useCanEditStorage,
+  useDispatchWithCallId,
+  useFetchedCount,
+  useFetchMachine,
+  useFetchMachineCount,
+  useFetchMachines,
+  useFetchSelectedMachines,
   useFormattedOS,
   useHasInvalidArchitecture,
+  useHasSelection,
   useIsLimitedEditingAllowed,
-  useFetchMachine,
-  useFetchMachines,
-  useFetchMachineCount,
-  useFetchedCount,
+  useMachineActionDispatch,
+  useSelectedMachinesActionsDispatch,
 } from "./hooks";
 import { generateCallId } from "./query";
 
@@ -42,24 +42,24 @@ import {
   architecturesState as architecturesStateFactory,
   fabric as fabricFactory,
   generalState as generalStateFactory,
-  machine as machineFactory,
+  machineActionState,
   machineDetails as machineDetailsFactory,
+  machine as machineFactory,
   machineInterface as machineInterfaceFactory,
-  machineState as machineStateFactory,
-  machineStateDetailsItem as machineStateDetailsItemFactory,
-  machineStateList as machineStateListFactory,
-  machineStateListGroup as machineStateListGroupFactory,
   machineStateCount as machineStateCountFactory,
   machineStateCounts as machineStateCountsFactory,
+  machineStateDetailsItem as machineStateDetailsItemFactory,
+  machineState as machineStateFactory,
+  machineStateList as machineStateListFactory,
+  machineStateListGroup as machineStateListGroupFactory,
   osInfo as osInfoFactory,
   osInfoState as osInfoStateFactory,
   powerType as powerTypeFactory,
   powerTypesState as powerTypesStateFactory,
   rootState as rootStateFactory,
   vlan as vlanFactory,
-  machineActionState,
 } from "testing/factories";
-import { renderHook, cleanup, waitFor, screen, render } from "testing/utils";
+import { cleanup, render, renderHook, screen, waitFor } from "testing/utils";
 
 const mockStore = configureStore();
 

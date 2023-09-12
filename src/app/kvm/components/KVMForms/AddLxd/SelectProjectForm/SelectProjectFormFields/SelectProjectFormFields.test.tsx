@@ -9,9 +9,9 @@ import { PodType } from "@/app/store/pod/constants";
 import type { RootState } from "@/app/store/root/types";
 import {
   pod as podFactory,
-  podPowerParameters as powerParametersFactory,
   podProject as podProjectFactory,
   podState as podStateFactory,
+  podPowerParameters as powerParametersFactory,
   rootState as rootStateFactory,
 } from "testing/factories";
 import {

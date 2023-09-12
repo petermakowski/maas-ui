@@ -10,21 +10,21 @@ import { getIpRangeDisplayName } from "@/app/store/iprange/utils";
 import type { RootState } from "@/app/store/root/types";
 import { callId, enableCallIdMocks } from "testing/callId-mock";
 import {
-  ipRange as ipRangeFactory,
-  ipRangeState as ipRangeStateFactory,
   controllerState as controllerStateFactory,
   deviceState as deviceStateFactory,
   dhcpSnippet as dhcpSnippetFactory,
   dhcpSnippetState as dhcpSnippetStateFactory,
+  ipRange as ipRangeFactory,
+  ipRangeState as ipRangeStateFactory,
   machine as machineFactory,
   machineState as machineStateFactory,
   machineStateList as machineStateListFactory,
   machineStateListGroup as machineStateListGroupFactory,
+  rootState as rootStateFactory,
   subnet as subnetFactory,
   subnetState as subnetStateFactory,
-  rootState as rootStateFactory,
 } from "testing/factories";
-import { userEvent, render, screen, waitFor, within } from "testing/utils";
+import { render, screen, userEvent, waitFor, within } from "testing/utils";
 
 enableCallIdMocks();
 const mockStore = configureStore();
