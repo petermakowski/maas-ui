@@ -74,7 +74,7 @@ describe("MachineListHeader", () => {
       />,
       { state, route: urls.machines.index }
     );
-    expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
       "2 machines in 1 pool"
     );
   });

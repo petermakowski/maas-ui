@@ -74,7 +74,6 @@ const MachineActionMenu = ({
       <div className="u-hide--large">
         <NodeActionMenu
           {...commonProps}
-          className="is-maas-select"
           constrainPanelWidth
           menuPosition="left"
           toggleAppearance=""

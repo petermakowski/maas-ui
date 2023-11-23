@@ -1,7 +1,5 @@
 @mixin FilterAccordion {
-  [class^="p-button"].has-icon.filter-accordion__toggle,
-  .filter-accordion__item,
-  .filter-accordion {
+  .filter-accordion__item {
     width: 100%;
   }
 

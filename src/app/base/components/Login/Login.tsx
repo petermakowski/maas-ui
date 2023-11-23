@@ -38,7 +38,7 @@ export enum Labels {
 
 export enum TestIds {
   NoUsers = "no-users-warning",
-  SectionHeaderTitle = "section-header-title",
+  SectionHeaderTitle = "main-toolbar-heading",
 }
 
 export const Login = (): JSX.Element => {

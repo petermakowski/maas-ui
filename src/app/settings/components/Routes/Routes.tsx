@@ -1,8 +1,23 @@
-import { Redirect } from "react-router-dom";
-import { Route, Routes as ReactRouterRoutes } from "react-router-dom-v5-compat";
+import { useState } from "react";
 
+import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { Redirect, useLocation } from "react-router-dom";
+import {
+  Route,
+  Routes as ReactRouterRoutes,
+  Outlet,
+  matchPath,
+} from "react-router-dom-v5-compat";
+
+import PageContent from "app/base/components/PageContent";
+import SecondaryNavigation from "app/base/components/SecondaryNavigation";
+import SectionHeader from "app/base/components/SectionHeader";
+import { useThemeContext } from "app/base/theme-context";
 import urls from "app/base/urls";
 import NotFound from "app/base/views/NotFound";
+import { preferencesNavItems } from "app/preferences/constants";
+import { settingsNavItems } from "app/settings/constants";
 import Commissioning from "app/settings/views/Configuration/Commissioning";
 import Deploy from "app/settings/views/Configuration/Deploy";
 import General from "app/settings/views/Configuration/General";
@@ -34,167 +49,231 @@ import StorageForm from "app/settings/views/Storage/StorageForm";
 import UserAdd from "app/settings/views/Users/UserAdd";
 import UserEdit from "app/settings/views/Users/UserEdit";
 import UsersList from "app/settings/views/Users/UsersList";
+import status from "app/store/status/selectors";
 import { getRelativeRoute } from "app/utils";
+
+const SecondaryNav = () => {
+  const { theme } = useThemeContext();
+  const { pathname } = useLocation();
+  const isSettingsPage = matchPath("settings/*", pathname);
+  const isPreferencesPage = matchPath("account/prefs/*", pathname);
+  const authenticated = useSelector(status.authenticated);
+  const connected = useSelector(status.connected);
+  const hasSecondaryNav = isSettingsPage || isPreferencesPage;
+  const isSecondaryNavVisible = hasSecondaryNav && authenticated && connected;
+
+  return isSecondaryNavVisible ? (
+    <div className={classNames("l-main__nav", `is-maas-${theme}--accent`)}>
+      <SecondaryNavigation
+        isOpen={!!isSecondaryNavVisible}
+        items={
+          isSettingsPage
+            ? settingsNavItems
+            : isPreferencesPage
+            ? preferencesNavItems
+            : []
+        }
+        title={
+          isSettingsPage
+            ? "Settings"
+            : isPreferencesPage
+            ? "My preferences"
+            : ""
+        }
+      />
+    </div>
+  ) : null;
+};
+
+const SettingsLayout = () => {
+  const [pageTitle, setPageTitle] = useState("");
+
+  return (
+    <PageContent
+      header={<SectionHeader title={pageTitle} />}
+      secondaryNav={<SecondaryNav />}
+      sidePanelContent={null}
+      sidePanelTitle={null}
+    >
+      <Outlet context={[pageTitle, setPageTitle]} />
+    </PageContent>
+  );
+};
 
 const Routes = (): JSX.Element => {
   const base = urls.settings.index;
   return (
     <ReactRouterRoutes>
-      <Route
-        element={<General />}
-        path={getRelativeRoute(urls.settings.configuration.general, base)}
-      />
-      <Route
-        element={<Commissioning />}
-        path={getRelativeRoute(urls.settings.configuration.commissioning, base)}
-      />
-      <Route
-        element={<KernelParameters />}
-        path={getRelativeRoute(
-          urls.settings.configuration.kernelParameters,
-          base
-        )}
-      />
-      <Route
-        element={<Deploy />}
-        path={getRelativeRoute(urls.settings.configuration.deploy, base)}
-      />
-      <Route
-        element={<Redirect to={urls.settings.configuration.index} />}
-        path="/"
-      />
-      <Route
-        element={<Redirect to={urls.settings.configuration.general} />}
-        path={getRelativeRoute(urls.settings.configuration.index, base)}
-      />
-      <Route
-        element={<SecurityProtocols />}
-        path={getRelativeRoute(urls.settings.security.securityProtocols, base)}
-      />
-      <Route
-        element={<SecretStorage />}
-        path={getRelativeRoute(urls.settings.security.secretStorage, base)}
-      />
-      <Route
-        element={<SessionTimeout />}
-        path={getRelativeRoute(urls.settings.security.sessionTimeout, base)}
-      />
-      <Route
-        element={<IpmiSettings />}
-        path={getRelativeRoute(urls.settings.security.ipmiSettings, base)}
-      />
-      <Route
-        element={<Redirect to={urls.settings.security.securityProtocols} />}
-        path={getRelativeRoute(urls.settings.security.index, base)}
-      />
-      <Route
-        element={<UsersList />}
-        path={getRelativeRoute(urls.settings.users.index, base)}
-      />
-      <Route
-        element={<UserAdd />}
-        path={getRelativeRoute(urls.settings.users.add, base)}
-      />
-      <Route
-        element={<UserEdit />}
-        path={getRelativeRoute(urls.settings.users.edit(null), base)}
-      />
-      <Route
-        element={<LicenseKeyList />}
-        path={getRelativeRoute(urls.settings.licenseKeys.index, base)}
-      />
-      <Route
-        element={<LicenseKeyAdd />}
-        path={getRelativeRoute(urls.settings.licenseKeys.add, base)}
-      />
-      <Route
-        element={<LicenseKeyEdit />}
-        path={getRelativeRoute(urls.settings.licenseKeys.edit(null), base)}
-      />
-      <Route
-        element={<StorageForm />}
-        path={getRelativeRoute(urls.settings.storage, base)}
-      />
-      <Route
-        element={<ProxyForm />}
-        path={getRelativeRoute(urls.settings.network.proxy, base)}
-      />
-      <Route
-        element={<DnsForm />}
-        path={getRelativeRoute(urls.settings.network.dns, base)}
-      />
-      <Route
-        element={<NtpForm />}
-        path={getRelativeRoute(urls.settings.network.ntp, base)}
-      />
-      <Route
-        element={<SyslogForm />}
-        path={getRelativeRoute(urls.settings.network.syslog, base)}
-      />
-      <Route
-        element={<NetworkDiscoveryForm />}
-        path={getRelativeRoute(urls.settings.network.networkDiscovery, base)}
-      />
-      <Route
-        element={<Redirect to={urls.settings.network.proxy} />}
-        path={getRelativeRoute(urls.settings.network.index, base)}
-      />
-      <Route
-        element={<ScriptsList type="commissioning" />}
-        path={getRelativeRoute(urls.settings.scripts.commissioning.index, base)}
-      />
-      <Route
-        element={<ScriptsUpload type="commissioning" />}
-        path={getRelativeRoute(
-          urls.settings.scripts.commissioning.upload,
-          base
-        )}
-      />
-      <Route
-        element={<ScriptsList type="testing" />}
-        path={getRelativeRoute(urls.settings.scripts.testing.index, base)}
-      />
-      <Route
-        element={<ScriptsUpload type="testing" />}
-        path={getRelativeRoute(urls.settings.scripts.testing.upload, base)}
-      />
-      <Route
-        element={<DhcpList />}
-        path={getRelativeRoute(urls.settings.dhcp.index, base)}
-      />
-      <Route
-        element={<DhcpAdd />}
-        path={getRelativeRoute(urls.settings.dhcp.add, base)}
-      />
-      <Route
-        element={<DhcpEdit />}
-        path={getRelativeRoute(urls.settings.dhcp.edit(null), base)}
-      />
-      <Route
-        element={<RepositoriesList />}
-        path={getRelativeRoute(urls.settings.repositories.index, base)}
-      />
-      <Route
-        element={<RepositoryAdd />}
-        path={getRelativeRoute(urls.settings.repositories.add(null), base)}
-      />
-      <Route
-        element={<RepositoryEdit />}
-        path={getRelativeRoute(urls.settings.repositories.edit(null), base)}
-      />
-      <Route
-        element={<Windows />}
-        path={getRelativeRoute(urls.settings.images.windows, base)}
-      />
-      <Route
-        element={<VMWare />}
-        path={getRelativeRoute(urls.settings.images.vmware, base)}
-      />
-      <Route
-        element={<ThirdPartyDrivers />}
-        path={getRelativeRoute(urls.settings.images.ubuntu, base)}
-      />
-      <Route element={<NotFound />} path="*" />
+      <Route element={<SettingsLayout />}>
+        <Route
+          element={<General />}
+          path={getRelativeRoute(urls.settings.configuration.general, base)}
+        />
+        <Route
+          element={<General />}
+          path={getRelativeRoute(urls.settings.configuration.general, base)}
+        />
+        <Route
+          element={<Commissioning />}
+          path={getRelativeRoute(
+            urls.settings.configuration.commissioning,
+            base
+          )}
+        />
+        <Route
+          element={<KernelParameters />}
+          path={getRelativeRoute(
+            urls.settings.configuration.kernelParameters,
+            base
+          )}
+        />
+        <Route
+          element={<Deploy />}
+          path={getRelativeRoute(urls.settings.configuration.deploy, base)}
+        />
+        <Route
+          element={<Redirect to={urls.settings.configuration.index} />}
+          path="/"
+        />
+        <Route
+          element={<Redirect to={urls.settings.configuration.general} />}
+          path={getRelativeRoute(urls.settings.configuration.index, base)}
+        />
+        <Route
+          element={<SecurityProtocols />}
+          path={getRelativeRoute(
+            urls.settings.security.securityProtocols,
+            base
+          )}
+        />
+        <Route
+          element={<SecretStorage />}
+          path={getRelativeRoute(urls.settings.security.secretStorage, base)}
+        />
+        <Route
+          element={<SessionTimeout />}
+          path={getRelativeRoute(urls.settings.security.sessionTimeout, base)}
+        />
+        <Route
+          element={<IpmiSettings />}
+          path={getRelativeRoute(urls.settings.security.ipmiSettings, base)}
+        />
+        <Route
+          element={<Redirect to={urls.settings.security.securityProtocols} />}
+          path={getRelativeRoute(urls.settings.security.index, base)}
+        />
+        <Route
+          element={<UsersList />}
+          path={getRelativeRoute(urls.settings.users.index, base)}
+        />
+        <Route
+          element={<UserAdd />}
+          path={getRelativeRoute(urls.settings.users.add, base)}
+        />
+        <Route
+          element={<UserEdit />}
+          path={getRelativeRoute(urls.settings.users.edit(null), base)}
+        />
+        <Route
+          element={<LicenseKeyList />}
+          path={getRelativeRoute(urls.settings.licenseKeys.index, base)}
+        />
+        <Route
+          element={<LicenseKeyAdd />}
+          path={getRelativeRoute(urls.settings.licenseKeys.add, base)}
+        />
+        <Route
+          element={<LicenseKeyEdit />}
+          path={getRelativeRoute(urls.settings.licenseKeys.edit(null), base)}
+        />
+        <Route
+          element={<StorageForm />}
+          path={getRelativeRoute(urls.settings.storage, base)}
+        />
+        <Route
+          element={<ProxyForm />}
+          path={getRelativeRoute(urls.settings.network.proxy, base)}
+        />
+        <Route
+          element={<DnsForm />}
+          path={getRelativeRoute(urls.settings.network.dns, base)}
+        />
+        <Route
+          element={<NtpForm />}
+          path={getRelativeRoute(urls.settings.network.ntp, base)}
+        />
+        <Route
+          element={<SyslogForm />}
+          path={getRelativeRoute(urls.settings.network.syslog, base)}
+        />
+        <Route
+          element={<NetworkDiscoveryForm />}
+          path={getRelativeRoute(urls.settings.network.networkDiscovery, base)}
+        />
+        <Route
+          element={<Redirect to={urls.settings.network.proxy} />}
+          path={getRelativeRoute(urls.settings.network.index, base)}
+        />
+        <Route
+          element={<ScriptsList type="commissioning" />}
+          path={getRelativeRoute(
+            urls.settings.scripts.commissioning.index,
+            base
+          )}
+        />
+        <Route
+          element={<ScriptsUpload type="commissioning" />}
+          path={getRelativeRoute(
+            urls.settings.scripts.commissioning.upload,
+            base
+          )}
+        />
+        <Route
+          element={<ScriptsList type="testing" />}
+          path={getRelativeRoute(urls.settings.scripts.testing.index, base)}
+        />
+        <Route
+          element={<ScriptsUpload type="testing" />}
+          path={getRelativeRoute(urls.settings.scripts.testing.upload, base)}
+        />
+        <Route
+          element={<DhcpList />}
+          path={getRelativeRoute(urls.settings.dhcp.index, base)}
+        />
+        <Route
+          element={<DhcpAdd />}
+          path={getRelativeRoute(urls.settings.dhcp.add, base)}
+        />
+        <Route
+          element={<DhcpEdit />}
+          path={getRelativeRoute(urls.settings.dhcp.edit(null), base)}
+        />
+        <Route
+          element={<RepositoriesList />}
+          path={getRelativeRoute(urls.settings.repositories.index, base)}
+        />
+        <Route
+          element={<RepositoryAdd />}
+          path={getRelativeRoute(urls.settings.repositories.add(null), base)}
+        />
+        <Route
+          element={<RepositoryEdit />}
+          path={getRelativeRoute(urls.settings.repositories.edit(null), base)}
+        />
+        <Route
+          element={<Windows />}
+          path={getRelativeRoute(urls.settings.images.windows, base)}
+        />
+        <Route
+          element={<VMWare />}
+          path={getRelativeRoute(urls.settings.images.vmware, base)}
+        />
+        <Route
+          element={<ThirdPartyDrivers />}
+          path={getRelativeRoute(urls.settings.images.ubuntu, base)}
+        />
+        <Route element={<NotFound />} path="*" />
+      </Route>
     </ReactRouterRoutes>
   );
 };

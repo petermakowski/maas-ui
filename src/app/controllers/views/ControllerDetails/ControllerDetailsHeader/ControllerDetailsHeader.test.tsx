@@ -39,7 +39,7 @@ it("displays a spinner as the title if controller has not loaded yet", () => {
   );
 
   expect(
-    screen.getByTestId("section-header-title-spinner")
+    screen.getByTestId("main-toolbar-heading-spinner")
   ).toBeInTheDocument();
 });
 

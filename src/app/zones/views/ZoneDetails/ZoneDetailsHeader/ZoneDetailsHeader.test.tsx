@@ -66,7 +66,7 @@ describe("ZoneDetailsHeader", () => {
       </Provider>
     );
 
-    const { getByText } = within(screen.getByTestId("section-header-title"));
+    const { getByText } = within(screen.getByTestId("main-toolbar-heading"));
     expect(getByText("Availability zone: zone-name")).toBeInTheDocument();
   });
 
@@ -88,7 +88,7 @@ describe("ZoneDetailsHeader", () => {
         </MemoryRouter>
       </Provider>
     );
-    const { getByText } = within(screen.getByTestId("section-header-title"));
+    const { getByText } = within(screen.getByTestId("main-toolbar-heading"));
     expect(getByText("Availability zone not found")).toBeInTheDocument();
   });
 

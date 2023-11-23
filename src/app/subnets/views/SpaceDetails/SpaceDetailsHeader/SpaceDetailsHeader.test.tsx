@@ -63,7 +63,7 @@ const renderTestCase = (
 it("shows the space name as the section title", () => {
   renderTestCase(spaceFactory({ id: 1, name: "space-1" }));
 
-  expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+  expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
     "space-1"
   );
 });

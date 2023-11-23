@@ -61,6 +61,7 @@ const generateSubtitle = (
 const SectionHeader = <P,>({
   actionMenuGroup,
   buttons = [],
+  children,
   renderButtons,
   className,
   headerSize,
@@ -82,13 +83,13 @@ const SectionHeader = <P,>({
             <h4
               aria-label="loading"
               className="section-header__title"
-              data-testid="section-header-title-spinner"
+              data-testid="main-toolbar-heading-spinner"
             >
               <Spinner aria-hidden="true" text="Loading..." />
             </h4>
           </div>
         ) : title ? (
-          <div className="section-header__titles u-flex--align-center u-flex--grow u-flex--wrap">
+          <div className="section-header__titles">
             <TitleElement
               className={classNames(
                 "section-header__title u-flex--no-shrink",
@@ -97,7 +98,7 @@ const SectionHeader = <P,>({
                   "p-heading--4": TitleElement === "h1",
                 }
               )}
-              data-testid="section-header-title"
+              data-testid="main-toolbar-heading"
             >
               {title}
             </TitleElement>
@@ -109,9 +110,10 @@ const SectionHeader = <P,>({
           subtitleLoading,
           loading
         )}
+        <div className="section-header__search">{children}</div>
         {buttons?.length ? (
           <List
-            className="section-header__buttons u-flex--between"
+            className="section-header__buttons"
             data-testid="section-header-buttons"
             inline
             items={buttons.map((button, i) => ({

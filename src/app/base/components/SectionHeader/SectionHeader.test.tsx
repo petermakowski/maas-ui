@@ -7,7 +7,7 @@ describe("SectionHeader", () => {
     renderWithBrowserRouter(
       <SectionHeader subtitle="Subtitle" title="Title" />
     );
-    expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
       "Title"
     );
     expect(screen.getByTestId("section-header-subtitle")).toHaveTextContent(
@@ -24,7 +24,7 @@ describe("SectionHeader", () => {
 
   it("can change the title element", () => {
     renderWithBrowserRouter(<SectionHeader title="Title" titleElement="div" />);
-    const title = screen.getByTestId("section-header-title");
+    const title = screen.getByTestId("main-toolbar-heading");
     expect(title).toBeInTheDocument();
     expect(title.classList.contains("p-heading--4")).toBe(false);
   });
@@ -34,10 +34,10 @@ describe("SectionHeader", () => {
       <SectionHeader loading subtitle="Subtitle" title="Title" />
     );
     expect(
-      screen.getByTestId("section-header-title-spinner")
+      screen.getByTestId("main-toolbar-heading-spinner")
     ).toBeInTheDocument();
     expect(
-      screen.queryByTestId("section-header-title")
+      screen.queryByTestId("main-toolbar-heading")
     ).not.toBeInTheDocument();
   });
 

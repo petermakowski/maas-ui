@@ -141,6 +141,6 @@ it("shows a spinner if the vlan has not loaded yet", () => {
   );
 
   expect(
-    screen.getByTestId("section-header-title-spinner")
+    screen.getByTestId("main-toolbar-heading-spinner")
   ).toBeInTheDocument();
 });

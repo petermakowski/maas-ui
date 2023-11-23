@@ -1,14 +1,20 @@
 import type { ReactNode } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Notification } from "@canonical/react-components";
 import { usePrevious } from "@canonical/react-components/dist/hooks";
 import * as Sentry from "@sentry/browser";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Route,
+  Routes as ReactRouterRoutes,
+  Outlet,
+} from "react-router-dom-v5-compat";
 
 import packageInfo from "../../package.json";
 
 import NavigationBanner from "./base/components/AppSideNavigation/NavigationBanner";
+import ErrorBoundary from "./base/components/ErrorBoundary";
 import PageContent from "./base/components/PageContent/PageContent";
 import SectionHeader from "./base/components/SectionHeader";
 import ThemePreviewContextProvider from "./base/theme-context";
@@ -33,6 +39,16 @@ export enum VaultErrors {
   REQUEST_FAILED = "Vault request failed",
   CONNECTION_FAILED = "Vault connection failed",
 }
+
+const Layout = () => {
+  const [pageTitle, setPageTitle] = useState("");
+
+  return (
+    <ErrorBoundary>
+      <Outlet context={[pageTitle, setPageTitle]} />
+    </ErrorBoundary>
+  );
+};
 
 const ConnectionStatus = () => {
   const connected = useSelector(status.connected);
@@ -133,38 +149,60 @@ export const App = (): JSX.Element => {
     );
   } else if (hasAuthError) {
     content = (
-      <PageContent sidePanelContent={null} sidePanelTitle={null}>
-        {authenticationError ? (
-          authenticationError === "Session expired" ? (
-            <Notification role="alert" severity="information">
-              Your session has expired. Plese log in again to continue using
-              MAAS.
-            </Notification>
-          ) : (
-            <Notification role="alert" severity="negative" title="Error:">
-              {formatErrors(authenticationError, "__all__")}
-            </Notification>
-          )
-        ) : null}
-        <Login />
-      </PageContent>
+      <ReactRouterRoutes>
+        <Route element={<Layout />} path="/">
+          <Route
+            element={
+              <PageContent sidePanelContent={null} sidePanelTitle={null}>
+                {authenticationError ? (
+                  authenticationError === "Session expired" ? (
+                    <Notification role="alert" severity="information">
+                      Your session has expired. Plese log in again to continue
+                      using MAAS.
+                    </Notification>
+                  ) : (
+                    <Notification
+                      role="alert"
+                      severity="negative"
+                      title="Error:"
+                    >
+                      {formatErrors(authenticationError, "__all__")}
+                    </Notification>
+                  )
+                ) : null}
+                <Login />
+              </PageContent>
+            }
+            path="*"
+          ></Route>
+        </Route>
+      </ReactRouterRoutes>
     );
   } else if (hasVaultError) {
     content = (
-      <PageContent
-        header={<SectionHeader title="Failed to connect" />}
-        sidePanelContent={null}
-        sidePanelTitle={null}
-      >
-        <Notification severity="negative" title="Error:">
-          The server connection failed
-          {hasVaultError || connectionError
-            ? ` with the error "${
-                hasVaultError ? configErrors : connectionError
-              }"`
-            : ""}
-        </Notification>
-      </PageContent>
+      <ReactRouterRoutes>
+        <Route element={<Layout />} path="/">
+          <Route
+            element={
+              <PageContent
+                header={<SectionHeader title="Failed to connect" />}
+                sidePanelContent={null}
+                sidePanelTitle={null}
+              >
+                <Notification severity="negative" title="Error:">
+                  The server connection failed
+                  {hasVaultError || connectionError
+                    ? ` with the error "${
+                        hasVaultError ? configErrors : connectionError
+                      }"`
+                    : ""}
+                </Notification>
+              </PageContent>
+            }
+            path="*"
+          ></Route>
+        </Route>
+      </ReactRouterRoutes>
     );
   } else if (isLoaded) {
     content = (

@@ -34,7 +34,7 @@ describe("DeviceDetailsHeader", () => {
     );
 
     expect(
-      screen.getByTestId("section-header-title-spinner")
+      screen.getByTestId("main-toolbar-heading-spinner")
     ).toHaveTextContent("Loading...");
   });
 
@@ -49,7 +49,7 @@ describe("DeviceDetailsHeader", () => {
     expect(screen.getByTestId("section-header-subtitle")).toHaveTextContent(
       "Loading..."
     );
-    expect(screen.getByTestId("section-header-title")).not.toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).not.toHaveTextContent(
       "Loading..."
     );
   });
@@ -63,7 +63,7 @@ describe("DeviceDetailsHeader", () => {
       <DeviceDetailsHeader setSidePanelContent={jest.fn()} systemId="abc123" />,
       { store, sidePanelContent: { view: DeviceSidePanelViews.DELETE_DEVICE } }
     );
-    expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
       "plot-device"
     );
   });
@@ -78,7 +78,7 @@ describe("DeviceDetailsHeader", () => {
       { store }
     );
 
-    expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
       "plot-device"
     );
   });

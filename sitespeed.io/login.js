@@ -19,7 +19,7 @@ module.exports = async function (context, commands) {
   await commands.addText.byName("test", "password");
   await commands.click.bySelector("button.p-button--positive");
   await commands.wait.bySelector(
-    "[data-testid='section-header-title-spinner']",
+    "[data-testid='main-toolbar-heading-spinner']",
     TIMEOUT
   );
   await commands.wait.byXpath("//a//span[text()='admin']");

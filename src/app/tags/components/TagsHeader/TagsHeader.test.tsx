@@ -40,5 +40,5 @@ it("displays the default title", () => {
   expect(
     screen.getByRole("heading", { level: 1, name: "Tags" })
   ).toBeInTheDocument();
-  expect(screen.getByTestId("section-header-title").textContent).toBe("Tags");
+  expect(screen.getByTestId("main-toolbar-heading").textContent).toBe("Tags");
 });

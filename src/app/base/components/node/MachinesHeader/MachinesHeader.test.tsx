@@ -60,7 +60,7 @@ describe("MachinesHeader", () => {
         </MemoryRouter>
       </Provider>
     );
-    expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
       "Machines"
     );
   });

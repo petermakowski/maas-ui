@@ -2,6 +2,7 @@ import { Button } from "@canonical/react-components";
 import { useSelector } from "react-redux";
 
 import ModelListSubtitle from "app/base/components/ModelListSubtitle";
+import { ModelListTitle } from "app/base/components/ModelListTitle";
 import NodeActionMenu from "app/base/components/NodeActionMenu";
 import SectionHeader from "app/base/components/SectionHeader";
 import { useSendAnalytics } from "app/base/hooks";
@@ -68,8 +69,13 @@ const ControllerListHeader = ({
           selected={selectedControllers.length}
         />
       }
-      subtitleLoading={!controllersLoaded}
-      title="Controllers"
+      title={
+        <ModelListTitle
+          count={controllers.length}
+          isLoading={!controllersLoaded}
+          model="controller"
+        />
+      }
     />
   );
 };

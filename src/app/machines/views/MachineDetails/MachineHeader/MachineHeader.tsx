@@ -89,6 +89,39 @@ const MachineHeader = ({
 
   return (
     <SectionHeader
+      buttons={[
+        <>
+          <div className="u-hide--medium u-hide--small u-nudge-right">
+            <NodeActionMenuGroup
+              alwaysShowLifecycle
+              excludeActions={[NodeActions.IMPORT_IMAGES]}
+              filterActions
+              hasSelection={true}
+              isNodeLocked={machine.locked}
+              nodeDisplay="machine"
+              nodes={[machine]}
+              onActionClick={handleActionClick}
+              singleNode
+            />
+          </div>
+          <div className="u-hide--large u-nudge-right">
+            <NodeActionMenu
+              alwaysShowLifecycle
+              className="u-hide--large"
+              excludeActions={[NodeActions.IMPORT_IMAGES]}
+              filterActions
+              hasSelection={true}
+              key="action-dropdown"
+              nodeDisplay="machine"
+              nodes={[machine]}
+              onActionClick={handleActionClick}
+              toggleAppearance=""
+              toggleClassName="p-action-menu u-no-margin--bottom"
+              toggleLabel="Menu"
+            />
+          </div>
+        </>,
+      ]}
       subtitle={
         editingName ? null : (
           <div className="u-flex--wrap u-flex--align-center">
@@ -113,35 +146,6 @@ const MachineHeader = ({
                   ? "Checking power"
                   : `Power ${machine.power_state}`}
               </PowerIcon>
-            </div>
-            <div className="u-hide--medium u-hide--small u-nudge-right">
-              <NodeActionMenuGroup
-                alwaysShowLifecycle
-                excludeActions={[NodeActions.IMPORT_IMAGES]}
-                filterActions
-                hasSelection={true}
-                isNodeLocked={machine.locked}
-                nodeDisplay="machine"
-                nodes={[machine]}
-                onActionClick={handleActionClick}
-                singleNode
-              />
-            </div>
-            <div className="u-hide--large u-nudge-right">
-              <NodeActionMenu
-                alwaysShowLifecycle
-                className="u-hide--large"
-                excludeActions={[NodeActions.IMPORT_IMAGES]}
-                filterActions
-                hasSelection={true}
-                key="action-dropdown"
-                nodeDisplay="machine"
-                nodes={[machine]}
-                onActionClick={handleActionClick}
-                toggleAppearance=""
-                toggleClassName="p-action-menu u-no-margin--bottom"
-                toggleLabel="Menu"
-              />
             </div>
           </div>
         )
@@ -247,7 +251,7 @@ const MachineHeader = ({
         />
       }
       titleElement={editingName ? "div" : "h1"}
-    />
+    ></SectionHeader>
   );
 };
 

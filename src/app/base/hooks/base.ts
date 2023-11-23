@@ -5,6 +5,7 @@ import type { NotificationProps } from "@canonical/react-components";
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { useOutletContext } from "react-router-dom-v5-compat";
 
 import type { KeyboardShortcut } from "../constants";
 
@@ -49,13 +50,18 @@ export const useAddMessage = (
  * Set the browser window title.
  * @param title - The title to set.
  */
+// TODO: move this to useOutletContext and use a single title for the whole app including page title element
 export const useWindowTitle = (title?: string): void => {
   const maasName = useSelector(configSelectors.maasName);
   const maasNamePart = maasName ? `${maasName} ` : "";
   const titlePart = title ? `${title} | ` : "";
+  // add proper types for this context
+  const [_pageTitle, setPageTitle] =
+    useOutletContext<[string | undefined, (s?: string) => void]>();
   useEffect(() => {
     document.title = `${titlePart}${maasNamePart}MAAS`;
-  }, [maasNamePart, titlePart]);
+    setPageTitle?.(title);
+  }, [maasNamePart, title, titlePart, setPageTitle]);
 };
 
 /**

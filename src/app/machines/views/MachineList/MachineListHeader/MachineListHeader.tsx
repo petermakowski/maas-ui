@@ -38,7 +38,8 @@ export const MachineListHeader = ({
 }: Props): JSX.Element => {
   const dispatch = useDispatch();
   // Get the count of all machines
-  const { machineCount: allMachineCount } = useFetchMachineCount();
+  const { machineCount: allMachineCount, machineCountLoaded } =
+    useFetchMachineCount();
 
   useFetchActions([resourcePoolActions.fetch]);
 
@@ -65,6 +66,7 @@ export const MachineListHeader = ({
           grouping={grouping}
           hiddenColumns={hiddenColumns}
           machineCount={allMachineCount}
+          machineCountLoaded={machineCountLoaded}
           resourcePoolsCount={resourcePoolsCount}
           setFilter={handleSetSearchFilter}
           setGrouping={setGrouping}

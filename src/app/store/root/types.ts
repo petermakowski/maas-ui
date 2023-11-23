@@ -2,6 +2,7 @@ import type { RouterState } from "redux-first-history";
 
 import type { VMClusterMeta, VMClusterState } from "../vmcluster/types";
 
+import type { Prettify } from "app/base/types";
 import type {
   BootResourceState,
   BootResourceMeta,
@@ -108,3 +109,5 @@ export type RootState = {
   [VMClusterMeta.MODEL]: VMClusterState;
   [ZoneMeta.MODEL]: ZoneState;
 };
+
+export type Model = Prettify<keyof Omit<RootState, "router">>;

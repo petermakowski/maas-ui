@@ -39,7 +39,7 @@ describe("VLANDetailsHeader", () => {
       route: "/vlan/1234",
       state,
     });
-    expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
       "vlan-1 in fabric1"
     );
   });
@@ -58,7 +58,7 @@ describe("VLANDetailsHeader", () => {
       route: "/vlan/1234",
       state,
     });
-    expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
       "Default VLAN in fabric1"
     );
   });
@@ -73,7 +73,7 @@ describe("VLANDetailsHeader", () => {
       route: "/vlan/1234",
       state,
     });
-    expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+    expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
       "VLAN 3 in fabric1"
     );
   });

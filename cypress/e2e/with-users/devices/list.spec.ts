@@ -7,7 +7,7 @@ context("Device listing", () => {
   });
 
   it("renders the correct heading", () => {
-    cy.get("[data-testid='section-header-title']").contains("Devices");
+    cy.get("[data-testid='main-toolbar-heading']").contains("Devices");
   });
 
   it("can add a tag to the device", () => {

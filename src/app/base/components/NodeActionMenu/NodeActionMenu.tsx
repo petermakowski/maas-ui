@@ -1,12 +1,15 @@
 import type { ReactNode } from "react";
 
 import type {
-  ButtonAppearance,
   ButtonProps,
   ContextualMenuDropdownProps,
   ValueOf,
 } from "@canonical/react-components";
-import { ContextualMenu, Tooltip } from "@canonical/react-components";
+import {
+  ContextualMenu,
+  Tooltip,
+  ButtonAppearance,
+} from "@canonical/react-components";
 
 import type { DataTestElement } from "app/base/types";
 import type { Node } from "app/store/types/node";
@@ -169,7 +172,7 @@ export const NodeActionMenu = ({
   nodes,
   onActionClick,
   showCount,
-  toggleAppearance = "positive",
+  toggleAppearance = ButtonAppearance.DEFAULT,
   toggleClassName,
   toggleLabel = Label.TakeAction,
   constrainPanelWidth,

@@ -140,10 +140,10 @@ Cypress.Commands.add("testA11y", (pageContext) => {
 });
 
 Cypress.Commands.add("waitForPageToLoad", () => {
-  cy.get("[data-testid='section-header-title-spinner]").should("not.exist");
+  cy.get("[data-testid='main-toolbar-heading-spinner]").should("not.exist");
   cy.get("[data-testid='section-header-subtitle-spinner']").should("not.exist");
   cy.findByText("Failed to connect").should("not.exist");
-  cy.get("[data-testid='section-header-title']").should("be.visible");
+  cy.get("[data-testid='main-toolbar-heading']").should("be.visible");
 });
 
 Cypress.Commands.add("waitForTableToLoad", ({ name } = { name: undefined }) => {

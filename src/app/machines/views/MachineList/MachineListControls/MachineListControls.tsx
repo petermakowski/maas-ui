@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 
+import { MainToolbar } from "@canonical/maas-react-components";
 import { Button, Icon } from "@canonical/react-components";
 import pluralize from "pluralize";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom-v5-compat";
 
 import DebounceSearchBox from "app/base/components/DebounceSearchBox";
+import { ModelListTitle } from "app/base/components/ModelListTitle";
 import urls from "app/base/urls";
 import type { MachineSetSidePanelContent } from "app/machines/types";
 import GroupSelect from "app/machines/views/MachineList/MachineListControls/GroupSelect";
@@ -20,6 +22,7 @@ import { useHasSelection } from "app/store/machine/utils/hooks";
 
 export type MachineListControlsProps = {
   machineCount: number;
+  machineCountLoaded: boolean;
   resourcePoolsCount: number;
   filter: string;
   grouping: FetchGroupKey | null;
@@ -33,6 +36,7 @@ export type MachineListControlsProps = {
 
 const MachineListControls = ({
   machineCount,
+  machineCountLoaded,
   resourcePoolsCount,
   filter,
   grouping,
@@ -53,76 +57,64 @@ const MachineListControls = ({
   }, [filter]);
 
   return (
-    <div className="machine-list-controls">
-      <h1
-        className="section-header__title p-heading--4"
-        data-testid="section-header-title"
-      >
-        {machineCount} machines in{" "}
+    <MainToolbar>
+      <MainToolbar.Title>
+        <ModelListTitle
+          count={machineCount}
+          isLoading={!machineCountLoaded}
+          model="machine"
+        />{" "}
+        in{" "}
         <Link to={urls.pools.index}>
           {resourcePoolsCount} {pluralize("pool", resourcePoolsCount)}
         </Link>
-      </h1>
-      <div className="machine-list-controls-inputs">
+      </MainToolbar.Title>
+      <MainToolbar.Controls>
         {!hasSelection ? (
           <>
-            <div className="machine-list-controls__item">
-              <MachinesFilterAccordion
-                searchText={searchText}
-                setSearchText={(searchText) => {
-                  setFilter(searchText);
-                }}
-              />
-            </div>
-            <div className="machine-list-controls__item u-flex--grow">
-              <DebounceSearchBox
-                onDebounced={(debouncedText) => setFilter(debouncedText)}
-                searchText={searchText}
-                setSearchText={setSearchText}
-              />
-            </div>
-            <div className="machine-list-controls__item u-hide--small u-hide--medium u-flex--align-baseline">
-              <GroupSelect
-                grouping={grouping}
-                setGrouping={setGrouping}
-                setHiddenGroups={setHiddenGroups}
-              />
-            </div>
+            <MachinesFilterAccordion
+              searchText={searchText}
+              setSearchText={(searchText) => {
+                setFilter(searchText);
+              }}
+            />
+            <DebounceSearchBox
+              onDebounced={(debouncedText) => setFilter(debouncedText)}
+              searchText={searchText}
+              setSearchText={setSearchText}
+            />
+            <GroupSelect
+              grouping={grouping}
+              setGrouping={setGrouping}
+              setHiddenGroups={setHiddenGroups}
+            />
           </>
         ) : (
           <>
-            <div className="machine-list-controls__item">
-              <MachineActionMenu
-                hasSelection={hasSelection}
-                setSidePanelContent={setSidePanelContent}
-              />
-            </div>
-            <div className="machine-list-controls__item">
-              <Button
-                appearance="link"
-                onClick={() => dispatch(machineActions.setSelected(null))}
-              >
-                Clear selection <Icon name="close-link" />
-              </Button>
-            </div>
+            <MachineActionMenu
+              hasSelection={hasSelection}
+              setSidePanelContent={setSidePanelContent}
+            />
+            <Button
+              appearance="link"
+              onClick={() => dispatch(machineActions.setSelected(null))}
+            >
+              Clear selection <Icon name="close-link" />
+            </Button>
           </>
         )}
         {!hasSelection ? (
-          <div className="machine-list-controls__item u-hide--small u-hide--medium">
-            <AddHardwareMenu
-              key="add-hardware"
-              setSidePanelContent={setSidePanelContent}
-            />
-          </div>
-        ) : null}
-        <div className="machine-list-controls__item">
-          <HiddenColumnsSelect
-            hiddenColumns={hiddenColumns}
-            setHiddenColumns={setHiddenColumns}
+          <AddHardwareMenu
+            key="add-hardware"
+            setSidePanelContent={setSidePanelContent}
           />
-        </div>
-      </div>
-    </div>
+        ) : null}
+        <HiddenColumnsSelect
+          hiddenColumns={hiddenColumns}
+          setHiddenColumns={setHiddenColumns}
+        />
+      </MainToolbar.Controls>
+    </MainToolbar>
   );
 };
 

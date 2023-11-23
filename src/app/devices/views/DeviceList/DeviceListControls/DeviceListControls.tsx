@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { Col, Row } from "@canonical/react-components";
-
 import DeviceFilterAccordion from "./DeviceFilterAccordion";
 
 import DebounceSearchBox from "app/base/components/DebounceSearchBox";
@@ -21,21 +19,17 @@ const DeviceListControls = ({ filter, setFilter }: Props): JSX.Element => {
   }, [filter]);
 
   return (
-    <Row>
-      <Col size={3}>
-        <DeviceFilterAccordion
-          searchText={searchText}
-          setSearchText={setFilter}
-        />
-      </Col>
-      <Col size={9}>
-        <DebounceSearchBox
-          onDebounced={(debouncedText) => setFilter(debouncedText)}
-          searchText={searchText}
-          setSearchText={setSearchText}
-        />
-      </Col>
-    </Row>
+    <>
+      <DeviceFilterAccordion
+        searchText={searchText}
+        setSearchText={setFilter}
+      />
+      <DebounceSearchBox
+        onDebounced={(debouncedText) => setFilter(debouncedText)}
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
+    </>
   );
 };
 

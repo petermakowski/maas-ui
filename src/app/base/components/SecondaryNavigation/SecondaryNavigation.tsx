@@ -111,7 +111,7 @@ export const SecondaryNavigation = ({
       >
         <h2
           className="p-side-navigation__title p-heading--4 p-panel__logo-name u-no-padding--top"
-          data-testid="section-header-title"
+          data-testid="main-toolbar-heading"
         >
           {title}
         </h2>

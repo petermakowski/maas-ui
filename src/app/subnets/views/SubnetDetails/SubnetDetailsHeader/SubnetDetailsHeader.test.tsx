@@ -12,7 +12,7 @@ it("shows the subnet name as the section title", () => {
   const subnet = subnetFactory({ id: 1, name: "subnet-1" });
   renderWithBrowserRouter(<SubnetDetailsHeader subnet={subnet} />);
 
-  expect(screen.getByTestId("section-header-title")).toHaveTextContent(
+  expect(screen.getByTestId("main-toolbar-heading")).toHaveTextContent(
     "subnet-1"
   );
 });

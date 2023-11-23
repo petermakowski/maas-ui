@@ -1,9 +1,11 @@
+import { MainToolbar } from "@canonical/maas-react-components";
 import { Button } from "@canonical/react-components";
 import { useSelector } from "react-redux";
 
-import ModelListSubtitle from "app/base/components/ModelListSubtitle";
+import DeviceListControls from "../DeviceListControls";
+
+import { ModelListTitle } from "app/base/components/ModelListTitle";
 import NodeActionMenu from "app/base/components/NodeActionMenu";
-import SectionHeader from "app/base/components/SectionHeader";
 import type { SetSearchFilter } from "app/base/types";
 import { DeviceSidePanelViews } from "app/devices/constants";
 import type { DeviceSetSidePanelContent } from "app/devices/types";
@@ -12,10 +14,12 @@ import deviceSelectors from "app/store/device/selectors";
 type Props = {
   setSidePanelContent: DeviceSetSidePanelContent;
   setSearchFilter: SetSearchFilter;
+  searchFilter: string;
 };
 
 const DeviceListHeader = ({
   setSidePanelContent,
+  searchFilter,
   setSearchFilter,
 }: Props): JSX.Element => {
   const devices = useSelector(deviceSelectors.all);
@@ -23,8 +27,16 @@ const DeviceListHeader = ({
   const selectedDevices = useSelector(deviceSelectors.selected);
 
   return (
-    <SectionHeader
-      buttons={[
+    <MainToolbar>
+      <MainToolbar.Title>
+        <ModelListTitle
+          count={devices.length}
+          isLoading={!devicesLoaded}
+          model="device"
+        />
+      </MainToolbar.Title>
+      <MainToolbar.Controls>
+        <DeviceListControls filter={searchFilter} setFilter={setSearchFilter} />
         <Button
           data-testid="add-device-button"
           disabled={selectedDevices.length > 0}
@@ -33,7 +45,8 @@ const DeviceListHeader = ({
           }
         >
           Add device
-        </Button>,
+        </Button>
+
         <NodeActionMenu
           filterActions
           hasSelection={selectedDevices.length > 0}
@@ -48,19 +61,9 @@ const DeviceListHeader = ({
             }
           }}
           showCount
-        />,
-      ]}
-      subtitle={
-        <ModelListSubtitle
-          available={devices.length}
-          filterSelected={() => setSearchFilter("in:(Selected)")}
-          modelName="device"
-          selected={selectedDevices.length}
         />
-      }
-      subtitleLoading={!devicesLoaded}
-      title="Devices"
-    />
+      </MainToolbar.Controls>
+    </MainToolbar>
   );
 };
 

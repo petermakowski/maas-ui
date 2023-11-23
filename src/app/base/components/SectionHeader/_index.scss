@@ -2,7 +2,32 @@
   .section-header {
     padding-top: $spv--medium;
   }
+  .section-header__main-row {
+      display: flex;
+      container-type: inline-size;
+      column-gap: 1rem;
+      align-items: baseline;
+      margin-bottom: $spv--large;
+      flex-direction: column;
 
+      @media (min-width: $breakpoint-medium) {
+        flex-direction: row;
+      }
+  }
+
+
+  // TODO: this might be optional as on machine list might not work correctly
+  .section-header__title,
+  .section-header__subtitle,
+  .section-header__search,
+  .section-header__buttons {
+      text-wrap: nowrap;
+      flex-wrap: nowrap;
+  }
+
+  .section-header__titles {
+    flex: 0 0 auto;
+  }
   .section-header__title {
     margin: 0 $sph--large $spv--large 0;
     padding-top: 0.051rem;
@@ -10,6 +35,11 @@
 
   .section-header__subtitle {
     margin: 0 $sph--large $spv--large 0;
+    text-wrap: nowrap;
+  }
+
+  .section-header__search {
+    flex-grow: 1;
   }
 
   .section-header__buttons {
@@ -23,5 +53,14 @@
     .p-contextual-menu__toggle {
       margin-bottom: $spv--small;
     }
+  }
+
+
+  .p-content-header {
+    display: flex;
+    container-type: inline-size;
+    column-gap: 1rem;
+    align-items: baseline;
+    margin-bottom: $spv--large;
   }
 }
