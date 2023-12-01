@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 
+import { MainToolbar } from "@canonical/maas-react-components";
 import type { ClassName } from "@canonical/react-components";
-import { List, Spinner, Tabs } from "@canonical/react-components";
+import { Spinner, Tabs } from "@canonical/react-components";
 import type { TabLink } from "@canonical/react-components/dist/components/Tabs/Tabs";
 import classNames from "classnames";
 import type { LinkProps } from "react-router-dom";
@@ -76,55 +77,22 @@ const SectionHeader = <P,>({
 }: Props<P>): JSX.Element | null => {
   return (
     <div className={classNames("section-header", className)} {...props}>
-      <div className="section-header__main-row">
-        {loading ? (
-          <div className="section-header__titles u-flex--align-center u-flex--grow u-flex--wrap">
-            <h4
-              aria-label="loading"
-              className="section-header__title"
-              data-testid="section-header-title-spinner"
-            >
-              <Spinner aria-hidden="true" text="Loading..." />
-            </h4>
-          </div>
-        ) : title ? (
-          <div className="section-header__titles u-flex--align-center u-flex--grow u-flex--wrap">
-            <TitleElement
-              className={classNames(
-                "section-header__title u-flex--no-shrink",
-                titleClassName,
-                {
-                  "p-heading--4": TitleElement === "h1",
-                }
-              )}
-              data-testid="section-header-title"
-            >
-              {title}
-            </TitleElement>
-          </div>
-        ) : null}
-        {generateSubtitle(
-          subtitle,
-          subtitleClassName,
-          subtitleLoading,
-          loading
-        )}
-        {buttons?.length ? (
-          <List
-            className="section-header__buttons u-flex--between"
-            data-testid="section-header-buttons"
-            inline
-            items={buttons.map((button, i) => ({
-              content: button,
-              key: `section-header-button-${i}`,
-            }))}
-          />
-        ) : null}
-      </div>
-      {renderButtons && typeof renderButtons === "function"
-        ? renderButtons()
-        : null}
-      {actionMenuGroup ? <>{actionMenuGroup}</> : null}
+      <MainToolbar>
+        <MainToolbar.Title>
+          {loading ? (
+            <Spinner aria-hidden="true" text="Loading..." />
+          ) : title ? (
+            title
+          ) : null}
+        </MainToolbar.Title>
+        <MainToolbar.Controls>
+          {buttons?.length ? buttons.map((button, i) => button) : null}
+          {renderButtons && typeof renderButtons === "function"
+            ? renderButtons()
+            : null}
+          {actionMenuGroup ? <>{actionMenuGroup}</> : null}
+        </MainToolbar.Controls>
+      </MainToolbar>
       {tabLinks?.length ? (
         <div className="section-header__tabs" data-testid="section-header-tabs">
           <Tabs links={tabLinks} listClassName="u-no-margin--bottom" />

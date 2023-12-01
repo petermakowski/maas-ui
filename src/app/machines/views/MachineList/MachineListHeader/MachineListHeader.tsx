@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 
+import pluralize from "pluralize";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import MachineListControls from "../MachineListControls";
 import type { useResponsiveColumns } from "../hooks";
@@ -8,6 +10,7 @@ import type { useResponsiveColumns } from "../hooks";
 import MachinesHeader from "app/base/components/node/MachinesHeader";
 import { useFetchActions } from "app/base/hooks";
 import type { SetSearchFilter } from "app/base/types";
+import urls from "app/base/urls";
 import type { MachineSetSidePanelContent } from "app/machines/types";
 import { actions as machineActions } from "app/store/machine";
 import type { FetchGroupKey } from "app/store/machine/types";
@@ -73,6 +76,14 @@ export const MachineListHeader = ({
           setSidePanelContent={setSidePanelContent}
         />
       )}
+      title={
+        <>
+          {allMachineCount} machines in{" "}
+          <Link to={urls.pools.index}>
+            {resourcePoolsCount} {pluralize("pool", resourcePoolsCount)}
+          </Link>
+        </>
+      }
     />
   );
 };
