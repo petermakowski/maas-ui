@@ -8,7 +8,7 @@ import type { SidePanelSize } from "@/app/base/side-panel-context";
 import { useSidePanel } from "@/app/base/side-panel-context";
 
 export type AppSidePanelProps = {
-  title: string | null;
+  title?: string | null;
   content?: ReactNode;
   size: SidePanelSize;
 };

@@ -15,25 +15,32 @@ import { preferencesNavItems } from "@/app/preferences/constants";
 import { settingsNavItems } from "@/app/settings/constants";
 import status from "@/app/store/status/selectors";
 
-export type Props = {
+export type Props = HTMLProps<HTMLDivElement> & {
   children?: ReactNode;
   header?: ReactNode;
   sidebar?: ReactNode;
   isNotificationListHidden?: boolean;
-  sidePanelContent: AppSidePanelProps["content"];
-  sidePanelSize?: AppSidePanelProps["size"];
-  sidePanelTitle: AppSidePanelProps["title"];
-} & HTMLProps<HTMLDivElement>;
+} & (
+    | {
+        sidePanelContent: AppSidePanelProps["content"];
+        sidePanelSize?: AppSidePanelProps["size"];
+        sidePanelTitle: AppSidePanelProps["title"];
+      }
+    | {
+        sidePanelContent?: never;
+        sidePanelSize?: never;
+        sidePanelTitle?: never;
+      }
+  );
 
-const PageContent = ({
+export const BasePageContent = ({
   children,
-  header,
-  sidebar,
-  isNotificationListHidden = false,
   sidePanelContent,
   sidePanelTitle,
-  ...props
-}: Props): JSX.Element => {
+}: Omit<
+  Props,
+  "header" | "sidebar" | "isNotificationListHidden"
+>): JSX.Element => {
   const { pathname } = useLocation();
   const isSettingsPage = matchPath("settings/*", pathname);
   const isPreferencesPage = matchPath("account/prefs/*", pathname);
@@ -70,17 +77,32 @@ const PageContent = ({
           </div>
         ) : null}
         <div className="l-main__content" id="main-content">
-          <MainContentSection
-            header={header}
-            isNotificationListHidden={isNotificationListHidden}
-            {...props}
-          >
-            <ErrorBoundary>{children}</ErrorBoundary>
-          </MainContentSection>
+          {children}
         </div>
       </main>
       <AppSidePanel content={sidePanelContent} title={sidePanelTitle} />
     </>
+  );
+};
+
+const PageContent = ({
+  header,
+  children,
+  isNotificationListHidden,
+  ...props
+}: Props): JSX.Element => {
+  return (
+    <BasePageContent {...props}>
+      {
+        <MainContentSection
+          header={header}
+          isNotificationListHidden={isNotificationListHidden}
+          {...props}
+        >
+          <ErrorBoundary>{children}</ErrorBoundary>
+        </MainContentSection>
+      }
+    </BasePageContent>
   );
 };
 

@@ -39,7 +39,9 @@ export const Details = (): JSX.Element => {
 
   return (
     <ContentSection aria-label={Label.Title}>
-      <ContentSection.Title>{Label.Title}</ContentSection.Title>
+      <ContentSection.Title className="section-header__title">
+        {Label.Title}
+      </ContentSection.Title>
       <ContentSection.Content>
         {externalAuthURL && (
           <Notification severity="information">

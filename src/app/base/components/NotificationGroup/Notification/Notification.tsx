@@ -6,14 +6,13 @@ import { useNavigate } from "react-router-dom-v5-compat";
 import settingsURLs from "@/app/settings/urls";
 import authSelectors from "@/app/store/auth/selectors";
 import { actions as notificationActions } from "@/app/store/notification";
-import notificationSelectors from "@/app/store/notification/selectors";
 import type { Notification as NotificationType } from "@/app/store/notification/types";
+import { NotificationCategory } from "@/app/store/notification/types";
 import {
   isReleaseNotification,
   isUpgradeNotification,
 } from "@/app/store/notification/utils";
-import type { RootState } from "@/app/store/root/types";
-
+import { notification as notificationFactory } from "@/testing/factories";
 type Props = {
   className?: string | null;
   id: NotificationType["id"];
@@ -28,9 +27,11 @@ const NotificationGroupNotification = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAdmin = useSelector(authSelectors.isAdmin);
-  const notification = useSelector((state: RootState) =>
-    notificationSelectors.getById(state, id)
-  );
+  const notification = notificationFactory({
+    id: 1,
+    category: NotificationCategory.ERROR,
+    message: "an error",
+  });
   if (!notification) {
     return null;
   }

@@ -13,7 +13,8 @@ import messageSelectors from "@/app/store/message/selectors";
 import type { Message } from "@/app/store/message/types";
 import { actions as notificationActions } from "@/app/store/notification";
 import notificationSelectors from "@/app/store/notification/selectors";
-
+import { NotificationCategory } from "@/app/store/notification/types";
+import { notification as notificationFactory } from "@/testing/factories";
 const generateMessages = (messages: Message[], dispatch: Dispatch) =>
   messages.map(({ id, message, severity, temporary }) => (
     <Notification
@@ -26,7 +27,6 @@ const generateMessages = (messages: Message[], dispatch: Dispatch) =>
       {message}
     </Notification>
   ));
-
 const NotificationList = (): JSX.Element => {
   const messages = useSelector(messageSelectors.all);
 
@@ -36,7 +36,13 @@ const NotificationList = (): JSX.Element => {
       severity: NotificationSeverity.CAUTION,
     },
     errors: {
-      items: useSelector(notificationSelectors.errors),
+      items: [
+        notificationFactory({
+          id: 1,
+          category: NotificationCategory.ERROR,
+          message: "an error",
+        }),
+      ],
       severity: NotificationSeverity.NEGATIVE,
     },
     success: {

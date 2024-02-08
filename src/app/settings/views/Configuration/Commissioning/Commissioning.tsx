@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 
-import { ContentSection } from "@canonical/maas-react-components";
 import { Spinner } from "@canonical/react-components";
 import { useSelector, useDispatch } from "react-redux";
 
 import CommissioningForm from "../CommissioningForm";
 
+import PageContentSection from "@/app/base/components/PageContentSection";
 import { useWindowTitle } from "@/app/base/hooks";
 import { actions as configActions } from "@/app/store/config";
 import configSelectors from "@/app/store/config/selectors";
@@ -35,15 +35,15 @@ const Commissioning = (): JSX.Element => {
   }, [dispatch, loaded]);
 
   return (
-    <ContentSection variant="narrow">
-      <ContentSection.Title className="section-header__title">
+    <PageContentSection variant="narrow">
+      <PageContentSection.Title className="section-header__title">
         Commissioning
-      </ContentSection.Title>
-      <ContentSection.Content>
+      </PageContentSection.Title>
+      <PageContentSection.Content>
         {loading && <Spinner text={Labels.Loading} />}
         {loaded && <CommissioningForm />}
-      </ContentSection.Content>
-    </ContentSection>
+      </PageContentSection.Content>
+    </PageContentSection>
   );
 };
 
