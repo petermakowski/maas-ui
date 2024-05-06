@@ -60,7 +60,7 @@ const InterfaceFormSchema = Yup.object().shape({
     is: (ipAssignment: DeviceIpAssignment) =>
       ipAssignment === DeviceIpAssignment.STATIC ||
       ipAssignment === DeviceIpAssignment.EXTERNAL,
-    then: Yup.string().required("IP address is required"),
+    then: (schema) => schema.required("IP address is required"),
   }),
   ip_assignment: Yup.string().required("IP assignment is required"),
   mac_address: Yup.string()
@@ -70,7 +70,7 @@ const InterfaceFormSchema = Yup.object().shape({
   subnet: Yup.number().when("ip_assignment", {
     is: (ipAssignment: DeviceIpAssignment) =>
       ipAssignment === DeviceIpAssignment.STATIC,
-    then: Yup.number().required("Subnet is required"),
+    then: (schema) => schema.required("Subnet is required"),
   }),
   tags: Yup.array().of(Yup.string()),
 });

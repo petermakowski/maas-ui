@@ -3,7 +3,6 @@ import { useCallback, useState } from "react";
 import { Col, Row } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-import type { SchemaOf } from "yup";
 
 import FormikField from "@/app/base/components/FormikField";
 import FormikForm from "@/app/base/components/FormikForm";
@@ -38,7 +37,7 @@ const DomainListHeaderForm = ({ closeForm }: Props): JSX.Element => {
   const cleanup = useCallback(() => domainActions.cleanup(), []);
   const [shouldClose, setShouldClose] = useState(false);
 
-  const CreateDomainSchema: SchemaOf<CreateDomainValues> = Yup.object()
+  const CreateDomainSchema = Yup.object()
     .shape({
       name: Yup.string()
         .required("Domain name cannot be empty")

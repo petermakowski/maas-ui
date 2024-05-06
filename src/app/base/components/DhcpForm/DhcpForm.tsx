@@ -28,9 +28,8 @@ const DhcpSchema = Yup.object()
     enabled: Yup.boolean(),
     entity: Yup.string().when("type", {
       is: (val: string) => val && val.length > 0,
-      then: Yup.string().required(
-        "You must choose an entity for this snippet type"
-      ),
+      then: (schema) =>
+        schema.required("You must choose an entity for this snippet type"),
     }),
     name: Yup.string().required("Snippet name is required"),
     value: Yup.string().required("DHCP snippet is required"),

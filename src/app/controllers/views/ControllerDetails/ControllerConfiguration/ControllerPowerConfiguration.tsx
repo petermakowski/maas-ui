@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { Notification, Spinner } from "@canonical/react-components";
 import { useDispatch, useSelector } from "react-redux";
-import type { SchemaOf } from "yup";
+import type { Schema } from "yup";
 import * as Yup from "yup";
 
 import EditableSection from "@/app/base/components/EditableSection";
@@ -19,6 +19,7 @@ import type {
   ControllerMeta,
 } from "@/app/store/controller/types";
 import { isControllerDetails } from "@/app/store/controller/utils";
+import { PowerTypeNames } from "@/app/store/general/constants";
 import { powerTypes as powerTypesSelectors } from "@/app/store/general/selectors";
 import type { PowerType } from "@/app/store/general/types";
 import {
@@ -68,10 +69,12 @@ const ControllerPowerConfiguration = ({ systemId }: Props): JSX.Element => {
   const powerParametersSchema =
     generatePowerParametersSchema(selectedPowerType);
 
-  const PowerFormSchema: SchemaOf<PowerFormValues> = Yup.object()
+  const PowerFormSchema: Schema<PowerFormValues> = Yup.object()
     .shape({
       powerParameters: Yup.object().shape(powerParametersSchema),
-      powerType: Yup.string().required("Power type is required"),
+      powerType: Yup.string()
+        .oneOf(Object.values(PowerTypeNames))
+        .required("Power type is required"),
     })
     .defined();
 
